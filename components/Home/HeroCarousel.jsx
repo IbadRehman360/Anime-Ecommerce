@@ -1,13 +1,15 @@
+"use client";
+
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/autoplay";
-import HeroImage from "./HeroImage";
+import HeroImages from "./HeroImages";
 
 export default function HeroCarousel() {
-  const images = Array.from({ length: 9 }, (_, index) => `${index + 1}.webp`);
+  const images = Array.from({ length: 1 }, (_, index) => `${index + 1}.webp`);
 
   return (
     <div
@@ -24,7 +26,7 @@ export default function HeroCarousel() {
       >
         {images.map((imageUrl, index) => (
           <SwiperSlide key={imageUrl}>
-            <HeroImage index={index} imageUrl={imageUrl} />
+            <HeroImages index={index} imageUrl={imageUrl} />
           </SwiperSlide>
         ))}
       </Swiper>
