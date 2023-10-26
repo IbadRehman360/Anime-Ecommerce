@@ -1,72 +1,33 @@
-const products = [
-  {
-    id: 1,
-    name: "Basic Tee",
-    href: "#",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
-    imageAlt: "Front of men's Basic Tee in black.",
-    price: "$35",
-    color: "Black",
-  },
-  {
-    id: 2,
-    name: "Basic Tee",
-    href: "#",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
-    imageAlt: "Front of men's Basic Tee in black.",
-    price: "$35",
-    color: "Black",
-  },
-  {
-    id: 3,
-    name: "Basic Tee",
-    href: "#",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
-    imageAlt: "Front of men's Basic Tee in black.",
-    price: "$35",
-    color: "Black",
-  },
-  {
-    id: 4,
-    name: "Basic Tee",
-    href: "#",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
-    imageAlt: "Front of men's Basic Tee in black.",
-    price: "$35",
-    color: "Black",
-  },
-  {
-    id: 5,
-    name: "Basic Tee",
-    href: "#",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
-    imageAlt: "Front of men's Basic Tee in black.",
-    price: "$35",
-    color: "Black",
-  },
-  {
-    id: 5,
-    name: "Basic Tee",
-    href: "#",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
-    imageAlt: "Front of men's Basic Tee in black.",
-    price: "$35",
-    color: "Black",
-  },
-];
+"use client";
+
+import { useState } from "react";
 
 export default function LatestDropDisplay() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const handlePrevPage = () => {
+    if (currentSlide > 0) {
+      setCurrentSlide(currentSlide - 1);
+    }
+  };
+
+  const handleNextPage = () => {
+    if (currentSlide < 1) {
+      setCurrentSlide(currentSlide + 1);
+    } else {
+      setCurrentSlide(0);
+    }
+  };
+
+  const visibleProducts = products.slice(
+    currentSlide * 4,
+    (currentSlide + 1) * 4
+  );
   return (
     <div className="bg-white">
-      <div className="mx-auto max-w-2xl px-4 py-2 sm:px-6 lg:max-w-[90rem] ">
-        <div className="mt-6 grid grid-cols-2 gap-x-3 gap-y-10  sm:grid-cols-3 lg:grid-cols-6 xl:gap-x-8">
-          {products.map((product) => (
+      <div className="mx-auto max-w-2xl px-4 py-2 sm:px-6 lg:max-w-[110rem]">
+        <div className="mt-6 grid grid-cols-6 gap-x-8">
+          {visibleProducts.map((product) => (
             <div key={product.id} className="group relative">
               <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
                 <img
@@ -91,6 +52,32 @@ export default function LatestDropDisplay() {
               </div>
             </div>
           ))}
+        </div>
+
+        <div className="mt-2 flex justify-center text-xs sm:mt-4 md:mt-6">
+          <p
+            className="text-[0.97rem] sm:text-[1rem] md:hidden"
+            style={{ letterSpacing: "0.1em" }}
+          >
+            {currentSlide < 1 ? "1/2" : "2/2"}
+          </p>
+          <div className="hidden justify-center md:flex">
+            <a
+              href="#trendingGiftCardsSlide1"
+              onClick={handlePrevPage}
+              className={`mr-1 block h-[4px] w-[28px] rounded-2xl ${
+                currentSlide === 0 ? "bg-[#f03827]" : "bg-[#888888]"
+              } `}
+              id="prevPage"
+            />
+            <a
+              href="#trendingGiftCardsSlide2"
+              onClick={handleNextPage}
+              className={`mr-1 block h-[4px] w-[28px] rounded-2xl ${
+                currentSlide === 1 ? "bg-[#f03827]" : "bg-[#888888]"
+              } `}
+            />
+          </div>
         </div>
       </div>
     </div>
