@@ -1,13 +1,21 @@
 export default function CategoriesImage() {
   return (
-    <section className="mt-16 sm:mt-20 md:mt-24 lg:mt-26 grid w-full grid-cols-4 grid-rows-[repeat(1,_3rem)] gap-0 border-b-2 border-gray-300 md:grid-cols-6">
-      <div className="flex items-center justify-center border-[0.5px] border-gray-200 p-2">
-        <img src="" className="mx-auto h-16 w-40 object-contain" />
-      </div>
+    <section className="mt-16 grid w-full grid-cols-5 sm:grid-cols-2 md:grid-cols-5 gap-0 border-b-2">
+      {Array.from({ length: 10 }, (_, i) => (
+        <div
+          key={i}
+          className="flex items-center justify-center border-[0.5px] border-gray-200 p-2"
+        >
+          <img
+            src={`/assets/categoryImages/${i + 1}.webp`}
+            alt={`Image ${i}`}
+            className="mx-auto h-16 sm:h-24 md:h-16 w-full sm:w-40 md:w-16 object-contain"
+          />
+        </div>
+      ))}
     </section>
   );
 }
-
 {
   /* <div className="flex items-center justify-center border-[0.5px] border-gray-200 px-1">
   <img
