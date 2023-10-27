@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import { FaShippingFast, FaLock, FaPercent, FaTshirt } from "react-icons/fa";
 
 const sections = [
   {
@@ -14,38 +15,53 @@ const sections = [
 
 export default function Footer() {
   return (
-    <footer>
-      <div className="bg-white p-8 text-center space-x-4">
-        <div className="flex items-center justify-center text-red-500">
-          <i className="fas fa-shipping-fast text-4xl"></i>
-          <div className="ml-2">
-            <p className="text-black">FREE SHIPPING</p>
-            <p className="text-gray-600">From all orders over Rs 499</p>
+    <>
+      <div className="bg-white  ">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4 border-t p-9   sm:place-self-center sm:place-items-center">
+          <div className="md:col-span-1 flex  text-red-500">
+            <FaShippingFast size={18} />
+            <div className="ml-2">
+              <p className="text-black font-semibold text-[0.85rem]   ">
+                FREE SHIPPING
+              </p>
+              <p className="text-gray-600 text-xs">
+                From all orders over Rs 499
+              </p>
+            </div>
+          </div>
+          <div className="md:col-span-1 flex text-red-500">
+            <FaLock size={14} />
+            <div className="ml-2">
+              <p className="text-black font-semibold text-[0.85rem]">
+                100% SECURE PAYMENT
+              </p>
+              <p className="text-gray-600 text-xs">
+                We use razorpay with secure net
+              </p>
+            </div>
+          </div>
+          <div className="md:col-span-1 flex text-red-500">
+            <FaPercent size={14} />
+            <div className="ml-2">
+              <p className="text-black font-semibold text-[0.85rem]">
+                UP TO 40% DISCOUNT
+              </p>
+              <p className="text-gray-600 text-xs">on selected items</p>
+            </div>
+          </div>
+          <div className="md:col-span-1 flex text-red-500">
+            <FaTshirt size={18} />
+            <div className="ml-2">
+              <p className="text-black font-semibold text-[0.85rem]">
+                OVER 200+ STYLES
+              </p>
+              <p className="text-gray-600 text-xs">
+                We have everything you need
+              </p>
+            </div>
           </div>
         </div>
-        <div className="flex items-center justify-center text-red-500">
-          <i className="fas fa-lock text-4xl"></i>
-          <div className="ml-2">
-            <p className="text-black">100% SECURE PAYMENT</p>
-            <p className="text-gray-600">We use razorpay with secure net</p>
-          </div>
-        </div>
-        <div className="flex items-center justify-center text-red-500">
-          <i className="fas fa-percent text-4xl"></i>
-          <div className="ml-2">
-            <p className="text-black">UP TO 40% DISCOUNT</p>
-            <p className="text-gray-600">on selected items</p>
-          </div>
-        </div>
-        <div className="flex items-center justify-center text-red-500">
-          <i className="fas fa-tshirt text-4xl"></i>
-          <div className="ml-2">
-            <p className="text-black">OVER 200+ STYLES</p>
-            <p className="text-gray-600">We have everything you need</p>
-          </div>
-        </div>
-      </div>
-      <div>
+
         <footer className="footer grid  gap-6  grid-rows-1  grid-cols-none   bg-[#111] p-4 py-10 sm:p-8 md:p-10  text-white sm:justify-between sm:gap-8 lg:grid-cols-4 lg:grid-rows-1">
           <div>
             <span
@@ -55,7 +71,7 @@ export default function Footer() {
               Our story
             </span>
 
-            <div className=" gap-2 text-[0.8rem]  w-[17.5rem]  md:w-60 lg:w-72 text-[#d2d2d2]">
+            <div className=" gap-2 text-[0.8rem]  w-[17.5rem]  md:w- lg:w-72 text-[#d2d2d2]">
               22 Our adventure began during lockdown when we realised that
               several anime shows were gaining popularity in India. We are a
               genuine store that provides anime lovers with collectibles of
@@ -134,6 +150,6 @@ export default function Footer() {
           </div>
         </footer>
       </div>
-    </footer>
+    </>
   );
 }

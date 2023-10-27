@@ -1,12 +1,12 @@
 function Details() {
   return (
     <div className="bg-white">
-      <div className="mx-auto grid pt-10 md:pt-16 px-3 sm:px-6 grid-cols-1 items-center  w-full  lg:max-w-[110rem] lg:grid-cols-2 lg:px-8">
+      <div className="mx-auto grid pt-10 md:pt-16 px-3 sm:px-6 lg:mb-20 mb-10 grid-cols-1 items-center  w-full  lg:max-w-[110rem] lg:grid-cols-2 lg:px-8">
         <div className=" justify-end lg:hidden ">
           <img
             src="/assets/Des/2.webp"
             alt="Walnut card tray with white powder coated steel divider and 3 punchout holes."
-            className="rounded-lg bg-gray-100 lg:hidden flex mb-12 h-[30rem] md:h-[40rem] w-full"
+            className="rounded-lg bg-gray-100 lg:hidden flex  mb-8 lg:mb-10  h-[30rem] md:h-[40rem] w-full"
           />
         </div>
         <div className="leading-7  tracking-wide">
@@ -20,8 +20,8 @@ function Details() {
             <span className=" font-medium">Background</span> to create unique
             look. Express your style and protect your device with our customized
             phone cases.
-            <div className="pt-6 xl:pt-10">
-              <button className="border bg-center flex mb-10 bg-red-500 text-white py-2.5 px-4  rounded-md">
+            <div className=" ">
+              <button className="border bg-center flex  bg-red-500    py-2 px-3 lg:py-2.5 lg:px-4   font-semibold tracking-wider text-white mt-6 lg:mt-8  rounded-md">
                 CONTACT NOW{" "}
               </button>
             </div>

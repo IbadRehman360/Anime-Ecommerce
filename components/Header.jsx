@@ -10,6 +10,7 @@ import {
 } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
+import Cart from "./Cart";
 
 const navigation = {
   categories: [
@@ -147,6 +148,7 @@ function classNames(...classes) {
 
 export default function Example() {
   const [open, setOpen] = useState(false);
+  const [isCartOpen, setIsCartOpen] = useState(false);
 
   return (
     <div className="bg-white">
@@ -312,7 +314,7 @@ export default function Example() {
                 <div className="border-t border-gray-200 px-4 py-6">
                   <Link href="#" className="-m-2 flex items-center p-2">
                     <Image
-                      src="https://tailwindui.com/img/flags/flag-canada.svg"
+                      src="/assets/country.png"
                       alt=""
                       width={50}
                       height={50}
@@ -501,11 +503,11 @@ export default function Example() {
                     className="flex items-center text-gray-700 hover:text-gray-800"
                   >
                     <Image
-                      src="https://tailwindui.com/img/flags/flag-canada.svg"
+                      src="/assets/country.png"
                       alt=""
-                      width={80}
-                      height={80}
-                      className="block h-auto w-5 flex-shrink-0"
+                      width={90}
+                      height={90}
+                      className="block border-2 border-gray-700 h-auto w-5 flex-shrink-0"
                     />
                     <span className="ml-3 block text-sm font-medium">PKR</span>
                     <span className="sr-only">, change currency</span>
@@ -526,9 +528,11 @@ export default function Example() {
                   </Link>
                 </div>
 
-                {/* Cart */}
                 <div className="ml-4 flow-root lg:ml-8">
-                  <Link href="#" className="group -m-2 flex items-center p-2">
+                  <button
+                    onClick={() => setIsCartOpen(!isCartOpen)}
+                    className="group -m-2 flex items-center p-2"
+                  >
                     <ShoppingBagIcon
                       className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
                       aria-hidden="true"
@@ -536,8 +540,9 @@ export default function Example() {
                     <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">
                       0
                     </span>
+                    {isCartOpen && <Cart />}{" "}
                     <span className="sr-only">items in cart, view bag</span>
-                  </Link>
+                  </button>
                 </div>
               </div>
             </div>

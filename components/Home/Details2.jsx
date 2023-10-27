@@ -26,7 +26,7 @@ function Details2() {
             Choose <span className=" font-medium"> Senpai Merch</span> for all
             your apparel needs!
           </p>
-          <button className="border bg-center flex  bg-gray-800      font-semibold tracking-wider text-white py-2 px-4 mt-6 lg:mt-10  rounded-md">
+          <button className="border bg-center flex  bg-gray-800    py-2 px-3 lg:py-2.5 lg:px-4   font-semibold tracking-wider text-white mt-6 lg:mt-8  rounded-md">
             BUY NOW
           </button>
         </div>

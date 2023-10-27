@@ -40,7 +40,7 @@ export default function Example() {
       <div className="mx-auto lg:max-w-[112rem] px-2 sm:px-6 lg:px-8">
         <div className="">
           <div className=" border-gray-200 ">
-            <h2 className="font-bungee text-3xl lg:text-4xl tracking-wider font-semibold leading-6 text-center mt-10 mb-10 text-gray-700">
+            <h2 className="font-bungee  text-2xl sm:text-3xl text-center  lg:text-4xl tracking-wider font-semibold leading-6  mt-10 mb-10  text-gray-900">
               SHOP BY ANIME
             </h2>
           </div>

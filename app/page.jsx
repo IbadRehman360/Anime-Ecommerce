@@ -1,5 +1,4 @@
 import Categories from "@components/Home/Categories";
-import CategoriesImage from "@components/Home/CategoriesImage";
 import Details from "@components/Home/Details";
 import Details2 from "@components/Home/Details2";
 import HeroCarousel from "@components/Home/HeroCarousel";
@@ -15,8 +14,9 @@ const Home = () => (
     <TrendingProduct />
     <Details2 />
     <Details />
-    <Testimonials />
-    <CategoriesImage />
+    <div className="bg-[#fdfdfd]">
+      <Testimonials />
+    </div>
   </section>
 );
 
