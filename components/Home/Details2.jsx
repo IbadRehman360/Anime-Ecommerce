@@ -1,7 +1,7 @@
 function Details2() {
   return (
     <div className="bg-white">
-      <div className="mx-auto grid max-w-2xl grid-cols-1 items-center gap-x-8 gap-y-16 px-4 py-24 sm:px-6 sm:py-32 lg:max-w-[110rem] lg:grid-cols-2 lg:px-8">
+      <div className="mx-auto grid pt-10 md:pt-16 px-3 sm:px-6 grid-cols-1 items-center  w-full  lg:max-w-[110rem] lg:grid-cols-2 lg:px-8">
         <div className="">
           <img
             src="/assets/Des/2.jpg"
@@ -10,18 +10,25 @@ function Details2() {
           />
         </div>
 
-        <div>
+        <div className="leading-7  tracking-wide">
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
             Anime Apparel
           </h2>
           <p className="mt-4 text-gray-500">
-            At [Senpai Merch], we specialize in top-quality custom apparel. From
-            hoodies to tees to sweatshirts and more, we offer the finest in
-            personalized clothing. Stand out from the crowd with our custom
-            designs and high-quality materials. Choose [Senpai Merch] for all
+            At <span className=" font-medium"> Senpai Merch</span>, we
+            specialize in top-quality custom apparel. From{" "}
+            <span className=" font-medium"> hoodies </span>to{" "}
+            <span className=" font-medium"> tees</span> to
+            <span className=" font-medium"> sweatshirts</span> and more, we
+            offer the finest in personalized clothing. Stand out from the crowd
+            with our custom designs and{" "}
+            <span className=" font-medium"> high-quality</span> materials.
+            Choose <span className=" font-medium"> Senpai Merch</span> for all
             your apparel needs!
           </p>
-          <button className="border bg-center flex">BUY NOW</button>
+          <button className="border bg-center flex  bg-red-500      font-semibold tracking-wider text-white py-2 px-4 mt-6 lg:mt-10  rounded-md">
+            BUY NOW
+          </button>
         </div>
       </div>
     </div>

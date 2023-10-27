@@ -1,6 +1,6 @@
 export default function LatestDropDisplay({ products }) {
   return (
-    <div className="bg-white">
+    <div className="bg-white w-full ">
       <div className="mx-auto w-full     ">
         <div key={products?.id} className="group relative">
           <div className=" h-80">

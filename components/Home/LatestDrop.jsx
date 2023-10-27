@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 import LatestDropDisplay from "./LatestDropDisplay";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 const products = [
   {
     id: 1,
@@ -12,7 +12,7 @@ const products = [
     imageSrc:
       "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
     imageAlt: "Front of men's Basic Tee in black.",
-    price: "$35",
+    price: "$10",
     color: "Black",
   },
   {
@@ -22,7 +22,7 @@ const products = [
     imageSrc:
       "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
     imageAlt: "Front of men's Basic Tee in black.",
-    price: "$35",
+    price: "$20",
     color: "Black",
   },
   {
@@ -32,7 +32,7 @@ const products = [
     imageSrc:
       "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
     imageAlt: "Front of men's Basic Tee in black.",
-    price: "$35",
+    price: "$30",
     color: "Black",
   },
   {
@@ -42,7 +42,7 @@ const products = [
     imageSrc:
       "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
     imageAlt: "Front of men's Basic Tee in black.",
-    price: "$35",
+    price: "$40",
     color: "Black",
   },
   {
@@ -52,7 +52,7 @@ const products = [
     imageSrc:
       "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
     imageAlt: "Front of men's Basic Tee in black.",
-    price: "$35",
+    price: "$50",
     color: "Black",
   },
   {
@@ -62,7 +62,7 @@ const products = [
     imageSrc:
       "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
     imageAlt: "Front of men's Basic Tee in black.",
-    price: "$35",
+    price: "$60",
     color: "Black",
   },
   {
@@ -72,7 +72,7 @@ const products = [
     imageSrc:
       "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
     imageAlt: "Front of men's Basic Tee in black.",
-    price: "$35",
+    price: "$70",
     color: "Black",
   },
   {
@@ -82,7 +82,7 @@ const products = [
     imageSrc:
       "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
     imageAlt: "Front of men's Basic Tee in black.",
-    price: "$35",
+    price: "$80",
     color: "Black",
   },
   {
@@ -92,16 +92,87 @@ const products = [
     imageSrc:
       "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
     imageAlt: "Front of men's Basic Tee in black.",
-    price: "$35",
+    price: "$90",
+    color: "Black",
+  },
+  {
+    id: 5,
+    name: "Basic Tee",
+    href: "#",
+    imageSrc:
+      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
+    imageAlt: "Front of men's Basic Tee in black.",
+    price: "$100",
+    color: "Black",
+  },
+  {
+    id: 5,
+    name: "Basic Tee",
+    href: "#",
+    imageSrc:
+      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
+    imageAlt: "Front of men's Basic Tee in black.",
+    price: "$110",
+    color: "Black",
+  },
+  {
+    id: 5,
+    name: "Basic Tee",
+    href: "#",
+    imageSrc:
+      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
+    imageAlt: "Front of men's Basic Tee in black.",
+    price: "$120",
     color: "Black",
   },
 ];
 function LatestDrop() {
+  const [sliceEnd, setSliceEnd] = useState(calculateSliceEnd());
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [displayedProducts1, setDisplayedProducts1] = useState([]);
+  const [displayedProducts2, setDisplayedProducts2] = useState([]);
+
+  function calculateSliceEnd() {
+    const windowWidth = window.innerWidth;
+    if (windowWidth >= 1800) {
+      return 6;
+    } else if (windowWidth >= 720 && windowWidth < 900) {
+      return 3;
+    } else if (windowWidth >= 200 && windowWidth < 720) {
+      return 2;
+    } else if (windowWidth >= 800 && windowWidth < 1400) {
+      return 4;
+    } else {
+      return 5;
+    }
+  }
+  useEffect(() => {
+    function updateSliceEnd() {
+      setSliceEnd(calculateSliceEnd());
+    }
+
+    window.addEventListener("resize", updateSliceEnd);
+
+    return () => {
+      window.removeEventListener("resize", updateSliceEnd);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (products) {
+      const sliceEnd1 = sliceEnd;
+      const sliceEnd2 = sliceEnd * 2;
+
+      setDisplayedProducts1(products.slice(0, sliceEnd1));
+      setDisplayedProducts2(products.slice(sliceEnd1, sliceEnd2));
+    }
+  }, [sliceEnd]);
 
   const handlePrevPage = () => {
     if (currentSlide > 0) {
       setCurrentSlide(currentSlide - 1);
+    } else {
+      setCurrentSlide(1);
     }
   };
 
@@ -114,9 +185,9 @@ function LatestDrop() {
   };
 
   return (
-    <div className="mt-8 mx-auto max-w-2xl px-2 py-2 sm:px-6 md:max-w-[110rem] w-full  bg-[#fdfdfd]">
+    <div className="md:mt-8 mx-auto max-w-2xl px-2 py-2 sm:px-6 md:max-w-[110rem] w-full  ">
       <div className="mr-2 flex items-center justify-between">
-        <h2 className="  font-bungee  text-3xl lg:text-4xl tracking-wider font-semibold leading-6 text-center mt-10 lg:mt-12 text-gray-700">
+        <h2 className="  font-bungee  text-3xl lg:text-4xl mb-2  tracking-wider font-semibold leading-6 text-center mt-10 lg:mt-12 text-gray-700">
           Latest Drops{" "}
         </h2>
         <Link href={"/dashboard"}>
@@ -129,63 +200,22 @@ function LatestDrop() {
             </div>
           </div>
         </Link>
-
-        <div className="sm:hidden">
-          {currentSlide < 1 && (
-            <div className="rounded-full border-[1px] border-black bg-white p-1 shadow-sm">
-              <a
-                onClick={handleNextPage}
-                href="#mbTrendingProductsSlide2"
-                className=""
-              >
-                <MdKeyboardArrowRight />
-              </a>
-            </div>
-          )}
-          {currentSlide > 0 && (
-            <div className="rounded-full border-[1px] border-black bg-white p-1 shadow-sm">
-              <a
-                onClick={handlePrevPage}
-                href="#mbTrendingProductsSlide1"
-                className=""
-              >
-                <MdKeyboardArrowLeft />
-              </a>
-            </div>
-          )}
-        </div>
       </div>
-      <div className="carousel-center hidden  sm:flex w-full gap-x-4 rounded-lg sm:carousel">
-        <div id="trendingProductsSlide1" className="carousel-item">
-          {products.slice(0, 4).map((Product) => (
-            <LatestDropDisplay key={Product.id} products={Product} />
+      <div className="carousel mt-2 w-full justify-items-stretch sm:mt-4 sm:grid-cols-2 md:grid-cols-3 md:gap-5 lg:grid-cols-6">
+        <div
+          id="featuredProductsSlide1"
+          className="carousel-item mx-auto my-4 w-full gap-2 sm:w-full md:gap-3"
+        >
+          {displayedProducts1.map((product) => (
+            <LatestDropDisplay key={product.id} products={product} />
           ))}
         </div>
         <div
-          id="trendingProductsSlide"
-          className="carousel-item w-full gap-4 sm:gap-5 lg:gap-8"
+          id="featuredProductsSlide2"
+          className="carousel-item mx-auto my-4 gap-2 w-full md:gap-3"
         >
-          {products.slice(0, 4).map((Product) => (
-            <LatestDropDisplay key={Product.id} products={Product} />
-          ))}
-        </div>
-      </div>
-
-      <div className="carousel relative w-full gap-x-4 rounded-lg sm:hidden">
-        <div
-          id="mbLatestDropDisplaysSlide1"
-          className="carousel-item w-full gap-1 sm:gap-5 md:gap-10"
-        >
-          {products.slice(0, 2).map((Product) => (
-            <LatestDropDisplay key={Product.id} products={Product} />
-          ))}
-        </div>
-        <div
-          id="mbLatestDropDisplaysSlide2"
-          className="carousel-item w-full gap-1 sm:gap-5 md:gap-10"
-        >
-          {products.slice(2, 4).map((Product) => (
-            <LatestDropDisplay key={Product.id} products={Product} />
+          {displayedProducts2.map((product) => (
+            <LatestDropDisplay key={product.id} products={product} />
           ))}
         </div>
       </div>
@@ -195,11 +225,11 @@ function LatestDrop() {
           className="text-[0.97rem] sm:text-[1rem] md:hidden"
           style={{ letterSpacing: "0.1em" }}
         >
-          {currentSlide < 1 ? "1/2" : "2/2"}
+          {currentSlide + 1}/2
         </p>
         <div className="hidden justify-center md:flex">
           <a
-            href="#trendingProductsSlide1"
+            href="#featuredProductsSlide1"
             onClick={handlePrevPage}
             className={`mr-1 block h-[4px] w-[28px] rounded-2xl ${
               currentSlide === 0 ? "bg-[#f03827]" : "bg-[#888888]"
@@ -207,8 +237,7 @@ function LatestDrop() {
             id="prevPage"
           />
           <a
-            href="#trending
-            sSlide2"
+            href="#featuredProductsSlide2"
             onClick={handleNextPage}
             className={`mr-1 block h-[4px] w-[28px] rounded-2xl ${
               currentSlide === 1 ? "bg-[#f03827]" : "bg-[#888888]"
