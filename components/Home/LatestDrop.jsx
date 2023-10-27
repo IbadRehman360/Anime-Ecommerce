@@ -10,8 +10,7 @@ const products = [
     id: 1,
     name: "Basic Tee",
     href: "#",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
+    imageSrc: "assets/latest/1.webp",
     imageAlt: "Front of men's Basic Tee in black.",
     price: 10.0,
     color: "Black",
@@ -21,8 +20,7 @@ const products = [
     id: 2,
     name: "Basic Tee",
     href: "#",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
+    imageSrc: "assets/latest/2.webp",
     imageAlt: "Front of men's Basic Tee in black.",
     price: 20,
     color: "Black",
@@ -31,8 +29,7 @@ const products = [
     id: 1,
     name: "Basic Tee",
     href: "#",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
+    imageSrc: "assets/latest/2.jpg",
     imageAlt: "Front of men's Basic Tee in black.",
     price: 10.0,
     color: "Black",
@@ -42,8 +39,7 @@ const products = [
     id: 4,
     name: "Basic Tee",
     href: "#",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
+    imageSrc: "assets/latest/3.jpg",
     imageAlt: "Front of men's Basic Tee in black.",
     price: 40,
     color: "Black",
@@ -52,8 +48,7 @@ const products = [
     id: 5,
     name: "Basic Tee",
     href: "#",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
+    imageSrc: "assets/latest/6.jpg",
     discountPrice: 8,
     imageAlt: "Front of men's Basic Tee in black.",
     price: 50,
@@ -63,8 +58,7 @@ const products = [
     id: 5,
     name: "Basic Tee",
     href: "#",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
+    imageSrc: "assets/latest/5.jpg",
     imageAlt: "Front of men's Basic Tee in black.",
     price: 60,
     discountPrice: 800.0,
@@ -75,8 +69,7 @@ const products = [
     id: 5,
     name: "Basic Tee",
     href: "#",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
+    imageSrc: "assets/latest/6.jpg",
     imageAlt: "Front of men's Basic Tee in black.",
     price: 70,
     color: "Black",
@@ -85,8 +78,7 @@ const products = [
     id: 5,
     name: "Basic Tee",
     href: "#",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
+    imageSrc: "assets/latest/9.jpg",
     imageAlt: "Front of men's Basic Tee in black.",
     price: 80,
     discountPrice: 822.0,
@@ -97,8 +89,7 @@ const products = [
     id: 5,
     name: "Basic Tee",
     href: "#",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
+    imageSrc: "assets/latest/8.jpg",
     imageAlt: "Front of men's Basic Tee in black.",
     price: 90,
     discountPrice: 300.0,
@@ -108,8 +99,7 @@ const products = [
     id: 5,
     name: "Basic Tee",
     href: "#",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
+    imageSrc: "assets/latest/9.jpg",
     imageAlt: "Front of men's Basic Tee in black.",
     price: 100,
     color: "Black",
@@ -118,8 +108,7 @@ const products = [
     id: 5,
     name: "Basic Tee",
     href: "#",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
+    imageSrc: "assets/latest/3.jpg",
     imageAlt: "Front of men's Basic Tee in black.",
     price: 110,
     discountPrice: 200.0,
@@ -130,8 +119,7 @@ const products = [
     id: 5,
     name: "Basic Tee",
     href: "#",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
+    imageSrc: "assets/latest/2.jpg",
     imageAlt: "Front of men's Basic Tee in black.",
     price: 120,
     color: "Black",
@@ -198,8 +186,8 @@ function LatestDrop() {
   return (
     <div className="md:mt-12 mx-auto max-w-2xl px-2 py-2 mt-6 sm:px-6 md:max-w-[110rem] w-full  ">
       <div className="text-center">
-        <h2 className="font-bungee text-2xl sm:text-3xl lg:text-5xl mb-2 tracking-wider font-semibold leading-6 text-gray-900">
-          OTAKU OBSESSION ACCESSORIES
+        <h2 className="font-bungee text-2xl sm:text-3xl lg:text-[2.5rem] mb-2 tracking-wider font-semibold leading-6 text-gray-900">
+          LATEST ACCESSORIES
         </h2>
       </div>
 

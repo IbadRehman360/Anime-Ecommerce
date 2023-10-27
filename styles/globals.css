@@ -5,10 +5,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* 
-  Note: The styles for this gradient grid background is heavily inspired by the creator of this amazing site (https://dub.sh) – all credits go to them! 
-*/
-
 .main {
   width: 100vw;
   min-height: 100vh;
@@ -39,16 +35,16 @@
   opacity: 0.4;
   filter: invert(1);
 }
-/* 
-.gradient {
+
+/* .gradient {
   height: fit-content;
   z-index: 3;
   width: 100%;
   max-width: 640px;
   background-image: radial-gradient(
-      at 27% 37%,
+      at 20% 30%,
       hsla(215, 98%, 61%, 1) 0px,
-      transparent 0%
+      transparent 40%
     ),
     radial-gradient(at 97% 21%, hsla(125, 98%, 72%, 1) 0px, transparent 50%),
     radial-gradient(at 52% 99%, hsla(354, 98%, 61%, 1) 0px, transparent 50%),

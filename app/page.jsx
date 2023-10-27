@@ -5,13 +5,14 @@ import HeroCarousel from "@components/Home/HeroCarousel";
 import LatestDrop from "@components/Home/LatestDrop";
 import Testimonials from "@components/Home/Testimonial";
 import TrendingProduct from "@components/Home/TrendingProduct";
-
+import MustHave from "@components/Home/MustHave";
 const Home = () => (
   <section className="w-full flex-center flex-col">
     <HeroCarousel />
     <LatestDrop />
     <Categories />
     <TrendingProduct />
+    <MustHave />
     <Details2 />
     <Details />
     <div className="bg-[#fdfdfd]">

@@ -51,7 +51,7 @@ export default function Example() {
                   <img
                     src={callout.imageSrc}
                     alt={callout.imageAlt}
-                    className="h-full w-full"
+                    className=""
                   />
                 </div>
                 <div className="absolute bottom-0 font-bold text-xl pr-4  rounded-md bg-[#111] opacity-95 left-0 py-2.5 w-full text-white">

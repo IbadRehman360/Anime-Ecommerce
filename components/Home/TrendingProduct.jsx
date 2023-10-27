@@ -22,7 +22,7 @@ const products = [
     name: "Basic Tee",
     href: "#",
     imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
+      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-02.jpg",
     imageAlt: "Front of men's Basic Tee in black.",
     price: 20,
     color: "Black",
@@ -32,7 +32,7 @@ const products = [
     name: "Basic Tee",
     href: "#",
     imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
+      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-03.jpg",
     imageAlt: "Front of men's Basic Tee in black.",
     price: 10.0,
     color: "Black",
@@ -43,7 +43,7 @@ const products = [
     name: "Basic Tee",
     href: "#",
     imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
+      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-04.jpg",
     imageAlt: "Front of men's Basic Tee in black.",
     price: 40,
     color: "Black",
@@ -53,7 +53,7 @@ const products = [
     name: "Basic Tee",
     href: "#",
     imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
+      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-03.jpg",
     discountPrice: 8,
     imageAlt: "Front of men's Basic Tee in black.",
     price: 50,
@@ -64,76 +64,11 @@ const products = [
     name: "Basic Tee",
     href: "#",
     imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
+      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-02.jpg",
     imageAlt: "Front of men's Basic Tee in black.",
     price: 60,
     discountPrice: 800.0,
 
-    color: "Black",
-  },
-  {
-    id: 5,
-    name: "Basic Tee",
-    href: "#",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
-    imageAlt: "Front of men's Basic Tee in black.",
-    price: 70,
-    color: "Black",
-  },
-  {
-    id: 5,
-    name: "Basic Tee",
-    href: "#",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
-    imageAlt: "Front of men's Basic Tee in black.",
-    price: 80,
-    discountPrice: 822.0,
-
-    color: "Black",
-  },
-  {
-    id: 5,
-    name: "Basic Tee",
-    href: "#",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
-    imageAlt: "Front of men's Basic Tee in black.",
-    price: 90,
-    discountPrice: 300.0,
-    color: "Black",
-  },
-  {
-    id: 5,
-    name: "Basic Tee",
-    href: "#",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
-    imageAlt: "Front of men's Basic Tee in black.",
-    price: 100,
-    color: "Black",
-  },
-  {
-    id: 5,
-    name: "Basic Tee",
-    href: "#",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
-    imageAlt: "Front of men's Basic Tee in black.",
-    price: 110,
-    discountPrice: 200.0,
-
-    color: "Black",
-  },
-  {
-    id: 5,
-    name: "Basic Tee",
-    href: "#",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
-    imageAlt: "Front of men's Basic Tee in black.",
-    price: 120,
     color: "Black",
   },
 ];
@@ -196,21 +131,19 @@ function TrendingProduct() {
   };
   return (
     <div className="md:mt-8 mx-auto max-w-2xl px-2 py-2 sm:px-6 md:max-w-[110rem] w-full  ">
-      <div className="mr-2 flex items-center justify-between">
-        <h2 className="  font-bungee  text-2xl sm:text-3xl    lg:text-4xl mb-2  tracking-wider font-semibold leading-6 text-center mt-10 lg:mt-12  text-gray-900">
-          Trending Product
-        </h2>
-        <Link href={"/dashboard"}>
-          <div className="hidden items-center gap-2 sm:flex">
-            <span>Discover All</span>
-            <div className="rounded-full border-[1px] border-black bg-white p-1 shadow-sm">
-              <a onClick={handleNextPage} href="#" className="">
-                <MdKeyboardArrowRight />
-              </a>
-            </div>
+      <h2 className="  font-bungee  text-2xl sm:text-3xl    lg:text-4xl mb-2  tracking-wider font-semibold leading-6 text-center mt-10 lg:mt-12  text-gray-900">
+        Trending Product
+      </h2>
+      {/* <Link href={"/dashboard"}>
+        <div className="hidden items-center gap-2 sm:flex">
+          <span>Discover All</span>
+          <div className="rounded-full border-[1px] border-black bg-white p-1 shadow-sm">
+            <a onClick={handleNextPage} href="#" className="">
+              <MdKeyboardArrowRight />
+            </a>
           </div>
-        </Link>
-      </div>
+        </div>
+      </Link> */}
       <div className="carousel mt-2 w-full justify-items-stretch sm:mt-4 sm:grid-cols-2 md:grid-cols-3 md:gap-5 lg:grid-cols-6">
         <div
           id="featuredProductsSlide3"

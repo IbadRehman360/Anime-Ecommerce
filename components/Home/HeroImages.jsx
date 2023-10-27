@@ -3,7 +3,7 @@ export default function HeroImages({ index, imageUrl }) {
   return (
     <div className=" ">
       <img
-        className="w-full sm:flex hidden h-60 md:h-auto"
+        className="      max-h-[35rem] w-full "
         src={`/assets/heroimage/${imageUrl}`}
         alt={`bg ${index}`}
       />

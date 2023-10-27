@@ -333,16 +333,16 @@ export default function Example() {
       </Transition.Root>
 
       <header className="relative bg-white">
-        <p className="flex h-10 items-center justify-center px-4 text-sm font-medium text-white bg-black sm:px-6 lg:px-8">
+        <p className="flex h-12 items-center justify-center px-4 text-sm font-medium text-white bg-black sm:px-6 lg:px-8">
           ⚡️ FREE SHIPPING ON PREPAID ORDERS⚡️
         </p>
 
         <nav
           aria-label="Top"
-          className="mx-auto md:max-w-[100rem] lg:max-w-[80rem]    2xl:max-w-[95rem]  3xl:max-w-[110rem] px-4 sm:px-6 xl:px-2"
+          className="mx-auto md:max-w-[100rem] lg:max-w-[80rem]    2xl:max-w-[95rem]  3xl:max-w-[110rem] px-4 sm:px-6 xl:px-3"
         >
           <div className="border-b border-gray-200">
-            <div className="flex h-[70px] items-center">
+            <div className="flex h-[80px] items-center">
               <button
                 type="button"
                 className="relative rounded-md bg-white p-2 text-gray-400 xl:hidden"
@@ -389,10 +389,10 @@ export default function Example() {
                                 aria-hidden="true"
                               />
 
-                              <div className="relative bg-white">
+                              <div className="relative  z-50 bg-white">
                                 <div className="mx-auto max-w-7xl px-8">
                                   <div className="grid grid-cols-2 gap-x-8 gap-y-10 py-16">
-                                    <div className="col-start-2 grid grid-cols-2 gap-x-8">
+                                    <div className="col-start-2  grid grid-cols-2 gap-x-8">
                                       {category.featured.map((item) => (
                                         <div
                                           key={item.name}
