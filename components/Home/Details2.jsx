@@ -6,11 +6,11 @@ function Details2() {
           <img
             src="/assets/Des/2.jpg"
             alt="Walnut card tray filled with cards and card angled in dedicated groove."
-            className="rounded-lg bg-gray-100  h-[40rem] w-full"
+            className="rounded-lg bg-gray-100  h-[30rem] md:h-[40rem] w-full"
           />
         </div>
 
-        <div className="leading-7  tracking-wide">
+        <div className="leading-7 lg:ml-14 tracking-wide">
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
             Anime Apparel
           </h2>
@@ -26,7 +26,7 @@ function Details2() {
             Choose <span className=" font-medium"> Senpai Merch</span> for all
             your apparel needs!
           </p>
-          <button className="border bg-center flex  bg-red-500      font-semibold tracking-wider text-white py-2 px-4 mt-6 lg:mt-10  rounded-md">
+          <button className="border bg-center flex  bg-gray-800      font-semibold tracking-wider text-white py-2 px-4 mt-6 lg:mt-10  rounded-md">
             BUY NOW
           </button>
         </div>

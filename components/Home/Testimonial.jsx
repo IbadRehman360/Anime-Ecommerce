@@ -1,9 +1,124 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-const reviews = [
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+
+const Testimonials = () => {
+  const [slidesToShow, setSlidesToShow] = useState(4);
+  const sliderRef = useRef(null);
+  const [currentReviewIndex, setCurrentReviewIndex] = useState(0);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 640) {
+        setSlidesToShow(1);
+      } else if (window.innerWidth <= 1024) {
+        setSlidesToShow(2);
+      } else {
+        setSlidesToShow(4);
+      }
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  const settings = {
+    infinite: false,
+    slidesToShow: slidesToShow,
+    slidesToScroll: 1,
+  };
+
+  const handleNext = () => {
+    const nextIndex = currentReviewIndex + 1;
+    if (nextIndex < reviews.length) {
+      sliderRef.current.slickNext();
+      setCurrentReviewIndex(nextIndex);
+    }
+  };
+
+  // Update the handlePrevious function to control button visibility
+  const handlePrevious = () => {
+    const previousIndex = currentReviewIndex - 1;
+    if (previousIndex >= 0) {
+      sliderRef.current.slickPrev();
+      setCurrentReviewIndex(previousIndex);
+    }
+  };
+  return (
+    <div className="lg:mt-32  mt-6 px-2 w-full lg:max-w-[107rem] mx-auto">
+      <div className=" text-center">
+        <div className=" text-center">
+          <h2 className="text-3xl font-bold text-start  mb-4">
+            CUSTOMERS ARE OUR INFLUENCERS
+          </h2>
+
+          <p className="mb-8 text-center  text-gray-700 ">
+            <h4 className="text-3xl font-semibold mb-2 ">@Senpaimerch</h4>Follow
+            us on Instagram
+          </p>
+        </div>
+        <div className="relative">
+          <Slider ref={sliderRef} {...settings}>
+            {reviews.map((review, index) => (
+              <div key={index} className="mb-28 px-2">
+                <div className="bg-black pb-6 rounded-lg shadow-lg">
+                  <img
+                    src={`/assets/reviewImg/${index + 1}.webp`}
+                    alt={`Review by ${review.name}`}
+                    className="w-full h-96"
+                  />
+                  <div className="text-white rounded-b-lg">
+                    <div className="flex px-4 pt-3 items-center justify-between mb-2">
+                      <div>
+                        {Array.from(Array(review.rating).keys()).map(
+                          (star, index) => (
+                            <span
+                              key={index}
+                              className="text-yellow-400 text-3xl mr-2"
+                            >
+                              ★
+                            </span>
+                          )
+                        )}
+                      </div>
+                    </div>
+                    <p className="text-xl ml-4 opacity-90  text-white">
+                      {review.comment}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </Slider>
+          <button
+            onClick={handlePrevious}
+            className={`absolute top-1/3  ${
+              currentReviewIndex === 0 ? "hidden" : ""
+            }  transform -translate-y-1/3 left-4 text-2xl lg:text-3xl text-white bg-black rounded-full p-2 hover:bg-gray-900 focus:outline-none`}
+          >
+            <IoIosArrowBack />
+          </button>
+          <button
+            onClick={handleNext}
+            className={`absolute top-1/3 transform -translate-y-1/3 right-4 text-2xl lg:text-3xl text-white bg-black ${
+              currentReviewIndex === reviews.length - 1 ? "hidden" : ""
+            } rounded-full p-2 hover:bg-gray-900 focus:outline-none`}
+          >
+            <IoIosArrowForward />
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+var reviews = [
   {
     name: "John Doe",
     comment: "Great products and fast shipping! customer service 1.",
@@ -35,76 +150,4 @@ const reviews = [
     rating: 4,
   },
 ];
-
-const Testimonials = () => {
-  const [slidesToShow, setSlidesToShow] = useState(4);
-
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth <= 640) {
-        setSlidesToShow(1);
-      } else if (window.innerWidth <= 1024) {
-        setSlidesToShow(2);
-      } else {
-        setSlidesToShow(4);
-      }
-    };
-
-    handleResize();
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
-  const settings = {
-    infinite: false,
-    slidesToShow: slidesToShow,
-    slidesToScroll: 1,
-  };
-
-  return (
-    <div className="pt-10 pb-28 px-2 w-full lg:max-w-[107rem] mx-auto">
-      <div className="">
-        <h2 className="text-3xl font-bold mb-6">
-          CUSTOMERS ARE OUR INFLUENCERS
-        </h2>
-        <p className="mb-4">@senpaimerch Follow us on Instagram</p>
-
-        <Slider {...settings}>
-          {reviews.map((review, index) => (
-            <div key={index} className="mb-28 px-2">
-              <div className="bg-[#1c1c1c] pb-6 rounded-lg shadow-lg">
-                <img
-                  src={`/assets/reviewImg/${index}.jpg`}
-                  alt={`Review by ${review.name}`}
-                  className="object-cover h-72 w-full lg:h-80 lg:w-full object-center"
-                />
-                <div className="text-white rounded-b-lg">
-                  <div className="flex px-4 pt-3 items-center justify-between mb-2">
-                    <div>
-                      {Array.from(Array(review.rating).keys()).map(
-                        (star, index) => (
-                          <span
-                            key={index}
-                            className="text-yellow-400 text-2xl mr-2"
-                          >
-                            ★
-                          </span>
-                        )
-                      )}
-                    </div>
-                  </div>
-                  <p className="text-sm ml-4 text-white">{review.comment}</p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </Slider>
-      </div>
-    </div>
-  );
-};
-
 export default Testimonials;
