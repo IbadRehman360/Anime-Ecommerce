@@ -4,14 +4,14 @@ import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 import LatestDropDisplay from "./DisplayProducts";
 import Link from "next/link";
 import SlideButton from "@components/Home/SliderButton";
+import { MdTrendingUp, MdWhatshot } from "react-icons/md";
 
 const products = [
   {
     id: 1,
     name: "Basic Tee",
     href: "#",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
+    imageSrc: "assets/latest/1.webp",
     imageAlt: "Front of men's Basic Tee in black.",
     price: 10.0,
     color: "Black",
@@ -21,8 +21,7 @@ const products = [
     id: 2,
     name: "Basic Tee",
     href: "#",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-02.jpg",
+    imageSrc: "assets/latest/2.webp",
     imageAlt: "Front of men's Basic Tee in black.",
     price: 20,
     color: "Black",
@@ -31,8 +30,7 @@ const products = [
     id: 1,
     name: "Basic Tee",
     href: "#",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-03.jpg",
+    imageSrc: "assets/latest/2.jpg",
     imageAlt: "Front of men's Basic Tee in black.",
     price: 10.0,
     color: "Black",
@@ -42,8 +40,7 @@ const products = [
     id: 4,
     name: "Basic Tee",
     href: "#",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-04.jpg",
+    imageSrc: "assets/latest/3.jpg",
     imageAlt: "Front of men's Basic Tee in black.",
     price: 40,
     color: "Black",
@@ -52,8 +49,7 @@ const products = [
     id: 5,
     name: "Basic Tee",
     href: "#",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-03.jpg",
+    imageSrc: "assets/latest/6.jpg",
     discountPrice: 8,
     imageAlt: "Front of men's Basic Tee in black.",
     price: 50,
@@ -63,12 +59,70 @@ const products = [
     id: 5,
     name: "Basic Tee",
     href: "#",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-02.jpg",
+    imageSrc: "assets/latest/5.jpg",
     imageAlt: "Front of men's Basic Tee in black.",
     price: 60,
     discountPrice: 800.0,
 
+    color: "Black",
+  },
+  {
+    id: 5,
+    name: "Basic Tee",
+    href: "#",
+    imageSrc: "assets/latest/6.jpg",
+    imageAlt: "Front of men's Basic Tee in black.",
+    price: 70,
+    color: "Black",
+  },
+  {
+    id: 5,
+    name: "Basic Tee",
+    href: "#",
+    imageSrc: "assets/latest/9.jpg",
+    imageAlt: "Front of men's Basic Tee in black.",
+    price: 80,
+    discountPrice: 822.0,
+
+    color: "Black",
+  },
+  {
+    id: 5,
+    name: "Basic Tee",
+    href: "#",
+    imageSrc: "assets/latest/8.jpg",
+    imageAlt: "Front of men's Basic Tee in black.",
+    price: 90,
+    discountPrice: 300.0,
+    color: "Black",
+  },
+  {
+    id: 5,
+    name: "Basic Tee",
+    href: "#",
+    imageSrc: "assets/latest/9.jpg",
+    imageAlt: "Front of men's Basic Tee in black.",
+    price: 100,
+    color: "Black",
+  },
+  {
+    id: 5,
+    name: "Basic Tee",
+    href: "#",
+    imageSrc: "assets/latest/3.jpg",
+    imageAlt: "Front of men's Basic Tee in black.",
+    price: 110,
+    discountPrice: 200.0,
+
+    color: "Black",
+  },
+  {
+    id: 5,
+    name: "Basic Tee",
+    href: "#",
+    imageSrc: "assets/latest/2.jpg",
+    imageAlt: "Front of men's Basic Tee in black.",
+    price: 120,
     color: "Black",
   },
 ];
@@ -81,7 +135,7 @@ function TrendingProduct() {
   function calculateSliceEnd() {
     const windowWidth = window.innerWidth;
     if (windowWidth >= 1800) {
-      return 6;
+      return 5;
     } else if (windowWidth >= 720 && windowWidth < 900) {
       return 3;
     } else if (windowWidth >= 200 && windowWidth < 720) {
@@ -130,10 +184,13 @@ function TrendingProduct() {
     }
   };
   return (
-    <div className="md:mt-8 mx-auto max-w-2xl px-2 py-2 sm:px-6 md:max-w-[110rem] w-full  ">
-      <h2 className="  font-bungee  text-2xl sm:text-3xl    lg:text-4xl mb-2  tracking-wider font-semibold leading-6 text-center mt-10 lg:mt-12  text-gray-900">
-        Trending Product
-      </h2>
+    <div className="md:mt-16 mx-auto max-w-2xl md:px-6 px-2 py-2 mt-6  pb-16 border-t  md:max-w-[110rem] w-full  ">
+      <div className="text-center lg:mt-6 pt-10 pb-4">
+        <h2 className="text-3xl lg:text-4xl sm:text-5xl flex justify-center  items-center text-gray-900 font-bungee">
+          Trending <span className="hidden sm:flex pl-3">Products</span>
+          <MdTrendingUp className="inline-block  ml-3 mb-3.5 " />
+        </h2>
+      </div>
       {/* <Link href={"/dashboard"}>
         <div className="hidden items-center gap-2 sm:flex">
           <span>Discover All</span>
@@ -147,7 +204,7 @@ function TrendingProduct() {
       <div className="carousel mt-2 w-full justify-items-stretch sm:mt-4 sm:grid-cols-2 md:grid-cols-3 md:gap-5 lg:grid-cols-6">
         <div
           id="featuredProductsSlide3"
-          className="carousel-item mx-auto my-4 w-full gap-2 sm:w-full md:gap-3"
+          className="carousel-item mx-auto my-2 md:my-4 w-full gap-1 sm:w-full md:gap-3"
         >
           {displayedProducts1.map((product) => (
             <LatestDropDisplay key={product.id} products={product} />
@@ -155,7 +212,7 @@ function TrendingProduct() {
         </div>
         <div
           id="featuredProductsSlide4"
-          className="carousel-item mx-auto my-4 gap-2 w-full md:gap-3"
+          className="carousel-item mx-auto my-2 md:my-4 w-full gap-1 sm:w-full md:gap-3"
         >
           {displayedProducts2.map((product) => (
             <LatestDropDisplay key={product.id} products={product} />

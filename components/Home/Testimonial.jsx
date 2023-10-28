@@ -51,16 +51,16 @@ const Testimonials = () => {
     }
   };
   return (
-    <div className=" bg-[#fdfdfd] ">
-      <div className="lg:pt-16    mt-2 px-2 w-full lg:max-w-[107rem] mx-auto">
+    <div className=" bg-[#fdfdfd]  pt-10 lg:pt-16 pb-10">
+      <div className="     mt-2 px-2 w-full lg:max-w-[107rem] mx-auto">
         <div className=" text-center">
           <div className=" text-center">
-            <h2 className="text-2xl lg:text-3xl font-bold   mb-4">
-              CUSTOMERS ARE OUR INFLUENCERS
+            <h2 className="text-2xl font-bold  font-satoshi  uppercase  tracking-wide pb-2 text-gray-900 sm:text-3xl">
+              our fam in action
             </h2>
 
-            <p className="mb-8 text-center   text-gray-700 ">
-              <span className="text-lg font-semibold mb-2 mr-2 ">
+            <p className="mb-8 text-center  font-cabi  font-cabin  text-gray-700 ">
+              <span className="text-lg    font-semibold mb-2 mr-2 ">
                 @Senpaimerch
               </span>
               Follow us on Instagram
@@ -69,7 +69,7 @@ const Testimonials = () => {
           <div className="relative">
             <Slider ref={sliderRef} {...settings}>
               {reviews.map((review, index) => (
-                <div key={index} className="mb-28 px-2">
+                <div key={index} className="mb-16 px-2">
                   <div className="bg-black pb-6 rounded-lg shadow-lg">
                     <img
                       src={`/assets/reviewImg/${index + 1}.webp`}

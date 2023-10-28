@@ -7,7 +7,7 @@ import Testimonials from "@components/Home/Testimonial";
 import TrendingProduct from "@components/Home/TrendingProduct";
 import MustHave from "@components/Home/MustHave";
 const Home = () => (
-  <section className="w-full flex-center flex-col">
+  <section className="w-full main flex-center flex-col">
     <HeroCarousel />
     <LatestDrop />
     <Categories />

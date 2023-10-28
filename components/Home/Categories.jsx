@@ -1,5 +1,6 @@
-import { FaArrowRight } from "react-icons/fa";
+import { FaArrowRight, FaOptinMonster } from "react-icons/fa";
 import Link from "next/link";
+import { FaShoppingBag } from "react-icons/fa";
 
 const callouts = [
   {
@@ -33,41 +34,42 @@ const callouts = [
     href: "#",
   },
 ];
-
 export default function Example() {
   return (
-    <div className="">
-      <div className="mx-auto lg:max-w-[112rem] px-2 sm:px-6 lg:px-8">
-        <div className="">
-          <div className=" border-gray-200 ">
-            <h2 className="font-bungee  text-2xl sm:text-3xl text-center  lg:text-4xl tracking-wider font-semibold leading-6  mt-10 mb-10  text-gray-900">
+    <div className=" border-t ">
+      <div className="">
+        <div className="border-gray-200">
+          <div className="text-center  pt-16 pb-10">
+            <h2 className="text-3xl lg:text-4xl sm:text-5xl text-gray-900 font-bungee">
               SHOP BY ANIME
+              <FaOptinMonster className="inline-block ml-5 mb-3.5" />
             </h2>
           </div>
-          <div className="lg:grid-cols-4 lg:gap-x-6 lg:space-y-0 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2">
+        </div>
+        <div className="mx-auto lg:max-w-[112rem] px-2 sm:px-6 lg:px-8 ">
+          <div className="lg:grid-cols-4 lg:gap-x-6 grid grid-cols-2  gap-1 sm:grid-cols-2 md:grid-cols-2">
             {callouts.map((callout) => (
-              <div key={callout.name} className=" border rounded-md  relative">
-                <div className="overflow-hidden rounded-lg bg-white sm:aspect-h-1 sm:aspect-w-2 lg:aspect-h-1 lg:aspect-w-1 group-hover:opacity-75 h-[30rem]">
+              <div key={callout.name} className="border rounded-md relative">
+                <div className="overflow-hidden rounded-lg bg-white sm:aspect-h-1 sm:aspect-w-2 lg:aspect-h-1 lg:aspect-w-1 group-hover:opacity-75">
                   <img
                     src={callout.imageSrc}
                     alt={callout.imageAlt}
-                    className=""
+                    className="w-full h-[22vh] sm:h-[35vh] lg:h-[40vh] "
                   />
                 </div>
-                <div className="absolute bottom-0 font-bold text-xl pr-4  rounded-md bg-[#111] opacity-95 left-0 py-2.5 w-full text-white">
-                  <span className="ml-4">{callout.name}</span>
+                <div className="absolute bottom-0 font-bold text-sm  line-clamp-1 lg:text-xl pr-4 rounded-md bg-[#111] opacity-90 left-0 py-2 sm:py-2.5 w-full text-white">
+                  <span className="ml-4 flex">{callout.name} </span>
                 </div>
               </div>
             ))}
           </div>
-
-          <div className="flex items-center justify-center mt-10">
-            <button className="flex items-center text-white font-bold text-lg space-x-2 bg-[#1f1f1f] hover:bg-[#4c4b4b] px-4 py-2 rounded">
-              <span className="text-center">SHOP ALL</span>
-              <FaArrowRight />
-            </button>
-          </div>
         </div>
+      </div>
+      <div className="mt-10 flex items-center justify-center">
+        <button className="flex items-center text-white font-bold  md:text-lg space-x-2 bg-[#1f1f1f] hover:bg-[#4c4b4b] px-4 py-2 rounded">
+          <span className="text-center">SHOP ALL</span>
+          <FaArrowRight />
+        </button>
       </div>
     </div>
   );

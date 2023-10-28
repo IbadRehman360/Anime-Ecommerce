@@ -1,4 +1,5 @@
 "use client";
+import { BsShop, BsBag, BsGrid, BsPeople } from "react-icons/bs";
 
 import { Fragment, useState } from "react";
 import { Dialog, Popover, Tab, Transition } from "@headlessui/react";
@@ -11,12 +12,14 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import Cart from "./Cart";
-
+import Clintly from "./Home/Clintly";
+import SearchMenu from "./Home/SearchMenu";
 const navigation = {
   categories: [
     {
       id: "category",
       name: "SHOP ALL",
+      icon: <BsShop size={20} />,
       featured: [
         {
           name: "New Arrivals",
@@ -79,6 +82,7 @@ const navigation = {
     {
       id: "New Arrivals",
       name: "SHOP BY PRODUCT",
+      icon: <BsBag size={20} />,
       featured: [
         {
           name: "New Arrivals",
@@ -137,8 +141,8 @@ const navigation = {
     },
   ],
   pages: [
-    { name: "SHOP BY ANIME", href: "#" },
-    { name: "ACCESSORIES", href: "#" },
+    { name: "SHOP BY ANIME", href: "#", icon: <BsPeople size={20} /> },
+    { name: "ACCESSORIES", href: "#", icon: <BsGrid size={20} /> },
   ],
 };
 
@@ -149,6 +153,17 @@ function classNames(...classes) {
 export default function Example() {
   const [open, setOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [searchText, setSearchText] = useState("What are you looking for?");
+
+  const handleSearchTextChange = (e) => {
+    setSearchText(e.target.value);
+  };
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+
+    console.log(`Search for: ${searchText}`);
+  };
 
   return (
     <div className="bg-white">
@@ -210,6 +225,7 @@ export default function Example() {
                       ))}
                     </Tab.List>
                   </div>
+
                   <Tab.Panels as={Fragment}>
                     {navigation.categories.map((category) => (
                       <Tab.Panel
@@ -339,136 +355,26 @@ export default function Example() {
 
         <nav
           aria-label="Top"
-          className="mx-auto md:max-w-[100rem] lg:max-w-[80rem]    2xl:max-w-[95rem]  3xl:max-w-[110rem] px-4 sm:px-6 xl:px-3"
+          className="mx-auto    mr-3 sm:px-5 lg:px-8 2xl:px-60"
         >
           <div className="border-b border-gray-200">
             <div className="flex h-[80px] items-center">
               <button
                 type="button"
-                className="relative rounded-md bg-white p-2 text-gray-400 xl:hidden"
+                className="relative rounded-md bg-white p-2 text-gray-400 lg:hidden"
                 onClick={() => setOpen(true)}
               >
                 <span className="absolute -inset-0.5" />
                 <span className="sr-only">Open menu</span>
                 <Bars3Icon className="h-6 w-6" aria-hidden="true" />
               </button>
-
-              {/* Flyout menus */}
-              <Popover.Group className="hidden  xl:block xl:self-stretch">
-                <div className="flex h-full space-x-14">
-                  {navigation.categories.map((category) => (
-                    <Popover key={category.name} className="flex">
-                      {({ open }) => (
-                        <>
-                          <div className="relative flex">
-                            <Popover.Button
-                              className={classNames(
-                                open
-                                  ? "border-indigo-600 text-indigo-600"
-                                  : "border-transparent text-gray-700 hover:text-gray-800",
-                                "relative z-10 -mb-px flex items-center border-b-2 pt-px text-sm font-medium whitespace-nowrap transition-colors duration-200 ease-out"
-                              )}
-                            >
-                              {category.name}
-                            </Popover.Button>
-                          </div>
-
-                          <Transition
-                            as={Fragment}
-                            enter="transition ease-out duration-200"
-                            enterFrom="opacity-0"
-                            enterTo="opacity-100"
-                            leave="transition ease-in duration-150"
-                            leaveFrom="opacity-100"
-                            leaveTo="opacity-0"
-                          >
-                            <Popover.Panel className="absolute inset-x-0 top-full text-sm text-gray-500">
-                              {/* Presentational element used to render the bottom shadow, if we put the shadow on the actual panel it pokes out the top, so we use this shorter element to hide the top of the shadow */}
-                              <div
-                                className="absolute inset-0 top-1/2 bg-white shadow"
-                                aria-hidden="true"
-                              />
-
-                              <div className="relative  z-50 bg-white">
-                                <div className="mx-auto max-w-7xl px-8">
-                                  <div className="grid grid-cols-2 gap-x-8 gap-y-10 py-16">
-                                    <div className="col-start-2  grid grid-cols-2 gap-x-8">
-                                      {category.featured.map((item) => (
-                                        <div
-                                          key={item.name}
-                                          className="group relative text-base sm:text-sm"
-                                        >
-                                          <Link
-                                            href={item.href}
-                                            className="mt-6 block font-medium text-gray-900"
-                                          >
-                                            <span
-                                              className="absolute inset-0 z-10"
-                                              aria-hidden="true"
-                                            />
-                                            {item.name}
-                                          </Link>
-                                          <p
-                                            aria-hidden="true"
-                                            className="mt-1"
-                                          >
-                                            Shop now
-                                          </p>
-                                        </div>
-                                      ))}
-                                    </div>
-                                    <div className="row-start-1 grid grid-cols-3 gap-x-8 gap-y-10 text-sm">
-                                      {category.sections.map((section) => (
-                                        <div key={section.name}>
-                                          <p
-                                            id={`${section.name}-heading`}
-                                            className="font-medium text-gray-900"
-                                          >
-                                            {section.name}
-                                          </p>
-                                          <ul
-                                            role="list"
-                                            aria-labelledby={`${section.name}-heading`}
-                                            className="mt-6 space-y-6 sm:mt-4 sm:space-y-4"
-                                          >
-                                            {section.items.map((item) => (
-                                              <li
-                                                key={item.name}
-                                                className="flex"
-                                              >
-                                                <Link
-                                                  href={item.href}
-                                                  className="hover:text-gray-800"
-                                                >
-                                                  {item.name}
-                                                </Link>
-                                              </li>
-                                            ))}
-                                          </ul>
-                                        </div>
-                                      ))}
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </Popover.Panel>
-                          </Transition>
-                        </>
-                      )}
-                    </Popover>
-                  ))}
-
-                  {navigation.pages.map((page) => (
-                    <Link
-                      key={page.name}
-                      href={page.href}
-                      className="flex items-center text-sm font-medium text-gray-700 whitespace-nowrap  hover:text-gray-800"
-                    >
-                      {page.name}
-                    </Link>
-                  ))}
-                </div>
-              </Popover.Group>
+              <div className="flex">
+                <SearchMenu
+                  searchText={searchText}
+                  onSearchTextChange={handleSearchTextChange}
+                  onSearchSubmit={handleSearchSubmit}
+                />
+              </div>
               <div className="flex items-center w-full">
                 <div className="ml-4 lg:ml-0 flex items-center">
                   <div className="absolute left-1/2 transform -translate-x-1/2">
@@ -481,7 +387,7 @@ export default function Example() {
                   </div>
                 </div>
                 <div className="flex-grow" />
-                <div className="hidden xl:flex lg:items-center lg:justify-end lg:space-x-6">
+                <div className="hidden lg:flex lg:items-center   font-inter tracking-wide   lg:justify-end lg:space-x-6">
                   <Link
                     href="#"
                     className="text-sm font-medium text-gray-700 hover:text-gray-800"
@@ -497,7 +403,7 @@ export default function Example() {
                   </Link>
                 </div>
 
-                <div className="hidden lg:ml-8 lg:flex">
+                <div className=" mr-4 hidden  lg:ml-8 sm:flex">
                   <Link
                     href="#"
                     className="flex items-center text-gray-700 hover:text-gray-800"
@@ -515,7 +421,7 @@ export default function Example() {
                 </div>
 
                 {/* Search */}
-                <div className="flex lg:ml-8">
+                <div className="flex lg:hidden lg:ml-8">
                   <Link
                     href="#"
                     className="p-2 text-gray-400 hover:text-gray-500"
@@ -548,6 +454,7 @@ export default function Example() {
             </div>
           </div>
         </nav>
+        <Clintly navigation={navigation} />
       </header>
     </div>
   );
