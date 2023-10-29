@@ -55,7 +55,7 @@ const Testimonials = () => {
       <div className="     mt-2 px-2 w-full lg:max-w-[107rem] mx-auto">
         <div className=" text-center">
           <div className=" text-center">
-            <h2 className="text-2xl font-bold  font-satoshi  uppercase  tracking-wide pb-2 text-gray-900 sm:text-3xl">
+            <h2 className="text-2xl font-bold  font-satoshi  uppercase  tracking-wide pb-2 text-black sm:text-3xl">
               our fam in action
             </h2>
 

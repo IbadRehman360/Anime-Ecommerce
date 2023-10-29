@@ -349,8 +349,8 @@ export default function Example() {
       </Transition.Root>
 
       <header className="relative bg-white">
-        <p className="flex h-12 items-center justify-center px-4 text-sm font-medium text-white bg-black sm:px-6 lg:px-8">
-          ⚡️ FREE SHIPPING ON PREPAID ORDERS⚡️
+        <p className="flex h-12 items-center justify-center px-4  text-[0.8rem] sm:text-sm  font-medium text-white bg-black sm:px-6 lg:px-8">
+          ⚡️ FREE SHIPPING ON PREPAID ORDERS ⚡️
         </p>
 
         <nav

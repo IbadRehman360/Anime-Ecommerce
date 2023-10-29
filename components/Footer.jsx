@@ -17,7 +17,7 @@ export default function Footer() {
   return (
     <>
       <div className="bg-white  ">
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4 border-t p-9  border-gray-600 sm:place-self-center sm:place-items-center">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4 border-t p-9  border-gray-200 sm:place-self-center sm:place-items-center">
           <div className="md:col-span-1 flex  text-red-500">
             <FaShippingFast size={18} />
             <div className="ml-2">

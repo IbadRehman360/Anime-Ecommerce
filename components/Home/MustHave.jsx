@@ -88,12 +88,12 @@ const products = [
 
 function MustHave() {
   return (
-    <article className=" border-t   pb-20  mx-auto lg:max-w-[112rem] px-2 sm:px-6 lg:px-8 pt-6">
-      <div className="text-center lg:mt-10 lg:pb-2">
-        <h2 className="text-3xl lg:text-4xl flex justify-center  items-center sm:text-4xl pb-4 text-gray-900 font-bungee">
-          <span className="hidden sm:flex mr-3"> Our </span> Bestselling
+    <article className=" border-t pt-8 pb-6 sm:pt-12 sm:pb-8 lg:pt-16 lg:pb-10    mx-auto lg:max-w-[112rem] px-2 sm:px-6 lg:px-8 ">
+      <div className="text-center   pb-2">
+        <h3 className="text-3xl   sm:text-4xl text-center justify-center  tracking-wider flex text-black font-bungee">
+          <span className="hidden sm:flex mr-3"> Our </span> Best selling
           <FaFire className="inline-block ml-2 mb-3" />
-        </h2>
+        </h3>
       </div>
       <div className="grid grid-cols-2 pt-6 gap-4  sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4">
         {products.map((product) => (

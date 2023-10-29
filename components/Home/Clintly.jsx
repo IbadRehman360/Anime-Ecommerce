@@ -14,13 +14,13 @@ function Cliently({ navigation }) {
           <Popover key={category.name} className="flex">
             {({ open }) => (
               <>
-                <div className="relative flex">
+                <div className="relative flex ">
                   <Popover.Button
                     className={classNames(
                       open
-                        ? "border-indigo-600 text-indigo-600"
-                        : "border-transparent text-gray-700 hover:text-gray-800",
-                      "relative z-10 -mb-px flex items-center border-b-2 pt-px text-sm font-medium whitespace-nowrap transition-colors duration-200 ease-out"
+                        ? "   text-indigo-600"
+                        : "  text-gray-700 hover:text-gray-800",
+                      "relative z-10 -mb-px flex items-center border-none focus:border-none   pt-px text-sm font-medium whitespace-nowrap transition-colors duration-200 ease-out"
                     )}
                   >
                     <a href={category.href} className="flex items-center">

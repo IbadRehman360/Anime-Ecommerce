@@ -36,11 +36,11 @@ const callouts = [
 ];
 export default function Example() {
   return (
-    <div className=" border-t ">
+    <div className=" border-t  pt-10 pb-8 sm:pt-12 sm:pb-8 lg:pt-16 lg:pb-10">
       <div className="">
         <div className="border-gray-200">
-          <div className="text-center  pt-16 pb-10">
-            <h2 className="text-3xl lg:text-4xl sm:text-5xl text-gray-900 font-bungee">
+          <div className="text-center  ">
+            <h2 className="text-3xl sm:text-4xl pb-6 sm:pb-8 lg:pb-12   text-black font-bungee">
               SHOP BY ANIME
               <FaOptinMonster className="inline-block ml-5 mb-3.5" />
             </h2>

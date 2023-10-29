@@ -2,9 +2,9 @@ import { FaCogs } from "react-icons/fa";
 
 function Details2() {
   return (
-    <div className="bg-white border-y-2 pb-10 lg:pb-20">
-      <div className="text-center lg:pt-16 lg:pb-8 ">
-        <h3 className="text-3xl lg:text-4xl sm:text-5xl text-center justify-center  tracking-wider flex text-gray-900 font-bungee">
+    <div className="bg-white border-y-2  pt-10 pb-8 sm:pt-12 sm:pb-10 lg:pt-16 lg:pb-12">
+      <div className="text-center   ">
+        <h3 className="text-3xl   sm:text-4xl text-center justify-center  tracking-wider flex text-black font-bungee">
           <FaCogs className="inline-block mr-2 " />
           CUSTOM <span className="hidden sm:flex ml-2">MADE</span>
           <FaCogs className="inline-block ml-2" />

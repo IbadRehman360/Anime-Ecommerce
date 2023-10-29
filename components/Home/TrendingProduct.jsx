@@ -184,9 +184,9 @@ function TrendingProduct() {
     }
   };
   return (
-    <div className="md:mt-16 mx-auto max-w-2xl md:px-6 px-2 py-2 mt-6  pb-16 border-t  md:max-w-[110rem] w-full  ">
-      <div className="text-center lg:mt-6 pt-10 pb-4">
-        <h2 className="text-3xl lg:text-4xl sm:text-5xl flex justify-center  items-center text-gray-900 font-bungee">
+    <div className="  mx-auto max-w-2xl md:px-6 px-2 py-2  pt-8 pb-6 sm:pt-12 sm:pb-8 lg:pt-16 lg:pb-10 border-t  md:max-w-[110rem] w-full  ">
+      <div className="text-center   pb-4">
+        <h2 className="text-3xl sm:text-4xl   flex justify-center  items-center text-black font-extralight font-bungee">
           Trending <span className="hidden sm:flex pl-3">Products</span>
           <MdTrendingUp className="inline-block  ml-3 mb-3.5 " />
         </h2>
