@@ -62,7 +62,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <footer className="footer grid  gap-6  grid-rows-1  grid-cols-none   bg-[#111] p-4 py-10 sm:p-8 md:p-10  text-white sm:justify-between sm:gap-8 lg:grid-cols-4 lg:grid-rows-1">
+        <footer className="footer grid  gap-6  grid-rows-1  grid-cols-none   bg-[#080808] p-4 py-10 sm:p-8 md:p-10  text-white sm:justify-between sm:gap-8 lg:grid-cols-4 lg:grid-rows-1">
           <div>
             <span
               id="whity-text"
@@ -144,7 +144,7 @@ export default function Footer() {
             </div>
           </div>
         </footer>
-        <footer className="footer footer-center border-t border-gray-800 bg-[#111]  p-7 text-white">
+        <footer className="footer footer-center border-t border-gray-800 bg-[#080808]  p-7 text-white">
           <div>
             <p>Copyright © 2023 - All rights reserved by SenpaiMerch Ltd</p>
           </div>
