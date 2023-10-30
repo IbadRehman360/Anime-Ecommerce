@@ -377,14 +377,17 @@ export default function Example() {
               </div>
               <div className="flex items-center w-full">
                 <div className="ml-4 lg:ml-0 flex items-center">
-                  <div className="absolute left-1/2 transform -translate-x-1/2">
+                  <Link
+                    href={"/"}
+                    className="absolute left-1/2 transform -translate-x-1/2"
+                  >
                     <img
                       src="/assets/AnimeSiteLogo.png"
                       alt="Senpai Merch Logo"
                       layout="responsive"
                       className="w-[4rem] md:w-[4.5rem] "
                     />
-                  </div>
+                  </Link>
                 </div>
                 <div className="flex-grow" />
                 <div className="hidden lg:flex lg:items-center   font-inter tracking-wide   lg:justify-end lg:space-x-6">
