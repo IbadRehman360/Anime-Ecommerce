@@ -8,7 +8,7 @@ function ProductSizes({ product }) {
   return (
     <div className="mt-6">
       <div className="flex items-center justify-between">
-        <h3 className="text-sm  font-semibold text-gray-700   font-inter">
+        <h3 className="text-sm  font-semibold text-gray-700       font-inter">
           Size
         </h3>
         <a
@@ -36,7 +36,7 @@ function ProductSizes({ product }) {
                     ? "cursor-pointer bg-white text-gray-900 shadow-sm"
                     : "cursor-not-allowed bg-gray-50 text-gray-200",
                   active ? "ring-2 ring-indigo-500" : "",
-                  "group relative  flex items-center justify-center rounded-md border py-3 px-4 text-xs  font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6"
+                  "group relative  flex items-center justify-center rounded-md border py-3 px-4 text-xs lg:text-sm   font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-4"
                 )
               }
             >

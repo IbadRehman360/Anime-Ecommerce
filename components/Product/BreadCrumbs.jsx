@@ -1,10 +1,7 @@
 function BreadCrumbs({ product }) {
   return (
     <nav aria-label="Breadcrumb" className="pt-6">
-      <ol
-        role="list"
-        className="mx-auto flex max-w-2xl items-center space-x-2 px-4 sm:px-6 lg:max-w-7xl lg:px-8"
-      >
+      <ol role="list" className="  flex  space-x-3  ">
         {product.breadcrumbs.map((breadcrumb) => (
           <li key={breadcrumb.id}>
             <div className="flex items-center">
@@ -31,7 +28,7 @@ function BreadCrumbs({ product }) {
           <a
             href={product.href}
             aria-current="page"
-            className="font-medium text-gray-500 hover:text-gray-600"
+            className="  first-letter:uppercase   font-medium text-gray-800    hover:text-gray-700"
           >
             {product.anime}
           </a>

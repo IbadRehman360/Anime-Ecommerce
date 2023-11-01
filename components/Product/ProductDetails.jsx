@@ -31,7 +31,7 @@ export default function ProductDetails({ product }) {
         </div>
       </div>
       {sections[sectionName] && (
-        <p className="  text-gray-900 px-5 leading-6     font-satoshi  text-[0.8rem]  py-6 tracking-wider">
+        <p className="  text-gray-900 px-3 leading-6     font-satoshi  text-[0.8rem]  py-6 tracking-wider">
           {content}
         </p>
       )}

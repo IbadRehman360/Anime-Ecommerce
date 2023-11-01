@@ -11,6 +11,8 @@ import TrustListSvgs from "@components/Product/TrustListSvgs";
 import ProductYouMayLike from "@components/Product/ProductYouMayLike";
 import RelatedProduct from "@components/Product/RelatedProduct";
 import ReviewSection from "@components/Product/ReviewSection";
+import ProductMoreImage from "@components/Product/ProductMoreImage";
+import FrequentlyBoughtTogether from "@components/Product/FrequentlyBoughtTogether";
 
 export function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -18,45 +20,48 @@ export function classNames(...classes) {
 
 export default function Example() {
   return (
-    <div className="bg-white mx-auto max-w-2xl  md:max-w-[110rem]">
-      <div className="">
-        {/* Image gallery */}
-        <ProductImages product={product} />
-        {/* BreedCrumbsy */}
+    <div className="md:max-w-[90rem] mx-auto">
+      <div className="mt-3">
         <BreadCrumbs product={product} />
-        {/* Product info */}
-        {/* Options */}
-        {/* Info*/}
-        <ProductInfo product={product} reviews={reviews} />
-        {/* HighLights */}
-        <ProductHighLights product={product} />
-
-        <form className="pt-6 border-t">
-          {/* Colors */}
-          <ProductColor product={product} />
-          {/* Sizes */}
-          <ProductSizes product={product} />
-          {/* Buttons */}
-          <ProductBtn />
-        </form>
-        {/* Details*/}
-        <ProductDetails product={product} />
-        {/* List Of Svg*/}
-        <TrustListSvgs />
-        {/* Reviews */}
-        <div className="px-3  ">
-          <ReviewSection />
-        </div>
-        {/* Product List 1*/}
       </div>
+      <div className="lg:grid lg:grid-cols-2 lg:grid-rows-1 justify-center items-center lg:mb-12 max-w-2xl md:max-w-[90rem] mx-auto">
+        <div className="lg:col-span-1 w-full h-full lg:-mb-16 lg:pr-10">
+          <ProductImages product={product} />
+          <ProductMoreImage />
+
+          <div></div>
+        </div>
+        <div className="lg:col-span-1 px-3 lg:pl-16">
+          <div className="flex flex-col pt-4">
+            <ProductInfo product={product} reviews={reviews} />
+            <ProductHighLights product={product} />
+            <form className="pt-6 border-t">
+              <ProductColor product={product} />
+              <ProductSizes product={product} />
+              <ProductBtn />
+            </form>
+          </div>
+        </div>
+        <div className="lg:col-span-1">
+          <ProductDetails product={product} />
+          <TrustListSvgs />
+        </div>
+        <div className="lg:col-span-1">
+          <FrequentlyBoughtTogether />
+        </div>
+
+        <div className="lg:col-span-2">
+          <div className="px-3">
+            <ReviewSection />
+          </div>
+        </div>
+      </div>
+      <ProductYouMayLike />
+      <RelatedProduct />
     </div>
   );
 }
-<ProductYouMayLike />;
-{
-  /* Product List 2*/
-}
-<RelatedProduct />;
+
 var product = {
   name: "Zoro Regular Fit T-Shirt",
   price: "19222",
