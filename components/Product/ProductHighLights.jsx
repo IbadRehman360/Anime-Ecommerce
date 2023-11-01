@@ -1,10 +1,13 @@
 function ProductHighLights({ product }) {
   return (
-    <div className="mt-4">
-      <ul role="list" className="list-disc space-y-2 pl-4 text-sm">
+    <div className="mt-6 pb-7">
+      <ul
+        role="list"
+        className="list-disc space-y-3       font-cabin pl-4  text-sm"
+      >
         {product.highlights.map((highlight) => (
-          <li key={highlight} className="text-gray-400">
-            <span className="text-gray-600">{highlight}</span>
+          <li key={highlight} className="text-gray-400  tracking-wide">
+            <span className="text-gray-700">{highlight}</span>
           </li>
         ))}
       </ul>

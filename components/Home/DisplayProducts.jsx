@@ -1,4 +1,4 @@
-export default function LatestDropDisplay({ products }) {
+export default function DisplayProducts({ products }) {
   return (
     <article className="products-card     w-full">
       <div className="flex flex-col items-center">

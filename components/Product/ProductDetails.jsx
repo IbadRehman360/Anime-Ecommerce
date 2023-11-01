@@ -2,58 +2,52 @@ import { useState } from "react";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa";
 
 export default function ProductDetails({ product }) {
-  const [descriptionOpen, setDescriptionOpen] = useState(true);
-  const [detailsOpen, setDetailsOpen] = useState(true);
+  const [sections, setSections] = useState({
+    description: true,
+    details: false,
+    shippingInfo: false,
+  });
 
-  const toggleDescription = () => {
-    setDescriptionOpen(!descriptionOpen);
+  const toggleSection = (section) => {
+    setSections((prevSections) => ({
+      ...prevSections,
+      [section]: !prevSections[section],
+    }));
   };
 
-  const toggleDetails = () => {
-    setDetailsOpen(!detailsOpen);
-  };
+  const renderSection = (title, content, sectionName) => (
+    <div className="">
+      <div className={`border-b border-t border-gray-300 py-5`}>
+        <div className="flex items-center mx-4 py-1 justify-between">
+          <h4 className="uppercase font-montserrat text-xs tracking-wider">
+            {title}
+          </h4>
+          <button
+            onClick={() => toggleSection(sectionName)}
+            className="text-gray-600 hover:text-gray-900"
+          >
+            {sections[sectionName] ? <FaAngleUp /> : <FaAngleDown />}
+          </button>
+        </div>
+      </div>
+      {sections[sectionName] && (
+        <p className="  text-gray-900 px-5 leading-6     font-satoshi  text-[0.8rem]  py-6 tracking-wider">
+          {content}
+        </p>
+      )}
+    </div>
+  );
 
   return (
-    <div className="py-10 lg:col-span-2 lg:col-start-1  lg:pb-16 lg:pr-8 lg:pt-6">
+    <div className="pt-10 lg:col-span-2 lg:col-start-1 lg:pb-16 lg:pr-8 lg:pt-6">
       <div>
-        <div className=" ">
-          <div className="   border-y border-gray-300  py-5">
-            <div className="flex items-center  mx-5    justify-between">
-              <h4 className="   uppercase  text-xs font-bold text-black">
-                DESCRIPTION
-              </h4>{" "}
-              <button
-                onClick={toggleDescription}
-                className="text-gray-600 hover:text-gray-900"
-              >
-                {descriptionOpen ? <FaAngleUp /> : <FaAngleDown />}
-              </button>
-            </div>
-            {descriptionOpen && (
-              <p className="text-gray-800  text-sm py-2    font-medium  tracking-wider   ">
-                {product.description}
-              </p>
-            )}
-          </div>
-          <div className="">
-            <div className="   border-b border-gray-300  py-5">
-              <div className="flex items-center   mx-5  py-1 justify-between">
-                <h4 className="   uppercase  text-xs font-bold text-black">
-                  SHIPPING + RETURN
-                </h4>
-                <button
-                  onClick={toggleDetails}
-                  className="text-gray-600 hover:text-gray-900"
-                >
-                  {detailsOpen ? <FaAngleUp /> : <FaAngleDown />}
-                </button>
-              </div>
-              {detailsOpen && (
-                <p className="text-gray-900 text-sm">{product.details}</p>
-              )}
-            </div>
-          </div>
-        </div>
+        {renderSection("DESCRIPTION", product.description, "description")}
+        {renderSection("SHIPPING + RETURN", product.details, "details")}
+        {renderSection(
+          "SHIPPING AND DELIVERY",
+          product.shipping,
+          "shippingInfo"
+        )}
       </div>
     </div>
   );

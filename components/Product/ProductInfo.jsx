@@ -1,4 +1,3 @@
-// import { StarIcon } from "@heroicons/react/24/outline";
 import { classNames } from "@app/products/page";
 import { StarIcon } from "@heroicons/react/20/solid";
 
@@ -6,16 +5,16 @@ function ProductInfo({ product, reviews }) {
   return (
     <div>
       <div className="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
-        <h1 className="text-xl  font-extrabold tracking-tight text-gray-800 sm:text-3xl">
+        <h1 className="text-xl   font-montserrat  text-gray-800 sm:text-3xl">
           {product.name}
         </h1>
       </div>
 
-      <div className="mt-4 lg:row-span-3 lg:mt-0">
+      <div className="mt-4 lg:row-span-3  pb-1.5 lg:mt-0">
         <h2 className="sr-only">Product information</h2>
         <div className=" flex justify-between">
-          <div className=" text-[1.1rem] font-satoshi mb-1  tracking-wide     text-gray-900">
-            <span className="tracking-normal   mr-1"> Rs.</span>
+          <div className=" text-[1.1rem] font-satoshi   tracking-wide     text-gray-900">
+            <span className="tracking-normal   mr-1 "> Rs.</span>
             {product.price}.00
           </div>
 
