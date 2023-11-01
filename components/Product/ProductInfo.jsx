@@ -4,7 +4,7 @@ import { StarIcon } from "@heroicons/react/20/solid";
 function ProductInfo({ product, reviews }) {
   return (
     <div>
-      <div className="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
+      <div className="lg:col-span-2 lg:mt-20 lg:border-r lg:border-gray-200 lg:pr-8">
         <h1 className="text-xl mt-5 mb-2   lg:text-3xl font-montserrat  text-gray-800 sm:text-3xl">
           {product.name}
         </h1>

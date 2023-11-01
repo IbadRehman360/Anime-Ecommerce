@@ -21,7 +21,7 @@ export function classNames(...classes) {
 export default function Example() {
   return (
     <div className="md:max-w-[90rem] mx-auto">
-      <div className="mt-3">
+      <div className="mt-3 lg:flex hidden">
         <BreadCrumbs product={product} />
       </div>
       <div className="lg:grid lg:grid-cols-2 lg:grid-rows-1 justify-center items-center lg:mb-12 max-w-2xl md:max-w-[90rem] mx-auto">
@@ -33,6 +33,9 @@ export default function Example() {
         </div>
         <div className="lg:col-span-1 px-3 lg:pl-16">
           <div className="flex flex-col pt-4">
+            <div className="mt-3 lg:hidden flex">
+              <BreadCrumbs product={product} />
+            </div>
             <ProductInfo product={product} reviews={reviews} />
             <ProductHighLights product={product} />
             <form className="pt-6 border-t">
