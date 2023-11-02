@@ -2,7 +2,7 @@ import TrustListItem from "./TrustLIstItems";
 
 export default function TrustListSvgs() {
   return (
-    <div className="grid grid-cols-1 border-t pt-8 grid-rows-3 pb-10 gap-6 px-4">
+    <div className="grid grid-cols-1 lg:flex lg:gap-6 border-t lg:border-none  pt-8 grid-rows-3 pb-10 xl:gap-8   gap-6 px-4">
       <TrustListItem
         icon={
           <svg

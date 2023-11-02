@@ -64,10 +64,10 @@ function Carousel({ products, Feature1, Feature2 }) {
 
   return (
     <>
-      <div className="carousel mt-2 w-full justify-items-stretch sm:mt-4 sm:grid-cols-2 md:grid-cols-3 md:gap-5 lg:grid-cols-6">
+      <div className="carousel  mt-2 w-full justify-items-stretch sm:mt-4 sm:grid-cols-2 md:grid-cols-3 md:gap-5 lg:grid-cols-6">
         <div
           id={Feature1}
-          className="carousel-item mx-auto my-2 md:my-4 w-full gap-1 sm:w-full md:gap-3"
+          className="carousel-item      mx-auto my-2 md:my-4 w-full gap-1 sm:w-full md:gap-3"
         >
           {displayedProducts1.map((product) => (
             <DisplayProducts key={product.id} products={product} />

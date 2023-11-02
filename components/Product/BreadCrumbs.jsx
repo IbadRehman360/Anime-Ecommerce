@@ -1,7 +1,10 @@
 function BreadCrumbs({ product }) {
   return (
-    <nav aria-label="Breadcrumb" className="pt-6">
-      <ol role="list" className="  flex  space-x-3  ">
+    <nav
+      aria-label="Breadcrumb"
+      className="lg:pt-6 font-satoshi tracking-wider"
+    >
+      <ol role="list" className="flex  space-x-3  ">
         {product.breadcrumbs.map((breadcrumb) => (
           <li key={breadcrumb.id}>
             <div className="flex items-center">

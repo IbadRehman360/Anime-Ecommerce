@@ -31,8 +31,8 @@ const ReviewForm = () => {
   };
 
   return (
-    <div className="bg-white w-full mt-5 rounded-lg    ">
-      <h6 className=" text-gray-900 mb-4 font-montserrat">
+    <div className="bg-white w-full mt-5 rounded-lg  md:text-lg   ">
+      <h6 className=" text-gray-900 mb-4 md:text-lg font-montserrat">
         BE THE FIRST TO REVIEW JOTARO REGULAR FIT T-SHIRT
       </h6>
       <form onSubmit={handleSubmit}>

@@ -11,23 +11,33 @@ const ReviewSection = () => {
   };
 
   return (
-    <div className=" border  py-8 px-4 text-black  ">
+    <div className=" border  py-8 lg:mt-10 px-6 text-black  ">
       {!showReviewForm && (
         <>
-          <h2 className="text-lg mb-4 text-gray-700    font-montserrat">
+          <h2 className=" mb-4 lg:text-xl text-gray-800     tracking-wide   font-inter">
             Customer Reviews
           </h2>
-          <Star />
-          <p className=" mb-1 text-[0.9rem] tracking-wider font-satoshi ">
-            Be the first to write a review
-          </p>
+          <div className="md:flex justify-between">
+            <div className="lg:flex lg:items-center  ">
+              <Star />
+              <p className="mb-1 text-[0.9rem]  lg:ml-4 ml-1 mt-2 lg:mt-0 md:text-[1rem] font- tracking-wider font-satoshi">
+                Be the first to write a review
+              </p>
+            </div>
+            <button
+              className="border-black border w-full md:w-40 p-1 rounded"
+              onClick={handleWriteReviewClick}
+            >
+              Write a review
+            </button>
+          </div>
         </>
       )}
 
       {showReviewForm ? (
         <>
           <div className="flex justify-between">
-            <p className="text-[0.9rem] text-black tracking-wider font-satoshi">
+            <p className="text-[0.9rem] text-black    tracking-wider font-satoshi">
               Be the first to write a review
             </p>
             <button
@@ -41,12 +51,7 @@ const ReviewSection = () => {
           <ReviewForm />
         </>
       ) : (
-        <button
-          className="  border-black border  w-full  p-1  rounded  "
-          onClick={handleWriteReviewClick}
-        >
-          Write a review
-        </button>
+        <></>
       )}
     </div>
   );

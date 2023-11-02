@@ -15,7 +15,7 @@ function ProductSizes({ product }) {
           href="#"
           className="text-sm font-medium text-indigo-600 hover:text-indigo-500"
         >
-          Size guide
+          Size Chart &gt;
         </a>
       </div>
       <RadioGroup
@@ -24,7 +24,7 @@ function ProductSizes({ product }) {
         className="mt-4"
       >
         <RadioGroup.Label className="sr-only">Choose a size</RadioGroup.Label>
-        <div className="grid grid-cols-4 gap-4 sm:grid-cols-8 lg:grid-cols-4">
+        <div className="grid grid-cols-4 gap-4 mt-4 sm:grid-cols-8 lg:grid-cols-8">
           {product.sizes.map((size) => (
             <RadioGroup.Option
               key={size.name}
@@ -33,10 +33,10 @@ function ProductSizes({ product }) {
               className={({ active }) =>
                 classNames(
                   size.inStock
-                    ? "cursor-pointer bg-white text-gray-900 shadow-sm"
+                    ? "cursor-pointer bg-white text-gray-900   shadow-sm"
                     : "cursor-not-allowed bg-gray-50 text-gray-200",
                   active ? "ring-2 ring-indigo-500" : "",
-                  "group relative  flex items-center justify-center rounded-md border py-3 px-4 text-xs lg:text-sm   font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-4"
+                  "group relative  flex items-center justify-center rounded-md border py-2.5 px-4 text-xs lg:text-sm   font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-4"
                 )
               }
             >

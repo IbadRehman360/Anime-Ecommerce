@@ -52,15 +52,15 @@ const Testimonials = () => {
   };
   return (
     <div className=" bg-[#fdfdfd]  pt-10 lg:pt-16 pb-10">
-      <div className="     mt-2 px-2 w-full lg:max-w-[107rem] mx-auto">
+      <div className="     mt-2 px-2 w-full   mx-auto">
         <div className=" text-center">
           <div className=" text-center">
-            <h2 className="text-2xl font-bold  font-satoshi  uppercase  tracking-wide pb-2 text-black sm:text-3xl">
+            <h2 className="text-2xl font-bold font-montserrat uppercase  tracking-wide pb-2 text-black sm:text-3xl">
               our fam in action
             </h2>
 
-            <p className="mb-8 text-center  font-cabi  font-cabin  text-gray-700 ">
-              <span className="text-lg    font-semibold mb-2 mr-2 ">
+            <p className="mb-8 text-center font-lato  font-cabin  text-gray-800 ">
+              <span className="text-lg   tracking-wide font-inter   mb-2 mr-2 ">
                 @Senpaimerch
               </span>
               Follow us on Instagram
@@ -91,7 +91,7 @@ const Testimonials = () => {
                           )}
                         </div>
                       </div>
-                      <p className="lg:text-xl ml-4 opacity-90  text-white">
+                      <p className="lg:text-md font-poppins ml-4 opacity-90  text-white">
                         {review.comment}
                       </p>
                     </div>

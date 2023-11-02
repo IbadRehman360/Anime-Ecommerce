@@ -21,16 +21,26 @@ export function classNames(...classes) {
 export default function Example() {
   return (
     <div className="md:max-w-[90rem] mx-auto">
-      <div className="mt-3 lg:flex hidden">
+      <div className="mt-3  px-3 lg:flex hidden">
         <BreadCrumbs product={product} />
       </div>
-      <div className="lg:grid lg:grid-cols-2 lg:grid-rows-1 justify-center items-center lg:mb-12 max-w-2xl md:max-w-[90rem] mx-auto">
-        <div className="lg:col-span-1 w-full h-full lg:-mb-16 lg:pr-10">
-          <ProductImages product={product} />
-          <ProductMoreImage />
-
-          <div></div>
+      <div className="lg:grid lg:grid-cols-2 lg:grid-rows-1 md:px-3  justify-center items-center lg:mb-12 max-w-2xl md:max-w-[90rem] mx-auto">
+        <div className="lg:col-span-1 w-full h-full lg:-mb-16">
+          <div className="relative w-full h-full">
+            <img
+              src={"assets/latest/2.jpg"}
+              className="border-2 border-black  h-5/6 w-full object-cover max-h-full"
+              alt="Product Image"
+            />
+            <div className="lg:hidden flex absolute bottom-2 left-4 z-10">
+              <ProductMoreImage />
+            </div>
+            <div className="lg:flex   hidden">
+              <ProductMoreImage />
+            </div>
+          </div>
         </div>
+
         <div className="lg:col-span-1 px-3 lg:pl-16">
           <div className="flex flex-col pt-4">
             <div className="mt-3 lg:hidden flex">
@@ -47,9 +57,10 @@ export default function Example() {
         </div>
         <div className="lg:col-span-1">
           <ProductDetails product={product} />
+
           <TrustListSvgs />
         </div>
-        <div className="lg:col-span-1">
+        <div className="lg:col-span-1 mx-6">
           <FrequentlyBoughtTogether />
         </div>
 
@@ -59,7 +70,7 @@ export default function Example() {
           </div>
         </div>
       </div>
-      <ProductYouMayLike />
+      {/* <ProductYouMayLike /> */}
       <RelatedProduct />
     </div>
   );

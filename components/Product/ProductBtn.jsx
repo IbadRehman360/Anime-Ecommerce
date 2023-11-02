@@ -19,23 +19,23 @@ function ProductBtn() {
           <div className="flex   border   first-letter:  border-gray-300 rounded-md bg-[#f9f9f9]  ">
             <button
               onClick={decreaseQuantity}
-              className="w-10 h-10 lg:w-16 lg:h-12 flex items-center justify-center text-2xl   text-black"
+              className="w-10 h-10 lg:w-20 lg:h-11 flex items-center justify-center text-2xl   text-black"
             >
               -
             </button>
-            <div className="w-10 h-10   lg:w-16 lg:h-12 flex  font-semibold items-center justify-center  ] ">
+            <div className="w-10 h-10   lg:w-20 lg:h-11 flex  font-semibold items-center justify-center  ] ">
               {quantity}
             </div>
             <button
               onClick={increaseQuantity}
-              className="w-10 h-10  lg:w-16 lg:h-12  flex items-center justify-center text-xl   text-black"
+              className="w-10 h-10  lg:w-20 lg:h-11  flex items-center justify-center text-xl   text-black"
             >
               +
             </button>
           </div>
           <button
             type="submit"
-            className=" flex w-full items- font-montserrat lg:py-4 lg:text-md lg:tracking-wider   text-xs justify-center rounded-md border border-transparent bg-gray-900 py-2.5 uppercase  font-medium text-white hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+            className=" flex w-full items- font-montserrat lg:py-3.5 lg:text-md lg:tracking-wider   text-xs justify-center rounded-md border border-transparent    bg-slate-800  py-2.5 uppercase  font-medium text-white hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
           >
             Add to Cart
           </button>
@@ -43,7 +43,7 @@ function ProductBtn() {
 
         <button
           type="submit"
-          className="  flex w-full items-center justify-center font-montserrat  lg:py-4 lg:text-md lg:tracking-wider    rounded-md border border-transparent bg-slate-600      uppercase  py-3 text-xs font-medium text-white hover:bg-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+          className="  flex w-full items-center justify-center font-montserrat  lg:py-4 lg:text-md lg:tracking-wider    rounded-md border border-transparent   bg-slate-700   uppercase  py-3 text-xs font-medium text-white hover:bg-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
         >
           Add to bag
         </button>

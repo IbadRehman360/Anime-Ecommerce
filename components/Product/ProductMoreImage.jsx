@@ -14,7 +14,7 @@ export default function ProductMoreImage() {
   };
 
   return (
-    <div className="flex space-x-3 mt-4    ">
+    <div className="flex space-x-3 mt-4   ">
       {smallImages.map((src, index) => (
         <img
           key={index}
