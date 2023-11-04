@@ -6,19 +6,21 @@ import LatestDrop from "@components/Home/LatestDrop";
 import Testimonials from "@components/Home/Testimonial";
 import TrendingProduct from "@components/Home/TrendingProduct";
 import MustHave from "@components/Home/MustHave";
-const Home = () => (
-  <section className="w-full   main flex-center flex-col">
-    <HeroCarousel />
+import React from "react";
 
-    <div className="mx-auto  md:max-w-[100rem] ">
+const Home = () => (
+  <section className="relative w-full main flex-center flex-col">
+    {/* Your existing content */}
+    <HeroCarousel />
+    <div className="mx-auto md:max-w-[100rem]">
       <LatestDrop />
     </div>
-    <div className=" bg-stone-50  border border-gray-200">
-      <div className="mx-auto  md:max-w-[105rem] ">
+    <div className="bg-stone-50 border border-gray-200">
+      <div className="mx-auto md:max-w-[105rem]">
         <Categories />
       </div>
     </div>
-    <div className="mx-auto  md:max-w-[100rem] ">
+    <div className="mx-auto md:max-w-[100rem]">
       <MustHave />
       <Details2 />
       <Details />

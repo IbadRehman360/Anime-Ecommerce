@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Bungee:wght@400&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Cabin:wght@400&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@700&800&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@600&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap");
@@ -55,4 +55,16 @@
 
 ::-webkit-scrollbar-track {
   background: transparent;
+}
+/* Add this to your CSS file */
+/* Add this to your CSS file */
+.img-hover-effect {
+  transition: transform 0.5s ease-in-out, opacity 0.2s ease-in-out;
+}
+
+.img-hover-effect:hover {
+  transform: scale(
+    1.1
+  ); /* You can adjust the scale factor for the desired effect */
+  opacity: 0.9; /* You can adjust the opacity level for the desired effect */
 }

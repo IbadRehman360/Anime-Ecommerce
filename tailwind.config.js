@@ -12,7 +12,7 @@ module.exports = {
         bungee: ['Bungee', 'sans-serif'],
         cabin: ['Cabin', 'sans-serif'],
         montserrat: ['Montserrat', 'sans-serif'],
-        // Add the Google Fonts here
+        montserratextra: ['Montserrat', 'sans-serif'],
         raleway: ['Raleway', 'sans-serif'],
         roboto: ['Roboto', 'sans-serif'],
         lato: ['Lato', 'sans-serif'],
@@ -24,9 +24,14 @@ module.exports = {
         ubuntu: ['Ubuntu', 'sans-serif'],
         nunito: ['Nunito', 'sans-serif'],
       },
-      colors: {
-        'primary-orange': '#FF5722',
-      }
+    },
+    fontWeight: {
+      'extrabold': 800,
+    },
+    extend: {
+      fontFamily: {
+        montserrat: ['Montserrat', 'sans-serif'],
+      },
     },
   },
   daisyui: {

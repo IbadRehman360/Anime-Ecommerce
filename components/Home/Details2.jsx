@@ -2,12 +2,12 @@ import { FaCogs } from "react-icons/fa";
 
 function Details2() {
   return (
-    <div className="bg-white  pt-10 pb-8 sm:pt-12 sm:pb-10 lg:pt-16 lg:pb-12">
+    <div className="bg-white sm:border-t border-b sm:border-none  pt-10 pb-8 sm:pt-12 sm:pb-10 lg:pt-16 lg:pb-12">
       <div className="text-center   ">
-        <h3 className="text-3xl   pt-8 pb-16 sm:text-4xl text-center justify-center  tracking-wider flex text-black font-montserrat">
-          <FaCogs className="inline-block mr-5  " />
-          CUSTOM <span className="hidden sm:flex ml-2">MADE</span>
-          <FaCogs className="inline-block ml-5" />
+        <h3 className="text-[1.7rem] pb-2  pt-8 sm:pb-16 sm:text-4xl  uppercase text-center justify-center  tracking-wide flex text-black wider  font-montserrat">
+          <FaCogs className="  mr-6 sm:inline-block hidden " />
+          CUSTOMLY MADE
+          <FaCogs className="  ml-6 sm:inline-block hidden" />
         </h3>
       </div>
       <div className="mx-auto grid   pt-8  px-3 sm:px-6 grid-cols-1 items-center  w-full    lg:grid-cols-2 lg:px-8">
@@ -15,15 +15,15 @@ function Details2() {
           <img
             src="/assets/Des/2.jpg"
             alt="Walnut card tray filled with cards and card angled in dedicated groove."
-            className="rounded-lg bg-gray-100 shadow-xl border border-black  h-[30rem] md:h-[40rem] w-full"
+            className="rounded-lg bg-gray-100 shadow-md border border-black  h-[30rem] md:h-[40rem] w-full"
           />
         </div>
 
-        <div className="leading-7 lg:ml-14 tracking-wide">
-          <h2 className="text-3xl font-bold  tracking-tight font-montserrat text-gray-900 sm:text-4xl">
+        <div className="leading-7 pt-8 lg:ml-14 tracking-wide">
+          <h2 className="text-[1.6rem]   tracking-tight font-montserrat text-gray-900 sm:text-4xl">
             Anime Apparel
           </h2>
-          <p className="mt-4 text-lg  font-lato text-gray-400  tracking-wide leading-7">
+          <p className="mt-4 text-lg  text-gray-400  tracking-wide leading-7">
             At <span className=" font-semibold"> Senpai Merch</span>, we
             specialize in top-quality custom apparel. From{" "}
             <span className=" font-semibold"> hoodies </span>to{" "}

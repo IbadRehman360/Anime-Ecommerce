@@ -1,18 +1,18 @@
 "use client";
-import ProductDetails from "@components/Product/ProductDetails";
-import ProductBtn from "@components/Product/ProductBtn";
-import ProductColor from "@components/Product/ProductColor";
-import ProductSizes from "@components/Product/ProductSizes";
-import ProductImages from "@components/Product/ProductImages";
-import BreadCrumbs from "@components/Product/BreadCrumbs";
-import ProductInfo from "@components/Product/ProductInfo";
-import ProductHighLights from "@components/Product/ProductHighLights";
-import TrustListSvgs from "@components/Product/TrustListSvgs";
-import ProductYouMayLike from "@components/Product/ProductYouMayLike";
-import RelatedProduct from "@components/Product/RelatedProduct";
-import ReviewSection from "@components/Product/ReviewSection";
-import ProductMoreImage from "@components/Product/ProductMoreImage";
-import FrequentlyBoughtTogether from "@components/Product/FrequentlyBoughtTogether";
+import ProductDetails from "@components/ProductPreview/ProductDetails";
+import ProductBtn from "@components/ProductPreview/ProductBtn";
+import ProductColor from "@components/ProductPreview/ProductColor";
+import ProductSizes from "@components/ProductPreview/ProductSizes";
+import ProductImages from "@components/ProductPreview/ProductImages";
+import BreadCrumbs from "@components/ProductPreview/BreadCrumbs";
+import ProductInfo from "@components/ProductPreview/ProductInfo";
+import ProductHighLights from "@components/ProductPreview/ProductHighLights";
+import TrustListSvgs from "@components/ProductPreview/TrustListSvgs";
+import ProductYouMayLike from "@components/ProductPreview/ProductYouMayLike";
+import RelatedProduct from "@components/ProductPreview/RelatedProduct";
+import ReviewSection from "@components/ProductPreview/ReviewSection";
+import ProductMoreImage from "@components/ProductPreview/ProductMoreImage";
+import FrequentlyBoughtTogether from "@components/ProductPreview/FrequentlyBoughtTogether";
 
 export function classNames(...classes) {
   return classes.filter(Boolean).join(" ");

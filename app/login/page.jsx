@@ -7,7 +7,7 @@ export default function Example() {
   const [isCurrently, setIsCurrently] = useState(true);
 
   return (
-    <div className="grid grid-cols-1 items-center justify-center    bg-gray-50 py-8 pb-20 md:py-20 md:grid-cols-2">
+    <div className="grid grid-cols-1 items-center justify-center    bg-gray-50 py-8 pb-20 md:py-28 md:grid-cols-2">
       <div className="  border-r-2 opacity-90  ">
         <div className=" sm:mx-auto sm:w-full sm:max-w-md md:px-6 px-4 ">
           <h2 className="text-3xl font-extrabold leading-9   uppercase text-center text-gray-900">

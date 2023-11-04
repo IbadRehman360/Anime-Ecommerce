@@ -14,6 +14,7 @@ import Link from "next/link";
 import Cart from "./Cart";
 import Clintly from "./Home/Clintly";
 import SearchMenu from "./Home/SearchMenu";
+import { FaUser } from "react-icons/fa";
 const navigation = {
   categories: [
     {
@@ -309,21 +310,17 @@ export default function Example() {
                 </div>
 
                 <div className="space-y-6 border-t border-gray-200 px-4 py-6">
-                  <div className="flow-root">
+                  <div className="     lg:items-center font-satoshi tracking-wide lg:justify-end lg:space-x-6">
                     <Link
                       href="/login"
-                      className="-m-2 block p-2 font-medium text-gray-900"
+                      className="text-sm  text-gray-700 hover:text-gray-800 flex items-center"
                     >
-                      Sign in
+                      <FaUser className="mr-4" />
+                      <span className=" text-gray-600 tracking-wide">
+                        Account
+                      </span>{" "}
                     </Link>
-                  </div>
-                  <div className="flow-root">
-                    <Link
-                      href="#"
-                      className="-m-2 block p-2 font-medium text-gray-900"
-                    >
-                      Create account
-                    </Link>
+                    <span className="h-6 w-px bg-gray-200" aria-hidden="true" />
                   </div>
                 </div>
 
@@ -390,21 +387,6 @@ export default function Example() {
                   </Link>
                 </div>
                 <div className="flex-grow" />
-                <div className="hidden lg:flex lg:items-center   font-inter tracking-wide   lg:justify-end lg:space-x-6">
-                  <Link
-                    href="/login"
-                    className="text-sm font-medium text-gray-700 hover:text-gray-800"
-                  >
-                    Sign in
-                  </Link>
-                  <span className="h-6 w-px bg-gray-200" aria-hidden="true" />
-                  <Link
-                    href="#"
-                    className="text-sm font-medium text-gray-700 hover:text-gray-800"
-                  >
-                    Create account
-                  </Link>
-                </div>
 
                 <div className=" mr-4 hidden  lg:ml-8 sm:flex">
                   <Link
@@ -436,10 +418,21 @@ export default function Example() {
                     />
                   </Link>
                 </div>
-
+                <div className="hidden lg:flex border-l pl-5 lg:items-center font-inter tracking-wide lg:justify-end lg:space-x-6">
+                  <Link
+                    href="/login"
+                    className="text-sm  text-gray-700 hover:text-gray-800 flex items-center"
+                  >
+                    <FaUser className="mr-4" />
+                    <span className=" text-gray-600 tracking-wide">
+                      Account
+                    </span>{" "}
+                  </Link>
+                  <span className="h-6 w-px bg-gray-200" aria-hidden="true" />
+                </div>
                 <div className="ml-4 flow-root lg:ml-8">
-                  <button
-                    onClick={() => setIsCartOpen(!isCartOpen)}
+                  <Link
+                    href={"/cart"}
                     className="group -m-2 flex items-center p-2"
                   >
                     <ShoppingBagIcon
@@ -451,7 +444,7 @@ export default function Example() {
                     </span>
                     {isCartOpen && <Cart />}{" "}
                     <span className="sr-only">items in cart, view bag</span>
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>

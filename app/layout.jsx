@@ -2,6 +2,7 @@ import "@styles/globals.css";
 
 import Nav from "../components/Header";
 import Footer from "../components/Footer";
+import CartOpen from "@components/CartOpen";
 
 export const metadata = {
   title: "SenpaiMerch",
@@ -20,7 +21,7 @@ const RootLayout = ({ children }) => (
       <Nav />
       <main className="app">{children}</main>
       <Footer />
-      {/* </Provider> */}
+      <CartOpen />
     </body>
   </html>
 );

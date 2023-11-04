@@ -56,7 +56,7 @@ export default function ProductDetails({ product }) {
   );
 
   return (
-    <div className="  lg:-mt-20">
+    <div className="  lg:-mt-36">
       <div className="pt-10 lg:pt-0 lg:flex lg:gap-7 border-b">
         {renderSection("DESCRIPTION", product.description, "description")}
         {renderSection("SHIPPING + RETURN", product.details, "details")}

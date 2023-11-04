@@ -21,7 +21,7 @@ export default function ProductMoreImage() {
           src={src}
           alt={`Small Image ${index}`}
           onClick={() => handleImageClick(index)}
-          className={`lg:w-20 h-auto w-12 border-2 rounded-md border-black cursor-pointer ${
+          className={`lg:w-24 h-auto w-12 border-2 rounded-md border-black cursor-pointer ${
             index === currentImage ? "border-white" : ""
           }`}
         />

@@ -2,6 +2,8 @@
 import { Fragment, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
+import Link from "next/link";
+import Quantity from "./Quantity";
 
 const products = [
   {
@@ -32,18 +34,28 @@ const products = [
 
 export default function Cart() {
   const [open, setOpen] = useState(true);
+  const [quantity, setQuantity] = useState(1);
 
+  const incrementQuantity = () => {
+    setQuantity(quantity + 1);
+  };
+
+  const decrementQuantity = () => {
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+    }
+  };
   return (
     <Transition.Root show={open} as={Fragment}>
       <Dialog as="div" className="relative z-10" onClose={setOpen}>
         <Transition.Child
           as={Fragment}
-          enter="ease-in-out duration-500"
-          enterFrom="opacity-0"
-          enterTo="opacity-100"
-          leave="ease-in-out duration-500"
-          leaveFrom="opacity-100"
-          leaveTo="opacity-0"
+          enter="transform ease-in-out duration-1000"
+          enterFrom="translate-x-full"
+          enterTo="translate-x-0"
+          leave="transform ease-in-out duration-1000"
+          leaveFrom="translate-x-0"
+          leaveTo="translate-x-full"
         >
           <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
         </Transition.Child>
@@ -60,7 +72,7 @@ export default function Cart() {
                 leaveFrom="translate-x-0"
                 leaveTo="translate-x-full"
               >
-                <Dialog.Panel className="pointer-events-auto w-screen max-w-md">
+                <Dialog.Panel className="pointer-events-auto w-screen max-w-xl">
                   <div className="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
                     <div className="flex-1 overflow-y-auto px-4 py-6 sm:px-6">
                       <div className="flex items-start justify-between">
@@ -81,24 +93,32 @@ export default function Cart() {
                       </div>
 
                       <div className="mt-8">
-                        <div className="flow-root">
+                        <div className="flow-root relative">
                           <ul
                             role="list"
                             className="-my-6 divide-y divide-gray-200"
                           >
                             {products.map((product) => (
                               <li key={product.id} className="flex py-6">
-                                <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
+                                <div className="  h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                                   <img
                                     src={product.imageSrc}
                                     alt={product.imageAlt}
                                     className="h-full w-full object-cover object-center"
                                   />
+                                  <div className="absolute -top-1 left-20">
+                                    <div className="bg-yellow-500 text-xs  font-semibold text-white rounded-full h-5 w-5 flex items-center justify-center">
+                                      {product.quantity}
+                                    </div>
+                                  </div>
                                 </div>
 
                                 <div className="ml-4 flex flex-1 flex-col">
                                   <div>
-                                    <div className="flex justify-between text-base font-medium text-gray-900">
+                                    <p className="mt-1 text-[0.7rem] font-lato text-gray-500">
+                                      REGULAR SIZE T-SHIRTS
+                                    </p>
+                                    <div className="flex justify-between text-sm mt-0.5 mb-1 sm:text-base font-medium text-gray-900">
                                       <h3>
                                         <a href={product.href}>
                                           {product.name}
@@ -106,15 +126,9 @@ export default function Cart() {
                                       </h3>
                                       <p className="ml-4">{product.price}</p>
                                     </div>
-                                    <p className="mt-1 text-sm text-gray-500">
-                                      {product.color}
-                                    </p>
                                   </div>
                                   <div className="flex flex-1 items-end justify-between text-sm">
-                                    <p className="text-gray-500">
-                                      Qty {product.quantity}
-                                    </p>
-
+                                    <Quantity />
                                     <div className="flex">
                                       <button
                                         type="button"
@@ -141,25 +155,33 @@ export default function Cart() {
                         Shipping and taxes calculated at checkout.
                       </p>
                       <div className="mt-6">
-                        <a
-                          href="#"
-                          className="flex items-center justify-center rounded-md border border-transparent bg-gray-800 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-gray-700"
-                        >
-                          Checkout
-                        </a>
-                      </div>
-                      <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
-                        <p>
-                          or
-                          <button
-                            type="button"
-                            className="font-medium text-gray-600 hover:text-gray-500"
-                            onClick={() => setOpen(false)}
+                        <div className="flex">
+                          <Link
+                            href="/cart"
+                            className="flex uppercase text-xs  md:text-sm  items-center    w-2/5 justify-center rounded-md border border-transparent bg-stone-800 opacity-80 hover:bg-stone-200 hover:text-black   font-montserrat py-3.5  md:px-6 md:py-4 font-medium text-white shadow-sm hover-bg-gray-700 ml-2" // Add ml-2 for some horizontal spacing
                           >
-                            Continue Shopping
-                            <span aria-hidden="true"> &rarr;</span>
-                          </button>
-                        </p>
+                            Your Cart
+                          </Link>
+
+                          <Link
+                            href="/checkout"
+                            className="flex uppercase text-xs  md:text-sm  items-center    w-3/5 justify-center rounded-md border border-transparent bg-stone-800 opacity-80 hover:bg-stone-200 hover:text-black   font-montserrat py-3.5  md:px-6 md:py-4 font-medium text-white shadow-sm hover-bg-gray-700 ml-2" // Add ml-2 for some horizontal spacing
+                          >
+                            Checkout order
+                          </Link>
+                        </div>
+                      </div>
+
+                      <div className="mt-6 flex justify-center text-center   text-gray-500">
+                        <p className="mr-3">or</p>
+                        <button
+                          type="button"
+                          className="font-medium text-gray-600  text-xs sm:text-sm   font-montserrat  hover:text-gray-500"
+                          onClick={() => setOpen(false)}
+                        >
+                          Continue Shopping
+                          <span aria-hidden="true"> &rarr;</span>
+                        </button>
                       </div>
                     </div>
                   </div>

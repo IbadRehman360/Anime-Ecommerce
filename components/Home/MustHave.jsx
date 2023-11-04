@@ -88,14 +88,13 @@ const products = [
 
 function MustHave() {
   return (
-    <article className="  pt-8 pb-6     sm:pt-12 sm:pb-8 lg:pt-16 lg:pb-10    mx-auto   px-2 sm:px-6 lg:px-8 ">
+    <article className="  pt-12 pb-6     sm:pt-12 sm:pb-8 lg:pt-16 lg:pb-10    mx-auto   px-2 sm:px-6 lg:px-8 ">
       <div className="text-center   pb-6 md:pb-10">
-        <h3 className="text-3xl   sm:text-[2.4rem] text-center  justify-center  tracking-wider flex text-black font-montserrat">
-          Featured Collection
-          <FaFire className="inline-block ml-2 mb-3" />
+        <h3 className="text-3xl uppercase font-montserratextra font-extrabold sm:text-[2.3rem] text-center  justify-center  tracking-wider flex text-black ">
+          Bestselling Products
         </h3>
       </div>
-      <div className="grid grid-cols-2 pt-6 gap-16 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4">
+      <div className="grid grid-cols-2 pt-6 md:gap-12  gap-4 sm:gap-6 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4">
         {products.map((product) => (
           <LatestDropDisplay key={product.id} products={product} />
         ))}

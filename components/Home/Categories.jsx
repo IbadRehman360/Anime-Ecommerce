@@ -82,29 +82,32 @@ export default function Example() {
     <div className="      pt-10 pb-8 sm:pt-12 sm:pb-8 lg:pt-16 lg:pb-16">
       <div className="">
         <div className="border-gray-200">
-          <div className="text-center  ">
-            <h2 className="text-3xl font-montserrat sm:text-4xl pb-6 sm:pb-8 lg:pb-12   text-black  ">
+          <div className="text-center mb-4  ">
+            <h2 className="text-3xl font-montserratextra font-extrabold sm:text-4xl pb-6 sm:pb-8 lg:pb-12   text-black  ">
               SHOP BY ANIME
             </h2>
           </div>
         </div>
-        <div className="mx-auto  px-2 sm:px-6 lg:px-8 ">
-          <div className="lg:grid-cols-5 lg:gap-x-10    gap-8  grid grid-cols-2   sm:grid-cols-2 md:grid-cols-2">
+        <div className="mx-auto px-2 sm:px-6 lg:px-8">
+          <div className="lg:grid-cols-5 lg:gap-x-10 gap-8 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2">
             {callouts.map((callout) => (
               <div
                 key={callout.name}
-                className="rounded-md w-full shadow-2xl   border-black  border relative"
+                className="rounded-md w-full shadow-2xl border-black border relative callout"
               >
-                <div className="overflow-hidden rounded-lg bg-white sm:aspect-h-1 sm:aspect-w-2 lg:aspect-h-1 lg:aspect-w-1 group-hover:opacity-75">
+                <div className="overflow-hidden rounded-lg bg-white sm:aspect-h-1 sm:aspect-w-2 lg:aspect-h-1 lg:aspect-w-1">
                   <img
                     src={callout.imageSrc}
                     alt={callout.imageAlt}
-                    className="   "
+                    className="custom-animation img-hover-effect"
                   />
-                </div>
-                <div className="absolute bottom-0   font text-sm line-clamp-1 lg:text-[1.1rem] tracking-wide pr-4  bg-[#111] opacity-80 left-0 py-3 sm:py-3.5 w-full text-white">
-                  <div className="flex justify-center">
-                    <span className="ml-4 text-center">{callout.name}</span>
+
+                  <div className="absolute bottom-0 font text-sm line-clamp-1 lg:text-[1.1rem] tracking-wide pr-4 bg-[#111] opacity-80 left-0 py-3 sm:py-3.5 w-full text-white">
+                    <div className="flex justify-center">
+                      <span className="ml-4 text-center line-clamp-1">
+                        {callout.name}
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
