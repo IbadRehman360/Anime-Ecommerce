@@ -35,7 +35,6 @@ export default function Example() {
 
     console.log(`Search for: ${searchText}`);
   };
-  console.log(session);
 
   return (
     <div className="bg-white">

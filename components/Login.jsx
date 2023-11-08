@@ -5,6 +5,7 @@ import InputField from "./SignResgister/InputField";
 import GoogleProviders from "./GoogleProviders";
 import { signIn } from "next-auth/react";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Login() {
   const {
@@ -14,6 +15,7 @@ export default function Login() {
     getValues,
   } = useForm();
   const [error, setError] = useState("");
+  const router = useRouter();
 
   const onSubmit = async (data) => {
     try {
@@ -23,12 +25,11 @@ export default function Login() {
         redirect: false,
       });
 
-      if (res.error) {
+      if (res.ok) {
+        router.push("/");
+      } else {
         setError("Invalid Credentials");
-        return;
       }
-
-      router.replace("/");
     } catch (error) {
       console.log(error);
     }

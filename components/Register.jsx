@@ -33,7 +33,6 @@ function Register() {
       });
 
       const { user } = await resUserExists.json();
-      console.log(user);
       if (user) {
         setError("User already exists.");
         return;

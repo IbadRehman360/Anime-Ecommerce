@@ -21,7 +21,6 @@ function GoogleProviders() {
 
     fetchProviders();
   }, []);
-  console.log(providers);
   return (
     <>
       <div className="grid grid-cols-1 gap-4 mt-4 border-2">
