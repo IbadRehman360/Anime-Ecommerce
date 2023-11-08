@@ -3,6 +3,7 @@ import "@styles/globals.css";
 import Nav from "../components/Header";
 import Footer from "../components/Footer";
 import CartOpen from "@components/CartOpen";
+import Providers from "@components/Providers";
 
 export const metadata = {
   title: "SenpaiMerch",
@@ -13,15 +14,16 @@ export const metadata = {
 const RootLayout = ({ children }) => (
   <html lang="en">
     <body>
-      {/* <Provider> */}
-      <div className="main">
-        <div className="gradient" />
-      </div>
+      <Providers>
+        <div className="main">
+          <div className="gradient" />
+        </div>
 
-      <Nav />
-      <main className="app">{children}</main>
-      <Footer />
-      <CartOpen />
+        <Nav />
+        <main className="app">{children}</main>
+        <Footer />
+        <CartOpen />
+      </Providers>
     </body>
   </html>
 );

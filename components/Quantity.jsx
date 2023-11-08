@@ -18,7 +18,7 @@ function Quantity({ border }) {
         onClick={decrementQuantity}
         className={` ${
           border === "true" ? "border" : ""
-        } px-2 p-1   text-gray-600  l  ocus:outline-none`}
+        } px-2 p-1   text-gray-600  focus:outline-none`}
       >
         -
       </button>
@@ -33,7 +33,7 @@ function Quantity({ border }) {
         onClick={incrementQuantity}
         className={` ${
           border === "true" ? "border" : ""
-        } px-2 p-1   text-gray-600  l  ocus:outline-none`}
+        } px-2 p-1   text-gray-600  focus:outline-none`}
       >
         +
       </button>

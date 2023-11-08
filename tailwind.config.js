@@ -5,6 +5,9 @@ module.exports = {
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
+    fontWeight: {
+      'extrabold': 800,
+    },
     extend: {
       fontFamily: {
         satoshi: ['Satoshi', 'sans-serif'],
@@ -23,14 +26,6 @@ module.exports = {
         poppins: ['Poppins', 'sans-serif'],
         ubuntu: ['Ubuntu', 'sans-serif'],
         nunito: ['Nunito', 'sans-serif'],
-      },
-    },
-    fontWeight: {
-      'extrabold': 800,
-    },
-    extend: {
-      fontFamily: {
-        montserrat: ['Montserrat', 'sans-serif'],
       },
     },
   },

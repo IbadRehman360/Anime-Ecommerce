@@ -115,10 +115,10 @@ export default function Cart() {
 
                                 <div className="ml-4 flex flex-1 flex-col">
                                   <div>
-                                    <p className="mt-1 text-[0.7rem] font-lato text-gray-500">
+                                    <p className="mt-1 text-[0.7rem] mb-1 font-lato text-gray-500">
                                       REGULAR SIZE T-SHIRTS
                                     </p>
-                                    <div className="flex justify-between text-sm mt-0.5 mb-1 sm:text-base font-medium text-gray-900">
+                                    <div className="flex justify-between text-[0.89rem] mt-0.5 mb-1 sm:text-base font-medium text-gray-900">
                                       <h3>
                                         <a href={product.href}>
                                           {product.name}
@@ -132,7 +132,7 @@ export default function Cart() {
                                     <div className="flex">
                                       <button
                                         type="button"
-                                        className="font-medium text-indigo-600 hover:text-indigo-500"
+                                        className="font-medium -mt-6 text-indigo-600 hover:text-indigo-500"
                                       >
                                         Remove
                                       </button>
@@ -151,28 +151,28 @@ export default function Cart() {
                         <p>Subtotal</p>
                         <p>$262.00</p>
                       </div>
-                      <p className="mt-0.5 text-sm text-gray-500">
+                      <p className="mt-2 text-xs  sm:text-sm text-gray-500">
                         Shipping and taxes calculated at checkout.
                       </p>
-                      <div className="mt-6">
+                      <div className="mt-4">
                         <div className="flex">
                           <Link
                             href="/cart"
-                            className="flex uppercase text-xs  md:text-sm  items-center    w-2/5 justify-center rounded-md border border-transparent bg-stone-800 opacity-80 hover:bg-stone-200 hover:text-black   font-montserrat py-3.5  md:px-6 md:py-4 font-medium text-white shadow-sm hover-bg-gray-700 ml-2" // Add ml-2 for some horizontal spacing
+                            className="flex uppercase text-[0.7rem]  md:text-sm   items-center    w-2/5 justify-center rounded-md border border-transparent bg-stone-800 opacity-80 hover:bg-stone-200 hover:text-black     font-montserrat py-3    md:px-6 md:py-3.5 font-medium text-white shadow-sm hover-bg-gray-700 " // Add ml-2 for some horizontal spacing
                           >
                             Your Cart
                           </Link>
 
                           <Link
                             href="/checkout"
-                            className="flex uppercase text-xs  md:text-sm  items-center    w-3/5 justify-center rounded-md border border-transparent bg-stone-800 opacity-80 hover:bg-stone-200 hover:text-black   font-montserrat py-3.5  md:px-6 md:py-4 font-medium text-white shadow-sm hover-bg-gray-700 ml-2" // Add ml-2 for some horizontal spacing
+                            className="flex uppercase text-[0.7rem]  md:text-sm   items-center    w-3/5 justify-center rounded-md border border-transparent bg-stone-800 opacity-80 hover:bg-stone-200 hover:text-black    font-montserrat py-3   md:px-6 md:py-3.5 font-medium text-white shadow-sm hover-bg-gray-700 ml-2" // Add ml-2 for some horizontal spacing
                           >
                             Checkout order
                           </Link>
                         </div>
                       </div>
 
-                      <div className="mt-6 flex justify-center text-center   text-gray-500">
+                      <div className="mt-3 flex justify-center text-center   text-gray-500">
                         <p className="mr-3">or</p>
                         <button
                           type="button"

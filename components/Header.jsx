@@ -2,7 +2,7 @@
 import { BsShop, BsBag, BsGrid, BsPeople } from "react-icons/bs";
 
 import { Fragment, useState } from "react";
-import { Dialog, Popover, Tab, Transition } from "@headlessui/react";
+import { Dialog, Tab, Transition } from "@headlessui/react";
 import {
   Bars3Icon,
   MagnifyingGlassIcon,
@@ -14,138 +14,8 @@ import Link from "next/link";
 import Cart from "./Cart";
 import Clintly from "./Home/Clintly";
 import SearchMenu from "./Home/SearchMenu";
-import { FaUser } from "react-icons/fa";
-const navigation = {
-  categories: [
-    {
-      id: "category",
-      name: "SHOP ALL",
-      icon: <BsShop size={20} />,
-      featured: [
-        {
-          name: "New Arrivals",
-          href: "#",
-          imageSrc:
-            "https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg",
-          imageAlt:
-            "Models sitting back to back, wearing Basic Tee in black and bone.",
-        },
-        {
-          name: "Basic Tees",
-          href: "#",
-          imageSrc:
-            "https://tailwindui.com/img/ecommerce-images/mega-menu-category-02.jpg",
-          imageAlt:
-            "Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees.",
-        },
-      ],
-      sections: [
-        {
-          id: "clothing",
-          name: "Clothing",
-          items: [
-            { name: "Tops", href: "#" },
-            { name: "Dresses", href: "#" },
-            { name: "Pants", href: "#" },
-            { name: "Denim", href: "#" },
-            { name: "Sweaters", href: "#" },
-            { name: "T-Shirts", href: "#" },
-            { name: "Jackets", href: "#" },
-            { name: "Activewear", href: "#" },
-            { name: "Browse All", href: "#" },
-          ],
-        },
-        {
-          id: "accessories",
-          name: "Accessories",
-          items: [
-            { name: "Watches", href: "#" },
-            { name: "Wallets", href: "#" },
-            { name: "Bags", href: "#" },
-            { name: "Sunglasses", href: "#" },
-            { name: "Hats", href: "#" },
-            { name: "Belts", href: "#" },
-          ],
-        },
-        {
-          id: "brands",
-          name: "Brands",
-          items: [
-            { name: "Full Nelson", href: "#" },
-            { name: "My Way", href: "#" },
-            { name: "Re-Arranged", href: "#" },
-            { name: "Counterfeit", href: "#" },
-            { name: "Significant Other", href: "#" },
-          ],
-        },
-      ],
-    },
-    {
-      id: "New Arrivals",
-      name: "SHOP BY PRODUCT",
-      icon: <BsBag size={20} />,
-      featured: [
-        {
-          name: "New Arrivals",
-          href: "#",
-          imageSrc:
-            "https://tailwindui.com/img/ecommerce-images/product-page-04-detail-product-shot-01.jpg",
-          imageAlt:
-            "Drawstring top with elastic loop closure and textured interior padding.",
-        },
-        {
-          name: "Artwork Tees",
-          href: "#",
-          imageSrc:
-            "https://tailwindui.com/img/ecommerce-images/category-page-02-image-card-06.jpg",
-          imageAlt:
-            "Three shirts in gray, white, and blue arranged on table with same line drawing of hands and shapes overlapping on front of shirt.",
-        },
-      ],
-      sections: [
-        {
-          id: "clothing",
-          name: "Clothing",
-          items: [
-            { name: "Tops", href: "#" },
-            { name: "Pants", href: "#" },
-            { name: "Sweaters", href: "#" },
-            { name: "T-Shirts", href: "#" },
-            { name: "Jackets", href: "#" },
-            { name: "Activewear", href: "#" },
-            { name: "Browse All", href: "#" },
-          ],
-        },
-        {
-          id: "accessories",
-          name: "Accessories",
-          items: [
-            { name: "Watches", href: "#" },
-            { name: "Wallets", href: "#" },
-            { name: "Bags", href: "#" },
-            { name: "Sunglasses", href: "#" },
-            { name: "Hats", href: "#" },
-            { name: "Belts", href: "#" },
-          ],
-        },
-        {
-          id: "brands",
-          name: "Brands",
-          items: [
-            { name: "Re-Arranged", href: "#" },
-            { name: "Counterfeit", href: "#" },
-            { name: "Full Nelson", href: "#" },
-            { name: "My Way", href: "#" },
-          ],
-        },
-      ],
-    },
-  ],
-  pages: [
-    { name: "SHOP BY ANIME", href: "#", icon: <BsPeople size={20} /> },
-    { name: "ACCESSORIES", href: "#", icon: <BsGrid size={20} /> },
-  ],
-};
+import { FaSignOutAlt, FaUser } from "react-icons/fa";
+import { getProviders, getSession, signOut, useSession } from "next-auth/react";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -155,7 +25,7 @@ export default function Example() {
   const [open, setOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [searchText, setSearchText] = useState("What are you looking for?");
-
+  const { data: session } = useSession();
   const handleSearchTextChange = (e) => {
     setSearchText(e.target.value);
   };
@@ -165,6 +35,7 @@ export default function Example() {
 
     console.log(`Search for: ${searchText}`);
   };
+  console.log(session);
 
   return (
     <div className="bg-white">
@@ -308,21 +179,36 @@ export default function Example() {
                     </div>
                   ))}
                 </div>
-
-                <div className="space-y-6 border-t border-gray-200 px-4 py-6">
-                  <div className="     lg:items-center font-satoshi tracking-wide lg:justify-end lg:space-x-6">
-                    <Link
-                      href="/login"
-                      className="text-sm  text-gray-700 hover:text-gray-800 flex items-center"
-                    >
-                      <FaUser className="mr-4" />
-                      <span className=" text-gray-600 tracking-wide">
-                        Account
-                      </span>{" "}
-                    </Link>
-                    <span className="h-6 w-px bg-gray-200" aria-hidden="true" />
+                {!session ? (
+                  <div className="space-y-6 border-t border-gray-200 px-4 py-6">
+                    <div className="     lg:items-center font-satoshi tracking-wide lg:justify-end lg:space-x-6">
+                      <Link
+                        href="/login"
+                        className="text-sm  text-gray-700 hover:text-gray-800 flex items-center"
+                      >
+                        <FaUser className="mr-4" />
+                        <span className=" text-gray-600 tracking-wide">
+                          Account
+                        </span>{" "}
+                      </Link>
+                      <span
+                        className="h-6 w-px bg-gray-200"
+                        aria-hidden="true"
+                      />
+                    </div>
                   </div>
-                </div>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setToggleDropdown(false);
+                      signOut();
+                    }}
+                    className="mt-5 w-full black_btn"
+                  >
+                    Sign Out
+                  </button>
+                )}
 
                 <div className="border-t border-gray-200 px-4 py-6">
                   <Link href="#" className="-m-2 flex items-center p-2">
@@ -387,7 +273,6 @@ export default function Example() {
                   </Link>
                 </div>
                 <div className="flex-grow" />
-
                 <div className=" mr-4 hidden  lg:ml-8 sm:flex">
                   <Link
                     href="#"
@@ -404,7 +289,6 @@ export default function Example() {
                     <span className="sr-only">, change currency</span>
                   </Link>
                 </div>
-
                 {/* Search */}
                 <div className="flex lg:hidden lg:ml-8">
                   <Link
@@ -418,18 +302,28 @@ export default function Example() {
                     />
                   </Link>
                 </div>
-                <div className="hidden lg:flex border-l pl-5 lg:items-center font-inter tracking-wide lg:justify-end lg:space-x-6">
-                  <Link
-                    href="/login"
-                    className="text-sm  text-gray-700 hover:text-gray-800 flex items-center"
+                {!session ? (
+                  <div className="hidden lg:flex border-l pl-5 lg:items-center font-inter tracking-wide lg:justify-end lg:space-x-6">
+                    <Link
+                      href="/login"
+                      className="text-sm  text-gray-700 hover:text-gray-800 flex items-center"
+                    >
+                      <FaUser className="mr-4" />
+                      <span className=" text-gray-600 tracking-wide">
+                        Account
+                      </span>{" "}
+                    </Link>
+                    <span className="h-6 w-px bg-gray-200" aria-hidden="true" />
+                  </div>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={() => signOut()}
+                    className="hidden lg:flex border-l text-sm     uppercase pl-5 lg:items-center        font-roboto hover:text-gray-600 tracking-wide lg:justify-end lg:space-x-6"
                   >
-                    <FaUser className="mr-4" />
-                    <span className=" text-gray-600 tracking-wide">
-                      Account
-                    </span>{" "}
-                  </Link>
-                  <span className="h-6 w-px bg-gray-200" aria-hidden="true" />
-                </div>
+                    <FaSignOutAlt className="mr-2" /> logout
+                  </button>
+                )}
                 <div className="ml-4 flow-root lg:ml-8">
                   <Link
                     href={"/cart"}
@@ -455,3 +349,134 @@ export default function Example() {
     </div>
   );
 }
+var navigation = {
+  categories: [
+    {
+      id: "category",
+      name: "SHOP ALL",
+      icon: <BsShop size={20} />,
+      featured: [
+        {
+          name: "New Arrivals",
+          href: "#",
+          imageSrc:
+            "https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg",
+          imageAlt:
+            "Models sitting back to back, wearing Basic Tee in black and bone.",
+        },
+        {
+          name: "Basic Tees",
+          href: "#",
+          imageSrc:
+            "https://tailwindui.com/img/ecommerce-images/mega-menu-category-02.jpg",
+          imageAlt:
+            "Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees.",
+        },
+      ],
+      sections: [
+        {
+          id: "clothing",
+          name: "Clothing",
+          items: [
+            { name: "Tops", href: "#" },
+            { name: "Dresses", href: "#" },
+            { name: "Pants", href: "#" },
+            { name: "Denim", href: "#" },
+            { name: "Sweaters", href: "#" },
+            { name: "T-Shirts", href: "#" },
+            { name: "Jackets", href: "#" },
+            { name: "Activewear", href: "#" },
+            { name: "Browse All", href: "#" },
+          ],
+        },
+        {
+          id: "accessories",
+          name: "Accessories",
+          items: [
+            { name: "Watches", href: "#" },
+            { name: "Wallets", href: "#" },
+            { name: "Bags", href: "#" },
+            { name: "Sunglasses", href: "#" },
+            { name: "Hats", href: "#" },
+            { name: "Belts", href: "#" },
+          ],
+        },
+        {
+          id: "brands",
+          name: "Brands",
+          items: [
+            { name: "Full Nelson", href: "#" },
+            { name: "My Way", href: "#" },
+            { name: "Re-Arranged", href: "#" },
+            { name: "Counterfeit", href: "#" },
+            { name: "Significant Other", href: "#" },
+          ],
+        },
+      ],
+    },
+    {
+      id: "New Arrivals",
+      name: "SHOP BY PRODUCT",
+      icon: <BsBag size={20} />,
+      featured: [
+        {
+          name: "New Arrivals",
+          href: "#",
+          imageSrc:
+            "https://tailwindui.com/img/ecommerce-images/product-page-04-detail-product-shot-01.jpg",
+          imageAlt:
+            "Drawstring top with elastic loop closure and textured interior padding.",
+        },
+        {
+          name: "Artwork Tees",
+          href: "#",
+          imageSrc:
+            "https://tailwindui.com/img/ecommerce-images/category-page-02-image-card-06.jpg",
+          imageAlt:
+            "Three shirts in gray, white, and blue arranged on table with same line drawing of hands and shapes overlapping on front of shirt.",
+        },
+      ],
+      sections: [
+        {
+          id: "clothing",
+          name: "Clothing",
+          items: [
+            { name: "Tops", href: "#" },
+            { name: "Pants", href: "#" },
+            { name: "Sweaters", href: "#" },
+            { name: "T-Shirts", href: "#" },
+            { name: "Jackets", href: "#" },
+            { name: "Activewear", href: "#" },
+            { name: "Browse All", href: "#" },
+          ],
+        },
+        {
+          id: "accessories",
+          name: "Accessories",
+          items: [
+            { name: "Watches", href: "#" },
+            { name: "Wallets", href: "#" },
+            { name: "Bags", href: "#" },
+            { name: "Sunglasses", href: "#" },
+            { name: "Hats", href: "#" },
+            { name: "Belts", href: "#" },
+          ],
+        },
+        {
+          id: "brands",
+          name: "Brands",
+          items: [
+            { name: "Re-Arranged", href: "#" },
+            { name: "Counterfeit", href: "#" },
+            { name: "Full Nelson", href: "#" },
+            { name: "My Way", href: "#" },
+          ],
+        },
+      ],
+    },
+  ],
+  pages: [
+    { name: "SHOP BY ANIME", href: "#", icon: <BsPeople size={20} /> },
+    { name: "ACCESSORIES", href: "#", icon: <BsGrid size={20} /> },
+  ],
+};
