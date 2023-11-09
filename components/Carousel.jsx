@@ -9,7 +9,6 @@ function Carousel({ products, Feature1, Feature2 }) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [displayedProducts1, setDisplayedProducts1] = useState([]);
   const [displayedProducts2, setDisplayedProducts2] = useState([]);
-
   function calculateSliceEnd() {
     const windowWidth = window.innerWidth;
     if (windowWidth >= 1800) {
@@ -24,6 +23,7 @@ function Carousel({ products, Feature1, Feature2 }) {
       return 5;
     }
   }
+
   useEffect(() => {
     function updateSliceEnd() {
       setSliceEnd(calculateSliceEnd());

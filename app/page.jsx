@@ -10,7 +10,6 @@ import React from "react";
 
 const Home = () => (
   <section className="relative w-full main flex-center flex-col">
-    {/* Your existing content */}
     <HeroCarousel />
     <div className="mx-auto md:max-w-[100rem]">
       <LatestDrop />

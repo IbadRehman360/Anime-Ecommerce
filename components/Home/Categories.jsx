@@ -1,3 +1,5 @@
+"use client";
+
 import { FaArrowRight, FaOptinMonster } from "react-icons/fa";
 import Link from "next/link";
 import { FaShoppingBag } from "react-icons/fa";
@@ -21,65 +23,108 @@ const callouts = [
     href: "#",
   },
   {
-    name: "Jujustsu Kaisen",
+    name: "Jujustsu Kaisen1",
     description: "Daily commute essentials",
     imageSrc: "/assets/Categories/3.jpg",
     imageAlt: "Collection of four insulated travel bottles on wooden shelf.",
     href: "#",
   },
   {
-    name: "One Piece",
+    name: "One Piece1321",
     description: "Daily commute essentials",
     imageSrc: "/assets/Categories/4.jpg",
     imageAlt: "Collection of four insulated travel bottles on wooden shelf.",
     href: "#",
   },
   {
-    name: "Jujustsu Kaisen",
+    name: "Jujustsu Kaisen2321",
     description: "Daily commute essentials",
     imageSrc: "/assets/Categories/5.jpg",
     imageAlt: "Collection of four insulated travel bottles on wooden shelf.",
     href: "#",
   },
   {
-    name: "One Piece",
+    name: "One Piece3122",
     description: "Daily commute essentials",
     imageSrc: "/assets/Categories/6.jpg",
     imageAlt: "Collection of four insulated travel bottles on wooden shelf.",
     href: "#",
   },
   {
-    name: "Jujustsu Kaisen",
+    name: "Jujustsu Kaisen53",
     description: "Daily commute essentials",
     imageSrc: "/assets/Categories/7.jpg",
     imageAlt: "Collection of four insulated travel bottles on wooden shelf.",
     href: "#",
   },
   {
-    name: "One Piece",
+    name: "One Piece35",
     description: "Daily commute essentials",
     imageSrc: "/assets/Categories/8.jpg",
     imageAlt: "Collection of four insulated travel bottles on wooden shelf.",
     href: "#",
   },
   {
-    name: "One Piece",
+    name: "One Piece7",
     description: "Daily commute essentials",
     imageSrc: "/assets/Categories/9.jpg",
     imageAlt: "Collection of four insulated travel bottles on wooden shelf.",
     href: "#",
   },
   {
-    name: "Jujustsu Kaisen",
+    name: "Jujustsu Kaisen9",
     description: "Daily commute essentials",
     imageSrc: "/assets/Categories/10.jpg",
     imageAlt: "Collection of four insulated travel bottles on wooden shelf.",
     href: "#",
   },
 ];
+
 export default function Example() {
+  // const products = [
+  //   "Bracelet",
+  //   "Necklace",
+  //   "Clothes",
+  //   "Hoodie",
+  //   "T-shirt",
+  //   "Keychain",
+  //   "Earrings",
+  //   "Ring",
+  //   "Wallet",
+  //   "Figurines",
+  //   "Manga",
+  //   "Stickers and Decals",
+  //   "Cosplay Costumes",
+  //   "Plush Toys",
+  //   "Accessories",
+  // ];
+  // const handleCreateProduct = async () => {
+  //   try {
+  //     for (const anime of products) {
+  //       const response = await fetch("/api/category", {
+  //         method: "POST",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //         body: JSON.stringify({ title: anime }),
+  //       });
+
+  //       if (response.status === 201) {
+  //         console.log(`Added anime: ${anime}`);
+  //       } else {
+  //         console.error(`Failed to add anime: ${anime}`);
+  //       }
+  //     }
+  //   } catch (error) {
+  //     console.error("An error occurred while adding anime", error);
+  //   }
+  // };
+
   return (
     <div className="      pt-10 pb-8 sm:pt-12 sm:pb-8 lg:pt-16 lg:pb-16">
+      {/* <div className="mt-2 bg-black">
+        <button onClick={handleCreateProduct}>Create New Product</button>
+      </div> */}
       <div className="">
         <div className="border-gray-200">
           <div className="text-center mb-4  ">

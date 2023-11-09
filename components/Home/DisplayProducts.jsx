@@ -16,7 +16,7 @@ const ProductCard = ({ products }) => {
           onMouseLeave={() => setIsHovered(false)}
         >
           <img
-            src={products.imageSrc}
+            src={products.image_url}
             alt={products.imageAlt}
             className="w-full h-full object-center object-cover object-contain transition-transform transform hover:scale-105"
           />
@@ -37,10 +37,10 @@ const ProductCard = ({ products }) => {
             Attack on Titans Bracelet
           </h2>
           <p className="text-sm lg:text-[1.1rem] font-medium mt-1 lg:mt-2">
-            {products.discountPrice ? (
+            {products.discount_price ? (
               <span>
                 <span className="text-red-500">
-                  Rs {products.discountPrice.toFixed(2)}
+                  Rs {products.discount_price.toFixed(2)}
                 </span>
                 <del className="text-gray-600 ml-3">
                   Rs {products.price.toFixed(2)}

@@ -1,6 +1,6 @@
 const products = [
     {
-        id: 1,
+        id: 1321321,
         name: "Basic Tee",
         href: "#",
         imageSrc: "assets/latest/1.webp",
@@ -10,7 +10,7 @@ const products = [
         discountPrice: 200.0,
     },
     {
-        id: 2,
+        id: 24213213,
         name: "Basic Tee",
         href: "#",
         imageSrc: "assets/latest/2.webp",
@@ -19,7 +19,7 @@ const products = [
         color: "Black",
     },
     {
-        id: 1,
+        id: 1213213,
         name: "Basic Tee",
         href: "#",
         imageSrc: "assets/latest/2.jpg",
@@ -29,7 +29,7 @@ const products = [
         discountPrice: 120.0,
     },
     {
-        id: 4,
+        id: 4321321,
         name: "Basic Tee",
         href: "#",
         imageSrc: "assets/latest/3.jpg",
@@ -38,7 +38,7 @@ const products = [
         color: "Black",
     },
     {
-        id: 5,
+        id: 53213213,
         name: "Basic Tee",
         href: "#",
         imageSrc: "assets/latest/6.jpg",
@@ -48,7 +48,7 @@ const products = [
         color: "Black",
     },
     {
-        id: 5,
+        id: 5421321321,
         name: "Basic Tee",
         href: "#",
         imageSrc: "assets/latest/5.jpg",
@@ -59,7 +59,7 @@ const products = [
         color: "Black",
     },
     {
-        id: 5,
+        id: 54214123213,
         name: "Basic Tee",
         href: "#",
         imageSrc: "assets/latest/6.jpg",
@@ -68,7 +68,7 @@ const products = [
         color: "Black",
     },
     {
-        id: 5,
+        id: 5421432213123,
         name: "Basic Tee",
         href: "#",
         imageSrc: "assets/latest/9.jpg",
@@ -79,7 +79,7 @@ const products = [
         color: "Black",
     },
     {
-        id: 5,
+        id: 532145213213,
         name: "Basic Tee",
         href: "#",
         imageSrc: "assets/latest/8.jpg",
@@ -89,7 +89,7 @@ const products = [
         color: "Black",
     },
     {
-        id: 5,
+        id: 54213124213,
         name: "Basic Tee",
         href: "#",
         imageSrc: "assets/latest/9.jpg",
@@ -98,7 +98,7 @@ const products = [
         color: "Black",
     },
     {
-        id: 5,
+        id: 5400521451234231,
         name: "Basic Tee",
         href: "#",
         imageSrc: "assets/latest/3.jpg",
@@ -109,7 +109,7 @@ const products = [
         color: "Black",
     },
     {
-        id: 5,
+        id: 52412291492482,
         name: "Basic Tee",
         href: "#",
         imageSrc: "assets/latest/2.jpg",

@@ -1,7 +1,7 @@
 import { Schema, model, models } from "mongoose";
 
 const animeCategorySchema = new Schema({
-    name: {
+    title: {
         type: String,
         required: true,
     },
