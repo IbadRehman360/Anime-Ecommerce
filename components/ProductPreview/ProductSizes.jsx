@@ -1,4 +1,6 @@
-import { classNames } from "@app/products/page";
+"use client";
+
+import { classNames } from "@app/product/[id]/page";
 import { RadioGroup } from "@headlessui/react";
 import { useState } from "react";
 

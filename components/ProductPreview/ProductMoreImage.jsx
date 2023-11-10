@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from "react";
 
 export default function ProductMoreImage() {
@@ -18,7 +20,7 @@ export default function ProductMoreImage() {
       {smallImages.map((src, index) => (
         <img
           key={index}
-          src={src}
+          src={"/assets/latest/2.jpg"}
           alt={`Small Image ${index}`}
           onClick={() => handleImageClick(index)}
           className={`lg:w-24 h-auto w-12 border-2 rounded-md border-black cursor-pointer ${

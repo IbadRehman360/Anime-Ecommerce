@@ -1,4 +1,4 @@
-import { classNames } from "@app/products/page";
+import { classNames } from "@app/product/[id]/page";
 import { StarIcon } from "@heroicons/react/20/solid";
 
 function ProductInfo({ product, reviews }) {

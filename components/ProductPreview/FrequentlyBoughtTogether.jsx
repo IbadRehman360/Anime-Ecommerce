@@ -1,6 +1,6 @@
 import DisplayProducts from "@components/Home/DisplayProducts";
 import ProductYouMayLike from "./ProductYouMayLike";
-import FakeProduct from "@data/fakeProduct";
+import FakeProduct from "@components/data/fakeProduct";
 
 const FrequentlyBoughtTogether = () => {
   const smallImages = [

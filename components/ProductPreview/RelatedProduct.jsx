@@ -1,4 +1,6 @@
-import FakeProduct from "@data/fakeProduct";
+"use client";
+
+import FakeProduct from "@components/data/fakeProduct";
 import { useState } from "react";
 import { FaShoppingCart } from "react-icons/fa";
 import { TiShoppingCart } from "react-icons/ti";

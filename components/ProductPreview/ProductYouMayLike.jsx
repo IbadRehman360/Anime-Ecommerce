@@ -1,5 +1,5 @@
 import Carousel from "@components/Carousel";
-import FakeProduct from "@data/fakeProduct";
+import FakeProduct from "@components/data/fakeProduct";
 import { MdTrendingUp } from "react-icons/md";
 
 function ProductYouMayLike() {

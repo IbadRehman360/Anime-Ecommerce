@@ -44,7 +44,7 @@ function Carousel({ products, Feature1, Feature2 }) {
       setDisplayedProducts1(products.slice(0, sliceEnd1));
       setDisplayedProducts2(products.slice(sliceEnd1, sliceEnd2));
     }
-  }, [sliceEnd]);
+  }, [sliceEnd, products]);
 
   const handlePrevPage = () => {
     if (currentSlide > 0) {

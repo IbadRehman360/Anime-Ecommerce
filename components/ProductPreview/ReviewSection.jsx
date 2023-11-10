@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from "react";
 import ReviewForm from "./ReviewForm";
 import Star from "./Star";

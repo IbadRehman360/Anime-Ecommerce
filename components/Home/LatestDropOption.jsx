@@ -13,23 +13,21 @@ function LatestDropOption({ selectedCategory, handleCategorySelect }) {
     <div className="flex justify-center md:pt-6 pt-4 text-[0.8rem] md:text-[0.9rem] lg:mt-0 scroll-hidden">
       <div className="flex overflow-x-auto gap-6 border-gray-300 border-b whitespace-nowrap">
         {options.map((option, index) => (
-          <div
+          <button
             key={index}
             className={`group flex flex-col pb-4 items-center mx-3 relative ${
-              selectedCategory === categoryMapping[option]
-                ? "border-b-2 border-black border-solid"
-                : "none"
+              selectedCategory === categoryMapping[option] &&
+              "border-b-2 border-black border-solid"
             }`}
             onClick={() => handleCategorySelect(categoryMapping[option])}
           >
             <span className="font-opensans tracking-wider opacity-95">
               {option}
             </span>
-          </div>
+          </button>
         ))}
       </div>
     </div>
   );
 }
-
 export default LatestDropOption;
