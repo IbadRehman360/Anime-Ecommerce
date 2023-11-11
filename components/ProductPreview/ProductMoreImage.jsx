@@ -1,31 +1,13 @@
-"use client";
-
-import React, { useState } from "react";
-
-export default function ProductMoreImage() {
-  const [currentImage, setCurrentImage] = useState(0);
-
-  const smallImages = [
-    "assets/latest/2.jpg",
-    "assets/latest/3.jpg",
-    "assets/latest/8.jpg",
-  ];
-
-  const handleImageClick = (index) => {
-    setCurrentImage(index);
-  };
-
+export default function ProductMoreImage({ product, handleImageClick }) {
   return (
     <div className="flex space-x-3 mt-4   ">
-      {smallImages.map((src, index) => (
+      {product.images.map((src, index) => (
         <img
           key={index}
-          src={"/assets/latest/2.jpg"}
+          src={src}
           alt={`Small Image ${index}`}
-          onClick={() => handleImageClick(index)}
-          className={`lg:w-24 h-auto w-12 border-2 rounded-md border-black cursor-pointer ${
-            index === currentImage ? "border-white" : ""
-          }`}
+          onClick={() => handleImageClick(src)}
+          className={`lg:w-20 lg:h-auto  h-8 lg:w-20 border-2 rounded-md border-black cursor-pointer  `}
         />
       ))}
     </div>

@@ -6,13 +6,10 @@ import { useState } from "react";
 
 function ProductColor({ product }) {
   const [selectedColor, setSelectedColor] = useState(product.colors[0]);
-  const [selectedSize, setSelectedSize] = useState(product.sizes[2]);
 
   return (
     <div>
-      <h3 className="text-sm  font-semibold text-gray-700   font-inter">
-        Color
-      </h3>
+      <h3 className="text-sm font-semibold text-gray-700 font-inter">Color</h3>
 
       <RadioGroup
         value={selectedColor}
@@ -23,24 +20,25 @@ function ProductColor({ product }) {
         <div className="flex items-center space-x-3">
           {product.colors.map((color) => (
             <RadioGroup.Option
-              key={color.name}
+              key={color}
               value={color}
               className={({ active, checked }) =>
                 classNames(
-                  color.selectedClass,
                   active && checked ? "ring ring-offset-1" : "",
                   !active && checked ? "ring-2" : "",
-                  "relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 focus:outline-none"
+                  `relative -m-0.5 flex cursor-pointer ${
+                    color === "black" ? "bg-black" : `bg-${color}-500`
+                  } items-center justify-center rounded-full p-0.5 focus:outline-none`
                 )
               }
             >
               <RadioGroup.Label as="span" className="sr-only">
-                {color.name}
+                {color}
               </RadioGroup.Label>
               <span
                 aria-hidden="true"
                 className={classNames(
-                  color.class,
+                  color === "black" ? "bg-black" : `bg-${color}-500`,
                   "h-8 w-8 rounded-full border border-black border-opacity-10"
                 )}
               />

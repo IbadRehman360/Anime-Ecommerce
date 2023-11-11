@@ -1,8 +1,10 @@
+"use client";
 import Carousel from "@components/Carousel";
 import FakeProduct from "@components/data/fakeProduct";
 import { MdTrendingUp } from "react-icons/md";
 
-function ProductYouMayLike() {
+function ProductYouMayLike({ randomSuggestion }) {
+  console.log(randomSuggestion);
   return (
     <div className="  mx-auto max-w-2xl   md:px-6 px-2 py-2  pt-8 pb-6 sm:pt-12 sm:pb-8 lg:pt-16 lg:pb-10 border-t  md:max-w-[110rem] w-full  ">
       <div className="text-center  ">
@@ -13,7 +15,7 @@ function ProductYouMayLike() {
         </h2>
       </div>
       <Carousel
-        products={FakeProduct}
+        products={randomSuggestion}
         Feature1={"FeatureProductSlide3"}
         Feature2={"FeatureProductSlider4"}
       />

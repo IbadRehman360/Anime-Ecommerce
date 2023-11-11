@@ -2,7 +2,21 @@
 
 import { useState } from "react";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa";
+const shippingDelivery = [
+  "All orders are processed within 12-24 hours.",
+  "Estimated delivery time:",
+  "For metros: 1-4 days.",
+  "For the rest of India: 5-8 days.",
+  "(Please note: All the COD orders may take up to 24-48 hours to be processed.)",
+];
 
+const returnAndExchange = [
+  "We accept returns and exchanges within 7 days of the original purchase.",
+  "Items must be in new and unused condition, with all original tags and labels attached.",
+  "To return an item, please contact our customer service team at support@example.com.",
+  "Refunds will be processed within 5-7 business days after we receive the returned item.",
+  "Please note: Return shipping costs are the responsibility of the customer, except in cases of damaged or defective items.",
+];
 export default function ProductDetails({ product }) {
   const [sections, setSections] = useState({
     description: true,
@@ -19,14 +33,9 @@ export default function ProductDetails({ product }) {
         section === "shippingInfo" ? !prevSections.shippingInfo : false,
     }));
   };
+
   const renderSection = (title, content, sectionName) => (
-    <div
-      className={`${
-        sections.description || sections.details || sections.shippingInfo
-          ? "lg:mt-28 text-900"
-          : ""
-      }`}
-    >
+    <div>
       <div className="border lg:border-none border-gray-300 py-5">
         <div className="flex items-center xl:mx-4 mx-2 py-1   justify-between">
           <h4
@@ -49,7 +58,7 @@ export default function ProductDetails({ product }) {
       </div>
       {sections[sectionName] && (
         <div className="border-t">
-          <p className="text-gray-900 px-3 lg:hidden leading-6 font-satoshi text-[0.8rem] py-6 tracking-wider">
+          <p className="text-gray-900 px-3 lg:hidden le ding-6 font-satoshi text-[0.8rem] py-6 tracking-wider">
             {content}
           </p>
         </div>
@@ -58,36 +67,48 @@ export default function ProductDetails({ product }) {
   );
 
   return (
-    <div className="  lg:-mt-36">
-      <div className="pt-10 lg:pt-0 lg:flex lg:gap-7 border-b">
+    <div className=" mt-10  md:mt-7  ">
+      <div className="    lg:flex lg:gap-7 border-b">
         {renderSection("DESCRIPTION", product.description, "description")}
-        {renderSection("SHIPPING + RETURN", product.details, "details")}
+        {renderSection(
+          "SHIPPING + RETURN",
+          returnAndExchange.join(" "),
+          "details"
+        )}
         {renderSection(
           "SHIPPING AND DELIVERY",
-          product.shipping,
+          shippingDelivery.join(" "),
           "shippingInfo"
         )}
       </div>
-
       <div className=" hidden lg:block">
         {sections.description && (
           <div className="border-t">
-            <p className="text-gray-900 font-poppins lg:leading-6  lg:text-sm px-3 leading-6   text-[0.8rem] py-6 tracking-wider">
+            <p
+              className="text-gray-900 font-poppins lg:leading-6 lg:text-sm px-3 leading-6 text-[0.8rem] py-6 tracking-wider"
+              style={{ whiteSpace: "pre-line" }}
+            >
               {product.description}
             </p>
           </div>
         )}
         {sections.details && (
           <div className="border-t">
-            <p className="text-gray-900 font-poppins lg:leading-6  lg:text-sm px-3 leading-6   text-[0.8rem] py-6 tracking-wider">
-              {product.details}
+            <p
+              className="text-gray-900 font-poppins lg:leading-6 lg:text-sm px-3 leading-6 text-[0.8rem] py-6 tracking-wider"
+              style={{ whiteSpace: "pre-line" }}
+            >
+              {returnAndExchange.join("\n")}
             </p>
           </div>
         )}
         {sections.shippingInfo && (
           <div className="border-t">
-            <p className="text-gray-900 font-poppins lg:leading-6  lg:text-sm px-3 leading-6   text-[0.8rem] py-6 tracking-wider">
-              {product.shipping}
+            <p
+              className="text-gray-900 font-poppins lg:leading-6 lg:text-sm px-3 leading-6 text-[0.8rem] py-6 tracking-wider"
+              style={{ whiteSpace: "pre-line" }}
+            >
+              {shippingDelivery.join("\n")}
             </p>
           </div>
         )}

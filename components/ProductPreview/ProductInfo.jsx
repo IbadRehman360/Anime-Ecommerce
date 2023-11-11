@@ -5,8 +5,8 @@ function ProductInfo({ product, reviews }) {
   return (
     <div>
       <div className="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
-        <h1 className="text-xl mt-5 mb-2 lg:mb-5  lg:text-3xl font-montserrat  text-gray-800 sm:text-3xl">
-          {product.name}
+        <h1 className="text-xl   mb-2 lg:mb-5  lg:text-3xl font-montserrat  text-gray-800 sm:text-3xl">
+          {product.title}
         </h1>
       </div>
 
@@ -19,10 +19,10 @@ function ProductInfo({ product, reviews }) {
           </div>
           <div className="font-satoshi line-through tracking-wider lg:flex hidden lg:text-[1rem] text-sm text-gray-500">
             <span className="tracking-normal mr-1"> Rs.</span>
-            {product.discountedPrice}.00
+            {product.discount_price}.00
           </div>
 
-          <div className="flex items-center -mt-[6px] lg:mr-6 ml-auto">
+          {/* <div className="flex items-center -mt-[6px] lg:mr-6 ml-auto">
             <div className="flex mb-[1px] justify-end items-end">
               {[0, 1, 2, 3, 4].map((rating) => (
                 <StarIcon
@@ -44,13 +44,13 @@ function ProductInfo({ product, reviews }) {
             >
               {reviews.totalCount} reviews
             </a>
-          </div>
+          </div> */}
         </div>
       </div>
 
       <div className="  font-satoshi lg:hidden flex line-through tracking-wider lg:text-[1.2rem]  text-sm     text-gray-500">
         <span className="tracking-normal    mr-1"> Rs.</span>
-        {product.discountedPrice}.00
+        {product.discount_price}.00
       </div>
     </div>
   );
