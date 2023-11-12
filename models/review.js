@@ -1,4 +1,5 @@
 import { Schema, model, models } from "mongoose";
+import Product from "./product";
 
 const reviewSchema = new Schema({
     user_id: {
@@ -18,6 +19,7 @@ const reviewSchema = new Schema({
         type: String,
     },
 }, { timestamps: true });
+
 
 const Review = models.Review || model('Review', reviewSchema);
 

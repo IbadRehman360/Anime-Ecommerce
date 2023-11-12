@@ -1,6 +1,7 @@
-import Product from "@models/product";
 import Category from "@models/category";
+import Product from "@models/product";
 import { connectToDB } from "@utils/database";
+import Review from "@models/review";
 
 export const GET = async (request, response) => {
   try {
@@ -33,11 +34,13 @@ export const GET = async (request, response) => {
       },
       { $unwind: "$category" },
     ]).exec();
+    const reviews = await Review.find({ product_id: id }).populate("user_id");
 
     const responseData = {
       requestedProduct,
       productsWithSameCategory,
       randomProducts,
+      reviews,
     };
 
     return new Response(JSON.stringify(responseData), { status: 200 });

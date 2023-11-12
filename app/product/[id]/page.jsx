@@ -22,6 +22,8 @@ export default async function Example({ params: { id } }) {
   const product = data.requestedProduct;
   const suggestions = data.productsWithSameCategory;
   const randomSuggestion = data.randomProducts;
+  const reviews = data.reviews;
+
   return (
     <div className="lg:max-w-[90rem]  lg:mx-auto">
       <div className="mt-3 lg:mb-10 px-3 lg:flex hidden">
@@ -35,7 +37,7 @@ export default async function Example({ params: { id } }) {
             <div className="mt-5 mb-4 lg:hidden flex">
               <BreadCrumbs product={product} />
             </div>
-            <ProductInfo product={product} />
+            <ProductInfo product={product} reviews={reviews} />
             <ProductHighLights product={product} />
             <form className="pt-6 border-t">
               <ProductColor product={product} />
@@ -54,7 +56,7 @@ export default async function Example({ params: { id } }) {
 
         <div className="lg:col-span-2">
           <div className="px-3">
-            <ReviewSection />
+            <ReviewSection reviews={reviews} product={product} />
           </div>
         </div>
       </div>
@@ -62,9 +64,16 @@ export default async function Example({ params: { id } }) {
     </div>
   );
 }
-
 export async function getProductByID(id) {
-  const response = await fetch(`http://localhost:3000/api/products/${id}`);
+  const response = await fetch(`http://localhost:3000/api/products/${id}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    cache: "no-store",
+    next: { tags: ["productsbyid"] },
+  });
+
   if (!response.ok) {
     throw new Error("Failed to fetch product");
   }
