@@ -19,8 +19,8 @@ export const POST = async (req, res) => {
     });
 
     fakeReviews.push(await fakeReview.save());
-
-    revalidateTag("productsbyid");
+    revalidatePath("/product/654afb83b12544cd3ef35832");
+    revalidateTag("products");
     return new Response(JSON.stringify(fakeReviews), { status: 200 });
   } catch (error) {
     console.error(error);

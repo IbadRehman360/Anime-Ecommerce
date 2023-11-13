@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import Star from "./Star"; // Update the path to your Star component
+import Star from "./Star";
 import { useSession } from "next-auth/react";
+import { revalidateTag } from "next/cache";
 
 const ReviewForm = ({ product, reviews, setShowReviewForm }) => {
   const [rating, setRating] = useState(0);

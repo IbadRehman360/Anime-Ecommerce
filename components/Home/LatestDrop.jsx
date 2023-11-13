@@ -19,7 +19,7 @@ export default LatestDrop;
 async function getProductsDataByOption() {
   try {
     const response = await fetch("http://localhost:3000/api/products", {
-      next: { revalidate: 1000 },
+      next: { revalidate: 10 },
     });
 
     return await response.json();

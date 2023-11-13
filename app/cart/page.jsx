@@ -15,6 +15,7 @@ export default function Example() {
 
         <form className="mt-12 lg:grid  lg:grid-cols-12 lg:gap-x-12 lg:items-start xl:gap-x-16">
           <CartProduct />
+
           <CartCheckOut />
         </form>
       </main>

@@ -42,7 +42,7 @@ export default async function Example({ params: { id } }) {
             <form className="pt-6 border-t">
               <ProductColor product={product} />
               <ProductSizes product={product} />
-              <ProductBtn />
+              <ProductBtn product={product} />
             </form>
           </div>
         </div>
@@ -65,18 +65,21 @@ export default async function Example({ params: { id } }) {
   );
 }
 export async function getProductByID(id) {
-  const response = await fetch(`http://localhost:3000/api/products/${id}`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    cache: "no-store",
-    next: { tags: ["productsbyid"] },
-  });
+  try {
+    const response = await fetch(`http://localhost:3000/api/products/${id}`, {
+      headers: { tags: ["products"] },
+    });
 
-  if (!response.ok) {
-    throw new Error("Failed to fetch product");
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(
+        `Failed to fetch product. Status: ${response.status}, Error: ${errorText}`
+      );
+    }
+
+    return response.json();
+  } catch (error) {
+    console.error("Error in getProductByID:", error);
+    throw error;
   }
-
-  return response.json();
 }

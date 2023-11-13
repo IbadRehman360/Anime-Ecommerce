@@ -1,39 +1,28 @@
-import { useState } from "react";
-
-function Quantity({ border }) {
-  const [quantity, setQuantity] = useState(1);
-
-  const incrementQuantity = () => {
-    setQuantity(quantity + 1);
-  };
-
-  const decrementQuantity = () => {
-    if (quantity > 1) {
-      setQuantity(quantity - 1);
-    }
-  };
+function Quantity({ quantity, onIncrement, onDecrement, border }) {
   return (
     <div className={`flex items-center  `}>
       <button
-        onClick={decrementQuantity}
+        type="button"
+        onClick={onDecrement}
         className={` ${
-          border === "true" ? "border" : ""
-        } px-2 p-1   text-gray-600  focus:outline-none`}
+          border === "true" ? "border px-2.5 p-0.5" : "px-2 p-1"
+        }     text-gray-600  focus:outline-none`}
       >
         -
       </button>
       <p
-        className={`text-gray-500    font-semibold px-5 p-1 text-md  ${
-          border === "true" ? "border" : ""
+        className={`text-gray-500    font-semibold px-5 p-1   ${
+          border === "true" ? "border text-sm" : " text-md"
         } `}
       >
         {quantity}
       </p>
       <button
-        onClick={incrementQuantity}
+        type="button"
+        onClick={onIncrement}
         className={` ${
-          border === "true" ? "border" : ""
-        } px-2 p-1   text-gray-600  focus:outline-none`}
+          border === "true" ? "border px-2.5 p-0.5" : "px-2 p-1"
+        }     text-gray-600  focus:outline-none`}
       >
         +
       </button>

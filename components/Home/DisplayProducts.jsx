@@ -33,11 +33,11 @@ const ProductCard = ({ products }) => {
               </div>
             )}
           </div>
-          <div className="product-details mt-3 md:mt-6 text-center">
+          <div className="product-details mt-2 md:mt-4 text-center">
             <h2 className="products-title text-sm lg:text-[1.15rem] line-clamp-1   font-cabin   font-medium text-center">
               Attack on Titans Bracelet
             </h2>
-            <p className="text-sm lg:text-[1.1rem] font-medium mt-1 lg:mt-2">
+            <p className="text-sm lg:text-[1.05rem]    font-roboto   tracking-wide mt-1 lg:mt-2">
               {products.discount_price ? (
                 <span>
                   <span className="text-red-500">

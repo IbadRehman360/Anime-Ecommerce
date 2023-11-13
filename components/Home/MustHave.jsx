@@ -26,7 +26,9 @@ export default async function MustHave() {
   );
 }
 async function getProductsData() {
-  const response = await fetch("http://localhost:3000/api/products");
+  const response = await fetch("http://localhost:3000/api/products", {
+    next: { revalidate: 10 },
+  });
 
   if (!response.ok) {
     throw new Error("failed to fetch users");

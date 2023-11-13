@@ -4,47 +4,28 @@ import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import Quantity from "./Quantity";
-
-const products = [
-  {
-    id: 1,
-    name: "Throwback Hip Bag",
-    href: "#",
-    color: "Salmon",
-    price: "$90.00",
-    quantity: 1,
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-01.jpg",
-    imageAlt:
-      "Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt.",
-  },
-  {
-    id: 2,
-    name: "Medium Stuff Satchel",
-    href: "#",
-    color: "Blue",
-    price: "$32.00",
-    quantity: 1,
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-02.jpg",
-    imageAlt:
-      "Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch.",
-  },
-];
+import {
+  selectCartItems,
+  increaseQuantity,
+  decreaseQuantity,
+  removeItem,
+} from "../app/Global/Features/cartSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function Cart() {
+  const cartItems = useSelector(selectCartItems);
+  const dispatch = useDispatch();
   const [open, setOpen] = useState(true);
   const [quantity, setQuantity] = useState(1);
 
-  const incrementQuantity = () => {
-    setQuantity(quantity + 1);
+  const incrementQuantity = (product) => {
+    dispatch(increaseQuantity({ product }));
   };
 
-  const decrementQuantity = () => {
-    if (quantity > 1) {
-      setQuantity(quantity - 1);
-    }
+  const decrementQuantity = (product) => {
+    dispatch(decreaseQuantity({ product }));
   };
+
   return (
     <Transition.Root show={open} as={Fragment}>
       <Dialog as="div" className="relative z-10" onClose={setOpen}>
@@ -98,13 +79,15 @@ export default function Cart() {
                             role="list"
                             className="-my-6 divide-y divide-gray-200"
                           >
-                            {products.map((product) => (
-                              <li key={product.id} className="flex py-6">
+                            {cartItems.map((product) => (
+                              <li
+                                key={product.product_id}
+                                className="flex py-6"
+                              >
                                 <div className="  h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                                   <img
-                                    src={product.imageSrc}
-                                    alt={product.imageAlt}
-                                    className="h-full w-full object-cover object-center"
+                                    src={product.product.images}
+                                    className="h-full border border-black w-full object-cover object-center"
                                   />
                                   <div className="absolute -top-1 left-20">
                                     <div className="bg-yellow-500 text-xs  font-semibold text-white rounded-full h-5 w-5 flex items-center justify-center">
@@ -115,24 +98,59 @@ export default function Cart() {
 
                                 <div className="ml-4 flex flex-1 flex-col">
                                   <div>
-                                    <p className="mt-1 text-[0.7rem] mb-1 font-lato text-gray-500">
-                                      REGULAR SIZE T-SHIRTS
+                                    <p className="mt-1 text-[0.7rem] mb-1 uppercase tracking-wider font-lato text-gray-500">
+                                      {product.product.category_id.name}
                                     </p>
-                                    <div className="flex justify-between text-[0.89rem] mt-0.5 mb-1 sm:text-base font-medium text-gray-900">
+                                    <div className="flex justify-between text-[0.89rem] mt-0.5 mb-1 sm:text-base font-medium text-gray-800">
                                       <h3>
                                         <a href={product.href}>
-                                          {product.name}
+                                          {product.product.title}
                                         </a>
                                       </h3>
-                                      <p className="ml-4">{product.price}</p>
+                                      <p className="text-sm lg:text-[0.95rem]    font-roboto   tracking-wide mt-1 lg:mt-2">
+                                        {product.product.discount_price ? (
+                                          <span>
+                                            <span className="text-red-500">
+                                              Rs{" "}
+                                              {product.product.discount_price.toFixed(
+                                                2
+                                              )}
+                                            </span>
+                                            <del className="text-gray-600 ml-3">
+                                              Rs{" "}
+                                              {product.product.price.toFixed(2)}
+                                            </del>
+                                          </span>
+                                        ) : (
+                                          <span>
+                                            Rs{" "}
+                                            {product.product.price.toFixed(2)}
+                                          </span>
+                                        )}
+                                      </p>
                                     </div>
                                   </div>
                                   <div className="flex flex-1 items-end justify-between text-sm">
-                                    <Quantity />
+                                    <Quantity
+                                      quantity={product.quantity}
+                                      onIncrement={() =>
+                                        incrementQuantity(product)
+                                      }
+                                      onDecrement={() =>
+                                        decrementQuantity(product)
+                                      }
+                                    />{" "}
                                     <div className="flex">
                                       <button
                                         type="button"
-                                        className="font-medium -mt-6 text-indigo-600 hover:text-indigo-500"
+                                        className="font-medium -mt-6 text-gray-600 hover:text-gray-500"
+                                        onClick={() =>
+                                          dispatch(
+                                            removeItem({
+                                              product: product.product._id,
+                                            })
+                                          )
+                                        }
                                       >
                                         Remove
                                       </button>
