@@ -1,29 +1,10 @@
-"use client";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  addItem,
-  increaseQuantity,
-  decreaseQuantity,
-  selectCartItems,
-} from "../../app/Global/Features/cartSlice";
-import Link from "next/link";
-
-export default function ProductBtn({ product }) {
-  const dispatch = useDispatch();
-  const cartItems = useSelector(selectCartItems);
-
-  const handleAddToCart = () => {
-    dispatch(addItem({ product, quantity: 1 })); // Default quantity is 1
-  };
-
-  const handleDecreaseQuantity = () => {
-    dispatch(decreaseQuantity({ product }));
-  };
-
-  const handleIncreaseQuantity = () => {
-    dispatch(increaseQuantity({ product }));
-  };
-
+export default function ProductBtn({
+  product,
+  incrementQuantity,
+  decrementQuantity,
+  handleAddToCart,
+  cartItems,
+}) {
   return (
     <div className="flex flex-wrap">
       <div className="w-full    ">
@@ -31,8 +12,8 @@ export default function ProductBtn({ product }) {
           <div className="flex   border   first-letter:  border-gray-300 rounded-md bg-[#f9f9f9]  ">
             <button
               type="button"
-              onClick={handleDecreaseQuantity}
-              className="w-10 h-10 lg:w-20 lg:h-11 flex items-center justify-center text-2xl   text-black"
+              onClick={() => decrementQuantity(product, product.size)}
+              className="w-10 h-10  lg:w-20 lg:h-11  flex items-center justify-center text-xl   text-black"
             >
               -
             </button>
@@ -42,7 +23,7 @@ export default function ProductBtn({ product }) {
             </div>
             <button
               type="button"
-              onClick={handleIncreaseQuantity}
+              onClick={() => incrementQuantity(product, product.size)}
               className="w-10 h-10  lg:w-20 lg:h-11  flex items-center justify-center text-xl   text-black"
             >
               +
@@ -59,7 +40,6 @@ export default function ProductBtn({ product }) {
 
         <button
           type="button"
-          onClick={handleAddToCart}
           className="  flex w-full items-center justify-center font-montserrat  lg:py-4 lg:text-md lg:tracking-wider    rounded-md border border-transparent   bg-slate-700   uppercase  py-3 text-xs font-medium text-white hover:bg-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
         >
           PURCHASE NOW

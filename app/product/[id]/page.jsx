@@ -1,17 +1,13 @@
 import ProductDetails from "@components/ProductPreview/ProductDetails";
-import ProductBtn from "@components/ProductPreview/ProductBtn";
-import ProductColor from "@components/ProductPreview/ProductColor";
-import ProductSizes from "@components/ProductPreview/ProductSizes";
-import ProductImages from "@components/ProductPreview/ProductImages";
 import BreadCrumbs from "@components/ProductPreview/BreadCrumbs";
 import ProductInfo from "@components/ProductPreview/ProductInfo";
 import ProductHighLights from "@components/ProductPreview/ProductHighLights";
 import TrustListSvgs from "@components/ProductPreview/TrustListSvgs";
 import ProductYouMayLike from "@components/ProductPreview/ProductYouMayLike";
 import ReviewSection from "@components/ProductPreview/ReviewSection";
-import ProductMoreImage from "@components/ProductPreview/ProductMoreImage";
 import FrequentlyBoughtTogether from "@components/ProductPreview/FrequentlyBoughtTogether";
 import ProductImage from "@components/ProductPreview/ProductImage";
+import ProductInteraction from "@components/ProductPreview/ProductInteraction";
 
 export function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -39,11 +35,7 @@ export default async function Example({ params: { id } }) {
             </div>
             <ProductInfo product={product} reviews={reviews} />
             <ProductHighLights product={product} />
-            <form className="pt-6 border-t">
-              <ProductColor product={product} />
-              <ProductSizes product={product} />
-              <ProductBtn product={product} />
-            </form>
+            <ProductInteraction product={product} />
           </div>
         </div>
         <div className="lg:col-span-1">

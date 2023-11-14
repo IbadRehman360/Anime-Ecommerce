@@ -2,9 +2,12 @@
 import { TiShoppingCart } from "react-icons/ti";
 import Cart from "./Cart";
 import { useState } from "react";
+import { selectCartItems } from "@app/Global/Features/cartSlice";
+import { useSelector } from "react-redux";
 
 function CartOpen() {
   const [isOpen, setIsOpen] = useState(false);
+  const cartItems = useSelector(selectCartItems);
 
   const toggleCart = () => {
     setIsOpen(!isOpen);
@@ -20,11 +23,11 @@ function CartOpen() {
         <TiShoppingCart className="   md:text-4xl text-3xl" />
       </div>
       <div
-        className={`absolute bottom-0.5 right-0 bg-yellow-500 w-5 h-5 sm:w-6 sm:h-6 text-sm rounded-full flex items-center justify-center text-white hover:scale-105 transition duration-300 ${
+        className={`absolute bottom-0.5 right-0 bg-yellow-600 opacity-90 w-5 h-5 sm:w-6 sm:h-6 text-sm rounded-full flex items-center justify-center text-white hover:scale-105 transition duration-300 ${
           isOpen ? "scale-105" : ""
         }`}
       >
-        1
+        {cartItems.length}
       </div>
       {isOpen && <Cart />}
     </div>

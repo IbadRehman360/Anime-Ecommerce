@@ -1,12 +1,7 @@
-"use client";
-
 import { classNames } from "@app/product/[id]/page";
 import { RadioGroup } from "@headlessui/react";
-import { useState } from "react";
 
-function ProductColor({ product }) {
-  const [selectedColor, setSelectedColor] = useState(product.colors[0]);
-
+function ProductColor({ product, selectedColor, setSelectedColor }) {
   return (
     <div>
       <h3 className="text-sm font-semibold text-gray-700 font-inter">Color</h3>

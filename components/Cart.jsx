@@ -4,28 +4,15 @@ import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import Quantity from "./Quantity";
-import {
-  selectCartItems,
-  increaseQuantity,
-  decreaseQuantity,
-  removeItem,
-} from "../app/Global/Features/cartSlice";
-import { useDispatch, useSelector } from "react-redux";
+import { selectCartItems } from "../app/Global/Features/cartSlice";
+import { useSelector } from "react-redux";
+import { useProductUtils } from "@utils/productUtils";
 
 export default function Cart() {
   const cartItems = useSelector(selectCartItems);
-  const dispatch = useDispatch();
   const [open, setOpen] = useState(true);
-  const [quantity, setQuantity] = useState(1);
-
-  const incrementQuantity = (product) => {
-    dispatch(increaseQuantity({ product }));
-  };
-
-  const decrementQuantity = (product) => {
-    dispatch(decreaseQuantity({ product }));
-  };
-
+  const { handleRemoveItem } = useProductUtils();
+  console.log(cartItems);
   return (
     <Transition.Root show={open} as={Fragment}>
       <Dialog as="div" className="relative z-10" onClose={setOpen}>
@@ -43,7 +30,7 @@ export default function Cart() {
 
         <div className="fixed inset-0 overflow-hidden">
           <div className="absolute inset-0 overflow-hidden">
-            <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
+            <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full  ">
               <Transition.Child
                 as={Fragment}
                 enter="transform transition ease-in-out duration-500 sm:duration-700"
@@ -55,12 +42,12 @@ export default function Cart() {
               >
                 <Dialog.Panel className="pointer-events-auto w-screen max-w-xl">
                   <div className="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
-                    <div className="flex-1 overflow-y-auto px-4 py-6 sm:px-6">
-                      <div className="flex items-start justify-between">
-                        <Dialog.Title className="text-lg font-medium text-gray-900">
+                    <div className="flex-1  overflow-y-auto  ">
+                      <div className="flex px-4 py-6 sm:px-6   bg-gray-50 items-start justify-between">
+                        <Dialog.Title className="text-lg font-medium   text-gray-900">
                           Shopping cart
                         </Dialog.Title>
-                        <div className="ml-3 flex h-7 items-center">
+                        <div className="ml-3 flex    h-7  items-center">
                           <button
                             type="button"
                             className="relative -m-2 p-2 text-gray-400 hover:text-gray-500"
@@ -68,12 +55,15 @@ export default function Cart() {
                           >
                             <span className="absolute -inset-0.5" />
                             <span className="sr-only">Close panel</span>
-                            <XMarkIcon className="h-6 w-6" aria-hidden="true" />
+                            <XMarkIcon
+                              className="h-6 w-6  text-black    "
+                              aria-hidden="true"
+                            />
                           </button>
                         </div>
                       </div>
 
-                      <div className="mt-8">
+                      <div className="  px-4 py-6 sm:px-6">
                         <div className="flow-root relative">
                           <ul
                             role="list"
@@ -81,16 +71,16 @@ export default function Cart() {
                           >
                             {cartItems.map((product) => (
                               <li
-                                key={product.product_id}
+                                key={product.product._id}
                                 className="flex py-6"
                               >
-                                <div className="  h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
+                                <div className="  h-28 w-28 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                                   <img
                                     src={product.product.images}
                                     className="h-full border border-black w-full object-cover object-center"
                                   />
-                                  <div className="absolute -top-1 left-20">
-                                    <div className="bg-yellow-500 text-xs  font-semibold text-white rounded-full h-5 w-5 flex items-center justify-center">
+                                  <div className="absolute -top-2 left-24 ">
+                                    <div className="bg-yellow-600 opacity-90 text-xs  font-semibold text-white rounded-full h-5 w-5 flex items-center justify-center">
                                       {product.quantity}
                                     </div>
                                   </div>
@@ -98,16 +88,22 @@ export default function Cart() {
 
                                 <div className="ml-4 flex flex-1 flex-col">
                                   <div>
-                                    <p className="mt-1 text-[0.7rem] mb-1 uppercase tracking-wider font-lato text-gray-500">
+                                    <p className="   text-[0.8rem] uppercase  tracking-wider font-lato text-gray-500">
                                       {product.product.category_id.name}
                                     </p>
-                                    <div className="flex justify-between text-[0.89rem] mt-0.5 mb-1 sm:text-base font-medium text-gray-800">
+
+                                    <div className="sm:flex sm:justify-between mt-1 text-[0.89rem]  line-clamp-1   sm:text-base font-medium text-gray-800">
                                       <h3>
                                         <a href={product.href}>
+                                          {product.size} -{" "}
                                           {product.product.title}
                                         </a>
                                       </h3>
-                                      <p className="text-sm lg:text-[0.95rem]    font-roboto   tracking-wide mt-1 lg:mt-2">
+                                      <p className="  text-[0.7rem] uppercase tracking-wider font-lato text-gray-500"></p>
+                                    </div>
+                                    <div className="sm:flex sm:justify-between text-[0.89rem]   line-clamp-1  sm:text-base font-medium text-gray-800">
+                                      <p className="  text-[0.7rem] flex sm:hidden uppercase tracking-wider  font-lato text-gray-500"></p>
+                                      <p className=" text-[0.9rem] sm:text-sm lg:text-[0.95rem]     font-roboto   tracking-wide mt-1.5">
                                         {product.product.discount_price ? (
                                           <span>
                                             <span className="text-red-500">
@@ -128,31 +124,34 @@ export default function Cart() {
                                           </span>
                                         )}
                                       </p>
+                                      <p className="  text-[0.7rem] hidden sm:flex uppercase tracking-wider mt-2 font-lato text-gray-500">
+                                        color: {product.color}
+                                      </p>
                                     </div>
                                   </div>
-                                  <div className="flex flex-1 items-end justify-between text-sm">
+                                  <div className="flex flex-1 items-end mb-0.5 sm:mb-1.5 justify-between text-sm">
                                     <Quantity
                                       quantity={product.quantity}
-                                      onIncrement={() =>
-                                        incrementQuantity(product)
-                                      }
-                                      onDecrement={() =>
-                                        decrementQuantity(product)
-                                      }
+                                      product={product}
                                     />{" "}
                                     <div className="flex">
                                       <button
                                         type="button"
-                                        className="font-medium -mt-6 text-gray-600 hover:text-gray-500"
+                                        className="font-medium sm:flex hidden -mt-6 text-gray-600 hover:text-gray-500"
                                         onClick={() =>
-                                          dispatch(
-                                            removeItem({
-                                              product: product.product._id,
-                                            })
-                                          )
+                                          handleRemoveItem(product.product._id)
                                         }
                                       >
                                         Remove
+                                      </button>
+                                      <button
+                                        type="button"
+                                        className="font-medium sm:hidden flex -mt-6 text-gray-600 hover:text-gray-500"
+                                        onClick={() =>
+                                          handleRemoveItem(product.product._id)
+                                        }
+                                      >
+                                        Remov..
                                       </button>
                                     </div>
                                   </div>
@@ -167,7 +166,14 @@ export default function Cart() {
                     <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
                       <div className="flex justify-between text-base font-medium text-gray-900">
                         <p>Subtotal</p>
-                        <p>$262.00</p>
+                        {cartItems.map((product) => (
+                          <p key={product.product._id}>
+                            Rs {""}
+                            {product.product.discount_price
+                              ? product.product.price.toFixed(2)
+                              : product.product.discount_price.toFixed(2)}
+                          </p>
+                        ))}
                       </div>
                       <p className="mt-2 text-xs  sm:text-sm text-gray-500">
                         Shipping and taxes calculated at checkout.

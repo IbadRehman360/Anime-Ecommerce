@@ -8,7 +8,6 @@ function ProductInfo({ product, reviews }) {
   const sumRatings = reviewRatings.reduce((sum, rating) => sum + rating, 0);
 
   const averageRating = totalRatings > 0 ? sumRatings / totalRatings : 0;
-  console.log(averageRating);
   return (
     <div>
       <div className="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">

@@ -7,8 +7,10 @@ function CartCheckOut() {
   const products = useSelector(selectCartItems);
 
   const subtotal = products.reduce((total, product) => {
-    return total + product.product.price;
+    const price = product.product.discount_price || product.product.price;
+    return total + price;
   }, 0);
+
   const shippingCost = 200;
   const taxRate = 0.08;
 

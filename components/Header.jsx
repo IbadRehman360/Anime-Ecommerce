@@ -15,7 +15,9 @@ import Cart from "./Cart";
 import Clintly from "./Home/Clintly";
 import SearchMenu from "./Home/SearchMenu";
 import { FaSignOutAlt, FaUser } from "react-icons/fa";
-import { getProviders, getSession, signOut, useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
+import { selectCartItems } from "@app/Global/Features/cartSlice";
+import { useSelector } from "react-redux";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -23,13 +25,13 @@ function classNames(...classes) {
 
 export default function Example() {
   const [open, setOpen] = useState(false);
+  const cartItems = useSelector(selectCartItems);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [searchText, setSearchText] = useState("What are you looking for?");
   const { data: session } = useSession();
   const handleSearchTextChange = (e) => {
     setSearchText(e.target.value);
   };
-
   const handleSearchSubmit = (e) => {
     e.preventDefault();
 
@@ -288,7 +290,7 @@ export default function Example() {
                     <span className="sr-only">, change currency</span>
                   </Link>
                 </div>
-                {/* Search */}
+
                 <div className="flex lg:hidden lg:ml-8">
                   <Link
                     href="#"
@@ -333,7 +335,7 @@ export default function Example() {
                       aria-hidden="true"
                     />
                     <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">
-                      0
+                      {cartItems.length}
                     </span>
                     {isCartOpen && <Cart />}{" "}
                     <span className="sr-only">items in cart, view bag</span>

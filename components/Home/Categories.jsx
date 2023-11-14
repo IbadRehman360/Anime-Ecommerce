@@ -1,8 +1,4 @@
-"use client";
-
-import { FaArrowRight, FaOptinMonster } from "react-icons/fa";
-import Link from "next/link";
-import { FaShoppingBag } from "react-icons/fa";
+import { FaArrowRight } from "react-icons/fa";
 
 const callouts = [
   {

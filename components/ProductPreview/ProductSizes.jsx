@@ -1,16 +1,7 @@
-"use client";
-
 import { classNames } from "@app/product/[id]/page";
 import { RadioGroup } from "@headlessui/react";
-import { useState } from "react";
 
-// ...
-
-function ProductSizes({ product }) {
-  const sizeNames = Object.keys(product.sizes);
-
-  const [selectedSize, setSelectedSize] = useState(sizeNames[0]);
-
+function ProductSizes({ product, selectedSize, setSelectedSize, sizeNames }) {
   return (
     <div className="mt-6">
       <div className="flex items-center justify-between">

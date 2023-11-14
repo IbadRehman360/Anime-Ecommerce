@@ -70,7 +70,7 @@ function Carousel({ products, Feature1, Feature2 }) {
           className="carousel-item      mx-auto my-2 md:my-4 w-full gap-1 sm:w-full md:gap-3"
         >
           {displayedProducts1.map((product) => (
-            <DisplayProducts key={product.id} products={product} />
+            <DisplayProducts key={product._id} products={product} />
           ))}
         </div>
         <div
@@ -78,7 +78,7 @@ function Carousel({ products, Feature1, Feature2 }) {
           className="carousel-item mx-auto my-2 md:my-4 w-full gap-1 sm:w-full md:gap-3"
         >
           {displayedProducts2.map((product) => (
-            <DisplayProducts key={product.id} products={product} />
+            <DisplayProducts key={product._id} products={product} />
           ))}
         </div>
       </div>

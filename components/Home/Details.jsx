@@ -20,11 +20,11 @@ function Details() {
             <span className=" font-medium">Background</span> to create unique
             look. Express your style and protect your device with our customized
             phone cases.
-            <div className=" ">
-              <button className="border bg-center flex   font-montserrat font-cabin   tracking-widest bg-red-500  text-sm    py-2 px-3 lg:py-2.5 lg:px-4   font-meduim   text-white mt-6 lg:mt-8  rounded-md">
+            <button className="">
+              <p className="border bg-center flex     font-cabin   tracking-widest bg-red-500  text-sm    py-2 px-3 lg:py-2.5 lg:px-4   font-meduim   text-white mt-6 lg:mt-8  rounded-md">
                 CONTACT NOW{" "}
-              </button>
-            </div>
+              </p>
+            </button>
           </p>{" "}
         </div>
         <div className=" justify-end hidden lg:flex">

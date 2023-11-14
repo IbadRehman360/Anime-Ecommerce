@@ -1,31 +1,14 @@
 import Quantity from "@components/Quantity";
-import { CheckIcon, ClockIcon, XMarkIcon } from "@heroicons/react/24/outline";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  selectCartItems,
-  increaseQuantity,
-  decreaseQuantity,
-  removeItem,
-} from "../../app/Global/Features/cartSlice";
+import { CheckIcon, ClockIcon } from "@heroicons/react/24/outline";
+import { useSelector } from "react-redux";
+import { selectCartItems } from "../../app/Global/Features/cartSlice";
 import { AiOutlineClose } from "react-icons/ai";
-import { MdInfo } from "react-icons/md";
 import EmptyCartMessage from "./EmptyCartMessage";
+import { useProductUtils } from "@utils/productUtils";
 
 function CartProduct() {
-  const dispatch = useDispatch();
   const products = useSelector(selectCartItems);
-
-  const handleRemoveItem = (product) => {
-    dispatch(removeItem({ product }));
-  };
-
-  const incrementQuantity = (product) => {
-    dispatch(increaseQuantity({ product }));
-  };
-
-  const decrementQuantity = (product) => {
-    dispatch(decreaseQuantity({ product }));
-  };
+  const { handleRemoveItem } = useProductUtils();
 
   if (!products.length) {
     return <EmptyCartMessage />;
@@ -42,7 +25,7 @@ function CartProduct() {
         className="border-t border-b border-gray-200 divide-y divide-gray-200"
       >
         {products.map((product, productIdx) => (
-          <li key={product.id} className="flex py-6 sm:py-8">
+          <li key={product.product._id} className="flex py-6 sm:py-8">
             <div className="flex-shrink-0">
               <img
                 src={product.product.images}
@@ -61,13 +44,7 @@ function CartProduct() {
                   <button
                     type="button"
                     className="font-medium -mt-1 text-gray-600 hover:text-gray-500"
-                    onClick={() =>
-                      dispatch(
-                        removeItem({
-                          product: product.product._id,
-                        })
-                      )
-                    }
+                    onClick={() => handleRemoveItem(product.product._id)}
                   >
                     <AiOutlineClose />{" "}
                   </button>
@@ -90,8 +67,7 @@ function CartProduct() {
               </div>
               <Quantity
                 quantity={product.quantity}
-                onIncrement={() => incrementQuantity(product)}
-                onDecrement={() => decrementQuantity(product)}
+                product={product}
                 border="true"
               />{" "}
               <p className=" mb-3 flex text-sm   font-satoshi  text-gray-700 space-x-2">
