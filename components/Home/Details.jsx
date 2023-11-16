@@ -10,7 +10,7 @@ function Details() {
           />
         </div>
         <div className="leading-7  tracking-  xl:mr-32 lg:mr-10 ">
-          <h2 className="text-[1.6rem]   tracking-tight font-montserrat text-gray-900 sm:text-4xl">
+          <h2 className="text-[1.6rem]   tracking-tight  font-montserrat text-gray-900 sm:text-4xl">
             Anime Phone Case
           </h2>
           <p className="mt-4 text-lg  font-lato text-gray-400  tracking-wide leading-7">

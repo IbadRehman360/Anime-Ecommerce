@@ -12,7 +12,11 @@ export default function Cart() {
   const cartItems = useSelector(selectCartItems);
   const [open, setOpen] = useState(true);
   const { handleRemoveItem } = useProductUtils();
-  console.log(cartItems);
+  const total = cartItems.reduce(
+    (acc, item) => acc + item.product.discount_price,
+    0
+  );
+
   return (
     <Transition.Root show={open} as={Fragment}>
       <Dialog as="div" className="relative z-10" onClose={setOpen}>
@@ -64,26 +68,18 @@ export default function Cart() {
                       </div>
 
                       <div className="  px-4 py-6 sm:px-6">
-                        <div className="flow-root relative">
+                        <div className="flow-root ">
                           <ul
                             role="list"
                             className="-my-6 divide-y divide-gray-200"
                           >
-                            {cartItems.map((product) => (
-                              <li
-                                key={product.product._id}
-                                className="flex py-6"
-                              >
+                            {cartItems.map((product, index) => (
+                              <li key={index + 10} className="flex py-6">
                                 <div className="  h-28 w-28 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                                   <img
                                     src={product.product.images}
                                     className="h-full border border-black w-full object-cover object-center"
                                   />
-                                  <div className="absolute -top-2 left-24 ">
-                                    <div className="bg-yellow-600 opacity-90 text-xs  font-semibold text-white rounded-full h-5 w-5 flex items-center justify-center">
-                                      {product.quantity}
-                                    </div>
-                                  </div>
                                 </div>
 
                                 <div className="ml-4 flex flex-1 flex-col">
@@ -164,16 +160,9 @@ export default function Cart() {
                     </div>
 
                     <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
-                      <div className="flex justify-between text-base font-medium text-gray-900">
+                      <div className="flex justify-between tracking-wide text-base font-medium text-gray-900">
                         <p>Subtotal</p>
-                        {cartItems.map((product) => (
-                          <p key={product.product._id}>
-                            Rs {""}
-                            {product.product.discount_price
-                              ? product.product.price.toFixed(2)
-                              : product.product.discount_price.toFixed(2)}
-                          </p>
-                        ))}
+                        Rs {total.toFixed(2)}
                       </div>
                       <p className="mt-2 text-xs  sm:text-sm text-gray-500">
                         Shipping and taxes calculated at checkout.
@@ -182,14 +171,14 @@ export default function Cart() {
                         <div className="flex">
                           <Link
                             href="/cart"
-                            className="flex uppercase text-[0.7rem]  md:text-sm   items-center    w-2/5 justify-center rounded-md border border-transparent bg-stone-800 opacity-80 hover:bg-stone-200 hover:text-black     font-montserrat py-3    md:px-6 md:py-3.5 font-medium text-white shadow-sm hover-bg-gray-700 " // Add ml-2 for some horizontal spacing
+                            className="flex uppercase text-[0.7rem]  lg:text-sm   items-center    w-2/5 justify-center rounded-md border border-transparent bg-stone-800 opacity-80 hover:bg-stone-200 hover:text-black     font-montserrat py-3    md:px-6 md:py-3.5 font-medium text-white shadow-sm hover-bg-gray-700 " // Add ml-2 for some horizontal spacing
                           >
                             Your Cart
                           </Link>
 
                           <Link
                             href="/checkout"
-                            className="flex uppercase text-[0.7rem]  md:text-sm   items-center    w-3/5 justify-center rounded-md border border-transparent bg-stone-800 opacity-80 hover:bg-stone-200 hover:text-black    font-montserrat py-3   md:px-6 md:py-3.5 font-medium text-white shadow-sm hover-bg-gray-700 ml-2" // Add ml-2 for some horizontal spacing
+                            className="flex uppercase text-[0.7rem] lg:text-sm   items-center    w-3/5 justify-center rounded-md border border-transparent bg-stone-800 opacity-80 hover:bg-stone-200 hover:text-black    font-montserrat py-3   md:px-6 md:py-3.5 font-medium text-white shadow-sm hover-bg-gray-700 ml-2" // Add ml-2 for some horizontal spacing
                           >
                             Checkout order
                           </Link>

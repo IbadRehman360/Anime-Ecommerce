@@ -1,3 +1,4 @@
+"use client";
 import { FaArrowRight } from "react-icons/fa";
 
 const callouts = [
@@ -5,7 +6,7 @@ const callouts = [
     name: "Attack on Titans",
     description: "Work from home accessories",
     imageSrc: "/assets/Categories/1.jpg",
-
+    path: "category/654cc5ce72d1fa8b7fc130f3",
     imageAlt:
       "Desk with leather desk pad, walnut desk organizer, wireless keyboard and mouse, and porcelain mug.",
     href: "#",
@@ -14,12 +15,16 @@ const callouts = [
     name: "Naruto",
     description: "Journals and note-taking",
     imageSrc: "/assets/Categories/2.jpg",
+    path: "category/654cc5ce72d1fa8b7fc130f3",
+
     imageAlt:
       "Wood table with porcelain mug, leather journal, brass pen, leather key ring, and a houseplant.",
     href: "#",
   },
   {
     name: "Jujustsu Kaisen1",
+    path: "category/654cc5ce72d1fa8b7fc130f3",
+
     description: "Daily commute essentials",
     imageSrc: "/assets/Categories/3.jpg",
     imageAlt: "Collection of four insulated travel bottles on wooden shelf.",
@@ -27,6 +32,8 @@ const callouts = [
   },
   {
     name: "One Piece1321",
+    path: "category/654cc5ce72d1fa8b7fc130f3",
+
     description: "Daily commute essentials",
     imageSrc: "/assets/Categories/4.jpg",
     imageAlt: "Collection of four insulated travel bottles on wooden shelf.",
@@ -34,6 +41,7 @@ const callouts = [
   },
   {
     name: "Jujustsu Kaisen2321",
+    path: "category/654cc5ce72d1fa8b7fc130f3",
     description: "Daily commute essentials",
     imageSrc: "/assets/Categories/5.jpg",
     imageAlt: "Collection of four insulated travel bottles on wooden shelf.",
@@ -94,6 +102,25 @@ export default function Example() {
   //   "Plush Toys",
   //   "Accessories",
   // ];
+  // const handleCreateProducts = async () => {
+  //   try {
+  //     const response = await fetch("api/createProducts", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify({}),
+  //     });
+
+  //     if (response.status === 201) {
+  //       console.log("Product created successfully");
+  //     } else {
+  //       console.error("Failed to create a product");
+  //     }
+  //   } catch (error) {
+  //     console.error("An error occurred while creating a product:", error);
+  //   }
+  // };
   // const handleCreateProduct = async () => {
   //   try {
   //     for (const anime of products) {
@@ -117,10 +144,14 @@ export default function Example() {
   // };
 
   return (
-    <div className="      pt-10 pb-8 sm:pt-12 sm:pb-8 lg:pt-16 lg:pb-16">
+    <div className="pt-10 pb-8 sm:pt-12 sm:pb-8 lg:pt-16 lg:pb-16">
       {/* <div className="mt-2 bg-black">
         <button onClick={handleCreateProduct}>Create New Product</button>
       </div> */}
+      {/* <div className="mt-2">
+        <button onClick={handleCreateProducts}>Create New Product</button>{" "}
+      </div>
+      ; */}
       <div className="">
         <div className="border-gray-200">
           <div className="text-center mb-4  ">

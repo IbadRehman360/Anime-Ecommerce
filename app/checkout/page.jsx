@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import RadioGroups from "@components/CheckOut/RadioGroups";
 import InputForm from "@components/CheckOut/InputForm";
 
-export default function Example() {
+export default function Checkout() {
   const { control, handleSubmit } = useForm();
   const onSubmit = (data) => {
     console.log(data);

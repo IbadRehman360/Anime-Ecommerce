@@ -9,10 +9,6 @@ const productSchema = new Schema({
         type: String,
         required: true,
     },
-    highlight: {
-        type: String,
-        required: true,
-    },
     price: {
         type: Number,
         required: true,
@@ -27,17 +23,45 @@ const productSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'AnimeCategory',
     },
-    image_url: {
-        type: String,
-    },
-    stock_quantity: {
-        type: Number,
-        min: 0,
-    },
     reviews_id: [{
         type: Schema.Types.ObjectId,
         ref: 'Review',
     }],
+    stock_quantity: {
+        type: Number,
+        min: 0,
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now,
+        max: Date.now,
+    },
+    updatedAt: {
+        type: Date,
+        default: Date.now,
+        max: Date.now,
+    },
+    __v: {
+        type: Number,
+        default: 0,
+    },
+    images: [{
+        type: String,
+    }],
+    colors: [{
+        type: String,
+    }],
+    sizes: {
+        type: Map,
+        of: Boolean,
+    },
+    highlights: [{
+        type: String,
+    }],
+    discount_price: {
+        type: Number,
+        min: 0,
+    },
 }, { timestamps: true });
 
 const Product = models.Product || model('Product', productSchema);

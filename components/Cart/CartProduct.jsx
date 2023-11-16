@@ -16,41 +16,47 @@ function CartProduct() {
 
   return (
     <section aria-labelledby="cart-heading" className="lg:col-span-7  ">
-      <h2 id="cart-heading" className="sr-only">
-        Items in your shopping cart
-      </h2>
-
       <ul
         role="list"
         className="border-t border-b border-gray-200 divide-y divide-gray-200"
       >
         {products.map((product, productIdx) => (
-          <li key={product.product._id} className="flex py-6 sm:py-8">
+          <li key={productIdx} className="flex py-6 sm:py-8">
             <div className="flex-shrink-0">
               <img
                 src={product.product.images}
-                className="w-24 h-24 shadow-md    rounded-md object-center object-cover sm:w-48 sm:h-48"
+                className="w-24 h-28 shadow-md    rounded-md object-center object-cover sm:w-48 sm:h-48"
               />
             </div>
 
-            <div className="ml-4 flex-1 flex flex-col justify-between sm:ml-6">
-              <div className="relative pr-9 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:pr-0">
-                <div className="flex">
-                  <h2 className="products-title text-sm lg:text-[1.05rem] font-cabin">
-                    Attack on Titans Bracelet
+            <div className=" flex-1 flex flex-col justify-between ml-5 sm:ml-8  ">
+              <div className="relative flex">
+                <div className="flex-grow">
+                  <h2 className="text-[0.89rem] line-clamp-1 sm:text-base font-medium text-gray-800">
+                    {product.size} - {product.product.title}
                   </h2>
                 </div>
-                <div className="flex justify-end">
+                <div className="flex pl-5 justify-end">
                   <button
                     type="button"
-                    className="font-medium -mt-1 text-gray-600 hover:text-gray-500"
+                    className="font-medium text-gray-600 hover:text-gray-500"
                     onClick={() => handleRemoveItem(product.product._id)}
                   >
-                    <AiOutlineClose />{" "}
+                    <AiOutlineClose />
                   </button>
                 </div>
+              </div>
 
-                <p className="text-sm lg:text-[0.9rem]    font-satoshi mt-3 lg:mt-4">
+              <div className=" ">
+                <p className="  text-[0.7rem] hidden sm:flex uppercase tracking-wider  font-lato text-gray-500">
+                  color: {product.color}
+                </p>
+                <p className="    text-[0.7rem] hidden sm:flex   uppercase tracking-wider mt-1.5 font-lato text-gray-500">
+                  Size - {product.size}
+                </p>
+              </div>
+              <div>
+                <p className="text-sm lg:text-[0.92rem] mt-2 sm:mt-1  sm:mb-1   font-satoshi ">
                   {product.product.discount_price ? (
                     <span>
                       <span className="text-red-600">
@@ -64,13 +70,9 @@ function CartProduct() {
                     <span>Rs {product.product.price.toFixed(2)}</span>
                   )}
                 </p>
+                <Quantity quantity={product.quantity} product={product} />{" "}
               </div>
-              <Quantity
-                quantity={product.quantity}
-                product={product}
-                border="true"
-              />{" "}
-              <p className=" mb-3 flex text-sm   font-satoshi  text-gray-700 space-x-2">
+              <p className=" mb-3 flex text-[0.85rem] sm:text-sm   mt-2 sm:mt-1  font-satoshi  text-gray-700 space-x-2">
                 {product.inStock ? (
                   <CheckIcon
                     className="flex-shrink-0 h-5 w-5 text-green-500"

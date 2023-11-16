@@ -46,6 +46,8 @@ function ProductInteraction({ product }) {
         decrementQuantity={decrementQuantity}
         handleAddToCart={handleAddToCart}
         cartItems={cartItems}
+        selectedColor={selectedColor}
+        selectedSize={selectedSize}
       />
     </form>
   );

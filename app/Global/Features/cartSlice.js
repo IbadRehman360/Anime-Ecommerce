@@ -8,7 +8,7 @@ const cartSlice = createSlice({
     reducers: {
         addItem: (state, action) => {
             const { product, quantity, color, size } = action.payload;
-            const existingItem = state.items.find(item => item.product.id === product.id && item.color === color && item.size === size);
+            const existingItem = state.items.find(item => item.product._id === product._id && item.color === color && item.size === size);
 
             if (existingItem) {
                 throw new Error('Product is already in the cart. Use increaseQuantity instead.');
@@ -26,27 +26,42 @@ const cartSlice = createSlice({
             }
         },
         increaseQuantity: (state, action) => {
-            const { product, size } = action.payload;
+            const { product, size, color } = action.payload;
+            console.log(product, size, color);
             const item = state.items.find(
-                (item) => item.product.id === product.id && item.size === size
+                (item) =>
+                    item.product._id === product._id &&
+                    item.size === size &&
+                    item.color === color
             );
             if (item) {
                 item.quantity += 1;
             }
         },
         decreaseQuantity: (state, action) => {
-            const { product, size } = action.payload;
+            const { product, size, color } = action.payload;
+            console.log(product, size, color)
             const item = state.items.find(
-                (item) => item.product.id === product.id && item.size === size
+                (item) =>
+                    item.product._id === product._id &&
+                    item.size === size &&
+                    item.color === color
             );
             if (item && item.quantity > 1) {
                 item.quantity -= 1;
             }
         },
+
         updateQuantity: (state, action) => {
-            const { product, newQuantity } = action.payload;
+            const { product, newQuantity, size, color } = action.payload;
+
             const updatedItems = state.items.map(item => {
-                if (item.product.id === product.id) {
+                if (
+                    item.product._id === product.product._id &&
+                    item.color === color &&
+                    item.size === size
+                ) {
+                    console.log(item.product)
                     return { ...item, quantity: newQuantity };
                 }
                 return item;
@@ -54,6 +69,8 @@ const cartSlice = createSlice({
 
             return { ...state, items: updatedItems };
         },
+
+
         clearCart: (state) => {
             state.items = [];
         },

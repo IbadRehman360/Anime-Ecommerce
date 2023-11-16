@@ -17,7 +17,7 @@ const ProductCard = ({ products }) => {
             onMouseLeave={() => setIsHovered(false)}
           >
             <img
-              src={products.image_url}
+              src={products.images}
               alt={products.imageAlt}
               className="w-full h-full border border-black object-center object-cover object-contain transition-transform transform hover:scale-105"
             />

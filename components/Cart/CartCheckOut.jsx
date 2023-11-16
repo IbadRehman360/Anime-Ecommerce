@@ -8,10 +8,11 @@ function CartCheckOut() {
 
   const subtotal = products.reduce((total, product) => {
     const price = product.product.discount_price || product.product.price;
-    return total + price;
+    const quantity = product.quantity || 1; // default to 1 if quantity is not present
+    return total + price * quantity;
   }, 0);
 
-  const shippingCost = 200;
+  const shippingCost = 149.99;
   const taxRate = 0.08;
 
   const shipping = shippingCost;
@@ -75,7 +76,7 @@ function CartCheckOut() {
         </div>
         <div className="border-t border-gray-200 pt-4 flex items-center justify-between">
           <dt className="text-base font-medium text-gray-900">Order total</dt>
-          <dd className="text-base font-medium text-gray-900">
+          <dd className="text-base  font-medium text-gray-900">
             Rs {products.length > 0 ? ` ${totalAmount.toFixed(2)}` : "0.00"}
           </dd>
         </div>
@@ -84,7 +85,7 @@ function CartCheckOut() {
       <div className="mt-6">
         <Link href={isCartEmpty ? "#" : "/checkout"}>
           <button
-            className={`w-full bg-slate-800 uppercase font-montserrat border border-transparent rounded-md shadow-sm py-3 px-4 tracking-wide text-sm text-white ${
+            className={`w-full bg-slate-800 uppercase font-montserrat border border-transparent rounded-md shadow-sm py-3 px-4 tracking-wide text-xs sm:text-sm text-white ${
               isCartEmpty
                 ? "cursor-not-allowed opacity-70"
                 : "hover:bg-slate-800"

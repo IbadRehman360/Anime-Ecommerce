@@ -3,12 +3,13 @@ import React from "react";
 
 function Quantity({ quantity, border, product }) {
   const { incrementQuantity, decrementQuantity } = useProductUtils();
-
   return (
     <div className={`flex items-center`}>
       <button
         type="button"
-        onClick={() => decrementQuantity(product)}
+        onClick={() =>
+          decrementQuantity(product.product, product.size, product.color)
+        }
         className={`${
           border === "true" ? "border px-2.5 p-0.5" : "px-2 p-1"
         } text-gray-600  focus:outline-none`}
@@ -24,7 +25,9 @@ function Quantity({ quantity, border, product }) {
       </p>
       <button
         type="button"
-        onClick={() => incrementQuantity(product)}
+        onClick={() =>
+          incrementQuantity(product.product, product.size, product.color)
+        }
         className={`${
           border === "true" ? "border px-2.5 p-0.5" : "px-2 p-1"
         } text-gray-600  focus:outline-none`}

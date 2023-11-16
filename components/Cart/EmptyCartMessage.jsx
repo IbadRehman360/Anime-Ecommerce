@@ -7,21 +7,21 @@ const EmptyCartMessage = () => {
       <div className="flex flex-col items-center justify-center ">
         <MdInfo className="text-5xl mb-4 text-gray-500" />
         <p
-          className="text-3xl   font-montserrat
+          className="sm:text-2xl  text-xl  text-center   font-montserrat
          mb-4 text-gray-800"
         >
           Your cart is currently empty.
         </p>
-        <p className="  mb-6 font-poppins text-gray-600">
+        <p className="text-sm text-center  mb-6 font-poppins text-gray-600">
           Before proceeding to checkout, you must add some products to your
           shopping cart. You will find a lot of interesting products on our
           "Shop" page.
         </p>
         <button
-          className={`  bg-gray-700 uppercase font-montserrat border border-transparent rounded-md shadow-sm py-3 px-4 tracking-wide text-sm text-white  
+          className={`  bg-gray-700 uppercase font-montserrat border border-transparent rounded-md shadow-sm py-3 px-4 tracking-wide text-xs md:text-sm text-white  
           focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-indigo-500`}
         >
-          Proceed to Checkout
+          GO BACK TO HOMEPAGE
         </button>
       </div>
     </section>

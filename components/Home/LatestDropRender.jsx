@@ -7,7 +7,6 @@ function LatestDropRender({ products }) {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [filteredProducts, setFilteredProducts] = useState(products);
 
-  //   console.log(selectedCategory, filteredProducts);
   useEffect(() => {
     if (selectedCategory) {
       const filtered = products.filter(

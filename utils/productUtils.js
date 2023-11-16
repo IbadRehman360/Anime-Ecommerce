@@ -3,24 +3,32 @@ import { useDispatch } from 'react-redux';
 
 export const useProductUtils = () => {
     const dispatch = useDispatch();
-
-    const incrementQuantity = (product, size) => {
-        dispatch(increaseQuantity({ product, size }));
+    const incrementQuantity = (product, size, color) => {
+        dispatch(increaseQuantity({ product, size, color }));
     };
 
-    const decrementQuantity = (product, size) => {
-        dispatch(decreaseQuantity({ product, size }));
+    const decrementQuantity = (product, size, color) => {
+        dispatch(decreaseQuantity({ product, size, color }));
     };
+
     const handleRemoveItem = (product) => {
         dispatch(removeItem({ product }));
     };
-    const handleupdateQuantity = (product, newQuantity) => {
-        dispatch(updateQuantity({ product, newQuantity }));
+
+    const handleUpdateQuantity = (product, newQuantity, size, color) => {
+        dispatch(updateQuantity({ product, newQuantity, size, color }));
     };
+
     const isValidPhoneNumber = (value) => {
         const regex = /^(\+92|03)\d{9}$/;
         return regex.test(value);
     };
 
-    return { incrementQuantity, decrementQuantity, handleRemoveItem, handleupdateQuantity, isValidPhoneNumber };
+    return {
+        incrementQuantity,
+        decrementQuantity,
+        handleRemoveItem,
+        handleUpdateQuantity,
+        isValidPhoneNumber,
+    };
 };
