@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { FaArrowRight } from "react-icons/fa";
 
 const callouts = [
@@ -6,7 +7,7 @@ const callouts = [
     name: "Attack on Titans",
     description: "Work from home accessories",
     imageSrc: "/assets/Categories/1.jpg",
-    path: "category/654cc5ce72d1fa8b7fc130f3",
+    path: "/category/654cc5ce72d1fa8b7fc130f3",
     imageAlt:
       "Desk with leather desk pad, walnut desk organizer, wireless keyboard and mouse, and porcelain mug.",
     href: "#",
@@ -15,16 +16,14 @@ const callouts = [
     name: "Naruto",
     description: "Journals and note-taking",
     imageSrc: "/assets/Categories/2.jpg",
-    path: "category/654cc5ce72d1fa8b7fc130f3",
-
+    path: "/category/654cc5ce72d1fa8b7fc130f3",
     imageAlt:
       "Wood table with porcelain mug, leather journal, brass pen, leather key ring, and a houseplant.",
     href: "#",
   },
   {
     name: "Jujustsu Kaisen1",
-    path: "category/654cc5ce72d1fa8b7fc130f3",
-
+    path: "/category/654cc5ce72d1fa8b7fc130f3",
     description: "Daily commute essentials",
     imageSrc: "/assets/Categories/3.jpg",
     imageAlt: "Collection of four insulated travel bottles on wooden shelf.",
@@ -32,8 +31,7 @@ const callouts = [
   },
   {
     name: "One Piece1321",
-    path: "category/654cc5ce72d1fa8b7fc130f3",
-
+    path: "/category/654cc5ce72d1fa8b7fc130f3",
     description: "Daily commute essentials",
     imageSrc: "/assets/Categories/4.jpg",
     imageAlt: "Collection of four insulated travel bottles on wooden shelf.",
@@ -41,7 +39,7 @@ const callouts = [
   },
   {
     name: "Jujustsu Kaisen2321",
-    path: "category/654cc5ce72d1fa8b7fc130f3",
+    path: "/category/654cc5ce72d1fa8b7fc130f3",
     description: "Daily commute essentials",
     imageSrc: "/assets/Categories/5.jpg",
     imageAlt: "Collection of four insulated travel bottles on wooden shelf.",
@@ -51,6 +49,8 @@ const callouts = [
     name: "One Piece3122",
     description: "Daily commute essentials",
     imageSrc: "/assets/Categories/6.jpg",
+    path: "/category/654cc5d172d1fa8b7fc13105",
+
     imageAlt: "Collection of four insulated travel bottles on wooden shelf.",
     href: "#",
   },
@@ -58,6 +58,8 @@ const callouts = [
     name: "Jujustsu Kaisen53",
     description: "Daily commute essentials",
     imageSrc: "/assets/Categories/7.jpg",
+    path: "/category/654cc5d172d1fa8b7fc13105",
+
     imageAlt: "Collection of four insulated travel bottles on wooden shelf.",
     href: "#",
   },
@@ -65,12 +67,16 @@ const callouts = [
     name: "One Piece35",
     description: "Daily commute essentials",
     imageSrc: "/assets/Categories/8.jpg",
+    path: "/category/654cc5d172d1fa8b7fc13105",
+
     imageAlt: "Collection of four insulated travel bottles on wooden shelf.",
     href: "#",
   },
   {
     name: "One Piece7",
     description: "Daily commute essentials",
+    path: "/category/654cc5d172d1fa8b7fc13105",
+
     imageSrc: "/assets/Categories/9.jpg",
     imageAlt: "Collection of four insulated travel bottles on wooden shelf.",
     href: "#",
@@ -78,6 +84,7 @@ const callouts = [
   {
     name: "Jujustsu Kaisen9",
     description: "Daily commute essentials",
+    path: "/category/654cc5d172d1fa8b7fc13105",
     imageSrc: "/assets/Categories/10.jpg",
     imageAlt: "Collection of four insulated travel bottles on wooden shelf.",
     href: "#",
@@ -163,7 +170,8 @@ export default function Example() {
         <div className="mx-auto px-2 sm:px-6 lg:px-8">
           <div className="lg:grid-cols-5 lg:gap-x-10 gap-8 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2">
             {callouts.map((callout) => (
-              <div
+              <Link
+                href={callout.path}
                 key={callout.name}
                 className="rounded-md w-full shadow-2xl border-black border relative callout"
               >
@@ -182,7 +190,7 @@ export default function Example() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
