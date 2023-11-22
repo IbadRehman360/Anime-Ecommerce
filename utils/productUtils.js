@@ -18,12 +18,10 @@ export const useProductUtils = () => {
     const handleUpdateQuantity = (product, newQuantity, size, color) => {
         dispatch(updateQuantity({ product, newQuantity, size, color }));
     };
-
     const isValidPhoneNumber = (value) => {
         const regex = /^(\+92|03)\d{9}$/;
-        return regex.test(value);
+        return regex.test(value.replace(/[^\d+]/g, ''));
     };
-
     return {
         incrementQuantity,
         decrementQuantity,

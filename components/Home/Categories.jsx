@@ -157,8 +157,7 @@ export default function Example() {
       </div> */}
       {/* <div className="mt-2">
         <button onClick={handleCreateProducts}>Create New Product</button>{" "}
-      </div>
-      ; */}
+      </div> */}
       <div className="">
         <div className="border-gray-200">
           <div className="text-center mb-4  ">

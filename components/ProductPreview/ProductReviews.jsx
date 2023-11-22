@@ -34,7 +34,6 @@ export default function ProductReviews({ reviews }) {
 
   const startIdx = (currentPage - 1) * reviewsPerPage;
   const endIdx = startIdx + reviewsPerPage;
-
   return (
     <div className="bg-white p-4 shadow-md rounded-md">
       <div>
@@ -49,8 +48,8 @@ export default function ProductReviews({ reviews }) {
                   {review.user_id.username.charAt(0).toUpperCase()}
                 </div>
               </div>
-              <div className="flex-1 -mt-1 ">
-                <h3 className="font-semibold  tracking-wide text-gray-800 ">
+              <div className="flex-1  ">
+                <h3 className="font-semibold text-[0.9rem]  tracking-wide text-gray-800 ">
                   {review.user_id.username}
                 </h3>
                 <div className="flex items-center space-x-2 mb-2">
@@ -68,12 +67,12 @@ export default function ProductReviews({ reviews }) {
                       />
                     ))}
                   </div>
-                  <p className="text-[0.85rem] text-gray-500 mb-2  ">
+                  <p className=" text-xs mt-2 sm:text-[0.85rem] text-gray-500 mb-2  ">
                     <time>{formatDate(review.createdAt)}</time>
                   </p>
                 </div>
 
-                <div className="prose prose-sm max-w-none font-satoshi tracking-wide  text-gray-600">
+                <div className="prose prose-sm max-w-none font-satoshi tracking-wide     text-gray-600">
                   <p dangerouslySetInnerHTML={{ __html: review.review_text }} />
                 </div>
               </div>

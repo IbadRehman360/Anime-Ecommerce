@@ -14,10 +14,10 @@ function ProductImage({ product }) {
     <div className="relative w-full h-full">
       <img
         src={currentImage}
-        className="border-2 border-black    max-h-[60vh] lg:h-[650px] w-full   object-fill "
+        className="border-2 border-black    max-h-[65vh] lg:h-[700px] w-full   object-fill "
         alt="Product Image"
       />
-      <div className="absolute left-0 right-0   lg:bottom-32 bottom-4 p-2 flex justify-center items-center">
+      <div className="absolute left-0 right-0  lg:bottom-32 xl:bottom-28 bottom-4 p-2 flex justify-center items-center">
         {product.images.map((src, index) => (
           <div
             key={index}

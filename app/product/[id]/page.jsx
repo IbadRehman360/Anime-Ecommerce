@@ -47,7 +47,7 @@ export default async function Example({ params: { id } }) {
         </div>
 
         <div className="lg:col-span-2">
-          <div className="px-3">
+          <div className="sm:px-3">
             <ReviewSection reviews={reviews} product={product} />
           </div>
         </div>

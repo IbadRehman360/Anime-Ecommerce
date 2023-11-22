@@ -18,6 +18,8 @@ import { FaSignOutAlt, FaUser } from "react-icons/fa";
 import { signOut, useSession } from "next-auth/react";
 import { selectCartItems } from "@app/Global/Features/cartSlice";
 import { useSelector } from "react-redux";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faInstagram, faFacebook } from "@fortawesome/free-brands-svg-icons";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -233,10 +235,44 @@ export default function Example() {
       </Transition.Root>
 
       <header className="relative bg-white">
-        <p className="flex h-12 items-center justify-center px-4  text-[0.8rem] sm:text-sm  font-medium text-white bg-black sm:px-6 lg:px-8">
-          ⚡️ FREE SHIPPING ON PREPAID ORDERS ⚡️
-        </p>
+        <div className="flex h-12 items-center justify-between px-4 sm:px-6 lg:px-8 text-[0.8rem] sm:text-sm font-medium text-white bg-black">
+          <div className="flex items-center space-x-4">
+            <Link
+              href="https://www.instagram.com/pakistani_senpai_merch"
+              className="text-white"
+            >
+              <FontAwesomeIcon icon={faInstagram} />
+            </Link>
+            <Link
+              href="https://www.facebook.com/Pakistanisenpaimerch"
+              className="text-white"
+            >
+              <FontAwesomeIcon icon={faFacebook} />
+            </Link>
+          </div>
+          <div className="marquee-container">
+            <p className="marquee text-sm font-raleway flex tracking-wider">
+              ⚡️ FREE SHIPPING ON PREPAID ORDERS ⚡️
+              <span className="ml-20">
+                {" "}
+                ⚡️ FREE SHIPPING ON PREPAID ORDERS ⚡️{" "}
+              </span>
+            </p>
+          </div>
 
+          <div className="flex items-center space-x-4">
+            <Link
+              href="/order
+            "
+              className="text-white"
+            >
+              Track Order
+            </Link>
+            <Link href="#" className="text-white">
+              Need Help?
+            </Link>
+          </div>
+        </div>
         <nav
           aria-label="Top"
           className="mx-auto    mr-3 sm:px-5 lg:px-8 2xl:px-60"

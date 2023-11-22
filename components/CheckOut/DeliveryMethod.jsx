@@ -1,24 +1,13 @@
 import { classNames } from "@app/product/[id]/page";
 import { RadioGroup } from "@headlessui/react";
 import { CheckCircleIcon } from "@heroicons/react/24/outline";
-import { useState } from "react";
-
-const deliveryMethods = [
-  {
-    id: 1,
-    title: "Standard",
-    turnaround: "4–10 business days",
-    price: "$5.00",
-  },
-  { id: 2, title: "Express", turnaround: "2–5 business days", price: "$16.00" },
-];
 
 const paymentMethods = [
-  { id: "credit-card", title: "Credit card" },
-  { id: "paypal", title: "PayPal" },
-  { id: "etransfer", title: "eTransfer" },
+  { id: "delivery", title: "Cash on Delivery" },
+  // { id: "instagram", title: "Instagram Checkout with Online Payment" },
 ];
-function DeliveryMethod({ value, onChange }) {
+
+function DeliveryMethod({ control, selectedDeliveryMethod, deliveryMethods }) {
   return (
     <div>
       <div className="mt-10 border-t py-2 border-gray-200 pt-10">

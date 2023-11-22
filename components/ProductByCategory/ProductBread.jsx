@@ -3,12 +3,12 @@ import Link from "next/link";
 
 function ProductBread({ products }) {
   return (
-    <div className="border-b border-gray-200">
+    <div className="  bg-[#fefefe] border-b border-gray-200">
       <nav
         aria-label="Breadcrumb"
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+        className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-12 "
       >
-        <ol role="list" className="flex items-center space-x-4 py-4">
+        <ol role="list" className="flex items-center space-x-4 py-5">
           <li>
             <div className="flex items-center">
               <Link

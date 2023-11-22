@@ -12,7 +12,7 @@ function InputForm({ control }) {
       <div className="mt-4 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-4">
         <FormInput
           label="First name"
-          name="first-name"
+          name="first_name"
           type="text"
           autoComplete="given-name"
           rules={{ required: "First name is required" }}
@@ -22,7 +22,7 @@ function InputForm({ control }) {
         <div>
           <FormInput
             label="Last name"
-            name="last-name"
+            name="last_name"
             type="text"
             autoComplete="family-name"
             rules={{ required: "Last name is required" }}
@@ -85,7 +85,6 @@ function InputForm({ control }) {
               autoComplete="tel"
               rules={{
                 required: "Primary phone number is required",
-                validate: isValidPhoneNumber,
               }}
               control={control}
             />
@@ -98,9 +97,7 @@ function InputForm({ control }) {
               name="secondPhone"
               type="text"
               autoComplete="tel"
-              rules={{
-                validate: isValidPhoneNumber,
-              }}
+              rules={{}}
               control={control}
             />
           </div>

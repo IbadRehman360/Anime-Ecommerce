@@ -1,52 +1,15 @@
-const products = [
-  {
-    id: 1,
-    name: "Nomad Tumbler",
-    description:
-      "This durable and portable insulated tumbler will keep your beverage at the perfect temperature during your next adventure.",
-    href: "#",
-    price: "35.00",
-    status: "Preparing to ship",
-    step: 1,
-    date: "March 24, 2021",
-    datetime: "2021-03-24",
-    address: ["Floyd Miles", "7363 Cynthia Pass", "Toronto, ON N3Y 4H8"],
-    email: "f•••@example.com",
-    phone: "1•••••••••40",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/confirmation-page-03-product-01.jpg",
-    imageAlt: "Insulated bottle with white base and black snap lid.",
-  },
-  {
-    id: 2,
-    name: "Minimalist Wristwatch",
-    description:
-      "This contemporary wristwatch has a clean, minimalist look and high quality components.",
-    href: "#",
-    price: "149.00",
-    status: "Shipped",
-    step: 0,
-    date: "March 23, 2021",
-    datetime: "2021-03-23",
-    address: ["Floyd Miles", "7363 Cynthia Pass", "Toronto, ON N3Y 4H8"],
-    email: "f•••@example.com",
-    phone: "1•••••••••40",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/confirmation-page-03-product-02.jpg",
-    imageAlt:
-      "Arm modeling wristwatch with black leather band, white watch face, thin watch hands, and fine time markings.",
-  },
-];
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
+"use client";
+import { classNames } from "@app/product/[id]/page";
+import { Fragment } from "react";
 
-function page() {
+function OrderDisplay({ data }) {
+  const product = data;
+
   return (
-    <main className="max-w-2xl mx-auto pt-8 pb-24 sm:pt-16 sm:px-6 lg:max-w-7xl lg:px-8">
+    <>
       <div className="px-4 space-y-2 sm:px-0 sm:flex sm:items-baseline sm:justify-between sm:space-y-0">
         <div className="flex sm:items-baseline sm:space-x-4">
-          <h1 className="text-2xl font-montserrat sm:text-3xl   tracking-wide  text-black  ">
+          <h1 className="text-2xl font-montserrat sm:text-3xl mt-3 tracking-wide text-black">
             Order #54879
           </h1>
           <a
@@ -58,10 +21,19 @@ function page() {
         </div>
         <p className="text-sm text-gray-600">
           Order placed{" "}
-          <time dateTime="2021-03-22" className="font-medium text-gray-900">
-            March 22, 2021
-          </time>
+          {data.map((order) => (
+            <Fragment key={order.id}>
+              <time
+                dateTime={order.createdAt}
+                className="font-medium text-gray-900"
+              >
+                {" "}
+                - {new Date(order.createdAt).toLocaleDateString()}{" "}
+              </time>
+            </Fragment>
+          ))}
         </p>
+
         <a
           href="#"
           className="text-sm font-medium text-indigo-600 hover:text-indigo-500 sm:hidden"
@@ -69,71 +41,113 @@ function page() {
           View invoice<span aria-hidden="true"> &rarr;</span>
         </a>
       </div>
-
       <section aria-labelledby="products-heading" className="mt-6">
         <h2 id="products-heading" className="sr-only">
           Products purchased
         </h2>
 
         <div className="space-y-8">
-          {products.map((product) => (
+          {data.map((order) => (
             <div
-              key={product.id}
+              key={order._id}
               className="bg-white border-t border-b border-gray-200 shadow-sm sm:border sm:rounded-lg"
             >
-              <div className="py-6 px-4 sm:px-6 lg:grid lg:grid-cols-12 lg:gap-x-8 lg:p-8">
-                <div className="sm:flex lg:col-span-7">
-                  <div className="flex-shrink-0 w-full aspect-w-1 aspect-h-1 rounded-lg overflow-hidden sm:aspect-none sm:w-40 sm:h-40">
-                    <img
-                      src={product.imageSrc}
-                      alt={product.imageAlt}
-                      className="w-full h-full object-center object-cover sm:w-full sm:h-full"
-                    />
+              {order.items.map((product) => (
+                <div
+                  key={product._id}
+                  className="py-6 px-4 sm:px-6 lg:grid lg:grid-cols-12 lg:gap-x-8 lg:p-8"
+                >
+                  <div className="sm:flex lg:col-span-7">
+                    <div className="flex-shrink-0 w-full aspect-w-1 aspect-h-1 rounded-lg overflow-hidden sm:aspect-none sm:w-40 sm:h-40">
+                      <img
+                        src={product.product_id.images[0]}
+                        alt={product.product_id.title}
+                        className="w-full h-full object-center object-cover sm:w-full sm:h-full"
+                      />
+                    </div>
+
+                    <div className="mt-6 sm:mt-0 sm:ml-6">
+                      <h3 className="text-base font-medium text-gray-900">
+                        <a href="#">
+                          {" "}
+                          <span className="text-gray-600   text-sm tracking-wider font-lato">
+                            {" "}
+                            QTY {product.quantity}{" "}
+                          </span>{" "}
+                          - {product.product_id.title}
+                        </a>
+                      </h3>
+                      <p className=" text-[0.9rem] sm:text-sm      font-roboto   tracking-wider mt-1.5">
+                        {product.product_id.discount_price ? (
+                          <span>
+                            <span className="text-red-500">
+                              Rs {product.product_id.discount_price.toFixed(2)}
+                            </span>
+                            <del className="text-gray-600 ml-3">
+                              Rs {product.product_id.price.toFixed(2)}
+                            </del>
+                          </span>
+                        ) : (
+                          <span>Rs {product.product_id.price.toFixed(2)}</span>
+                        )}
+                      </p>
+                      <p className="  text-[0.7rem]   uppercase tracking-wider mt-2     font-poppins text-gray-600">
+                        color: {product.color} / Size {product.size}
+                      </p>
+
+                      <p className="mt-2 text-[0.8rem]   font-poppins  leading-5    text-gray-500">
+                        {product.product_id.description
+                          .split(" ")
+                          .slice(0, 24)
+                          .join(" ")}
+                      </p>
+                    </div>
                   </div>
 
-                  <div className="mt-6 sm:mt-0 sm:ml-6">
-                    <h3 className="text-base font-medium text-gray-900">
-                      <a href={product.href}>{product.name}</a>
-                    </h3>
-                    <p className="mt-2 text-sm font-medium text-gray-900">
-                      ${product.price}
-                    </p>
-                    <p className="mt-3 text-sm text-gray-500">
-                      {product.description}
-                    </p>
+                  <div className="mt-6 lg:mt-0 lg:col-span-5 line-clamp-1">
+                    <dl className="grid grid-cols-2 gap-x-6 text-sm line-clamp-1">
+                      <div>
+                        <dt className="font-medium text-gray-900">
+                          Delivery address
+                        </dt>
+                        <dd className="mt-3 text-gray-500 space-y-1 line-clamp-1">
+                          <span className="block  line-clamp-1">
+                            {order.customer.address}
+                          </span>
+                          <span className="block   line-clamp-1">
+                            {order.customer.apartment}
+                          </span>
+                          <span className="block   line-clamp-1">
+                            {order.customer.city}
+                          </span>
+                        </dd>
+                      </div>
+                      <div>
+                        <dt className="font-medium text-gray-900">
+                          Shipping updates
+                        </dt>
+                        <dd className="mt-3  text-gray-500 space-y-2 line-clamp-3">
+                          <p>{order.customer.email_address}</p>
+                          <p>{order.customer.phone}</p>
+                          <p>{order.customer.secondPhone}</p>
+                        </dd>
+                      </div>
+                    </dl>
                   </div>
                 </div>
-
-                <div className="mt-6 lg:mt-0 lg:col-span-5">
-                  <dl className="grid grid-cols-2 gap-x-6 text-sm">
-                    <div>
-                      <dt className="font-medium text-gray-900">
-                        Delivery address
-                      </dt>
-                      <dd className="mt-3 text-gray-500">
-                        <span className="block">{product.address[0]}</span>
-                        <span className="block">{product.address[1]}</span>
-                        <span className="block">{product.address[2]}</span>
-                      </dd>
-                    </div>
-                    <div>
-                      <dt className="font-medium text-gray-900">
-                        Shipping updates
-                      </dt>
-                      <dd className="mt-3 text-gray-500 space-y-3">
-                        <p>{product.email}</p>
-                        <p>{product.phone}</p>
-                      </dd>
-                    </div>
-                  </dl>
-                </div>
-              </div>
+              ))}
 
               <div className="border-t border-gray-200 py-6 px-4 sm:px-6 lg:p-8">
                 <h4 className="sr-only">Status</h4>
                 <p className="text-sm font-medium text-gray-900">
-                  {product.status} on{" "}
-                  <time dateTime={product.datetime}>{product.date}</time>
+                  {order.status} on{"  "}
+                  <time dateTime={order.createdAt}>
+                    {new Date(order.createdAt).toLocaleDateString("en-US", {
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                    })}
+                  </time>
                 </p>
                 <div className="mt-6" aria-hidden="true">
                   <div className="bg-gray-200 rounded-full overflow-hidden">
@@ -178,13 +192,10 @@ function page() {
         </div>
       </section>
 
-      {/* Billing */}
       <section aria-labelledby="summary-heading" className="mt-16">
-        <h2 id="summary-heading" className="sr-only">
-          Billing Summary
-        </h2>
+        <h2 className="sr-only">Billing Summary</h2>
 
-        <div className="bg-stone-50 opacity-90 py-6 px-4 sm:px-6 sm:rounded-lg lg:px-8 lg:py-8 lg:grid lg:grid-cols-12 lg:gap-x-8">
+        <div className="bg-gray-50 py-6 px-4 sm:px-6 sm:rounded-lg lg:px-8 lg:py-8 lg:grid lg:grid-cols-12 lg:gap-x-8">
           <dl className="grid grid-cols-2 gap-6 text-sm sm:grid-cols-2 md:gap-x-8 lg:col-span-7">
             <div>
               <dt className="font-medium text-gray-900">Billing address</dt>
@@ -244,8 +255,8 @@ function page() {
           </dl>
         </div>
       </section>
-    </main>
+    </>
   );
 }
 
-export default page;
+export default OrderDisplay;

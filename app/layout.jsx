@@ -14,7 +14,7 @@ export const metadata = {
 
 const RootLayout = ({ children }) => (
   <html lang="en">
-    <body>
+    <body suppressHydrationWarning={true}>
       <Providers>
         <ReduxProvider>
           <div className="main">
