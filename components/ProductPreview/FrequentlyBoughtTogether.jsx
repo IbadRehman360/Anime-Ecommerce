@@ -11,7 +11,9 @@ const FrequentlyBoughtTogether = ({ suggestions }) => {
 
       <div className="  xl:grid-cols-3 xl:grid hidden    lg:grid-cols-2   mx-auto gap-4 items-center justify-center">
         {suggestions.slice(0, 3).map((product, index) => (
-          <DisplayProducts products={product} key={index} />
+          <>
+            <DisplayProducts products={product} key={index} />
+          </>
         ))}
       </div>
       <div className="     lg:grid  xl:hidden   lg:grid-cols-2   mx-auto gap-4 items-center justify-center">

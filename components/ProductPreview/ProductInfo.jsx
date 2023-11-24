@@ -19,14 +19,30 @@ function ProductInfo({ product, reviews }) {
       <div className="mt-4 lg:row-span-3 pb-1.5 lg:mt-0">
         <h2 className="sr-only">Product information</h2>
         <div className="flex items-center">
-          <div className="text-[1.1rem]    font-lato  lg:text-[1.4rem] mr-5 tracking-wider lg:tracking-wider lg:text-green-700 text-gray-900">
-            <span className="tracking-normal lg:text-[1.4rem] mr-1"> Rs.</span>
-            {product.price}.00
-          </div>
-          <div className="font-satoshi line-through tracking-wider lg:flex hidden lg:text-[1rem] text-sm text-gray-500">
-            <span className="tracking-normal mr-1"> Rs.</span>
-            {product.discount_price}.00
-          </div>
+          {product.discount_price ? (
+            <>
+              <div className="text-[1.1rem]    font-lato  lg:text-[1.4rem] mr-5 tracking-wider lg:tracking-wider lg:text-green-700 text-gray-900">
+                <span className="tracking-normal lg:text-[1.4rem] mr-1">
+                  {" "}
+                  Rs. {product.discount_price}.00
+                </span>
+              </div>
+              <div className="font-satoshi line-through tracking-wider lg:flex hidden lg:text-[1rem] text-sm text-gray-500">
+                <span className="tracking-normal mr-1">
+                  {" "}
+                  Rs. {product.price}.00
+                </span>
+              </div>
+            </>
+          ) : (
+            <div className="text-[1.1rem]    font-lato  lg:text-[1.4rem] mr-5 tracking-wider lg:tracking-wider lg:text-green-700 text-gray-900">
+              <span className="tracking-normal lg:text-[1.4rem] mr-1">
+                {" "}
+                Rs.
+              </span>
+              {product.price}.00
+            </div>
+          )}
 
           <div className="flex items-center -mt-[6px] lg:mr-6 ml-auto">
             <div className="flex mb-[1px] cursor-pointer justify-end items-end">

@@ -3,8 +3,8 @@ import { Schema, model, models } from "mongoose";
 const customerSchema = new Schema({
     email_address: {
         type: String,
+        unique: false,
         required: true,
-        unique: true,
     },
     first_name: {
         type: String,

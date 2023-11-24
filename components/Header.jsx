@@ -1,5 +1,6 @@
 "use client";
 import { BsShop, BsBag, BsGrid, BsPeople } from "react-icons/bs";
+import { LiaBoxOpenSolid } from "react-icons/lia";
 
 import { Fragment, useState } from "react";
 import { Dialog, Tab, Transition } from "@headlessui/react";
@@ -101,7 +102,7 @@ export default function Example() {
                     </Tab.List>
                   </div>
 
-                  <Tab.Panels as={Fragment}>
+                  <Tab.anels as={Fragment}>
                     {navigation.categories.map((category) => (
                       <Tab.Panel
                         key={category.name}
@@ -167,7 +168,7 @@ export default function Example() {
                         ))}
                       </Tab.Panel>
                     ))}
-                  </Tab.Panels>
+                  </Tab.anels>
                 </Tab.Group>
 
                 <div className="space-y-6 border-t border-gray-200 px-4  py-6">
@@ -235,40 +236,57 @@ export default function Example() {
       </Transition.Root>
 
       <header className="relative bg-white">
-        <div className="flex h-12 items-center justify-between px-4 sm:px-6 lg:px-8 text-[0.8rem] sm:text-sm font-medium text-white bg-black">
-          <div className="flex items-center space-x-4">
+        <div className="flex h-12 items-center  justify-between px-4 sm:px-6 lg:px-8 text-[0.8rem] sm:text-sm font-medium text-white bg-black">
+          <div className="    items-center space-x-4">
             <Link
               href="https://www.instagram.com/pakistani_senpai_merch"
               className="text-white"
             >
-              <FontAwesomeIcon icon={faInstagram} />
+              <FontAwesomeIcon
+                icon={faInstagram}
+                style={{ fontSize: "24px", height: "18px", width: "26px" }}
+              />
             </Link>
             <Link
               href="https://www.facebook.com/Pakistanisenpaimerch"
-              className="text-white"
+              className="text-white  sm:inline-block     hidden"
             >
-              <FontAwesomeIcon icon={faFacebook} />
+              <FontAwesomeIcon
+                icon={faFacebook}
+                style={{ fontSize: "24px", height: "18px", width: "26px" }}
+              />
             </Link>
           </div>
           <div className="marquee-container">
-            <p className="marquee text-sm font-raleway flex tracking-wider">
-              ⚡️ FREE SHIPPING ON PREPAID ORDERS ⚡️
-              <span className="ml-20">
+            <p className="marquee text-xs sm:text-[0.82rem]   font-raleway flex tracking-wider">
+              <span className="text-center  sm:flex hidden">
+                {" "}
+                ⚡️ FREE SHIPPING ON PREPAID ORDERS{" "}
+              </span>
+              <span className="text-center uppercase  -mr-5 sm:hidden flex">
+                {" "}
+                ⚡️ Free Ship With Prepaid Orders ⚡️{" "}
+              </span>
+
+              <span className="ml-20 sm:flex hidden">
                 {" "}
                 ⚡️ FREE SHIPPING ON PREPAID ORDERS ⚡️{" "}
               </span>
             </p>
           </div>
 
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center sm:text-[0.82rem]  space-x-4">
             <Link
               href="/order
             "
-              className="text-white"
+              className="text-white   hidden sm:flex"
             >
               Track Order
             </Link>
-            <Link href="#" className="text-white">
+            <Link
+              href="#"
+              className="text-white  sm:flex hidden text-xs  sm:text-[0.82rem]  justify-end items-end"
+            >
               Need Help?
             </Link>
           </div>
@@ -361,6 +379,12 @@ export default function Example() {
                     <FaSignOutAlt className="mr-2" /> logout
                   </button>
                 )}
+                <Link href={"/order"} className=" lg:hidden flex">
+                  <LiaBoxOpenSolid
+                    className="h-7 w-7 flex-shrink-0 mr-2 ml-3  text-gray-400 group-hover:text-gray-500"
+                    aria-hidden="true"
+                  />
+                </Link>
                 <div className="ml-4 flow-root lg:ml-8">
                   <Link
                     href={"/cart"}

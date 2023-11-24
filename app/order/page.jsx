@@ -9,11 +9,11 @@ export default async function OrderPage() {
   }
 
   return (
-    <main className="max-w-2xl mx-auto pt-8 pb-24 sm:pt-16 sm:px-6 lg:max-w-7xl lg:px-8">
+    <main className="max-w-2xl mx-auto pt-6 pb-16 md:pb-24  sm:pt-16 sm:px-6 lg:max-w-7xl lg:px-8">
       {session ? (
-        <p>
-          Welcome, {session.user.name}! <OrderDisplay data={data} />
-        </p>
+        <>
+          <OrderDisplay data={data} />
+        </>
       ) : (
         <TrackOrder />
       )}

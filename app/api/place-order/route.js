@@ -3,7 +3,6 @@ import Order from "@models/order";
 import OrderItem from "@models/orderItems";
 import User from "@models/user";
 import { connectToDB } from "@utils/database";
-
 export const POST = async (req, res) => {
   try {
     await connectToDB();
@@ -40,16 +39,23 @@ export const POST = async (req, res) => {
       quantity: item.quantity,
       size: item.size,
       color: item.color,
+      price: item.product.price,
+      discounted_price: item.product.discount_price,
     }));
 
     const savedOrderItems = await OrderItem.insertMany(orderItems);
 
-    const user = await User.findOne({ email: session.user.email });
+    let user_id = null;
+    if (session && session.user) {
+      const user = await User.findOne({ email: session.user.email });
+      user_id = user._id;
+    }
+
     const newOrder = new Order({
       customer: customer._id,
       items: savedOrderItems.map((item) => item._id),
       delivery: selectedDeliveryMethod.delivery,
-      user_id: user,
+      user_id: user_id,
       status: "Pending",
     });
 
@@ -63,6 +69,7 @@ export const POST = async (req, res) => {
     });
   }
 };
+
 // console.log(
 //   data,
 //   selectedDeliveryMethod.delivery,

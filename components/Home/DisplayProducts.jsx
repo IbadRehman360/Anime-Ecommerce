@@ -6,7 +6,7 @@ import { TiShoppingCart } from "react-icons/ti";
 const ProductCard = ({ products }) => {
   const [isHovered, setIsHovered] = useState(false);
   return (
-    <article className="product-card w-full relative overflow-hidden">
+    <article className={`product-card w-full relative overflow-hidden  `}>
       <Link href={`/product/${products._id}`}>
         <div>
           <div
@@ -48,7 +48,10 @@ const ProductCard = ({ products }) => {
                   </del>
                 </span>
               ) : (
-                <span>Rs {products.price.toFixed(2)}</span>
+                <>
+                  <span>Rs {products.price.toFixed(2)}</span>
+                  <div className="w-10 h-5  "> </div>
+                </>
               )}
             </p>
           </div>

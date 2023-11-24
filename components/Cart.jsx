@@ -19,7 +19,7 @@ export default function Cart() {
 
   return (
     <Transition.Root show={open} as={Fragment}>
-      <Dialog as="div" className="relative z-10" onClose={setOpen}>
+      <Dialog as="div" className="relative z-50" onClose={setOpen}>
         <Transition.Child
           as={Fragment}
           enter="transform ease-in-out duration-1000"
@@ -32,7 +32,7 @@ export default function Cart() {
           <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
         </Transition.Child>
 
-        <div className="fixed inset-0 overflow-hidden">
+        <div className="fixed inset-0 overflow-hidden   ">
           <div className="absolute inset-0 overflow-hidden">
             <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full  ">
               <Transition.Child
@@ -108,10 +108,10 @@ export default function Cart() {
                                                 2
                                               )}
                                             </span>
-                                            <del className="text-gray-600 ml-3">
+                                            <span className="text-gray-600 ml-3 line-through">
                                               Rs{" "}
                                               {product.product.price.toFixed(2)}
-                                            </del>
+                                            </span>
                                           </span>
                                         ) : (
                                           <span>

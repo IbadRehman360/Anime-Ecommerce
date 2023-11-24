@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import ReviewForm from "./ReviewForm";
-import Star from "./Star";
 import { AiOutlineClose } from "react-icons/ai";
 import { StarIcon } from "@heroicons/react/24/outline";
 

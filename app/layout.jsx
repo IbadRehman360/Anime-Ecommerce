@@ -1,5 +1,5 @@
 import "@styles/globals.css";
-
+import { Toaster } from "react-hot-toast";
 import Nav from "../components/Header";
 import Footer from "../components/Footer";
 import CartOpen from "@components/CartOpen";
@@ -20,7 +20,26 @@ const RootLayout = ({ children }) => (
           <div className="main">
             <div className="gradient" />
           </div>
-
+          <Toaster
+            position="top-center"
+            gutter={12}
+            containerStyle={{ margin: "8px" }}
+            toastOptions={{
+              success: {
+                duration: 3000,
+              },
+              error: {
+                duration: 5000,
+              },
+              style: {
+                fontSize: "16px",
+                maxWidth: "500px",
+                padding: "16px 24px",
+                backgroundColor: "white",
+                color: "var(--color-grey-700)",
+              },
+            }}
+          />
           <Nav />
           <main className="app">{children}</main>
           <Footer />

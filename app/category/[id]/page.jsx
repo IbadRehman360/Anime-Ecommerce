@@ -1,7 +1,7 @@
-import Productlist from "@components/ProductByCategory/Productlist";
 import DesktopFilter from "@components/ProductByCategory/DesktopFilter";
 import BreedDialogHeader from "@components/ProductByCategory/BreedDialogHeader";
 import Pagination from "@components/ProductByCategory/Pagination";
+import Productlist from "@components/ProductByCategory/ProductLists";
 
 export default async function Example({ params: { id } }) {
   const products = await getProductByCategory(id);

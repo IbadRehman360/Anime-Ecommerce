@@ -16,6 +16,13 @@ const orderItemSchema = new Schema({
     color: {
         type: String,
     },
+    price: {
+        type: Number,
+        required: true
+    },
+    discounted_price: {
+        type: Number,
+    }
 }, { timestamps: true });
 
 const OrderItem = models.OrderItem || model('OrderItem', orderItemSchema);

@@ -8,7 +8,8 @@ import RadioGroups from "@components/CheckOut/RadioGroups";
 import InputForm from "@components/CheckOut/InputForm";
 import { useState } from "react";
 import { selectCartItems } from "@app/Global/Features/cartSlice";
-import { getSession, useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
+import toast from "react-hot-toast";
 
 const deliveryMethods = [
   {
@@ -27,10 +28,8 @@ const deliveryMethods = [
 export default function Checkout() {
   const cartItems = useSelector(selectCartItems);
   const { data: session } = useSession();
-
   const { control, handleSubmit } = useForm();
   if (!cartItems.length) redirect("/");
-  console.log(cartItems);
   const [selectedDeliveryMethod, setSelectedDeliveryMethod] = useState(
     deliveryMethods[0]
   );
@@ -51,12 +50,34 @@ export default function Checkout() {
 
       if (response.ok) {
         const responseData = await response.json();
+        const trackingId = responseData._id;
         console.log("Order placed successfully:", responseData);
+
+        const sendResponse = await fetch("/api/send", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        });
+
+        if (sendResponse.status === 200) {
+          toast.success(
+            `Order successfully placed! Your tracking ID (${trackingId}) has been sent to ${data.email_address}.`
+          );
+        } else {
+          toast.error(
+            "Failed to send tracking information. Please contact support."
+          );
+        }
       } else {
         console.error("Failed to place the order. Status:", response.status);
+        toast.error("Oops! Order unsuccessful. Please try again.");
       }
     } catch (error) {
       console.error("An error occurred while processing the request:", error);
+      toast.error(
+        "An unexpected error occurred. Please try again later.",
+        error.message
+      );
     }
   };
 
@@ -65,7 +86,6 @@ export default function Checkout() {
       <main className="max-w-7xl mx-auto pt-16 pb-24 px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl mx-auto lg:max-w-none">
           <h1 className="sr-only">Checkout</h1>
-
           <form
             onSubmit={handleSubmit(onSubmit)}
             className="lg:grid lg:grid-cols-2 lg:gap-x-12 xl:gap-x-16"

@@ -8,7 +8,7 @@ import { Fragment, useState } from "react";
 
 function Cliently({ navigation }) {
   return (
-    <Popover.Group className="hidden p-5 lg:flex justify-center items-center border-b border-t">
+    <Popover.Group className="hidden z-50 p-5 lg:flex justify-center items-center border-b border-t">
       <div className="flex h-full space-x-10">
         {navigation.categories.map((category) => (
           <Popover key={category.name} className="flex">
@@ -20,7 +20,7 @@ function Cliently({ navigation }) {
                       open
                         ? "   text-indigo-600"
                         : "  text-gray-700 hover:text-gray-800",
-                      "relative z-10 -mb-px flex items-center border-none focus:border-none   pt-px text-sm font-medium whitespace-nowrap transition-colors duration-200 ease-out"
+                      "relative z-50 -mb-px flex items-center border-none focus:border-none   pt-px text-sm font-medium whitespace-nowrap transition-colors duration-200 ease-out"
                     )}
                   >
                     <a href={category.href} className="flex items-center">
@@ -42,7 +42,6 @@ function Cliently({ navigation }) {
                   leaveTo="opacity-0"
                 >
                   <Popover.Panel className="absolute inset-x-0 top-full text-sm text-gray-500">
-                    {/* Presentational element used to render the bottom shadow, if we put the shadow on the actual panel it pokes out the top, so we use this shorter element to hide the top of the shadow */}
                     <div
                       className="absolute inset-0 top-1/2 bg-white shadow"
                       aria-hidden="true"
@@ -62,7 +61,7 @@ function Cliently({ navigation }) {
                                   className="mt-6 block font-medium text-gray-900"
                                 >
                                   <span
-                                    className="absolute inset-0 z-10"
+                                    className="absolute inset-0 z-50"
                                     aria-hidden="true"
                                   />
                                   {item.name}
