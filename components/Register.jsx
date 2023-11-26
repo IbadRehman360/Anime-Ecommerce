@@ -98,7 +98,7 @@ function Register() {
           password={password}
           scoreWordClassName="capitalize"
         />
-        <pre> {JSON.stringify(watch(), null, 2)} </pre>
+        {/* <pre> {JSON.stringify(watch(), null, 2)} </pre> */}
         {error && (
           <div className="bg-red-500 text-white w-fit text-sm py-1 px-3 rounded-md mt-2">
             {error}
@@ -106,7 +106,7 @@ function Register() {
         )}
         <button
           type="submit"
-          className="flex mb-10  lg:mb-0 w-full justify-center rounded-md bg-black hover:opacity-90 px-3 py-2.5 text-[0.85rem] font-bold uppercase leading-6 text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          className="flex   lg:mb-0 w-full justify-center rounded-md bg-black hover:opacity-90 px-3 py-2.5 text-[0.85rem] font-bold uppercase leading-6 text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
         >
           Register
         </button>

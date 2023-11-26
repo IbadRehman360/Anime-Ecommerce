@@ -19,43 +19,45 @@ export default function Footer() {
       <div className="bg-white  ">
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4 border-t p-9  border-gray-200 sm:place-self-center sm:place-items-center">
           <div className="md:col-span-1 flex  text-red-500">
-            <FaShippingFast size={18} />
+            <FaShippingFast size={18} className="mt-0.5 mr-1" />
             <div className="ml-2">
-              <p className="text-black font-semibold text-[0.85rem]   ">
+              <p className="text-black font-inter tracking-wide text-[0.85rem]">
                 FREE SHIPPING
               </p>
-              <p className="text-gray-600 text-xs">
+              <p className="text-gray-600 text-xs       font-poppins">
                 From all orders over Rs 499
               </p>
             </div>
           </div>
           <div className="md:col-span-1 flex text-red-500">
-            <FaLock size={14} />
+            <FaLock size={14} className="mt-0.5 mr-1" />
             <div className="ml-2">
-              <p className="text-black font-semibold text-[0.85rem]">
+              <p className="text-black font-inter tracking-wide text-[0.85rem]">
                 100% SECURE PAYMENT
               </p>
-              <p className="text-gray-600 text-xs">
+              <p className="text-gray-600 text-xs       font-poppins">
                 We use razorpay with secure net
               </p>
             </div>
           </div>
           <div className="md:col-span-1 flex text-red-500">
-            <FaPercent size={14} />
+            <FaPercent size={14} className="mt-1 mr-1" />
             <div className="ml-2">
-              <p className="text-black font-semibold text-[0.85rem]">
+              <p className="text-black font-inter tracking-wide text-[0.85rem]">
                 UP TO 40% DISCOUNT
               </p>
-              <p className="text-gray-600 text-xs">on selected items</p>
+              <p className="text-gray-600 text-xs       font-poppins">
+                on selected items
+              </p>
             </div>
           </div>
           <div className="md:col-span-1 flex text-red-500">
-            <FaTshirt size={18} />
+            <FaTshirt size={18} className="mt-0.5 mr-1" />
             <div className="ml-2">
-              <p className="text-black font-semibold text-[0.85rem]">
+              <p className="text-black font-inter tracking-wide text-[0.85rem]">
                 OVER 200+ STYLES
               </p>
-              <p className="text-gray-600 text-xs">
+              <p className="text-gray-600 text-xs       font-poppins">
                 We have everything you need
               </p>
             </div>
@@ -68,25 +70,25 @@ export default function Footer() {
               id="whity-text"
               className="uppercase font-semibold text-gray-100 mb-1"
             >
-              Our story
+              ABOUT STORE
             </span>
 
-            <div className=" gap-2 text-[0.8rem]  w-[17.5rem]  md:w- lg:w-72 text-[#d2d2d2]">
-              22 Our adventure began during lockdown when we realised that
-              several anime shows were gaining popularity in India. We are a
-              genuine store that provides anime lovers with collectibles of
-              their favourite characters. We pledge to add more merchandise to
-              our store to help you build your collection.
+            <div className=" gap-2 text-[0.8rem]  w-[17.5rem] font-poppins    md:w- lg:w-72 text-[#d2d2d2]">
+              In the midst of quarantine, our Instagram shop emerged in 2020,
+              offering a curated selection of unique trinkets inspired by
+              popular trends. Catering to aficionados, we present a collection
+              featuring beloved characters, creating a haven for enthusiasts
+              seeking distinctive and charming items.
             </div>
           </div>
           <div className="flex sm:hidden"></div>
 
-          <div className=" md:flex-col  lg:flex">
-            <div className="grid gap-2 lg:ml-20  ">
+          <div className=" md:flex-col   lg:flex">
+            <div className="grid gap-2 lg:ml-20   ">
               <span className="uppercase  sm:mr-28 md:mr-0 font-semibold text-gray-100 mb-1">
                 Legal
               </span>
-              <div className="text-[0.8rem] grid gap-1 ">
+              <div className="text-[0.8rem] grid gap-1 font-poppins ">
                 <Link href="/" className="link-hover text-[#d2d2d2] link">
                   Terms of use
                 </Link>
@@ -104,7 +106,7 @@ export default function Footer() {
             <span className="uppercase   font-semibold text-gray-100 mb-1">
               Company
             </span>
-            <div className="grid gap-1 text-[0.8rem]">
+            <div className="grid gap-1 text-[0.8rem] font-poppins">
               <Link href="/" className="link-hover text-[#d2d2d2] link">
                 About us
               </Link>
@@ -126,7 +128,7 @@ export default function Footer() {
               </span>
               <div className="form-control">
                 <label className="label my-1">
-                  <span className="label-text text-xm text-[#d2d2d2] lg:text-sm">
+                  <span className="label-text text-xm font-poppins text-[#d2d2d2] lg:text-sm">
                     Enter your email
                   </span>
                 </label>

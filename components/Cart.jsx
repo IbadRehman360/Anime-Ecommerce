@@ -78,7 +78,7 @@ export default function Cart() {
                                 <div className="  h-28 w-28 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                                   <img
                                     src={product.product.images}
-                                    className="h-full border border-black w-full object-cover object-center"
+                                    className="h-full border border-gray-50 w-full object-cover object-center"
                                   />
                                 </div>
 

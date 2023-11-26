@@ -72,14 +72,6 @@ function GoogleProviders() {
           </div>
         </button>
       </div>
-      <div className="relative py-12 md:hidden">
-        <div className="absolute inset-0 flex items-center" aria-hidden="true">
-          <div className="w-full border-t border-black" />
-        </div>
-        <div className="relative flex justify-center text-sm leading-6">
-          <span className="   text-gray-900 font-bungee">Or continue with</span>
-        </div>
-      </div>
     </>
   );
 }

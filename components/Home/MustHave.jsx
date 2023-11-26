@@ -7,7 +7,7 @@ export default async function MustHave() {
   return (
     <article className="  pt-12 pb-6     sm:pt-12 sm:pb-8 lg:pt-16 lg:pb-10    mx-auto   px-2 sm:px-6 lg:px-8 ">
       <div className="text-center   pb-6 md:pb-10">
-        <h3 className="text-3xl uppercase font-montserratextra font-extrabold sm:text-[2.3rem] text-center  justify-center  tracking-wider flex text-black ">
+        <h3 className="text-3xl uppercase font-montserratextra font-extrabold sm:text-[2.8rem] text-center  justify-center  tracking-wider flex  text-gray-900  ">
           Bestselling Products
         </h3>
       </div>

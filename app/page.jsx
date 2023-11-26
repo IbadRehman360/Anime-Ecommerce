@@ -9,9 +9,9 @@ import MustHave from "@components/Home/MustHave";
 import React from "react";
 
 const Home = () => (
-  <section className="relative w-full main flex-center flex-col">
+  <section className="relative  w-full main flex-center flex-col">
     <HeroCarousel />
-    <div className="mx-auto md:max-w-[100rem]">
+    <div className="mx-auto md:max-w-[105rem]">
       <LatestDrop />
     </div>
     <div className="bg-stone-50 border border-gray-200">
@@ -19,13 +19,18 @@ const Home = () => (
         <Categories />
       </div>
     </div>
-    <div className="mx-auto md:max-w-[100rem]">
+    <div className="mx-auto md:max-w-[105rem]">
       <MustHave />
+
       <Details2 />
       <Details />
-      <div className="bg-[#fdfdfd]">
-        <Testimonials />
-      </div>
+    </div>
+    <img className="w-full  h-0.5 bg-black" src="/assets/lll.webp" />
+    <img className="w-full h-18 lg:h-24 bg-black" src="/assets/bbb.webp" />
+    <img className="w-full  h-0.5 bg-black" src="/assets/lll.webp" />
+
+    <div className="mx-auto md:max-w-[110rem]">
+      <Testimonials />
     </div>
   </section>
 );

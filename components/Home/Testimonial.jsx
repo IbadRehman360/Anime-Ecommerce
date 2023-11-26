@@ -16,8 +16,10 @@ const Testimonials = () => {
         setSlidesToShow(1);
       } else if (window.innerWidth <= 1024) {
         setSlidesToShow(2);
+      } else if (window.innerWidth <= 1600) {
+        setSlidesToShow(3);
       } else {
-        setSlidesToShow(4);
+        setSlidesToShow(5);
       }
     };
 
@@ -51,79 +53,69 @@ const Testimonials = () => {
     }
   };
   return (
-    <div className=" bg-[#fdfdfd]  pt-10 lg:pt-16 pb-10">
-      <div className="     mt-2 px-2 w-full   mx-auto">
-        <div className=" text-center">
-          <div className=" text-center">
-            <h2 className="text-2xl font-bold font-montserrat uppercase  tracking-wide pb-2 text-black sm:text-3xl">
-              our fam in action
-            </h2>
-
-            <p className="mb-8 text-center font-lato  font-cabin  text-gray-800 ">
-              <span className="text-lg   tracking-wide font-inter   mb-2 mr-2 ">
-                @Senpaimerch
-              </span>
-              Follow us on Instagram
-            </p>
-          </div>
-          <div className="relative">
-            <Slider ref={sliderRef} {...settings}>
-              {reviews.map((review, index) => (
-                <div key={index} className="mb-16 px-2">
-                  <div className="bg-black pb-6 rounded-lg shadow-lg">
-                    <img
-                      src={`/assets/reviewImg/${index + 1}.webp`}
-                      alt={`Review by ${review.name}`}
-                      className="w-full h-96"
-                    />
-                    <div className="text-white rounded-b-lg">
-                      <div className="flex px-4 pt-3 items-center justify-between mb-2">
-                        <div>
-                          {Array.from(Array(review.rating).keys()).map(
-                            (star, index) => (
-                              <span
-                                key={index}
-                                className="text-yellow-400 text-3xl mr-2"
-                              >
-                                ★
-                              </span>
-                            )
-                          )}
+    <div className="    px-4   sm:px-6 lg:px-8 lg:py-24     pt-4 lg:pt-10   pb-20">
+      <div className="relative">
+        <Slider ref={sliderRef} {...settings}>
+          {reviews.map((person, index) => (
+            <ul role="list" key={person.name} className=" ">
+              <li className="py-5 md:py-7 px-4 bg-gray-100  rounded-lg xl:px-5 mr-4  xl:text-left">
+                <div className="space-y-4">
+                  <img
+                    src={`/assets/reviewImg/${index + 1}.webp`}
+                    alt={`Review by ${person.name}`}
+                    className="w-full h-80 object-cover rounded-md rounded-t-lg"
+                  />
+                  <div className="space-y-2 xl:flex xl:items-center xl:justify-between">
+                    <div className="font-medium text-lg leading-6 space-y-1">
+                      <div className="text-white rounded-b-lg">
+                        <div className="flex   items-center justify-between mb-2">
+                          <div>
+                            {Array.from(Array(person.rating).keys()).map(
+                              (star, index) => (
+                                <span
+                                  key={index}
+                                  className="text-yellow-400 text-2xl md:text-3xl mr-2"
+                                >
+                                  ★
+                                </span>
+                              )
+                            )}
+                          </div>
                         </div>
+                        <p className="text-[0.9rem] lg:text-[1rem] font-poppins  opacity-90 text-black">
+                          {person.comment}
+                        </p>
                       </div>
-                      <p className="lg:text-md font-poppins ml-4 opacity-90  text-white">
-                        {review.comment}
-                      </p>
                     </div>
                   </div>
                 </div>
-              ))}
-            </Slider>
-
-            <button
-              onClick={handlePrevious}
-              className={`absolute top-1/3  ${
-                currentReviewIndex === 0 ? "hidden" : ""
-              }  transform -translate-y-1/3 left-4 text-2xl lg:text-3xl text-white bg-black rounded-full p-2 hover:bg-gray-900 focus:outline-none`}
-            >
-              <IoIosArrowBack />
-            </button>
-            <button
-              onClick={handleNext}
-              className={`absolute top-1/3 transform -translate-y-1/3 right-4 text-2xl lg:text-3xl text-white bg-black ${
-                slidesToShow + currentReviewIndex - 1 === reviews.length - 1
-                  ? "hidden"
-                  : ""
-              } rounded-full p-2 hover:bg-gray-900 focus:outline-none`}
-            >
-              <IoIosArrowForward />
-            </button>
-          </div>
-        </div>
+              </li>
+            </ul>
+          ))}
+        </Slider>
+        <button
+          onClick={handlePrevious}
+          className={`absolute top-1/2 transform -translate-y-1/2 left-6 text-2xl   text-white  bg-gray-900  rounded-full p-3 hover:bg-gray-900 focus:outline-none ${
+            currentReviewIndex === 0 ? "hidden" : ""
+          }`}
+        >
+          <IoIosArrowBack />
+        </button>
+        <button
+          onClick={handleNext}
+          className={`absolute top-1/2 transform -translate-y-1/2 right-8 text-2xl   lg:flex hidden  bg-gray-900   text-white rounded-full p-3 hover:bg-gray-900 focus:outline-none ${
+            slidesToShow + currentReviewIndex - 1 === reviews.length - 1
+              ? "hidden"
+              : ""
+          }`}
+        >
+          <IoIosArrowForward />
+        </button>
       </div>
     </div>
   );
 };
+
 var reviews = [
   {
     name: "John Doe",

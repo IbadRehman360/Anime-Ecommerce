@@ -235,8 +235,8 @@ export default function Example() {
         </Dialog>
       </Transition.Root>
 
-      <header className="relative bg-white">
-        <div className="flex h-12 items-center  justify-between px-4 sm:px-6 lg:px-8 text-[0.8rem] sm:text-sm font-medium text-white bg-black">
+      <header className="relative bg-gray-100">
+        <div className="flex h-12 items-center  justify-between px-4 sm:px-6 lg:px-8 text-[0.8rem] sm:text-sm font-medium text-white   bg-black">
           <div className="    items-center space-x-4">
             <Link
               href="https://www.instagram.com/pakistani_senpai_merch"
@@ -259,19 +259,9 @@ export default function Example() {
           </div>
           <div className="marquee-container">
             <p className="marquee text-xs sm:text-[0.82rem]   font-raleway flex tracking-wider">
-              <span className="text-center  sm:flex hidden">
-                {" "}
-                ⚡️ FREE SHIPPING ON PREPAID ORDERS{" "}
-              </span>
-              <span className="text-center uppercase  -mr-5 sm:hidden flex">
-                {" "}
-                ⚡️ Free Ship With Prepaid Orders ⚡️{" "}
-              </span>
-
-              <span className="ml-20 sm:flex hidden">
-                {" "}
-                ⚡️ FREE SHIPPING ON PREPAID ORDERS ⚡️{" "}
-              </span>
+              {" "}
+              Our delivery time is 9 to 15 days. We provide Cash on Delivery
+              service.
             </p>
           </div>
 
@@ -368,7 +358,7 @@ export default function Example() {
                         Account
                       </span>{" "}
                     </Link>
-                    <span className="h-6 w-px bg-gray-200" aria-hidden="true" />
+                    <span className="h-6 w-px bg-gray-100" aria-hidden="true" />
                   </div>
                 ) : (
                   <button

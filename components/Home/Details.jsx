@@ -13,19 +13,19 @@ function Details() {
           <h2 className="text-[1.6rem]   tracking-tight  font-montserrat text-gray-900 sm:text-4xl">
             Anime Phone Case
           </h2>
-          <p className="mt-4 text-lg  font-lato text-gray-400  tracking-wide leading-7">
+          <p className="mt-4 text-[0.9rem] lg:text-[0.99rem]    line-clamp-3  font-raleway text-gray-500  tracking-wide leading-7">
             Personalize your phone with custome designed cases. Choose{" "}
             <span className=" font-medium">Images</span>.{" "}
             <span className=" font-medium">Text</span> and{" "}
             <span className=" font-medium">Background</span> to create unique
             look. Express your style and protect your device with our customized
             phone cases.
-            <button className="">
-              <p className="border bg-center flex     font-cabin   tracking-widest bg-red-500  text-sm    py-2 px-3 lg:py-2.5 lg:px-4   font-meduim   text-white mt-6 lg:mt-8  rounded-md">
-                CONTACT NOW{" "}
-              </p>
-            </button>
           </p>{" "}
+          <button className="">
+            <p className="border bg-center flex     font-cabin   tracking-widest bg-red-500  text-sm    py-2 px-3 lg:py-2.5 lg:px-4   font-meduim   text-white mt-6 lg:mt-6  rounded-md">
+              CONTACT NOW{" "}
+            </p>
+          </button>
         </div>
         <div className=" justify-end hidden lg:flex">
           <img

@@ -26,7 +26,10 @@ export default function HeroCarousel() {
       >
         {images.map((imageUrl, index) => (
           <SwiperSlide key={imageUrl}>
+            <img className="w-full  h-0.5 bg-black" src="/assets/lll.webp" />
+
             <HeroImages index={index} imageUrl={imageUrl} />
+            <img className="w-full  h-0.5 bg-black" src="/assets/lll.webp" />
           </SwiperSlide>
         ))}
       </Swiper>
