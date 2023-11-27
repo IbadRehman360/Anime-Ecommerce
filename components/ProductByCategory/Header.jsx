@@ -11,11 +11,11 @@ import { FaAngleDown } from "react-icons/fa";
 function Header({ products, sortOptions, setMobileFiltersOpen }) {
   return (
     <div className="relative flex items-baseline justify-between pt-16 pb-6 border-b border-gray-200">
-      <h1 className="text-4xl  font-extrabold tracking-tight text-gray-900">
-        {products[0].anime_category_id.title}
+      <h1 className="text-2xl md:text-3xl    font-montserrat tracking-tight text-gray-900">
+        {products[0].anime_category_id.title || products[0].category_id.name}
       </h1>
 
-      <div className="flex items-center">
+      <div className="flex items-center z-10">
         <Menu as="div" className="relative inline-block text-left">
           <div>
             <Menu.Button className="group inline-flex justify-center  font-opensans gap-0.5 text-sm font-medium text-gray-500 hover:text-gray-600">

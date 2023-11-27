@@ -112,7 +112,7 @@ export default function Example() {
       <div className="">
         <div className="border-gray-200">
           <div className="text-center ">
-            <h2 className="text-3xl font-montserratextra font-extrabold sm:text-5xl  sm:pb-8 lg:pb-12 text-gray-900">
+            <h2 className="text-3xl font-montserratextra font-extrabold sm:text-5xl   sm:pb-6 lg:pb-12 text-gray-900">
               SHOP BY ANIME
             </h2>
           </div>
@@ -123,7 +123,7 @@ export default function Example() {
               <Link
                 href={callout.path}
                 key={callout.name + 10}
-                className="flex-none rounded-md w-[calc(55%-0.6rem)] sm:w-[calc(53%-1rem)] xl:w-[calc(20%-1.5rem)] shadow-2xl border-black border relative callout"
+                className="flex-none rounded-md w-[calc(55%-0.6rem)]  sm:w-[calc(52%-1rem)] md:w-[calc(34%-1rem)] lg:w-[calc(25.2%-1rem)] xl:w-[calc(20%-1.5rem)] shadow-2xl border-black border relative callout"
               >
                 <div className="relative overflow-hidden rounded-lg bg-white sm:aspect-h-1 sm:aspect-w-2 lg:aspect-h-1 lg:aspect-w-1">
                   <img
@@ -132,7 +132,7 @@ export default function Example() {
                     className="custom-animation w-full h-[16rem] sm:h-[23rem] img-hover-effect"
                   />
 
-                  <div className="absolute inset-0 bg-black opacity-20"></div>
+                  <div className="absolute inset-0 bg-black opacity-30 hover:opacity-20"></div>
 
                   <div className="absolute bottom-0 font ml-3 mb-5 sm:mb-8 text-white">
                     <p className="mb-4 text-[0.9rem] md:text-xl uppercase tracking-widest font-satoshi">
@@ -157,7 +157,7 @@ export default function Example() {
               <Link
                 href={callout.path}
                 key={callout.name + index}
-                className="flex-none rounded-md   w-[calc(54.5%-0.6rem)] sm:w-[calc(52%-1rem)] xl:w-[calc(25%-1.5rem)] shadow-2xl border-black border relative callout"
+                className="flex-none rounded-md   w-[calc(54.5%-0.6rem)] sm:w-[calc(52%-1rem)]  lg:w-[calc(34%-1rem)] xl:w-[calc(25%-1.5rem)] shadow-2xl border-black border relative callout"
               >
                 <div className=" ">
                   <img
@@ -165,7 +165,7 @@ export default function Example() {
                     alt={callout.imageAlt}
                     className="custom-animation w-full h-[16rem] sm:h-[23rem]  img-hover-effect"
                   />
-                  <div className="absolute inset-0 bg-black opacity-20"></div>
+                  <div className="absolute inset-0 bg-black opacity-30  hover:opacity-20"></div>
 
                   <div className="absolute bottom-0   font  ml-3 mb-5 sm:mb-8    text-white">
                     <p className="mb-4 text-[0.9rem] md:text-xl uppercase tracking-widest font-satoshi    ">

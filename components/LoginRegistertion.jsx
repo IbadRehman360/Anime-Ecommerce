@@ -53,7 +53,7 @@ function LoginRegistertion() {
         <div className="mt-8 flex justify-center items-center">
           <button
             onClick={() => setIsCurrently((prev) => !prev)}
-            className="inline-block px-6 py-3.5 text-xs font-bungee tracking-wider bg-black text-white rounded hover:opacity-90 hover:underline"
+            className="inline-block px-6 py-3.5 text-xs  font-montserrat    tracking-wider bg-black text-white rounded hover:opacity-90 hover:underline"
           >
             {isCurrently ? (
               <span>New customer? Register</span>

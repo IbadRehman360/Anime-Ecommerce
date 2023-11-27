@@ -7,7 +7,7 @@ export default function ProductMoreImage({ product, handleImageClick }) {
           src={src}
           alt={`Small Image ${index}`}
           onClick={() => handleImageClick(src)}
-          className={`lg:w-20 lg:h-auto  h-8 lg:w-20 border-2 rounded-md border-black cursor-pointer  `}
+          className={`lg:w-20 lg:h-auto  h-8 lg:w-20  border rounded-md  border-gray-400 cursor-pointer  `}
         />
       ))}
     </div>

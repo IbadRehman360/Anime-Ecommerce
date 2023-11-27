@@ -13,11 +13,11 @@ export default function ProductItem({ product }) {
   };
 
   return (
-    <div className="group relative bg-white rounded-lg flex flex-col overflow-hidden">
+    <div className="group relative border bg-white rounded-lg flex flex-col overflow-hidden">
       <div
-        className={`aspect-w-3 aspect-h-4 bg-gray-200 group-hover:opacity-75 sm:aspect-none 
+        className={`aspect-w-3 aspect-h-4 bg-gray-200   sm:aspect-none 
             relative w-full sm:h-80  rounded-lg overflow-hidden ${
-              isHovered ? "shadow-lg" : ""
+              isHovered ? "shadow-sm" : ""
             } `}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
@@ -25,7 +25,7 @@ export default function ProductItem({ product }) {
         <Link href={`/product/${product._id}`}>
           <img
             src={product.images}
-            className="w-full h-full object-center object-cover sm:w-full sm:h-full"
+            className="w-full h-full border object-center object-cover sm:w-full sm:h-full"
           />
         </Link>
         {isHovered && (
@@ -46,30 +46,34 @@ export default function ProductItem({ product }) {
         )}
       </div>
       <div className="p-4 space-y-2 flex flex-col ">
-        <h3 className="text-base font-semibold text-center text-gray-900 ">
+        <h2 className="products-title text-sm lg:text-[1.1rem] px-4   line-clamp-1   font-poppins  font-medium text-center">
           <Link href={`/product/${product._id}`} className="  ">
             {product.title}
           </Link>
-        </h3>
-        <p className="text-xs italic text-gray-500 text-center">
+        </h2>
+        <p className="text-xs italic text-gray-500 text-center   font-poppins">
           Colors : {product.colors.length} | Sizes :{" "}
           {Object.values(product.sizes).filter((size) => size).length}
         </p>
 
         <div className=" flex justify-center  text-center mt-auto">
-          <p
-            className="font-satoshi tracking-wide text-red-500"
-            style={{ fontWeight: 500 }}
-          >
-            {product.discount_price
-              ? `Rs ${product.discount_price.toFixed(2)}`
-              : `Rs ${product.price.toFixed(2)}`}
+          <p className="text-sm lg:text-[1.05rem]     font-roboto  px-4     tracking-wide mt-1 ">
+            {product.discount_price ? (
+              <span>
+                <span className="text-red-500">
+                  Rs {product.discount_price.toFixed(2)}
+                </span>
+                <del className="text-gray-500 ml-3">
+                  Rs {product.price.toFixed(2)}
+                </del>
+              </span>
+            ) : (
+              <>
+                <span>Rs {product.price.toFixed(2)}</span>
+                <div className="w-10 h-5  "> </div>
+              </>
+            )}
           </p>
-          {product.discount_price && (
-            <p className="text-sm mt-[1.5px] ml-2.5 tracking-wide text-gray-500 line-through">
-              Rs {product.price.toFixed(2)}
-            </p>
-          )}
         </div>
       </div>
       <QuickView

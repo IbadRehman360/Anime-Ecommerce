@@ -89,7 +89,7 @@ function Cliently({ navigation }) {
                                   {section.items.map((item) => (
                                     <li key={item.name} className="flex">
                                       <Link
-                                        href={item.href}
+                                        href={`category/${item.href}`}
                                         className="hover:text-gray-800"
                                       >
                                         {item.name}

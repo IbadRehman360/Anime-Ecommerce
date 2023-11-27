@@ -4,10 +4,11 @@ import { useState } from "react";
 import ReviewForm from "./ReviewForm";
 import { AiOutlineClose } from "react-icons/ai";
 import { StarIcon } from "@heroicons/react/24/outline";
-
+import { getSession, useSession } from "next-auth/react";
+import Link from "next/link";
 export default function WriteReview({ reviews, product }) {
   const [showReviewForm, setShowReviewForm] = useState(false);
-
+  const { data: session } = useSession();
   const handleWriteReviewClick = () => {
     setShowReviewForm(!showReviewForm);
   };
@@ -37,12 +38,21 @@ export default function WriteReview({ reviews, product }) {
                   : "Be the first to write a review"}
               </p>
             </div>
-            <button
-              className="border-black border  w-full md:w-40 p-1 rounded"
-              onClick={handleWriteReviewClick}
-            >
-              Write a review
-            </button>
+            {!session ? (
+              <Link
+                href={"/login"}
+                className="border-black border  text-center items-center justify-center flex  md:h-9 mt-4 md:mt-0 w-full md:w-40 p-1 rounded"
+              >
+                Write a review
+              </Link>
+            ) : (
+              <button
+                className="border-black border  text-center items-center justify-center flex  md:h-9 mt-4 md:mt-0 w-full md:w-40 p-1 rounded"
+                onClick={handleWriteReviewClick}
+              >
+                Write a review
+              </button>
+            )}
           </div>
         </>
       )}

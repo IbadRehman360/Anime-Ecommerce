@@ -1,26 +1,18 @@
 "use client";
-import { BsShop, BsBag, BsGrid, BsPeople } from "react-icons/bs";
-import { LiaBoxOpenSolid } from "react-icons/lia";
-
-import { Fragment, useState } from "react";
-import { Dialog, Tab, Transition } from "@headlessui/react";
-import {
-  Bars3Icon,
-  MagnifyingGlassIcon,
-  ShoppingBagIcon,
-  XMarkIcon,
-} from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
-import Cart from "./Cart";
 import Clintly from "./Home/Clintly";
-import SearchMenu from "./Home/SearchMenu";
-import { FaSignOutAlt, FaUser } from "react-icons/fa";
+import { FaUser } from "react-icons/fa";
 import { signOut, useSession } from "next-auth/react";
 import { selectCartItems } from "@app/Global/Features/cartSlice";
+import { BsShop, BsBag, BsGrid, BsPeople } from "react-icons/bs";
+import { XMarkIcon } from "@heroicons/react/24/outline";
 import { useSelector } from "react-redux";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faInstagram, faFacebook } from "@fortawesome/free-brands-svg-icons";
+
+import Nav from "./Nav";
+import SubHeader from "./SubHeader";
+import { Dialog, Tab, Transition } from "@headlessui/react";
+import { Fragment, useState } from "react";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -102,7 +94,7 @@ export default function Example() {
                     </Tab.List>
                   </div>
 
-                  <Tab.anels as={Fragment}>
+                  <Tab.Panels as={Fragment}>
                     {navigation.categories.map((category) => (
                       <Tab.Panel
                         key={category.name}
@@ -114,7 +106,7 @@ export default function Example() {
                               key={item.name}
                               className="group relative text-sm"
                             >
-                              <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
+                              <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-50 group-hover:opacity-75">
                                 <Image
                                   src={item.imageSrc}
                                   width={50}
@@ -168,7 +160,7 @@ export default function Example() {
                         ))}
                       </Tab.Panel>
                     ))}
-                  </Tab.anels>
+                  </Tab.Panels>
                 </Tab.Group>
 
                 <div className="space-y-6 border-t border-gray-200 px-4  py-6">
@@ -235,166 +227,18 @@ export default function Example() {
         </Dialog>
       </Transition.Root>
 
-      <header className="relative bg-gray-100">
-        <div className="flex h-12 items-center  justify-between px-4 sm:px-6 lg:px-8 text-[0.8rem] sm:text-sm font-medium text-white   bg-black">
-          <div className="    items-center space-x-4">
-            <Link
-              href="https://www.instagram.com/pakistani_senpai_merch"
-              className="text-white"
-            >
-              <FontAwesomeIcon
-                icon={faInstagram}
-                style={{ fontSize: "24px", height: "18px", width: "26px" }}
-              />
-            </Link>
-            <Link
-              href="https://www.facebook.com/Pakistanisenpaimerch"
-              className="text-white  sm:inline-block     hidden"
-            >
-              <FontAwesomeIcon
-                icon={faFacebook}
-                style={{ fontSize: "24px", height: "18px", width: "26px" }}
-              />
-            </Link>
-          </div>
-          <div className="marquee-container">
-            <p className="marquee text-xs sm:text-[0.82rem]   font-raleway flex tracking-wider">
-              {" "}
-              Our delivery time is 9 to 15 days. We provide Cash on Delivery
-              service.
-            </p>
-          </div>
-
-          <div className="flex items-center sm:text-[0.82rem]  space-x-4">
-            <Link
-              href="/order
-            "
-              className="text-white   hidden sm:flex"
-            >
-              Track Order
-            </Link>
-            <Link
-              href="#"
-              className="text-white  sm:flex hidden text-xs  sm:text-[0.82rem]  justify-end items-end"
-            >
-              Need Help?
-            </Link>
-          </div>
-        </div>
-        <nav
-          aria-label="Top"
-          className="mx-auto    mr-3 sm:px-5 lg:px-8 2xl:px-60"
-        >
-          <div className="border-b border-gray-200">
-            <div className="flex h-[80px] items-center">
-              <button
-                type="button"
-                className="relative rounded-md bg-white p-2 text-gray-400 lg:hidden"
-                onClick={() => setOpen(true)}
-              >
-                <span className="absolute -inset-0.5" />
-                <span className="sr-only">Open menu</span>
-                <Bars3Icon className="h-6 w-6" aria-hidden="true" />
-              </button>
-              <div className="flex">
-                <SearchMenu
-                  searchText={searchText}
-                  onSearchTextChange={handleSearchTextChange}
-                  onSearchSubmit={handleSearchSubmit}
-                />
-              </div>
-              <div className="flex items-center w-full">
-                <div className="ml-4 lg:ml-0 flex items-center">
-                  <Link
-                    href={"/"}
-                    className="absolute left-1/2 transform -translate-x-1/2"
-                  >
-                    <img
-                      src="/assets/AnimeSiteLogo.png"
-                      alt="Senpai Merch Logo"
-                      layout="responsive"
-                      className="w-[4rem] md:w-[4.5rem] "
-                    />
-                  </Link>
-                </div>
-                <div className="flex-grow" />
-                <div className=" mr-4 hidden  lg:ml-8 sm:flex">
-                  <Link
-                    href="#"
-                    className="flex items-center text-gray-700 hover:text-gray-800"
-                  >
-                    <Image
-                      src="/assets/country.png"
-                      alt=""
-                      width={90}
-                      height={90}
-                      className="block border-2 border-gray-700 h-auto w-5 flex-shrink-0"
-                    />
-                    <span className="ml-3 block text-sm font-medium">PKR</span>
-                    <span className="sr-only">, change currency</span>
-                  </Link>
-                </div>
-
-                <div className="flex lg:hidden lg:ml-8">
-                  <Link
-                    href="#"
-                    className="p-2 text-gray-400 hover:text-gray-500"
-                  >
-                    <span className="sr-only">Search</span>
-                    <MagnifyingGlassIcon
-                      className="h-6 w-6"
-                      aria-hidden="true"
-                    />
-                  </Link>
-                </div>
-                {!session ? (
-                  <div className="hidden lg:flex border-l pl-5 lg:items-center font-inter tracking-wide lg:justify-end lg:space-x-6">
-                    <Link
-                      href="/login"
-                      className="text-sm  text-gray-700 hover:text-gray-800 flex items-center"
-                    >
-                      <FaUser className="mr-4" />
-                      <span className=" text-gray-600 tracking-wide">
-                        Account
-                      </span>{" "}
-                    </Link>
-                    <span className="h-6 w-px bg-gray-100" aria-hidden="true" />
-                  </div>
-                ) : (
-                  <button
-                    type="button"
-                    onClick={() => signOut()}
-                    className="hidden lg:flex border-l text-sm     uppercase pl-5 lg:items-center        font-roboto hover:text-gray-600 tracking-wide lg:justify-end lg:space-x-6"
-                  >
-                    <FaSignOutAlt className="mr-2" /> logout
-                  </button>
-                )}
-                <Link href={"/order"} className=" lg:hidden flex">
-                  <LiaBoxOpenSolid
-                    className="h-7 w-7 flex-shrink-0 mr-2 ml-3  text-gray-400 group-hover:text-gray-500"
-                    aria-hidden="true"
-                  />
-                </Link>
-                <div className="ml-4 flow-root lg:ml-8">
-                  <Link
-                    href={"/cart"}
-                    className="group -m-2 flex items-center p-2"
-                  >
-                    <ShoppingBagIcon
-                      className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
-                      aria-hidden="true"
-                    />
-                    <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">
-                      {cartItems.length}
-                    </span>
-                    {isCartOpen && <Cart />}{" "}
-                    <span className="sr-only">items in cart, view bag</span>
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </nav>
+      <header className="relative bg-white">
+        <SubHeader />
+        <Nav
+          signOut={signOut}
+          setOpen={setOpen}
+          searchText={searchText}
+          onSearchTextChange={handleSearchTextChange}
+          onSearchSubmit={handleSearchSubmit}
+          session={session}
+          cartItems={cartItems}
+          isCartOpen={isCartOpen}
+        />
         <Clintly navigation={navigation} />
       </header>
     </div>
@@ -429,7 +273,7 @@ var navigation = {
           id: "clothing",
           name: "Clothing",
           items: [
-            { name: "Tops", href: "#" },
+            { name: "Bracelet", href: "654cc9b672d1fa8b7fc1316b" },
             { name: "Dresses", href: "#" },
             { name: "Pants", href: "#" },
             { name: "Denim", href: "#" },

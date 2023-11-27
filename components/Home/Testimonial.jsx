@@ -1,25 +1,24 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-
 const Testimonials = () => {
   const [slidesToShow, setSlidesToShow] = useState(4);
-  const sliderRef = useRef(null);
   const [currentReviewIndex, setCurrentReviewIndex] = useState(0);
+  const sliderRef = useRef(null);
 
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth <= 640) {
-        setSlidesToShow(1);
+        setSlidesToShow(1.2);
       } else if (window.innerWidth <= 1024) {
         setSlidesToShow(2);
-      } else if (window.innerWidth <= 1600) {
+      } else if (window.innerWidth <= 1450) {
         setSlidesToShow(3);
       } else {
-        setSlidesToShow(5);
+        setSlidesToShow(4);
       }
     };
 
@@ -53,12 +52,15 @@ const Testimonials = () => {
     }
   };
   return (
-    <div className="    px-4   sm:px-6 lg:px-8 lg:py-24     pt-4 lg:pt-10   pb-20">
+    <div className="mx-3 sm:px-4 lg:px-6 lg:py-24 pt-4 lg:pt-10 pb-20">
       <div className="relative">
         <Slider ref={sliderRef} {...settings}>
           {reviews.map((person, index) => (
-            <ul role="list" key={person.name} className=" ">
-              <li className="py-5 md:py-7 px-4 bg-gray-100  rounded-lg xl:px-5 mr-4  xl:text-left">
+            <ul
+              key={person.name}
+              className="flex-none rounded-md   py-5 md:py-6"
+            >
+              <li className="py-5 md:py-7 px-4 bg-gray-100 rounded-lg xl:px-5 mr-4 xl:text-left">
                 <div className="space-y-4">
                   <img
                     src={`/assets/reviewImg/${index + 1}.webp`}
@@ -68,7 +70,7 @@ const Testimonials = () => {
                   <div className="space-y-2 xl:flex xl:items-center xl:justify-between">
                     <div className="font-medium text-lg leading-6 space-y-1">
                       <div className="text-white rounded-b-lg">
-                        <div className="flex   items-center justify-between mb-2">
+                        <div className="flex items-center justify-between mb-2">
                           <div>
                             {Array.from(Array(person.rating).keys()).map(
                               (star, index) => (
@@ -82,7 +84,7 @@ const Testimonials = () => {
                             )}
                           </div>
                         </div>
-                        <p className="text-[0.9rem] lg:text-[1rem] font-poppins  opacity-90 text-black">
+                        <p className="text-[0.9rem] lg:text-[1rem] font-poppins opacity-90 text-black">
                           {person.comment}
                         </p>
                       </div>
@@ -95,17 +97,20 @@ const Testimonials = () => {
         </Slider>
         <button
           onClick={handlePrevious}
-          className={`absolute top-1/2 transform -translate-y-1/2 left-6 text-2xl   text-white  bg-gray-900  rounded-full p-3 hover:bg-gray-900 focus:outline-none ${
+          className={`absolute top-1/2 transform -translate-y-1/2 left-8 text-xl    bg-white text-red-600 rounded-full p-2 hover:bg-gray-900 focus:outline-none ${
             currentReviewIndex === 0 ? "hidden" : ""
           }`}
         >
           <IoIosArrowBack />
         </button>
+        {console.log(currentReviewIndex === reviews.length - slidesToShow)}
         <button
           onClick={handleNext}
-          className={`absolute top-1/2 transform -translate-y-1/2 right-8 text-2xl   lg:flex hidden  bg-gray-900   text-white rounded-full p-3 hover:bg-gray-900 focus:outline-none ${
-            slidesToShow + currentReviewIndex - 1 === reviews.length - 1
-              ? "hidden"
+          className={`absolute ${
+            slidesToShow === 1.2 ? "hidden" : ""
+          } top-1/2 transform -translate-y-1/2 right-10 text-xl    bg-white text-red-600 rounded-full p-2 hover:bg-gray-900 focus:outline-none ${
+            currentReviewIndex === reviews.length - slidesToShow
+              ? " hidden"
               : ""
           }`}
         >

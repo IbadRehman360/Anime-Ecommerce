@@ -21,7 +21,11 @@ export default function Footer() {
           <div className="md:col-span-1 flex  text-red-500">
             <FaShippingFast size={18} className="mt-0.5 mr-1" />
             <div className="ml-2">
-              <p className="text-black font-inter tracking-wide text-[0.85rem]">
+              <p
+                className="font-poppins  tracking-wide text-[0.85rem]"
+                style={{ fontWeight: "700" }}
+              >
+                {" "}
                 FREE SHIPPING
               </p>
               <p className="text-gray-600 text-xs       font-poppins">
@@ -32,7 +36,11 @@ export default function Footer() {
           <div className="md:col-span-1 flex text-red-500">
             <FaLock size={14} className="mt-0.5 mr-1" />
             <div className="ml-2">
-              <p className="text-black font-inter tracking-wide text-[0.85rem]">
+              <p
+                className="  font-poppins  tracking-wide text-[0.85rem]"
+                style={{ fontWeight: "700" }}
+              >
+                {" "}
                 100% SECURE PAYMENT
               </p>
               <p className="text-gray-600 text-xs       font-poppins">
@@ -43,7 +51,10 @@ export default function Footer() {
           <div className="md:col-span-1 flex text-red-500">
             <FaPercent size={14} className="mt-1 mr-1" />
             <div className="ml-2">
-              <p className="text-black font-inter tracking-wide text-[0.85rem]">
+              <p
+                className="  font-poppins  tracking-wide text-[0.85rem]"
+                style={{ fontWeight: "700" }}
+              >
                 UP TO 40% DISCOUNT
               </p>
               <p className="text-gray-600 text-xs       font-poppins">
@@ -54,7 +65,11 @@ export default function Footer() {
           <div className="md:col-span-1 flex text-red-500">
             <FaTshirt size={18} className="mt-0.5 mr-1" />
             <div className="ml-2">
-              <p className="text-black font-inter tracking-wide text-[0.85rem]">
+              <p
+                className=" font-poppins  tracking-wide text-[0.85rem]"
+                style={{ fontWeight: "700" }}
+              >
+                {" "}
                 OVER 200+ STYLES
               </p>
               <p className="text-gray-600 text-xs       font-poppins">
@@ -64,7 +79,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <footer className="footer grid  gap-6  grid-rows-1  grid-cols-none   bg-[#080808] p-4 py-10 sm:p-8 md:p-10  text-white sm:justify-between sm:gap-8 lg:grid-cols-4 lg:grid-rows-1">
+        <footer className="footer grid  gap-6  grid-rows-1  grid-cols-none   bg-[#141414] p-4 py-10 sm:p-8 md:p-10  text-white sm:justify-between sm:gap-8 lg:grid-cols-4 lg:grid-rows-1">
           <div>
             <span
               id="whity-text"
@@ -146,7 +161,7 @@ export default function Footer() {
             </div>
           </div>
         </footer>
-        <footer className="footer footer-center border-t border-gray-800 bg-[#080808]  p-7 text-white">
+        <footer className="footer footer-center border-t border-gray-800 bg-[#161616] p-7 text-white">
           <div>
             <p>Copyright © 2023 - All rights reserved by SenpaiMerch Ltd</p>
           </div>

@@ -11,7 +11,7 @@ const ProductCard = ({ products }) => {
         <div>
           <div
             className={`relative w-full sm:h-72 lg:80 rounded-lg overflow-hidden ${
-              isHovered ? "shadow-lg" : ""
+              isHovered ? "shadow-sm" : ""
             }`}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
@@ -24,7 +24,7 @@ const ProductCard = ({ products }) => {
             <div className="absolute top-0   inset-x-0 h-72 rounded-lg p-4 flex items-end justify-end overflow-hidden">
               <div
                 aria-hidden="true"
-                className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-t from-black opacity-10"
+                className="absolute inset-x-0 bottom-0 h-[1px] bg-gradient-to-t from-black opacity-10"
               />
             </div>
             {isHovered && (
@@ -34,10 +34,10 @@ const ProductCard = ({ products }) => {
             )}
           </div>
           <div className="product-details mt-2 md:mt-4 text-center">
-            <h2 className="products-title text-sm lg:text-[1.15rem] line-clamp-1   font-cabin   font-medium text-center">
-              Attack on Titans Bracelet
+            <h2 className="products-title text-sm lg:text-[1.1rem] px-4   line-clamp-1   font-poppins  font-medium text-center">
+              {products.title}
             </h2>
-            <p className="text-sm lg:text-[1.05rem]    font-roboto   tracking-wide mt-1 lg:mt-2">
+            <p className="text-sm lg:text-[1.05rem]     font-roboto  px-4     tracking-wide mt-1 lg:mt-2">
               {products.discount_price ? (
                 <span>
                   <span className="text-red-500">

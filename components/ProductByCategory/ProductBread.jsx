@@ -3,7 +3,7 @@ import Link from "next/link";
 
 function ProductBread({ products }) {
   return (
-    <div className="  bg-[#fefefe] border-b border-gray-200">
+    <div className="    border-b border-gray-200">
       <nav
         aria-label="Breadcrumb"
         className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-12 "
