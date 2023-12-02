@@ -4,10 +4,12 @@ export default function HeroImages({ index, imageUrl }) {
     <div className="   ">
       <div className="     ">
         <img
-          className="hidden sm:flex border border-gray-200 max-h-[30rem]  w-full mx-auto"
+          className="hidden sm:flex border  max-h-[32rem]    w-full mx-auto"
           src={`/assets/ppp.webp`}
           alt={`bg ${index}`}
         />
+
+        <div className="absolute inset-0 bg-black opacity-10  "></div>
         <img
           src="https://thesagacity.s3.ap-south-1.amazonaws.com/media/new_banner_-_oversized_tshirts_mobile.webp"
           alt={`bg ${index}`}

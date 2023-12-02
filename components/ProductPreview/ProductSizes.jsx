@@ -34,7 +34,7 @@ function ProductSizes({ product, selectedSize, setSelectedSize, sizeNames }) {
                       ? "cursor-pointer bg-white text-gray-900 shadow-sm"
                       : "cursor-not-allowed bg-gray-50 text-gray-200",
                     active ? "ring-2 ring-indigo-500" : "",
-                    "group relative flex items-center justify-center rounded-md border py-2.5 px-4 text-xs lg:text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-4"
+                    "group relative flex items-center justify-center rounded-md border py-3 px-4 text-xs lg:text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-4"
                   )
                 }
               >

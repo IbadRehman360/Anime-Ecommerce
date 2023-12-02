@@ -2,9 +2,7 @@ import { FaCogs } from "react-icons/fa";
 
 function Details2() {
   return (
-    <div className="bg-white sm:border-t border-b sm:border-none  pt-10 pb-8 sm:pt-12 sm:pb-10 lg:pt-16 lg:pb-12">
-      <img className="w-full  h-[1px] bg-black" src="/assets/lll.webp" />
-
+    <div className="  sm:border-t border-b sm:border-none  pt-10 pb-8 sm:pt-12 sm:pb-10 lg:pt-16 lg:pb-12">
       <div className="text-center   ">
         <h3 className="text-3xl   pt-16 sm:pb-12  uppercase font-montserratextra font-extrabold sm:text-[2.8rem] text-center  justify-center  tracking-wider flex  text-gray-900  ">
           <FaCogs className="  mr-6 sm:inline-block hidden " />
@@ -15,7 +13,7 @@ function Details2() {
       <div className="mx-auto grid   pt-8  px-3 sm:px-6 grid-cols-1 items-center  w-full    lg:grid-cols-2 lg:px-8">
         <img
           src="/assets/Des/2.jpg"
-          className="border-black  border-2"
+          className="  rounded-md      lg:h-[32rem] w-full  "
           alt="Walnut card tray filled with cards and card angled in dedicated groove."
         />
 

@@ -4,6 +4,7 @@ import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+import { BsInstagram } from "react-icons/bs";
 const Testimonials = () => {
   const [slidesToShow, setSlidesToShow] = useState(4);
   const [currentReviewIndex, setCurrentReviewIndex] = useState(0);
@@ -18,7 +19,7 @@ const Testimonials = () => {
       } else if (window.innerWidth <= 1450) {
         setSlidesToShow(3);
       } else {
-        setSlidesToShow(4);
+        setSlidesToShow(7);
       }
     };
 
@@ -52,70 +53,63 @@ const Testimonials = () => {
     }
   };
   return (
-    <div className="mx-3 sm:px-4 lg:px-6 lg:py-24 pt-4 lg:pt-10 pb-20">
+    <div className="  px-4  sm:px-6 lg:py-16 pt-4 lg:pt-10 pb-20">
       <div className="relative">
-        <Slider ref={sliderRef} {...settings}>
+        <div className="mx-auto grid justify-center items-center">
+          <div className="flex justify-center my-4  text-3xl ">
+            <BsInstagram />
+          </div>
+          <h4
+            alt="instagram"
+            className="    font-poppins font-semibold text-gray-600   "
+          >
+            FOLLOW & TAG US ON INSTAGRAM{" "}
+          </h4>
+        </div>
+        <div className="grid gap-1 md:gap-2 xl:grid-cols-6 grid-cols-3 py-5 grid-rows-2 xl:grid-rows-1">
           {reviews.map((person, index) => (
-            <ul
-              key={person.name}
-              className="flex-none rounded-md   py-5 md:py-6"
-            >
-              <li className="py-5 md:py-7 px-4 bg-gray-100 rounded-lg xl:px-5 mr-4 xl:text-left">
-                <div className="space-y-4">
-                  <img
-                    src={`/assets/reviewImg/${index + 1}.webp`}
-                    alt={`Review by ${person.name}`}
-                    className="w-full h-80 object-cover rounded-md rounded-t-lg"
-                  />
-                  <div className="space-y-2 xl:flex xl:items-center xl:justify-between">
-                    <div className="font-medium text-lg leading-6 space-y-1">
-                      <div className="text-white rounded-b-lg">
-                        <div className="flex items-center justify-between mb-2">
-                          <div>
-                            {Array.from(Array(person.rating).keys()).map(
-                              (star, index) => (
-                                <span
-                                  key={index}
-                                  className="text-yellow-400 text-2xl md:text-3xl mr-2"
-                                >
-                                  ★
-                                </span>
-                              )
-                            )}
-                          </div>
-                        </div>
-                        <p className="text-[0.9rem] lg:text-[1rem] font-poppins opacity-90 text-black">
-                          {person.comment}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-            </ul>
+            <div key={person.name} className="flex-none   md:py-6">
+              <div className=" ">
+                <img
+                  src={`/assets/reviewImg/${index + 1}.webp`}
+                  alt={`Review by ${person.name}`}
+                  className="w-full max-h-28   sm:max-h-56 lg:max-h-56"
+                />
+              </div>
+            </div>
           ))}
-        </Slider>
-        <button
-          onClick={handlePrevious}
-          className={`absolute top-1/2 transform -translate-y-1/2 left-8 text-xl    bg-white text-red-600 rounded-full p-2 hover:bg-gray-900 focus:outline-none ${
-            currentReviewIndex === 0 ? "hidden" : ""
-          }`}
+        </div>
+
+        <h6
+          className=" text-center my-8 font-montserrat text-2xl    italic"
+          style={{ fontWeight: "900" }}
         >
-          <IoIosArrowBack />
-        </button>
-        {console.log(currentReviewIndex === reviews.length - slidesToShow)}
-        <button
-          onClick={handleNext}
-          className={`absolute ${
-            slidesToShow === 1.2 ? "hidden" : ""
-          } top-1/2 transform -translate-y-1/2 right-10 text-xl    bg-white text-red-600 rounded-full p-2 hover:bg-gray-900 focus:outline-none ${
-            currentReviewIndex === reviews.length - slidesToShow
-              ? " hidden"
-              : ""
-          }`}
+          {" "}
+          TOP Anime Clothing{" "}
+        </h6>
+        <div
+          className="  justify-center    grid-cols-2 grid-rows-3     grid  xl:grid-cols-6 sm:grid-cols-3 sm:grid-rows-2 xl:grid-rows-1
+          items-center gap-4 lg:gap-10 text-xs font-poppins "
         >
-          <IoIosArrowForward />
-        </button>
+          <button className="border-black border  hover:border-gray-700  bg-white text-black p-3 px-8">
+            BUTTON UPS
+          </button>
+          <button className="border-black border bg-white  hover:border-gray-700 text-black p-3 px-8">
+            JERSEYS
+          </button>
+          <button className="border-black border bg-white  hover:border-gray-700 text-black p-3 px-8">
+            STREETWEAR
+          </button>
+          <button className="border-black border bg-white  hover:border-gray-700 text-black p-3 px-8">
+            XMAS SWEATERS
+          </button>
+          <button className="border-black border bg-white  hover:border-gray-700 text-black p-3 px-8 mt-2">
+            DREAM CLOAKS
+          </button>
+          <button className="border-black border bg-white  hover:border-gray-700 text-black p-3 px-8 mt-1">
+            OODIES
+          </button>
+        </div>
       </div>
     </div>
   );
@@ -148,9 +142,9 @@ var reviews = [
     rating: 5,
   },
   {
-    name: "Jane Smith",
-    comment: "Awesome quality and fantastic customer service 6.",
-    rating: 4,
+    name: "John Doe",
+    comment: "Great products and fast shipping! customer service 5.",
+    rating: 5,
   },
 ];
 export default Testimonials;

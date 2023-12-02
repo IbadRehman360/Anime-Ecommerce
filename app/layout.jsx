@@ -5,7 +5,7 @@ import Footer from "../components/Footer";
 import CartOpen from "@components/CartOpen";
 import Providers from "@components/Providers";
 import ReduxProvider from "./Global/ReduxProvider";
-
+import BottomStructure from "@components/BottomStructure";
 export const metadata = {
   title: "SenpaiMerch",
   description:
@@ -44,6 +44,7 @@ const RootLayout = ({ children }) => (
           <main className="app">{children}</main>
           <Footer />
           <CartOpen />
+          <BottomStructure />
         </ReduxProvider>
       </Providers>
     </body>

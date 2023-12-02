@@ -58,7 +58,7 @@ export default function ProductDetails({ product }) {
       </div>
       {sections[sectionName] && (
         <div className="border-t">
-          <p className="text-gray-900 px-3 lg:hidden le ding-6 font-satoshi text-[0.8rem] py-6 tracking-wider">
+          <p className="text-gray-900 px-3 lg:hidden       pb-6 pt-4   font-poppins lg:leading-7 lg:text-[0.96rem]  leading-6 text-[0.86rem]  tracking-wider">
             {content}
           </p>
         </div>
@@ -85,7 +85,7 @@ export default function ProductDetails({ product }) {
         {sections.description && (
           <div className="border-t">
             <p
-              className="text-gray-900 font-poppins lg:leading-6 lg:text-sm px-3 leading-6 text-[0.8rem] py-6 tracking-wider"
+              className="text-gray-900     font-poppins lg:leading-7 lg:text-[0.96rem] px-3 leading-6 text-[0.7rem] py-6 tracking-wider"
               style={{ whiteSpace: "pre-line" }}
             >
               {product.description}
@@ -95,7 +95,7 @@ export default function ProductDetails({ product }) {
         {sections.details && (
           <div className="border-t">
             <p
-              className="text-gray-900 font-poppins lg:leading-6 lg:text-sm px-3 leading-6 text-[0.8rem] py-6 tracking-wider"
+              className="text-gray-900     font-poppins   lg:text-[0.9rem] px-3 leading-6 text-[0.8rem] py-6 tracking-wider"
               style={{ whiteSpace: "pre-line" }}
             >
               {returnAndExchange.join("\n")}
@@ -105,7 +105,7 @@ export default function ProductDetails({ product }) {
         {sections.shippingInfo && (
           <div className="border-t">
             <p
-              className="text-gray-900 font-poppins lg:leading-6 lg:text-sm px-3 leading-6 text-[0.8rem] py-6 tracking-wider"
+              className="text-gray-900     font-poppins lg:leading-7 lg:text-[0.96rem] px-3 leading-6 text-[0.8rem] py-6 tracking-wider"
               style={{ whiteSpace: "pre-line" }}
             >
               {shippingDelivery.join("\n")}

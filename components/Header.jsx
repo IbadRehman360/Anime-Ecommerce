@@ -1,244 +1,37 @@
 "use client";
-import Image from "next/image";
-import Link from "next/link";
 import Clintly from "./Home/Clintly";
-import { FaUser } from "react-icons/fa";
 import { signOut, useSession } from "next-auth/react";
 import { selectCartItems } from "@app/Global/Features/cartSlice";
-import { BsShop, BsBag, BsGrid, BsPeople } from "react-icons/bs";
-import { XMarkIcon } from "@heroicons/react/24/outline";
+import { BsShop, BsBag, BsGrid, BsPeople, BsGrid3X3 } from "react-icons/bs";
 import { useSelector } from "react-redux";
-
 import Nav from "./Nav";
 import SubHeader from "./SubHeader";
-import { Dialog, Tab, Transition } from "@headlessui/react";
-import { Fragment, useState } from "react";
-
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
+import HeaderTransition from "./HeaderTransition";
+import { useState } from "react";
 
 export default function Example() {
   const [open, setOpen] = useState(false);
   const cartItems = useSelector(selectCartItems);
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const [searchText, setSearchText] = useState("What are you looking for?");
   const { data: session } = useSession();
-  const handleSearchTextChange = (e) => {
-    setSearchText(e.target.value);
-  };
-  const handleSearchSubmit = (e) => {
-    e.preventDefault();
-
-    console.log(`Search for: ${searchText}`);
-  };
-
   return (
     <div className="bg-white">
-      <Transition.Root show={open} as={Fragment}>
-        <Dialog as="div" className="relative z-40 lg:hidden" onClose={setOpen}>
-          <Transition.Child
-            as={Fragment}
-            enter="transition-opacity ease-linear duration-300"
-            enterFrom="opacity-0"
-            enterTo="opacity-100"
-            leave="transition-opacity ease-linear duration-300"
-            leaveFrom="opacity-100"
-            leaveTo="opacity-0"
-          >
-            <div className="fixed inset-0 bg-black bg-opacity-25" />
-          </Transition.Child>
-
-          <div className="fixed inset-0 z-40 flex">
-            <Transition.Child
-              as={Fragment}
-              enter="transition ease-in-out duration-300 transform"
-              enterFrom="-translate-x-full"
-              enterTo="translate-x-0"
-              leave="transition ease-in-out duration-300 transform"
-              leaveFrom="translate-x-0"
-              leaveTo="-translate-x-full"
-            >
-              <Dialog.Panel className="relative flex w-full max-w-xs flex-col overflow-y-auto bg-white pb-12 shadow-xl">
-                <div className="flex px-4 pb-2 pt-5">
-                  <button
-                    type="button"
-                    className="relative -m-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400"
-                    onClick={() => setOpen(false)}
-                  >
-                    <span className="absolute -inset-0.5" />
-                    <span className="sr-only">Close menu</span>
-                    <XMarkIcon className="h-6 w-6" aria-hidden="true" />
-                  </button>
-                </div>
-
-                {/* Links */}
-                <Tab.Group as="div" className="mt-2">
-                  <div className="border-b border-gray-200">
-                    <Tab.List className="-mb-px flex space-x-8 px-4">
-                      {navigation.categories.map((category) => (
-                        <Tab
-                          key={category.name}
-                          className={({ selected }) =>
-                            classNames(
-                              selected
-                                ? "border-indigo-600 text-indigo-600"
-                                : "border-transparent text-gray-900",
-                              "flex-1 whitespace-nowrap border-b-2 px-1 py-4 text-base font-medium"
-                            )
-                          }
-                        >
-                          {category.name}
-                        </Tab>
-                      ))}
-                    </Tab.List>
-                  </div>
-
-                  <Tab.Panels as={Fragment}>
-                    {navigation.categories.map((category) => (
-                      <Tab.Panel
-                        key={category.name}
-                        className="space-y-10 px-4 pb-8 pt-10"
-                      >
-                        <div className="grid grid-cols-2 gap-x-4">
-                          {category.featured.map((item) => (
-                            <div
-                              key={item.name}
-                              className="group relative text-sm"
-                            >
-                              <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-50 group-hover:opacity-75">
-                                <Image
-                                  src={item.imageSrc}
-                                  width={50}
-                                  height={50}
-                                  alt={item.imageAlt}
-                                  className="object-cover object-center"
-                                />
-                              </div>
-                              <Link
-                                href={item.href}
-                                className="mt-6 block font-medium text-gray-900"
-                              >
-                                <span
-                                  className="absolute inset-0 z-10"
-                                  aria-hidden="true"
-                                />
-                                {item.name}
-                              </Link>
-                              <p aria-hidden="true" className="mt-1">
-                                Shop now
-                              </p>
-                            </div>
-                          ))}
-                        </div>
-
-                        {category.sections.map((section) => (
-                          <div key={section.name}>
-                            <p
-                              id={`${category.id}-${section.id}-heading-mobile`}
-                              className="font-medium text-gray-900"
-                            >
-                              {section.name}
-                            </p>
-                            <ul
-                              role="list"
-                              aria-labelledby={`${category.id}-${section.id}-heading-mobile`}
-                              className="mt-6 flex flex-col space-y-6"
-                            >
-                              {section.items.map((item) => (
-                                <li key={item.name} className="flow-root">
-                                  <Link
-                                    href={item.href}
-                                    className="-m-2 block p-2 text-gray-500"
-                                  >
-                                    {item.name}
-                                  </Link>
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        ))}
-                      </Tab.Panel>
-                    ))}
-                  </Tab.Panels>
-                </Tab.Group>
-
-                <div className="space-y-6 border-t border-gray-200 px-4  py-6">
-                  {navigation.pages.map((page) => (
-                    <div key={page.name} className="flow-root">
-                      <Link
-                        href={page.href}
-                        className="-m-2 block p-2 font-medium text-gray-900"
-                      >
-                        {page.name}
-                      </Link>
-                    </div>
-                  ))}
-                </div>
-                {!session ? (
-                  <div className="space-y-6 border-t border-gray-200 px-4 py-6">
-                    <div className="     lg:items-center font-satoshi tracking-wide lg:justify-end lg:space-x-6">
-                      <Link
-                        href="/login"
-                        className="text-sm  text-gray-700 hover:text-gray-800 flex items-center"
-                      >
-                        <FaUser className="mr-4" />
-                        <span className=" text-gray-600 tracking-wide">
-                          Account
-                        </span>{" "}
-                      </Link>
-                      <span
-                        className="h-6 w-px bg-gray-200"
-                        aria-hidden="true"
-                      />
-                    </div>
-                  </div>
-                ) : (
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setToggleDropdown(false);
-                      signOut();
-                    }}
-                    className="mt-5 w-full black_btn"
-                  >
-                    Sign Out
-                  </button>
-                )}
-
-                <div className="border-t border-gray-200 px-4 py-6">
-                  <Link href="#" className="-m-2 flex items-center p-2">
-                    <Image
-                      src="/assets/country.png"
-                      alt=""
-                      width={50}
-                      height={50}
-                      className="block h-auto w-5 flex-shrink-0"
-                    />
-                    <span className="ml-3 block text-base font-medium text-gray-900">
-                      CAD
-                    </span>
-                    <span className="sr-only">, change currency</span>
-                  </Link>
-                </div>
-              </Dialog.Panel>
-            </Transition.Child>
-          </div>
-        </Dialog>
-      </Transition.Root>
-
+      <HeaderTransition
+        setOpen={setOpen}
+        open={open}
+        navigation={navigation}
+        session={session}
+      />
       <header className="relative bg-white">
         <SubHeader />
         <Nav
           signOut={signOut}
           setOpen={setOpen}
-          searchText={searchText}
-          onSearchTextChange={handleSearchTextChange}
-          onSearchSubmit={handleSearchSubmit}
           session={session}
           cartItems={cartItems}
           isCartOpen={isCartOpen}
         />
+
         <Clintly navigation={navigation} />
       </header>
     </div>
@@ -252,126 +45,220 @@ var navigation = {
       icon: <BsShop size={20} />,
       featured: [
         {
-          name: "New Arrivals",
-          href: "#",
+          name: "View All Accessories",
+          href: "https://www.instagram.com/pakistani_senpai_merch ",
           imageSrc:
-            "https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg",
+            "https://m.media-amazon.com/images/I/61GBHLWoreL._AC_SX679_.jpg",
           imageAlt:
             "Models sitting back to back, wearing Basic Tee in black and bone.",
+
+          buttonMsg: "Shop Now !!",
+          buttonTitle: " All Accessories",
         },
         {
-          name: "Basic Tees",
-          href: "#",
-          imageSrc:
-            "https://tailwindui.com/img/ecommerce-images/mega-menu-category-02.jpg",
+          name: "For Customized Order",
+          href: "https: //www.facebook.com/Pakistanisenpaimerch",
+          imageSrc: "/assets/Des/1.jpeg ",
           imageAlt:
             "Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees.",
+          buttonMsg: "View Now 🤍",
+          buttonTitle: "Instagram Page",
         },
       ],
       sections: [
         {
-          id: "clothing",
-          name: "Clothing",
-          items: [
-            { name: "Bracelet", href: "654cc9b672d1fa8b7fc1316b" },
-            { name: "Dresses", href: "#" },
-            { name: "Pants", href: "#" },
-            { name: "Denim", href: "#" },
-            { name: "Sweaters", href: "#" },
-            { name: "T-Shirts", href: "#" },
-            { name: "Jackets", href: "#" },
-            { name: "Activewear", href: "#" },
-            { name: "Browse All", href: "#" },
-          ],
-        },
-        {
           id: "accessories",
           name: "Accessories",
           items: [
-            { name: "Watches", href: "#" },
-            { name: "Wallets", href: "#" },
-            { name: "Bags", href: "#" },
-            { name: "Sunglasses", href: "#" },
-            { name: "Hats", href: "#" },
-            { name: "Belts", href: "#" },
+            { name: "Bracelet", id: "654cc9b672d1fa8b7fc1316b" },
+            { name: "Necklace", id: "654cc9b672d1fa8b7fc1316d" },
+            { name: "Keychain", id: "654cc9b772d1fa8b7fc13175" },
+            { name: "Ring", id: "654cc9b872d1fa8b7fc13179 " },
+            { name: "Earrings", id: "654cc9b872d1fa8b7fc13177" },
+            { name: "Wallet", id: "654cc9b872d1fa8b7fc1317b" },
+            { name: "Mask", id: "6569ca03a9d2fde50b0ac578" },
           ],
         },
         {
-          id: "brands",
-          name: "Brands",
+          id: "Anime Related",
+          name: "Otaku Haven",
           items: [
-            { name: "Full Nelson", href: "#" },
-            { name: "My Way", href: "#" },
-            { name: "Re-Arranged", href: "#" },
-            { name: "Counterfeit", href: "#" },
-            { name: "Significant Other", href: "#" },
+            { name: "Figurines", id: "654cc9b872d1fa8b7fc1317d" },
+            { name: "Manga", id: "654cc9b972d1fa8b7fc1317f" },
+            { name: "Cosplay Costumes", id: "654cc9b972d1fa8b7fc13183   " },
+            { name: "Plush Toys", id: "654cc9ba72d1fa8b7fc13185" },
+            { name: "Body Pillows", id: "6569ca4ea9d2fde50b0ac57b" },
+            { name: "HeadBands", id: "6569ca09a9d2fde50b0ac579" },
           ],
         },
-      ],
-    },
-    {
-      id: "New Arrivals",
-      name: "SHOP BY PRODUCT",
-      icon: <BsBag size={20} />,
-      featured: [
-        {
-          name: "New Arrivals",
-          href: "#",
-          imageSrc:
-            "https://tailwindui.com/img/ecommerce-images/product-page-04-detail-product-shot-01.jpg",
-          imageAlt:
-            "Drawstring top with elastic loop closure and textured interior padding.",
-        },
-        {
-          name: "Artwork Tees",
-          href: "#",
-          imageSrc:
-            "https://tailwindui.com/img/ecommerce-images/category-page-02-image-card-06.jpg",
-          imageAlt:
-            "Three shirts in gray, white, and blue arranged on table with same line drawing of hands and shapes overlapping on front of shirt.",
-        },
-      ],
-      sections: [
         {
           id: "clothing",
           name: "Clothing",
           items: [
-            { name: "Tops", href: "#" },
-            { name: "Pants", href: "#" },
-            { name: "Sweaters", href: "#" },
-            { name: "T-Shirts", href: "#" },
-            { name: "Jackets", href: "#" },
-            { name: "Activewear", href: "#" },
-            { name: "Browse All", href: "#" },
+            { name: "Costumes", id: "654cc9b972d1fa8b7fc13183   " },
+            { name: "Clothes", id: "654cc9b672d1fa8b7fc1316f" },
+            { name: "Hoodie", id: "654cc9b772d1fa8b7fc13171" },
+            { name: "T-shirt", id: "654cc9b772d1fa8b7fc13173" },
+            { name: "Mufflers", id: "6569c96fa9d2fde50b0ac576" },
           ],
         },
         {
-          id: "accessories",
-          name: "Accessories",
+          id: "Decor",
+          name: "Decor",
           items: [
-            { name: "Watches", href: "#" },
-            { name: "Wallets", href: "#" },
-            { name: "Bags", href: "#" },
-            { name: "Sunglasses", href: "#" },
-            { name: "Hats", href: "#" },
-            { name: "Belts", href: "#" },
-          ],
-        },
-        {
-          id: "brands",
-          name: "Brands",
-          items: [
-            { name: "Re-Arranged", href: "#" },
-            { name: "Counterfeit", href: "#" },
-            { name: "Full Nelson", href: "#" },
-            { name: "My Way", href: "#" },
+            {
+              name: "Wallpaper",
+              id: "6569c904a9d2fde50b0ac573",
+            },
+            {
+              name: "Lamps",
+              id: "6569c8fda9d2fde50b0ac572",
+            },
+            {
+              name: "Wall Scrolls",
+              id: "6569c908a9d2fde50b0ac574",
+            },
+            {
+              name: "Flags",
+              id: "6569c93ba9d2fde50b0ac575",
+            },
+            {
+              name: "Stickers and Decals",
+              id: "654cc9b972d1fa8b7fc13181",
+            },
           ],
         },
       ],
     },
   ],
   pages: [
-    { name: "SHOP BY ANIME", href: "#", icon: <BsPeople size={20} /> },
-    { name: "ACCESSORIES", href: "#", icon: <BsGrid size={20} /> },
+    {
+      name: "SHOP BY ANIME",
+      href: "#",
+      icon: <BsBag size={20} />,
+      list: [
+        {
+          name: "Naruto",
+          id: "654cc5ce72d1fa8b7fc130f3",
+        },
+        {
+          name: "One Piece",
+          id: "654cc5ce72d1fa8b7fc130f5",
+        },
+        {
+          name: "Dragon Ball",
+          id: "654cc5cf72d1fa8b7fc130f7",
+        },
+        {
+          name: "Attack On Titan",
+          id: "654cc5cf72d1fa8b7fc130f9",
+        },
+        {
+          name: "My Hero Academia",
+          id: "654cc5cf72d1fa8b7fc130fb",
+        },
+        {
+          name: "Death Note",
+          id: "654cc5d072d1fa8b7fc130fd",
+        },
+        {
+          name: "FullMetal Alchemist",
+          id: "654cc5d072d1fa8b7fc130ff",
+        },
+        {
+          name: "Sword Art Online",
+          id: "654cc5d072d1fa8b7fc13101",
+        },
+        {
+          name: "Demon Slayer",
+          id: "654cc5d072d1fa8b7fc13103",
+        },
+        {
+          name: "Hunter x Hunter",
+          id: "654cc5d172d1fa8b7fc13105",
+        },
+        {
+          name: "One Punch Man",
+          id: "654cc5d272d1fa8b7fc1310b",
+        },
+        {
+          name: "Bleach",
+          id: "654cc5d272d1fa8b7fc1310d",
+        },
+        {
+          name: "Fairy Tail",
+          id: "654cc5d272d1fa8b7fc1310f",
+        },
+        {
+          name: "Tokyo Ghoul",
+          id: "654cc5d272d1fa8b7fc13111",
+        },
+        {
+          name: "JoJo's Bizarre Adventure",
+          id: "654cc5d372d1fa8b7fc13115",
+        },
+        {
+          name: "Black Clover",
+          id: "654cc5d372d1fa8b7fc13117 ",
+        },
+        {
+          name: "Haiykuu",
+          id: "654cc5d572d1fa8b7fc13123",
+        },
+        {
+          name: "Seven Deadly Sins",
+          id: "654cc5d572d1fa8b7fc13125",
+        },
+        {
+          name: "Gintama",
+          id: "654cc5d772d1fa8b7fc1312f",
+        },
+        {
+          name: "Vinland Saga",
+          id: "654cc5d872d1fa8b7fc13139",
+        },
+        {
+          name: "Tokyo Revengers",
+          id: "6569bdd0a9d2fde50b0ac56e",
+        },
+        {
+          name: "Jujutsu Kaisen",
+          id: "6569bdeda9d2fde50b0ac56f",
+        },
+      ],
+    },
+    {
+      name: "SHOP BY DECOR",
+      href: "#",
+      icon: <BsPeople size={20} />,
+      list: [
+        {
+          name: "Wallpaper",
+          id: "6569c904a9d2fde50b0ac573",
+        },
+        {
+          name: "Lamps",
+          id: "6569c8fda9d2fde50b0ac572",
+        },
+        {
+          name: "Wall Scrolls",
+          id: "6569c908a9d2fde50b0ac574",
+        },
+        {
+          name: "Flags",
+          id: "6569c93ba9d2fde50b0ac575",
+        },
+      ],
+    },
+    {
+      name: "ACCESSORIES",
+      href: "/category/accessories",
+      icon: <BsGrid size={20} />,
+    },
+    {
+      name: "ALL PRODUCTS ",
+      href: "/category/all-products",
+      icon: <BsGrid3X3 size={18} />,
+    },
   ],
 };

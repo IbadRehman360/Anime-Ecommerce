@@ -62,6 +62,11 @@ const productSchema = new Schema({
         type: Number,
         min: 0,
     },
+    is_accessories: {
+        type: Boolean,
+        default: false,
+        required: true,
+    },
 }, { timestamps: true });
 
 const Product = models.Product || model('Product', productSchema);

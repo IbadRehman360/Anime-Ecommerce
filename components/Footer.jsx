@@ -18,7 +18,7 @@ export default function Footer() {
     <>
       <div className="bg-white  ">
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4 border-t p-9  border-gray-200 sm:place-self-center sm:place-items-center">
-          <div className="md:col-span-1 flex  text-red-500">
+          <div className="md:col-span-1 flex  text-gray-900">
             <FaShippingFast size={18} className="mt-0.5 mr-1" />
             <div className="ml-2">
               <p
@@ -33,7 +33,7 @@ export default function Footer() {
               </p>
             </div>
           </div>
-          <div className="md:col-span-1 flex text-red-500">
+          <div className="md:col-span-1 flex text-gray-900">
             <FaLock size={14} className="mt-0.5 mr-1" />
             <div className="ml-2">
               <p
@@ -48,8 +48,8 @@ export default function Footer() {
               </p>
             </div>
           </div>
-          <div className="md:col-span-1 flex text-red-500">
-            <FaPercent size={14} className="mt-1 mr-1" />
+          <div className="md:col-span-1 flex text-gray-900">
+            <FaPercent size={14} className="mt-1 mr-1 " />
             <div className="ml-2">
               <p
                 className="  font-poppins  tracking-wide text-[0.85rem]"
@@ -62,7 +62,7 @@ export default function Footer() {
               </p>
             </div>
           </div>
-          <div className="md:col-span-1 flex text-red-500">
+          <div className="md:col-span-1 flex text-gray-900">
             <FaTshirt size={18} className="mt-0.5 mr-1" />
             <div className="ml-2">
               <p
@@ -79,7 +79,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <footer className="footer grid  gap-6  grid-rows-1  grid-cols-none   bg-[#141414] p-4 py-10 sm:p-8 md:p-10  text-white sm:justify-between sm:gap-8 lg:grid-cols-4 lg:grid-rows-1">
+        <footer className="footer grid  gap-6  grid-rows-1  grid-cols-none   bg-[#0f0f0f] p-4 py-10 sm:p-8 md:p-10  text-white sm:justify-between sm:gap-8 lg:grid-cols-4 lg:grid-rows-1">
           <div>
             <span
               id="whity-text"
@@ -152,7 +152,7 @@ export default function Footer() {
                 <input
                   type="text"
                   placeholder="username@site.com"
-                  className="input input-bordered w-full sm:pr-0 pr-20   text-sm text-black"
+                  className="input input-bordered w-full sm:pr-0 pr-20   text-sm text-gray-900"
                 />
                 <button className="btn text-white bg-[#676767] absolute right-0 top-0 rounded-l-none text-xs">
                   Subscribe
@@ -161,7 +161,7 @@ export default function Footer() {
             </div>
           </div>
         </footer>
-        <footer className="footer footer-center border-t border-gray-800 bg-[#161616] p-7 text-white">
+        <footer className="footer footer-center border-t border-gray-800 bg-[#0f0f0f] p-7 text-white">
           <div>
             <p>Copyright © 2023 - All rights reserved by SenpaiMerch Ltd</p>
           </div>

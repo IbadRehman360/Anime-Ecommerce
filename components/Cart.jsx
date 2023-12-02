@@ -142,12 +142,12 @@ export default function Cart() {
                                       </button>
                                       <button
                                         type="button"
-                                        className="font-medium sm:hidden flex -mt-6 text-gray-600 hover:text-gray-500"
+                                        className=" text-sm sm:hidden flex -mt-6 text-gray-600 hover:text-gray-500"
                                         onClick={() =>
                                           handleRemoveItem(product.product._id)
                                         }
                                       >
-                                        Remov..
+                                        Remove
                                       </button>
                                     </div>
                                   </div>

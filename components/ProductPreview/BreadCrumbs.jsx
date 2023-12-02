@@ -24,7 +24,7 @@ function BreadCrumbs({ product }) {
             </svg>
           </div>
         </li>
-        <li className="text-sm  hidden sm:flex">
+        <li className="   hidden sm:flex">
           <Link
             aria-current="page"
             href={"/category/" + product.category_id.name}
@@ -43,11 +43,11 @@ function BreadCrumbs({ product }) {
         >
           <path d="M5.697 4.34L8.98 16.532h1.327L7.025 4.341H5.697z" />
         </svg>
-        <li className="text-sm">
+        <li className=" ">
           <Link
             href={"/product/" + product._id}
             aria-current="page"
-            className="  first-letter:uppercase   text-black   hover:text-gray-700"
+            className="  first-letter:uppercase   font-satoshi  text-gray-900   hover:text-gray-700"
           >
             {product.title}
           </Link>

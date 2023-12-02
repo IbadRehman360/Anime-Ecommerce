@@ -1,12 +1,12 @@
 function Details() {
   return (
-    <div className="bg-white border-b-2  ">
+    <div className=" border-b-2  ">
       <div className="mx-auto grid pt-10 md:pt-16 px-3 sm:px-6 lg:mb-20 mb-10 grid-cols-1 items-center  w-full   lg:grid-cols-2 lg:px-8">
         <div className=" justify-end lg:hidden ">
           <img
             src="/assets/Des/2.webp"
             alt="Walnut card tray with white powder coated steel divider and 3 punchout holes."
-            className="rounded-lg  bg-gray-100 lg:hidden flex  mb-8 lg:mb-10  h-[30rem] md:h-[40rem] w-full"
+            className="rounded-lg   bg-gray-100 lg:hidden flex  mb-8 lg:mb-10   w-full"
           />
         </div>
         <div className="leading-7  tracking-  xl:mr-32 lg:mr-10 ">
@@ -31,7 +31,7 @@ function Details() {
           <img
             src="/assets/Des/2.webp"
             alt="Walnut card tray with white powder coated steel divider and 3 punchout holes."
-            className="rounded-lg bg-gray-100 shadow-xl border border-black   h-[40rem] w-full"
+            className="  rounded-md     h-[32rem] w-full "
           />
         </div>
       </div>

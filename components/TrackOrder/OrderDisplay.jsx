@@ -3,9 +3,9 @@ import { classNames } from "@app/product/[id]/page";
 import { Fragment } from "react";
 
 function OrderDisplay({ data }) {
-  const product = data;
+  const product = Array.isArray(data) ? data : [data];
 
-  const subtotal = data
+  const subtotal = product
     .map((product) => {
       return product.items.map((item) => {
         const price = item.discounted_price || item.price;
@@ -26,7 +26,7 @@ function OrderDisplay({ data }) {
 
   return (
     <>
-      <div className="px-4 space-y-2 sm:px-0 sm:flex sm:items-baseline sm:justify-between sm:space-y-0">
+      <div className="px-4 space-y-2 sm:px-0 sm:flex  sm:items-baseline sm:justify-between sm:space-y-0">
         <div className="flex sm:items-baseline sm:space-x-4">
           <h1 className="text-2xl font-montserrat sm:text-3xl mt-3 tracking-wide text-black">
             Order #54879
@@ -43,7 +43,7 @@ function OrderDisplay({ data }) {
             {" "}
             {product.length > 1 ? "Orders placed at" : "Order placed at"}{" "}
           </span>
-          {data.map((order) => (
+          {product.map((order) => (
             <Fragment key={order.id}>
               <time
                 dateTime={order.createdAt}
@@ -67,8 +67,8 @@ function OrderDisplay({ data }) {
           Products purchased
         </h2>
 
-        <div className="space-y-8">
-          {data.map((order) => (
+        <div className="space-y-8  shadow-md">
+          {product.map((order) => (
             <div
               key={order._id}
               className="bg-white border-t border-b border-gray-200 shadow-sm sm:border sm:rounded-lg"
@@ -131,7 +131,7 @@ function OrderDisplay({ data }) {
                       </p>
                     </div>
                   </div>
-                  <div className="mt-6 lg:mt-0 lg:col-span-5   font-poppins     line-clamp-1">
+                  <div className="mt-6 lg:mt-0 lg:col-span-5    font-poppins     line-clamp-1">
                     {index === 0 && (
                       <dl className="grid grid-cols-2 gap-x-6   text-sm line-clamp-1">
                         <div>
@@ -166,7 +166,7 @@ function OrderDisplay({ data }) {
                 </div>
               ))}
 
-              <div className="border-t border-gray-200 py-6 px-4 sm:px-6 lg:p-8">
+              <div className="border-t border-gray-200  py-6 px-4 sm:px-6 lg:p-8">
                 <h4 className="sr-only">Status</h4>
                 <p className="text-sm font-medium text-gray-900">
                   {order.status} on{"  "}
@@ -223,11 +223,11 @@ function OrderDisplay({ data }) {
 
       <section
         aria-labelledby="summary-heading"
-        className="md:mt-10 lg:mt-16      "
+        className="md:mt-10 lg:mt-16       "
       >
         <h2 className="sr-only">Billing Summary</h2>
 
-        <div className="bg-gray-50 py-6 px-4 sm:px-6 sm:rounded-lg border border-gray-300 ">
+        <div className="bg-gray-50 py-6 px-4 sm:px-6   shadow-md sm:rounded-lg border border-gray-300 ">
           <dl className="mt-8 divide-y font-satoshi tracking-wide divide-gray-200 text-sm lg:mt-0 lg:col-span-5">
             <div className="pb-4 flex items-center justify-between">
               <dt className="text-gray-600">Subtotal</dt>

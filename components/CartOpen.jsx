@@ -14,7 +14,7 @@ function CartOpen() {
   };
 
   return (
-    <div className="fixed bottom-10 right-8 md:bottom-3">
+    <div className="fixed bottom-10  hidden lg:flex right-8 md:bottom-3">
       <div
         className="bg-white lg:p-3 p-2.5 rounded-full border shadow-sm border-gray-300 hover:shadow-lg transition duration-300 cursor-pointer"
         style={{ display: "inline-block" }}

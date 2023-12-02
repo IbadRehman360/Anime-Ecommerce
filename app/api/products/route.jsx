@@ -6,7 +6,6 @@ export const GET = async (request, response) => {
     await connectToDB();
 
     const products = await Product.find().populate("category_id");
-
     if (!products || products.length === 0) {
       console.log("No products found for category: " + products);
       return new Response("No products found", { status: 404 });
