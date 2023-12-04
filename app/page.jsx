@@ -59,3 +59,4 @@ async function getProductsData() {
 
   return await response.json();
 }
+s;
