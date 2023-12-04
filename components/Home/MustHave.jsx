@@ -1,6 +1,6 @@
 import LatestDropDisplay from "./DisplayProducts";
 import { FaArrowRight } from "react-icons/fa";
-
+import Link from "next/link";
 export default async function MustHave({ products }) {
   const product = products.slice(0, 8);
   return (
@@ -15,12 +15,15 @@ export default async function MustHave({ products }) {
           <LatestDropDisplay key={prod.id} products={prod} />
         ))}
       </div>
-      <div className="mt-10 flex items-center justify-center">
-        <button className="flex items-center text-white font-bold  md:text-lg space-x-2 bg-[#1f1f1f] hover:bg-[#4c4b4b] px-4 py-2 rounded">
+      <Link
+        href="/category/all-products"
+        className="mt-10 flex items-center justify-center"
+      >
+        <button className="flex items-center text-white font-montserrat  mt-4 space-x-2 bg-[#1f1f1f] hover:bg-[#4c4b4b] px-4 py-2 rounded">
           <span className="text-center">VIEW MORE</span>
           <FaArrowRight />
         </button>
-      </div>
+      </Link>
     </article>
   );
 }

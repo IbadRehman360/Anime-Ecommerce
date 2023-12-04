@@ -5,7 +5,7 @@ import DisplayProducts from "./Home/DisplayProducts";
 import RightButton from "./Home/RightButton";
 import LeftButton from "./Home/LeftButton";
 
-function Carousel({ products, Feature1, Feature2 }) {
+function Carousel({ products, Feature1, Feature2, no }) {
   const [sliceEnd, setSliceEnd] = useState(calculateSliceEnd());
   const [currentSlide, setCurrentSlide] = useState(0);
   const [displayedProducts1, setDisplayedProducts1] = useState([]);
@@ -65,13 +65,15 @@ function Carousel({ products, Feature1, Feature2 }) {
 
   return (
     <div className="relative">
-      <LeftButton
-        currentSlide={currentSlide}
-        handlePrevPage={handlePrevPage}
-        handleNextPage={handleNextPage}
-        featuredProductsSlide1={Feature1}
-        featuredProductsSlide2={Feature2}
-      />
+      {!no && (
+        <LeftButton
+          currentSlide={currentSlide}
+          handlePrevPage={handlePrevPage}
+          handleNextPage={handleNextPage}
+          featuredProductsSlide1={Feature1}
+          featuredProductsSlide2={Feature2}
+        />
+      )}
       <div className="carousel  mt-2 w-full justify-items-stretch sm:mt-4 sm:grid-cols-2 md:grid-cols-3 md:gap-5 lg:grid-cols-6">
         <div
           id={Feature1}
@@ -90,13 +92,15 @@ function Carousel({ products, Feature1, Feature2 }) {
           ))}
         </div>
       </div>
-      <RightButton
-        currentSlide={currentSlide}
-        handlePrevPage={handlePrevPage}
-        handleNextPage={handleNextPage}
-        featuredProductsSlide1={Feature1}
-        featuredProductsSlide2={Feature2}
-      />
+      {!no && (
+        <RightButton
+          currentSlide={currentSlide}
+          handlePrevPage={handlePrevPage}
+          handleNextPage={handleNextPage}
+          featuredProductsSlide1={Feature1}
+          featuredProductsSlide2={Feature2}
+        />
+      )}
     </div>
   );
 }

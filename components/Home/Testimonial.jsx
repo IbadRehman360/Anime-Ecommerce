@@ -2,6 +2,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import "slick-carousel/slick/slick.css";
+import Link from "next/link";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { BsInstagram } from "react-icons/bs";
@@ -82,33 +83,50 @@ const Testimonials = () => {
 
         <h6
           className=" text-center my-8 font-montserrat text-2xl    italic"
-          style={{ fontWeight: "900" }}
+          style={{ fontWeight: "800" }}
         >
-          {" "}
-          TOP Anime Clothing{" "}
+          TOP CATEGORIES{" "}
         </h6>
         <div
-          className="  justify-center    grid-cols-2 grid-rows-3     grid  xl:grid-cols-6 sm:grid-cols-3 sm:grid-rows-2 xl:grid-rows-1
-          items-center gap-4 lg:gap-10 text-xs font-poppins "
+          className="  justify-center    grid-cols-2 grid-rows-3      grid  xl:grid-cols-6 sm:grid-cols-3 sm:grid-rows-2 xl:grid-rows-1
+          items-center gap-3 sm:gap-4 lg:gap-10 text-xs font-poppins "
         >
-          <button className="border-black border  hover:border-gray-700  bg-white text-black p-3 px-8">
-            BUTTON UPS
-          </button>
-          <button className="border-black border bg-white  hover:border-gray-700 text-black p-3 px-8">
-            JERSEYS
-          </button>
-          <button className="border-black border bg-white  hover:border-gray-700 text-black p-3 px-8">
-            STREETWEAR
-          </button>
-          <button className="border-black border bg-white  hover:border-gray-700 text-black p-3 px-8">
-            XMAS SWEATERS
-          </button>
-          <button className="border-black border bg-white  hover:border-gray-700 text-black p-3 px-8 mt-2">
-            DREAM CLOAKS
-          </button>
-          <button className="border-black border bg-white  hover:border-gray-700 text-black p-3 px-8 mt-1">
-            OODIES
-          </button>
+          <Link
+            className="border-black border  hover:border-gray-700  bg-white text-black p-3 px-8 text-center"
+            href={"/category/654cc9b872d1fa8b7fc13177"}
+          >
+            <button>Earrings</button>
+          </Link>
+          <Link
+            className="border-black border bg-white  hover:border-gray-700 text-black p-3 px-8 text-center"
+            href={"/category/654cc9b672d1fa8b7fc1316b"}
+          >
+            <button>Bracelet</button>{" "}
+          </Link>
+          <Link
+            className="border-black border bg-white  hover:border-gray-700 text-black p-3 px-8 text-center"
+            href={"/category/654cc9b672d1fa8b7fc1316d"}
+          >
+            <button>Necklace</button>{" "}
+          </Link>
+          <Link
+            className="border-black border bg-white  text-center hover:border-gray-700 text-black p-3 px-8"
+            href={"/category/654cc9b872d1fa8b7fc1317d"}
+          >
+            <button>Figurines</button>{" "}
+          </Link>
+          <Link
+            className="border-black border bg-white  hover:border-gray-700 text-black p-3 px-8 mt-2 text-center"
+            href={"/category/654cc9b972d1fa8b7fc1317f"}
+          >
+            <button>Manga</button>{" "}
+          </Link>
+          <Link
+            className="border-black border bg-white  text-center hover:border-gray-700 text-black p-3 px-8 mt-1"
+            href={"/category/654cc9b972d1fa8b7fc13181"}
+          >
+            <button>Stickers</button>{" "}
+          </Link>
         </div>
       </div>
     </div>

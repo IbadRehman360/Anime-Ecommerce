@@ -1,8 +1,9 @@
 import { selectCartItems } from "@app/Global/Features/cartSlice";
 import { QuestionMarkCircleIcon, TrashIcon } from "@heroicons/react/24/outline";
 import { useProductUtils } from "@utils/productUtils";
+import { toNumber } from "lodash";
 import { useSelector } from "react-redux";
-function OrderSummary() {
+function OrderSummary({ selectedDeliveryMethod }) {
   const cartItems = useSelector(selectCartItems);
   const { handleRemoveItem, handleUpdateQuantity } = useProductUtils();
   const subtotal = cartItems.reduce((total, product) => {
@@ -10,8 +11,7 @@ function OrderSummary() {
     const quantity = product.quantity || 1;
     return total + price * quantity;
   }, 0);
-
-  const shippingCost = 149.99;
+  const shippingCost = selectedDeliveryMethod.price;
   const taxRate = 0.08;
 
   const shipping = shippingCost;

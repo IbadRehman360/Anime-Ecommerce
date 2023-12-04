@@ -132,10 +132,10 @@ export default function Example() {
                     className="custom-animation w-full h-[16rem] sm:h-[19rem] object-cover    img-hover-effect"
                   />
 
-                  <div className="absolute inset-0 bg-black opacity-20 hover:opacity-20"></div>
+                  <div className="absolute inset-0 bg-black opacity-30 hover:opacity-10"></div>
 
                   <div className="absolute bottom-0 font ml-3 mb-5 sm:mb-8 text-white">
-                    <p className="mb-4 text-[0.9rem] md:text-xl uppercase tracking-widest font-satoshi">
+                    <p className="mb-4 text-[0.9rem] md:text-lg  uppercase tracking-widest font-satoshi">
                       {callout.name}
                     </p>
                     <div className="flex justify-center border-4 px-2 sm:px-6 bg-white text-black border-white py-1 sm:py-1.5 lg:py-2">
@@ -165,10 +165,10 @@ export default function Example() {
                     alt={callout.imageAlt}
                     className="custom-animation w-full h-[16rem] sm:h-[19rem] img-hover-effect"
                   />
-                  <div className="absolute inset-0 bg-black opacity-20  hover:opacity-20"></div>
+                  <div className="absolute inset-0 bg-black opacity-30  hover:opacity-10"></div>
 
                   <div className="absolute bottom-0   font  ml-3 mb-5 sm:mb-8    text-white">
-                    <p className="mb-4 text-[0.9rem] md:text-xl uppercase tracking-widest font-satoshi    ">
+                    <p className="mb-4 text-[0.9rem] md:text-lg uppercase tracking-widest font-satoshi    ">
                       {" "}
                       {callout.name}
                     </p>

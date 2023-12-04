@@ -1,13 +1,10 @@
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
-import { useState } from "react";
 import Link from "next/link";
 export default function SearchMenu({
   searchText,
   filteredProducts,
   handleSearchTextChange,
 }) {
-  const [selectedProduct, setSelectedProduct] = useState(null);
-
   return (
     <div className="lg:flex hidden">
       <input
@@ -28,10 +25,7 @@ export default function SearchMenu({
           <ul>
             {filteredProducts.map((product) => (
               <Link href={`/product/${product._id}`} key={product._id}>
-                <li
-                  className=" flex gap-4    mb-2  "
-                  onClick={() => handleProductClick(product)}
-                >
+                <li className=" flex gap-4    mb-2  ">
                   <img className="w-20 border" src={product.images[0]} />
                   <div>
                     <p className="mt-2 text-[1rem] text-gray-900  font-poppins">
@@ -63,23 +57,6 @@ export default function SearchMenu({
               </Link>
             ))}
           </ul>
-        </div>
-      )}
-
-      {selectedProduct && (
-        <div className="bg-white p-4 mt-4 shadow-md">
-          <h2 className="text-xl font-bold mb-2">{selectedProduct.title}</h2>
-          <p className="text-gray-600">{selectedProduct.description}</p>
-          <p className="text-gray-800 mt-2">Price: ${selectedProduct.price}</p>
-          <p className="text-gray-800">
-            Colors: {selectedProduct.colors.join(", ")}
-          </p>
-          <button
-            className="mt-4 bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
-            onClick={() => setSelectedProduct(null)}
-          >
-            Close
-          </button>
         </div>
       )}
     </div>

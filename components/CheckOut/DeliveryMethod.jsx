@@ -81,7 +81,7 @@ function DeliveryMethod({ control, selectedDeliveryMethod, deliveryMethods }) {
                       as="span"
                       className="mt-6 text-sm font-medium text-gray-900"
                     >
-                      {deliveryMethod.price}
+                      Rs {deliveryMethod.price.toFixed(2)}
                     </RadioGroup.Description>
                   </div>
                 </div>

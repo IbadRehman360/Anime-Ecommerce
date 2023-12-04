@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@app/api/auth/[...nextauth]/route";
 import Link from "next/link";
-import { faBoxOpen, faHome } from "@fortawesome/free-solid-svg-icons";
+import { faBoxOpen, faHome, faShop } from "@fortawesome/free-solid-svg-icons";
 import BottomCart from "./BottomCart";
 
 async function BottomStructure() {
@@ -41,8 +41,13 @@ async function BottomStructure() {
           <span className="text-xs mt-1">Track</span>
         </Link>
         <BottomCart />
-        <Link href={`/profile/ `} className="flex flex-col items-center">
-          <span className="text-xs ">Profile</span>
+        <Link
+          href={`/category/all-products`}
+          className="flex flex-col items-center"
+        >
+          <FontAwesomeIcon icon={faShop} style={{ color: "gray" }} />
+
+          <span className="text-xs mt-1 ">View All</span>
         </Link>
       </div>
     </div>

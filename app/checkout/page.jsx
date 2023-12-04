@@ -16,13 +16,13 @@ const deliveryMethods = [
     id: 1,
     delivery: "Standard",
     turnaround: "4–6 business days",
-    price: "Rs 150",
+    price: 149.99,
   },
   {
     id: 2,
     delivery: "Express",
     turnaround: "2–4 business days",
-    price: "Rs 300",
+    price: 300,
   },
 ];
 export default function Checkout() {

@@ -73,7 +73,7 @@ var navigation = {
             { name: "Bracelet", id: "654cc9b672d1fa8b7fc1316b" },
             { name: "Necklace", id: "654cc9b672d1fa8b7fc1316d" },
             { name: "Keychain", id: "654cc9b772d1fa8b7fc13175" },
-            { name: "Ring", id: "654cc9b872d1fa8b7fc13179 " },
+            { name: "Ring", id: "654cc9b872d1fa8b7fc13179" },
             { name: "Earrings", id: "654cc9b872d1fa8b7fc13177" },
             { name: "Wallet", id: "654cc9b872d1fa8b7fc1317b" },
             { name: "Mask", id: "6569ca03a9d2fde50b0ac578" },
@@ -131,7 +131,7 @@ var navigation = {
       ],
     },
   ],
-  pages: [
+  category: [
     {
       name: "SHOP BY ANIME",
       href: "#",
@@ -194,7 +194,7 @@ var navigation = {
           id: "654cc5d272d1fa8b7fc13111",
         },
         {
-          name: "JoJo's Bizarre Adventure",
+          name: "JoJo Bizarre Adven",
           id: "654cc5d372d1fa8b7fc13115",
         },
         {
@@ -250,6 +250,8 @@ var navigation = {
         },
       ],
     },
+  ],
+  pages: [
     {
       name: "ACCESSORIES",
       href: "/category/accessories",

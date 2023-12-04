@@ -12,10 +12,11 @@ export default function Cart() {
   const cartItems = useSelector(selectCartItems);
   const [open, setOpen] = useState(true);
   const { handleRemoveItem } = useProductUtils();
-  const total = cartItems.reduce(
-    (acc, item) => acc + item.product.discount_price,
-    0
-  );
+  const total = cartItems.reduce((total, product) => {
+    const price = product.product.discount_price || product.product.price;
+    const quantity = product.quantity || 1;
+    return total + price * quantity;
+  }, 0);
 
   return (
     <Transition.Root show={open} as={Fragment}>

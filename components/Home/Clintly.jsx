@@ -9,6 +9,7 @@ import { Fragment } from "react";
 
 function Cliently({ navigation }) {
   const [hoveredPage, setHoveredPage] = useState(null);
+  const [isCursorOverList, setIsCursorOverList] = useState(false);
 
   return (
     <Popover.Group className="hidden z-50 p-5    lg:flex justify-center items-center  border   border-gray-500  ">
@@ -110,30 +111,61 @@ function Cliently({ navigation }) {
             )}
           </Popover>
         ))}
+        {navigation.category.map((page) => (
+          <div
+            key={page.name}
+            className="relative z-50 inline-block bg-white text-sm font-medium text-gray-600 whitespace-nowrap tracking-wider hover:text-gray-800"
+            onMouseEnter={() => {
+              setHoveredPage(page);
+              setIsCursorOverList(true);
+            }}
+            onMouseLeave={() => {
+              if (!isCursorOverList) {
+                setHoveredPage(null);
+              }
+            }}
+          >
+            <Link href={page.href} className="flex items-center">
+              {page.icon}
+              <span className="ml-4 font-inter">{page.name}</span>
+            </Link>
+
+            {hoveredPage === page && isCursorOverList && (
+              <div
+                onMouseEnter={() => {
+                  setIsCursorOverList(true);
+                }}
+                onMouseLeave={() => {
+                  setIsCursorOverList(false);
+                }}
+                className={`  ${
+                  page.list
+                    ? "bg-white border-gray-300 absolute mt-5 border-t pt-4 pr-6 -left-6 pb-5 border grid space-y-3"
+                    : ""
+                }`}
+              >
+                {page.list &&
+                  page.list.map((item) => (
+                    <Link href={"/category/" + item.id} key={item.id}>
+                      <div className="ml-6 text-gray-600 text-[1rem] font-poppins hover:text-black">
+                        {item.name}
+                      </div>
+                    </Link>
+                  ))}
+              </div>
+            )}
+          </div>
+        ))}
+
         {navigation.pages.map((page) => (
           <div
             key={page.name}
-            className="relative  z-50 inline-block  bg-white text-sm font-medium text-gray-600 whitespace-nowrap tracking-wider hover:text-gray-800"
-            onMouseEnter={() => setHoveredPage(page)}
-            onMouseLeave={() => setHoveredPage(null)}
+            className="z-50 inline-block bg-white text-sm font-medium text-gray-600 whitespace-nowrap tracking-wider hover:text-gray-800"
           >
-            <Link href={`${page.href}`} className="flex   items-center">
+            <Link href={page.href} className="flex items-center">
               {page.icon}
-              <span className="ml-4   font-inter">{page.name}</span>
+              <span className="ml-4 font-inter">{page.name}</span>
             </Link>
-            {hoveredPage === page && page.list && (
-              <div className="absolute   mt-5 border-t pt-4  pr-8 pb-5 border border-gray-300 font-poppins  bg-white space-y-3">
-                {page.list.map((item) => (
-                  <div
-                    href=""
-                    key={item.id}
-                    className="ml-6  text-gray-600 hover:text-gray-800"
-                  >
-                    {item.name}
-                  </div>
-                ))}
-              </div>
-            )}
           </div>
         ))}
       </div>

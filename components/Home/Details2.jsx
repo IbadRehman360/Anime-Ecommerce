@@ -1,10 +1,10 @@
 import { FaCogs } from "react-icons/fa";
-
+import Link from "next/link";
 function Details2() {
   return (
     <div className="  sm:border-t border-b sm:border-none  pt-10 pb-8 sm:pt-12 sm:pb-10 lg:pt-16 lg:pb-12">
       <div className="text-center   ">
-        <h3 className="text-3xl   pt-16 sm:pb-12  uppercase font-montserratextra font-extrabold sm:text-[2.8rem] text-center  justify-center  tracking-wider flex  text-gray-900  ">
+        <h3 className="text-3xl   pt-2 sm:pt-4 lg:pt-8 pb-4   sm:pb-12  uppercase   font-montserrat font-extrabold sm:text-[2.4rem] lg:text-[2.6rem] text-center  justify-center  tracking-wider flex  text-gray-900  ">
           <FaCogs className="  mr-6 sm:inline-block hidden " />
           CUSTOMLY MADE
           <FaCogs className="  ml-6 sm:inline-block hidden" />
@@ -33,9 +33,14 @@ function Details2() {
             Choose <span className=" font-semibold"> Senpai Merch</span> for all
             your apparel needs!
           </p>
-          <button className="border bg-center flex   font-montserrat   bg-gray-800  text-sm   tracking-widest   py-2 px-3 lg:py-2.5 lg:px-4   font-semibold   text-white mt-6 lg:mt-4  rounded-md">
-            PURCHASE NOW
-          </button>
+          <div className="mt-6">
+            <Link
+              href={"https://www.instagram.com/pakistani_senpai_merch"}
+              className="border bg-center    font-montserrat   bg-gray-800  text-sm   tracking-widest   py-2.5 px-5  lg:py-3 lg:px-6   font-semibold   text-white mt-6 lg:mt-4  rounded-md"
+            >
+              <button>PURCHASE NOW</button>
+            </Link>
+          </div>
         </div>
       </div>
     </div>

@@ -15,27 +15,34 @@ export default async function Home() {
     <section className="relative  w-full main flex-center flex-col">
       <HeroCarousel />
 
-      <div className="mx-auto md:max-w-[100rem]">
+      <div className="mx-auto md:max-w-[93rem]">
         <LatestDrop products={products} />
       </div>
-      <div className="bg-stone-100 border border-gray-200">
-        <div className="mx-auto md:max-w-[100rem]">
+      <div className=" border border-gray-200">
+        <div className="mx-auto md:max-w-[95rem]">
           <Categories />
         </div>
       </div>
-      <div className="mx-auto md:max-w-[100rem]">
+
+      <div className="border bg-gray-50  ">
+        <div className="mx-auto md:max-w-[95rem]">
+          <TrendingProduct products={products} />
+        </div>
+      </div>
+
+      {/* <HomeCard /> */}
+      <div className="mx-auto md:max-w-[95rem]">
         <MustHave products={products} />
       </div>
 
       <div className=" pt-1  border border-gray-300      ">
-        <div className="  mx-auto  md:max-w-[95rem] ">
-          <HomeCard />
+        <div className="  mx-auto  md:max-w-[90rem] ">
           <Details2 />
           <Details />
         </div>
       </div>
 
-      <div className="mx-auto md:max-w-[95rem]">
+      <div className="mx-auto md:max-w-[92rem]">
         <Testimonials />
       </div>
     </section>

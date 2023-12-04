@@ -1,3 +1,4 @@
+import Link from "next/link";
 function Details() {
   return (
     <div className=" border-b-2  ">
@@ -21,11 +22,14 @@ function Details() {
             look. Express your style and protect your device with our customized
             phone cases.
           </p>{" "}
-          <button className="">
-            <p className="border bg-center flex     font-cabin   tracking-widest bg-red-500  text-sm    py-2 px-3 lg:py-2.5 lg:px-4   font-meduim   text-white mt-6 lg:mt-6  rounded-md">
-              CONTACT NOW{" "}
-            </p>
-          </button>
+          <div className="mt-6">
+            <Link
+              className="border bg-center    font-montserrat   bg-red-500  text-sm   tracking-widest   py-2 px-3 lg:py-3 lg:px-6   font-semibold   text-white mt-6 lg:mt-4  rounded-md"
+              href={"https://www.instagram.com/pakistani_senpai_merch"}
+            >
+              <button>CONTACT NOW</button>
+            </Link>
+          </div>
         </div>
         <div className=" justify-end hidden lg:flex">
           <img

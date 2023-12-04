@@ -16,7 +16,6 @@ function Nav({ setOpen, signOut, session, cartItems, isCartOpen }) {
   const [searchText, setSearchText] = useState("");
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [mbSearch, setMbSearch] = useState(false);
-  const [selectedProduct, setSelectedProduct] = useState(null);
 
   useEffect(() => {
     getProductsData();
@@ -48,7 +47,6 @@ function Nav({ setOpen, signOut, session, cartItems, isCartOpen }) {
       const filtered = products.filter((product) =>
         product.title.toLowerCase().includes(searchText.toLowerCase())
       );
-      console.log(filtered);
       setFilteredProducts(filtered);
     } else {
       setFilteredProducts([]);
@@ -196,10 +194,7 @@ function Nav({ setOpen, signOut, session, cartItems, isCartOpen }) {
               <ul>
                 {filteredProducts.map((product) => (
                   <Link href={`/product/${product._id}`} key={product._id}>
-                    <li
-                      className=" flex gap-4  border-b      pb-2  "
-                      onClick={() => handleProductClick(product)}
-                    >
+                    <li className=" flex gap-4  border-b      pb-2  ">
                       <img className=" h-20   " src={product.images[0]} />
                       <div>
                         <p className="mt-2 text-[0.9rem]  line-clamp-3  font-poppins">

@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Fragment, useState } from "react";
 import { classNames } from "@app/product/[id]/page";
+import { signOut } from "next-auth/react";
 
 function HeaderTransition({ setOpen, open, navigation, session }) {
   const [hoveredPage, setHoveredPage] = useState(null);
@@ -67,7 +68,7 @@ function HeaderTransition({ setOpen, open, navigation, session }) {
                     ))}
                   </Tab.List>
                 </div>
-
+                {/* onClick={() => setOpen(false)} */}
                 <Tab.Panels as={Fragment}>
                   {navigation.categories.map((category) => (
                     <Tab.Panel
@@ -78,6 +79,7 @@ function HeaderTransition({ setOpen, open, navigation, session }) {
                         {category.featured.map((item) => (
                           <div
                             key={item.name}
+                            onClick={() => setOpen(false)}
                             className="group relative text-sm"
                           >
                             <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-50 group-hover:opacity-75">
@@ -127,6 +129,7 @@ function HeaderTransition({ setOpen, open, navigation, session }) {
                             {section.items.map((item) => (
                               <li key={item.name} className="flow-root">
                                 <Link
+                                  onClick={() => setOpen(false)}
                                   href={`/category/${item.id}`}
                                   className="-m-2 block p-2  font-poppins text-gray-800 hover:text-gray-800"
                                 >
@@ -142,6 +145,36 @@ function HeaderTransition({ setOpen, open, navigation, session }) {
                 </Tab.Panels>
               </Tab.Group>
 
+              <div className="space-y-6 border-t border-gray-200   text-gray-700 px-4   py-6">
+                {navigation.category.map((page) => (
+                  <div
+                    key={page.name}
+                    className="relative flow-root          bg-white text-sm    whitespace-nowrap tracking-wider hover:text-gray-800"
+                    onMouseEnter={() => setHoveredPage(page)}
+                    onMouseLeave={() => setHoveredPage(null)}
+                  >
+                    <div />
+                    <Link href={"#"} className="flex text-sm   items-center">
+                      {page.icon}
+
+                      <span className="ml-4   font-opensans ">{page.name}</span>
+                    </Link>
+                    {hoveredPage === page && page.list && (
+                      <div className="absolute  z-50   mt-5 border-t pt-4  pr-8 pb-5 border border-gray-300 font-poppins  bg-white space-y-3">
+                        {page.list.map((item) => (
+                          <div
+                            href=""
+                            key={item.id}
+                            className="ml-6   text-black hover:text-gray-800"
+                          >
+                            {item.name}
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
               <div className="space-y-6 border-t border-gray-200   text-gray-700 px-4   py-6">
                 {navigation.pages.map((page) => (
                   <div
@@ -198,7 +231,7 @@ function HeaderTransition({ setOpen, open, navigation, session }) {
                       <button
                         type="button"
                         onClick={() => {
-                          setToggleDropdown(false);
+                          setOpen(false);
                           signOut();
                         }}
                         className="    "
