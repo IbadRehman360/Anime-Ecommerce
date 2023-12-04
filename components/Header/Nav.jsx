@@ -20,7 +20,7 @@ function Nav({ setOpen, signOut, session, cartItems, isCartOpen }) {
   useEffect(() => {
     getProductsData();
   }, []);
-  if (process.env.NEXTAUTH_URL) {
+  if (!process.env.NEXTAUTH_URL) {
     return null;
   }
   const getProductsData = async () => {

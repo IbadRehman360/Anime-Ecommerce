@@ -9,7 +9,7 @@ import MustHave from "@components/Home/MustHave";
 // import HomeCard from "@components/Home/Cart";
 
 export default async function Home() {
-  if (process.env.NEXTAUTH_URL) {
+  if (!process.env.NEXTAUTH_URL) {
     return null;
   }
   const products = await getProductsData();
