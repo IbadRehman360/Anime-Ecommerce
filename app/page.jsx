@@ -9,6 +9,9 @@ import MustHave from "@components/Home/MustHave";
 // import HomeCard from "@components/Home/Cart";
 
 export default async function Home() {
+  if (!process.env.NEXTAUTH_URL) {
+    return null;
+  }
   const products = await getProductsData();
   return (
     <section className="relative  w-full main flex-center flex-col">
@@ -49,7 +52,7 @@ export default async function Home() {
 }
 
 async function getProductsData() {
-  const response = await fetch("http://localhost:3000/api/products", {
+  const response = await fetch(`${process.env.NEXTAUTH_URL}/api/products`, {
     cache: "force-cache",
   });
 

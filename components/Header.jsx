@@ -14,6 +14,9 @@ export default function Example() {
   const cartItems = useSelector(selectCartItems);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const { data: session } = useSession();
+  if (process.env.NEXTAUTH_URL) {
+    return null;
+  }
   return (
     <div className="bg-white">
       <HeaderTransition
