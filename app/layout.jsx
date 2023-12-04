@@ -40,7 +40,7 @@ const RootLayout = ({ children }) => (
               },
             }}
           />
-          <Nav />
+          {/* <Nav /> */}
           <main className="app">{children}</main>
           <Footer />
           <CartOpen />

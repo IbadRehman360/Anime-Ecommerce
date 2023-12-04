@@ -20,9 +20,6 @@ function Nav({ setOpen, signOut, session, cartItems, isCartOpen }) {
   useEffect(() => {
     getProductsData();
   }, []);
-  if (!process.env.NEXTAUTH_URL) {
-    return null;
-  }
   const getProductsData = async () => {
     try {
       const response = await fetch(`${process.env.NEXTAUTH_URL}/api/products`, {
