@@ -13,7 +13,6 @@ export default async function Home() {
   return (
     <section className="relative  w-full main flex-center flex-col">
       <HeroCarousel />
-
       <div className="mx-auto md:max-w-[93rem]">
         <LatestDrop products={products} />
       </div>
@@ -28,8 +27,6 @@ export default async function Home() {
           <TrendingProduct products={products} />
         </div>
       </div>
-
-      {/* <HomeCard /> */}
       <div className="mx-auto md:max-w-[95rem]">
         <MustHave products={products} />
       </div>
