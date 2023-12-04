@@ -6,8 +6,7 @@ import LatestDrop from "@components/Home/LatestDrop";
 import Testimonials from "@components/Home/Testimonial";
 import TrendingProduct from "@components/Home/TrendingProduct";
 import MustHave from "@components/Home/MustHave";
-import React from "react";
-import HomeCard from "@components/Home/Cart";
+// import HomeCard from "@components/Home/Cart";
 
 export default async function Home() {
   const products = await getProductsData();

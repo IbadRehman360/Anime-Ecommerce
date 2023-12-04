@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
-import { FaArrowRight } from "react-icons/fa";
-import { FaGreaterThan } from "react-icons/fa6";
+// import { FaArrowRight } from "react-icons/fa";
+// import { FaGreaterThan } from "react-icons/fa6";
 
 const callouts = [
   {

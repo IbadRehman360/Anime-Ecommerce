@@ -1,10 +1,7 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import "slick-carousel/slick/slick.css";
+import { useEffect, useRef, useState } from "react";
+// import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import Link from "next/link";
-import "slick-carousel/slick/slick-theme.css";
-import Slider from "react-slick";
 import { BsInstagram } from "react-icons/bs";
 const Testimonials = () => {
   const [slidesToShow, setSlidesToShow] = useState(4);

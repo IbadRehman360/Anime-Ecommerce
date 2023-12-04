@@ -1,4 +1,4 @@
-import { FaCogs } from "react-icons/fa";
+// import { FaCogs } from "react-icons/fa";
 
 function HomeCard() {
   return (

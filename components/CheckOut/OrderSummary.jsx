@@ -1,7 +1,6 @@
 import { selectCartItems } from "@app/Global/Features/cartSlice";
 import { QuestionMarkCircleIcon, TrashIcon } from "@heroicons/react/24/outline";
 import { useProductUtils } from "@utils/productUtils";
-import { toNumber } from "lodash";
 import { useSelector } from "react-redux";
 function OrderSummary({ selectedDeliveryMethod }) {
   const cartItems = useSelector(selectCartItems);

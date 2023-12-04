@@ -1,6 +1,6 @@
-import Product from "@models/product";
-import Customer from "@models/customer";
-import OrderItem from "@models/orderItems";
+// import Product from "@models/product";
+// import Customer from "@models/customer";
+// import OrderItem from "@models/orderItems";
 import Order from "@models/order";
 import User from "@models/user";
 import { connectToDB } from "@utils/database";
