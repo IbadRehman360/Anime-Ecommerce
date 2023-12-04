@@ -38,9 +38,9 @@ function LoginRegistertion() {
             <p className="text-gray-600  text-[0.8rem] lg:text-[1rem]  tracking-wide leading-6">
               Registering up on our website grants you instant access to your
               order status and complete order history. Just provide the
-              requested information below, and we'll swiftly establish your new
-              account. Rest assured, we'll only request the essential details to
-              expedite and simplify your future purchases.
+              requested information below, and we&apos;ll swiftly establish your
+              new account. Rest assured, we&apos;ll only request the essential
+              details to expedite and simplify your future purchases.
             </p>
           ) : (
             <p className="text-gray-600 text-[0.9rem] lg:text-[1rem]       xl:w-[60vh] mx-auto text-center tracking-wide leading-6">

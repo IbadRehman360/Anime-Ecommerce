@@ -15,7 +15,7 @@ const EmptyCartMessage = () => {
         <p className="text-sm text-center  mb-6 font-poppins text-gray-600">
           Before proceeding to checkout, you must add some products to your
           shopping cart. You will find a lot of interesting products on our
-          "Shop" page.
+          &ldquo;Shop&ldquo; page.
         </p>
         <button
           className={`  bg-gray-700 uppercase font-montserrat border border-transparent rounded-md shadow-sm py-3 px-4 tracking-wide text-xs md:text-sm text-white  

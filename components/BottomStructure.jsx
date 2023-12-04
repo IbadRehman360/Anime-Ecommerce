@@ -1,12 +1,11 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@app/api/auth/[...nextauth]/route";
 import Link from "next/link";
 import { faBoxOpen, faHome, faShop } from "@fortawesome/free-solid-svg-icons";
 import BottomCart from "./BottomCart";
 
 async function BottomStructure() {
-  const session = await getServerSession(authOptions);
+  const session = await getServerSession();
 
   return (
     <div className=" font-poppins">
