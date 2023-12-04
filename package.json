@@ -24,6 +24,7 @@
     "create-email": "^0.0.18",
     "daisyui": "^3.9.3",
     "jsonwebtoken": "^9.0.2",
+    "lodash": "^4.17.21",
     "mongodb": "^6.2.0",
     "mongoose": "^7.6.3",
     "next": "^14.0.2",
