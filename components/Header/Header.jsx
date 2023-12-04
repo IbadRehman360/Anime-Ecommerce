@@ -1,5 +1,5 @@
 "use client";
-import Clintly from "./Home/Clintly";
+import Clintly from "./Clintly";
 import { signOut, useSession } from "next-auth/react";
 import { selectCartItems } from "@app/Global/Features/cartSlice";
 import { BsShop, BsBag, BsGrid, BsPeople, BsGrid3X3 } from "react-icons/bs";
@@ -14,9 +14,7 @@ export default function Example() {
   const cartItems = useSelector(selectCartItems);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const { data: session } = useSession();
-  if (process.env.NEXTAUTH_URL) {
-    return null;
-  }
+
   return (
     <div className="bg-white">
       <HeaderTransition

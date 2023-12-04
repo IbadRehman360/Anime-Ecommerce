@@ -4,8 +4,8 @@ import {
   ShoppingBagIcon,
 } from "@heroicons/react/24/outline";
 import { LiaBoxOpenSolid } from "react-icons/lia";
-import Cart from "./Cart";
-import SearchMenu from "./Home/SearchMenu";
+import Cart from "../Cart";
+import SearchMenu from "./SearchMenu";
 import Image from "next/image";
 import Link from "next/link";
 import { FaSignOutAlt, FaUser } from "react-icons/fa";
@@ -23,7 +23,7 @@ function Nav({ setOpen, signOut, session, cartItems, isCartOpen }) {
 
   const getProductsData = async () => {
     try {
-      const response = await fetch("http://localhost:3000/api/products", {
+      const response = await fetch(`${process.env.NEXTAUTH_URL}/api/products`, {
         next: { revalidate: 10 },
       });
 

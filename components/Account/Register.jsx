@@ -1,7 +1,7 @@
 "use client";
 import { useForm } from "react-hook-form";
 import PasswordStrengthBar from "react-password-strength-bar";
-import InputField from "./SignResgister/InputField";
+import InputField from "../SignResgister/InputField";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 

@@ -6,7 +6,6 @@ import { BsPlus } from "react-icons/bs";
 import { FaMinus } from "react-icons/fa";
 
 function DialogBox({ mobileFiltersOpen, setMobileFiltersOpen, filters }) {
-  console.log(filters);
   return (
     <Transition.Root show={mobileFiltersOpen} as={Fragment}>
       <Dialog

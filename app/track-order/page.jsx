@@ -25,7 +25,7 @@ export async function getOrderStatus(email) {
   try {
     console.log(email);
     const response = await fetch(
-      `http://localhost:3000/api/find-order?email=${email}`
+      `${process.env.NEXTAUTH_URL}/api/find-order?email=${email}`
     );
 
     if (!response.ok) {

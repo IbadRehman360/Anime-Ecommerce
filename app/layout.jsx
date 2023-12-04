@@ -1,6 +1,6 @@
 import "@styles/globals.css";
 import { Toaster } from "react-hot-toast";
-import Nav from "../components/Header";
+import Nav from "../components/Header/Header";
 import Footer from "../components/Footer";
 import CartOpen from "@components/CartOpen";
 import Providers from "@components/Providers";

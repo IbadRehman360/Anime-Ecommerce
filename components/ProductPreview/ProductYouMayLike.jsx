@@ -1,6 +1,5 @@
 "use client";
 import Carousel from "@components/Carousel";
-import FakeProduct from "@components/data/fakeProduct";
 import { MdTrendingUp } from "react-icons/md";
 
 function ProductYouMayLike({ randomSuggestion }) {

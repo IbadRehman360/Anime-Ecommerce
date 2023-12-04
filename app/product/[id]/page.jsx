@@ -58,9 +58,12 @@ export default async function Example({ params: { id } }) {
 }
 export async function getProductByID(id) {
   try {
-    const response = await fetch(`http://localhost:3000/api/products/${id}`, {
-      headers: { tags: ["products"] },
-    });
+    const response = await fetch(
+      `${process.env.NEXTAUTH_URL}/api/products/${id}`,
+      {
+        headers: { tags: ["products"] },
+      }
+    );
 
     if (!response.ok) {
       const errorText = await response.text();

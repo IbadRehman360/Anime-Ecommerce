@@ -1,7 +1,5 @@
 "use client";
 
-import { Fragment, useState } from "react";
-import Incentives from "@components/Cart/Incentives";
 import CartProduct from "@components/Cart/CartProduct";
 import CartCheckOut from "@components/Cart/CartCheckOut";
 

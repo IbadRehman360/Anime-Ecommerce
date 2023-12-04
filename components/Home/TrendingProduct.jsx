@@ -9,7 +9,7 @@ function TrendingProduct({ products }) {
           style={{ fontWeight: "900" }}
         >
           {" "}
-          Trending <span className="hidden sm:flex pl-3">Products</span>
+          Trending Products
         </h2>
       </div>
       <div className="mt-2">

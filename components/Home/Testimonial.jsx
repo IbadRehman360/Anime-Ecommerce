@@ -1,55 +1,6 @@
-"use client";
-import { useEffect, useRef, useState } from "react";
-// import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import Link from "next/link";
 import { BsInstagram } from "react-icons/bs";
 const Testimonials = () => {
-  const [slidesToShow, setSlidesToShow] = useState(4);
-  const [currentReviewIndex, setCurrentReviewIndex] = useState(0);
-  const sliderRef = useRef(null);
-
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth <= 640) {
-        setSlidesToShow(1.2);
-      } else if (window.innerWidth <= 1024) {
-        setSlidesToShow(2);
-      } else if (window.innerWidth <= 1450) {
-        setSlidesToShow(3);
-      } else {
-        setSlidesToShow(7);
-      }
-    };
-
-    handleResize();
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
-  const settings = {
-    infinite: false,
-    slidesToShow: slidesToShow,
-    slidesToScroll: 1,
-  };
-
-  const handleNext = () => {
-    const nextIndex = currentReviewIndex + 1;
-    if (nextIndex < reviews.length) {
-      sliderRef.current.slickNext();
-      setCurrentReviewIndex(nextIndex);
-    }
-  };
-
-  const handlePrevious = () => {
-    const previousIndex = currentReviewIndex - 1;
-    if (previousIndex >= 0) {
-      sliderRef.current.slickPrev();
-      setCurrentReviewIndex(previousIndex);
-    }
-  };
   return (
     <div className="  px-4  sm:px-6 lg:py-16 pt-4 lg:pt-10 pb-20">
       <div className="relative">

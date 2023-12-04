@@ -1,7 +1,7 @@
 "use client";
 
 import { useForm, Controller } from "react-hook-form";
-import InputField from "./SignResgister/InputField";
+import InputField from "../SignResgister/InputField";
 import GoogleProviders from "./GoogleProviders";
 import { signIn } from "next-auth/react";
 import { useState } from "react";
