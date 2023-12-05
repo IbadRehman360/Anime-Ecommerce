@@ -7,6 +7,7 @@ import Quantity from "./Quantity";
 import { selectCartItems } from "../app/Global/Features/cartSlice";
 import { useSelector } from "react-redux";
 import { useProductUtils } from "@utils/productUtils";
+import { MdInfo } from "react-icons/md";
 
 export default function Cart() {
   const cartItems = useSelector(selectCartItems);
@@ -48,8 +49,8 @@ export default function Cart() {
                 <Dialog.Panel className="pointer-events-auto w-screen max-w-xl">
                   <div className="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
                     <div className="flex-1  overflow-y-auto  ">
-                      <div className="flex px-4 py-6 sm:px-6   bg-gray-50 items-start justify-between">
-                        <Dialog.Title className="text-lg font-medium   text-gray-900">
+                      <div className="flex px-4 py-6 sm:px-6    bg-gray-50 items-start justify-between">
+                        <Dialog.Title className="text-lg font-medium  font-montserrat  text-gray-900">
                           Shopping cart
                         </Dialog.Title>
                         <div className="ml-3 flex    h-7  items-center">
@@ -67,105 +68,129 @@ export default function Cart() {
                           </button>
                         </div>
                       </div>
+                      {cartItems ? (
+                        <section
+                          aria-labelledby="cart-heading"
+                          className="lg:col-span-7 h-full      mx-auto flex items-center justify-center text-center"
+                        >
+                          <div className="flex flex-col  items-center justify-center">
+                            <MdInfo className="text-5xl mb-4 text-gray-500" />
+                            <p className="sm:text-2xl text-xl px-2 text-center leading-7 tracking-tight font-montserrat mb-4 text-gray-800">
+                              Your cart is currently empty.
+                            </p>
+                            <p className="text-sm text-center mb-6 sm:px-6     px-4 font-poppins text-gray-600">
+                              Add items to your cart before checking out to, and
+                              delve into our diverse and intriguing product
+                              assortment.
+                            </p>
+                          </div>
+                        </section>
+                      ) : (
+                        <div className="  px-4 py-6 sm:px-6">
+                          <div className="flow-root ">
+                            <ul
+                              role="list"
+                              className="-my-6 divide-y divide-gray-200"
+                            >
+                              {cartItems.map((product, index) => (
+                                <li key={index + 10} className="flex py-6">
+                                  <div className="  h-28 w-28 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
+                                    <img
+                                      src={product.product.images}
+                                      className="h-full border border-gray-50 w-full object-cover object-center"
+                                    />
+                                  </div>
 
-                      <div className="  px-4 py-6 sm:px-6">
-                        <div className="flow-root ">
-                          <ul
-                            role="list"
-                            className="-my-6 divide-y divide-gray-200"
-                          >
-                            {cartItems.map((product, index) => (
-                              <li key={index + 10} className="flex py-6">
-                                <div className="  h-28 w-28 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
-                                  <img
-                                    src={product.product.images}
-                                    className="h-full border border-gray-50 w-full object-cover object-center"
-                                  />
-                                </div>
+                                  <div className="ml-4 flex flex-1 flex-col">
+                                    <div>
+                                      <p className="   text-[0.8rem] uppercase  tracking-wider font-lato text-gray-500">
+                                        {product.product.category_id.name}
+                                      </p>
 
-                                <div className="ml-4 flex flex-1 flex-col">
-                                  <div>
-                                    <p className="   text-[0.8rem] uppercase  tracking-wider font-lato text-gray-500">
-                                      {product.product.category_id.name}
-                                    </p>
-
-                                    <div className="sm:flex sm:justify-between mt-1 text-[0.89rem]  line-clamp-1   sm:text-base font-medium text-gray-800">
-                                      <h3>
-                                        <a href={product.href}>
-                                          {product.size} -{" "}
-                                          {product.product.title}
-                                        </a>
-                                      </h3>
-                                      <p className="  text-[0.7rem] uppercase tracking-wider font-lato text-gray-500"></p>
-                                    </div>
-                                    <div className="sm:flex sm:justify-between text-[0.89rem]   line-clamp-1  sm:text-base font-medium text-gray-800">
-                                      <p className="  text-[0.7rem] flex sm:hidden uppercase tracking-wider  font-lato text-gray-500"></p>
-                                      <p className=" text-[0.9rem] sm:text-sm lg:text-[0.95rem]     font-roboto   tracking-wide mt-1.5">
-                                        {product.product.discount_price ? (
-                                          <span>
-                                            <span className="text-red-500">
-                                              Rs{" "}
-                                              {product.product.discount_price.toFixed(
-                                                2
-                                              )}
+                                      <div className="sm:flex sm:justify-between mt-1 text-[0.89rem]  line-clamp-1   sm:text-base font-medium text-gray-800">
+                                        <h3>
+                                          <a href={product.href}>
+                                            {product.size} -{" "}
+                                            {product.product.title}
+                                          </a>
+                                        </h3>
+                                        <p className="  text-[0.7rem] uppercase tracking-wider font-lato text-gray-500"></p>
+                                      </div>
+                                      <div className="sm:flex sm:justify-between text-[0.89rem]   line-clamp-1  sm:text-base font-medium text-gray-800">
+                                        <p className="  text-[0.7rem] flex sm:hidden uppercase tracking-wider  font-lato text-gray-500"></p>
+                                        <p className=" text-[0.9rem] sm:text-sm lg:text-[0.95rem]     font-roboto   tracking-wide mt-1.5">
+                                          {product.product.discount_price ? (
+                                            <span>
+                                              <span className="text-red-500">
+                                                Rs{" "}
+                                                {product.product.discount_price.toFixed(
+                                                  2
+                                                )}
+                                              </span>
+                                              <span className="text-gray-600 ml-3 line-through">
+                                                Rs{" "}
+                                                {product.product.price.toFixed(
+                                                  2
+                                                )}
+                                              </span>
                                             </span>
-                                            <span className="text-gray-600 ml-3 line-through">
+                                          ) : (
+                                            <span>
                                               Rs{" "}
                                               {product.product.price.toFixed(2)}
                                             </span>
-                                          </span>
-                                        ) : (
-                                          <span>
-                                            Rs{" "}
-                                            {product.product.price.toFixed(2)}
-                                          </span>
-                                        )}
-                                      </p>
-                                      <p className="  text-[0.7rem] hidden sm:flex uppercase tracking-wider mt-2 font-lato text-gray-500">
-                                        color: {product.color}
-                                      </p>
+                                          )}
+                                        </p>
+                                        <p className="  text-[0.7rem] hidden sm:flex uppercase tracking-wider mt-2 font-lato text-gray-500">
+                                          color: {product.color}
+                                        </p>
+                                      </div>
+                                    </div>
+                                    <div className="flex flex-1 items-end mb-0.5 sm:mb-1.5 justify-between text-sm">
+                                      <Quantity
+                                        quantity={product.quantity}
+                                        product={product}
+                                      />{" "}
+                                      <div className="flex">
+                                        <button
+                                          type="button"
+                                          className="font-medium sm:flex hidden -mt-6 text-gray-600 hover:text-gray-500"
+                                          onClick={() =>
+                                            handleRemoveItem(
+                                              product.product._id
+                                            )
+                                          }
+                                        >
+                                          Remove
+                                        </button>
+                                        <button
+                                          type="button"
+                                          className=" text-sm sm:hidden flex -mt-6 text-gray-600 hover:text-gray-500"
+                                          onClick={() =>
+                                            handleRemoveItem(
+                                              product.product._id
+                                            )
+                                          }
+                                        >
+                                          Remove
+                                        </button>
+                                      </div>
                                     </div>
                                   </div>
-                                  <div className="flex flex-1 items-end mb-0.5 sm:mb-1.5 justify-between text-sm">
-                                    <Quantity
-                                      quantity={product.quantity}
-                                      product={product}
-                                    />{" "}
-                                    <div className="flex">
-                                      <button
-                                        type="button"
-                                        className="font-medium sm:flex hidden -mt-6 text-gray-600 hover:text-gray-500"
-                                        onClick={() =>
-                                          handleRemoveItem(product.product._id)
-                                        }
-                                      >
-                                        Remove
-                                      </button>
-                                      <button
-                                        type="button"
-                                        className=" text-sm sm:hidden flex -mt-6 text-gray-600 hover:text-gray-500"
-                                        onClick={() =>
-                                          handleRemoveItem(product.product._id)
-                                        }
-                                      >
-                                        Remove
-                                      </button>
-                                    </div>
-                                  </div>
-                                </div>
-                              </li>
-                            ))}
-                          </ul>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
                         </div>
-                      </div>
+                      )}
                     </div>
 
                     <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
-                      <div className="flex justify-between tracking-wide text-base font-medium text-gray-900">
-                        <p>Subtotal</p>
+                      <div className="flex  justify-between tracking-wide text-base font-medium text-gray-900">
+                        <p className="   font-inter">Subtotal</p>
                         Rs {total.toFixed(2)}
                       </div>
-                      <p className="mt-2 text-xs  sm:text-sm text-gray-500">
+                      <p className="mt-2 text-xs font-poppins  sm:text-sm text-gray-500">
                         Shipping and taxes calculated at checkout.
                       </p>
                       <div className="mt-4">
@@ -187,10 +212,10 @@ export default function Cart() {
                       </div>
 
                       <div className="mt-3 flex justify-center text-center   text-gray-500">
-                        <p className="mr-3">or</p>
+                        <p className="mr-3 font-poppins">or</p>
                         <button
                           type="button"
-                          className="font-medium text-gray-600  text-xs sm:text-sm   font-montserrat  hover:text-gray-500"
+                          className="font-medium text-gray-600   text-xs sm:text-sm   font-montserrat  hover:text-gray-500"
                           onClick={() => setOpen(false)}
                         >
                           Continue Shopping

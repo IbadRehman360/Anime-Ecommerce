@@ -83,32 +83,32 @@ const Testimonials = () => {
 
 var reviews = [
   {
-    name: "John Doe",
+    name: "John Doe 1 ",
     comment: "Great products and fast shipping! customer service 1.",
     rating: 5,
   },
   {
-    name: "Jane Smith",
+    name: "Jane Smith 2 ",
     comment: "Awesome quality and fantastic customer service 2.",
     rating: 4,
   },
   {
-    name: "John Doe",
+    name: "John Doe 3",
     comment: "Great products and fast shipping! customer service 3.",
     rating: 5,
   },
   {
-    name: "Jane Smith",
+    name: "Jane Smith 4",
     comment: "Awesome quality and fantastic customer service 4.",
     rating: 4,
   },
   {
-    name: "John Doe",
+    name: "John Doe 5",
     comment: "Great products and fast shipping! customer service 5.",
     rating: 5,
   },
   {
-    name: "John Doe",
+    name: "John Doe 6",
     comment: "Great products and fast shipping! customer service 5.",
     rating: 5,
   },

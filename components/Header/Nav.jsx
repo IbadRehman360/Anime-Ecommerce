@@ -22,22 +22,19 @@ function Nav({ setOpen, signOut, session, cartItems, isCartOpen }) {
   }, []);
   const getProductsData = async () => {
     try {
-      const response = await fetch(`${process.env.NEXTAUTH_URL}/api/products`, {
+      const response = await fetch("/api/products", {
         next: { revalidate: 10 },
       });
 
       if (!response.ok) {
-        throw new Error(`Failed to fetch products. Status: ${response.status}`);
+        console.log("BYE");
       }
-
       const data = await response.json();
-
       setProducts(data);
     } catch (error) {
       console.error("Error fetching products:", error.message);
     }
   };
-  console.log(products);
   const handleSearchTextChange = (e) => {
     const searchText = e.target.value;
     setSearchText(searchText);
@@ -52,7 +49,7 @@ function Nav({ setOpen, signOut, session, cartItems, isCartOpen }) {
   };
   return (
     <nav aria-label="Top" className="mx-auto      lg:px-8 2xl:px-60">
-      <div className="border-b   ml-2  mr-3">
+      <div className="border-b   ml-3  mr-3">
         <div className="flex h-[80px] items-center">
           <button
             type="button"
@@ -184,7 +181,7 @@ function Nav({ setOpen, signOut, session, cartItems, isCartOpen }) {
             />
           </div>
           {filteredProducts.length > 0 && (
-            <div className=" grid     text-black   absolute     w-full  top-[11.45rem]  rounded-b-lg pt-4  pl-2      cursor-pointer z-50   gap-4     divide-y shadow   overflow-y-auto bg-white ...">
+            <div className=" grid     text-black   absolute     w-full  top-[11.45rem]  rounded-b-sm   pt-4  pl-2      cursor-pointer z-50   gap-4     divide-y shadow   overflow-y-auto bg-white ...">
               <h5 className="font-inter  uppercase text-sm">
                 {" "}
                 Products Related{" "}
@@ -192,7 +189,7 @@ function Nav({ setOpen, signOut, session, cartItems, isCartOpen }) {
               <ul>
                 {filteredProducts.map((product) => (
                   <Link href={`/product/${product._id}`} key={product._id}>
-                    <li className=" flex gap-4  border-b      pb-2  ">
+                    <li className=" flex gap-4  border-b  py-2    pb-2  ">
                       <img className=" h-20   " src={product.images[0]} />
                       <div>
                         <p className="mt-2 text-[0.9rem]  line-clamp-3  font-poppins">

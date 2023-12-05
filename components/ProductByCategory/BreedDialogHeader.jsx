@@ -12,7 +12,9 @@ function BreedDialogHeader({ products, sortOptions, filters }) {
         setMobileFiltersOpen={setMobileFiltersOpen}
         filters={filters}
       />
-      <ProductBread products={products} />
+      <div className="        border-b   bg-[#fdfdfd]   w-full ">
+        <ProductBread products={products} />
+      </div>
 
       <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
         <Header

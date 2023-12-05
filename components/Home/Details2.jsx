@@ -36,7 +36,7 @@ function Details2() {
           <div className="mt-6">
             <Link
               href={"https://www.instagram.com/pakistani_senpai_merch"}
-              className="border bg-center    font-montserrat   bg-gray-800  text-sm   tracking-widest   py-2.5 px-5  lg:py-3 lg:px-6      text-white mt-6 lg:mt-4  rounded-md"
+              className="border bg-center    font-montserrat   bg-gray-800  text-sm   tracking-widest   py-2.5 px-5  lg:py-3 lg:px-6   font-semibold   text-white mt-6 lg:mt-4  rounded-md"
             >
               <button>PURCHASE NOW</button>
             </Link>

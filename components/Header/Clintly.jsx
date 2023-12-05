@@ -12,7 +12,7 @@ function Cliently({ navigation }) {
   const [isCursorOverList, setIsCursorOverList] = useState(false);
 
   return (
-    <Popover.Group className="hidden z-50 p-5    lg:flex justify-center items-center  border   border-gray-500  ">
+    <Popover.Group className="hidden z-20 p-5    lg:flex justify-center items-center  border   border-gray-500  ">
       <div className="flex h-full space-x-10">
         {navigation.categories.map((category) => (
           <Popover key={category.name} className="flex">
@@ -24,7 +24,7 @@ function Cliently({ navigation }) {
                       open
                         ? "   text-black"
                         : "  text-gray-600 hover:text-gray-800",
-                      "relative z-50 -mb-px flex items-center border-none focus:border-none   pt-px text-sm font-medium whitespace-nowrap transition-colors duration-200 ease-out"
+                      "relative z-20 -mb-px flex items-center border-none focus:border-none   pt-px text-sm font-medium whitespace-nowrap transition-colors duration-200 ease-out"
                     )}
                   >
                     <a href={category.href} className="flex items-center">
@@ -44,7 +44,7 @@ function Cliently({ navigation }) {
                   leaveTo="opacity-0"
                 >
                   <Popover.Panel className="absolute inset-x-0 top-full text-sm  text-gray-500">
-                    <div className="relative z-50 rounded-sm bg-white">
+                    <div className="relative z-20 rounded-sm bg-white">
                       <div className="mx-auto max-w-7xl px-8">
                         <div className="grid grid-cols-3  gap-y-10  pb-6 pt-8">
                           <div className="row-start-1 col-span-2 grid grid-cols-4  -space-x-2   text-sm">
@@ -114,7 +114,7 @@ function Cliently({ navigation }) {
         {navigation.category.map((page) => (
           <div
             key={page.name}
-            className="relative z-50 inline-block bg-white text-sm font-medium text-gray-600 whitespace-nowrap tracking-wider hover:text-gray-800"
+            className="relative z-20 inline-block bg-white text-sm font-medium text-gray-600 whitespace-nowrap tracking-wider hover:text-gray-800"
             onMouseEnter={() => {
               setHoveredPage(page);
               setIsCursorOverList(true);
@@ -160,7 +160,7 @@ function Cliently({ navigation }) {
         {navigation.pages.map((page) => (
           <div
             key={page.name}
-            className="z-50 inline-block bg-white text-sm font-medium text-gray-600 whitespace-nowrap tracking-wider hover:text-gray-800"
+            className="z-20 inline-block bg-white text-sm font-medium text-gray-600 whitespace-nowrap tracking-wider hover:text-gray-800"
           >
             <Link href={page.href} className="flex items-center">
               {page.icon}

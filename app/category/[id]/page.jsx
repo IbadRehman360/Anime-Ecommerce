@@ -14,11 +14,14 @@ export default async function Example({ params: { id } }) {
           filters={filters}
         />
         <main className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
-          <section aria-labelledby="products-heading" className="pt-6 pb-24">
+          <section
+            aria-labelledby="products-heading"
+            className=" sm:pt-6 pb-12 sm:pb-24"
+          >
             <h2 id="products-heading" className="sr-only">
               Product
             </h2>
-            s
+
             <div className="grid grid-cols-1 lg:grid-cols-4 gap-x-8 gap-y-10">
               <DesktopFilter filters={filters} />
               <div className="lg:col-span-3">

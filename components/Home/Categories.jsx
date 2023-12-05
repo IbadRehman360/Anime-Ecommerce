@@ -29,7 +29,8 @@ const callouts = [
     path: "/category/654cc5ce72d1fa8b7fc130f3",
     description: "Daily commute essentials",
     imageSrc:
-      "https://e1.pxfuel.com/desktop-wallpaper/671/592/desktop-wallpaper-naruto-symbol-naruto-anime-symbols.jpg",
+      "https://atsuko.com/cdn/shop/files/BPA67ZJONP_003_d01c90ca-6eaa-41f3-8cef-fcb0f1aa3c97_750x960_crop_center.jpg?v=1700133123&quot",
+
     imageAlt: "Collection of four insulated travel bottles on wooden shelf.",
     href: "#",
   },
@@ -54,8 +55,7 @@ const callouts = [
   {
     name: "One Piece",
     description: "Daily commute essentials",
-    imageSrc:
-      "https://e1.pxfuel.com/desktop-wallpaper/671/592/desktop-wallpaper-naruto-symbol-naruto-anime-symbols.jpg",
+    imageSrc: "https://i.ebayimg.com/images/g/EWEAAOSwXT9iHBcT/s-l1600.jpg",
     path: "/category/654cc5d172d1fa8b7fc13105",
 
     imageAlt: "Collection of four insulated travel bottles on wooden shelf.",
@@ -75,8 +75,7 @@ const callouts = [
   {
     name: "One Piece",
     description: "Daily commute essentials",
-    imageSrc:
-      "https://atsuko.com/cdn/shop/files/OWM2JQXCRU_003_78f4367b-68c1-496a-a45e-05f25fb740c3_750x960_crop_center.jpg?v=1700133310",
+    imageSrc: "https://i.ebayimg.com/images/g/EWEAAOSwXT9iHBcT/s-l1600.jpg",
 
     path: "/category/654cc5d172d1fa8b7fc13105",
 
@@ -156,7 +155,7 @@ export default function Example() {
             {callouts.slice(4, 8).map((callout, index) => (
               <Link
                 href={callout.path}
-                key={callout.name + index}
+                key={callout.name + index + 10 + 20}
                 className="flex-none   w-[calc(54.5%-0.6rem)] sm:w-[calc(52%-1rem)]  lg:w-[calc(34%-1rem)] xl:w-[calc(25%-1.5rem)] shadow-2xl border-black border relative callout"
               >
                 <div className=" ">

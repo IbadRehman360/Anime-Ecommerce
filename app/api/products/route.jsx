@@ -10,7 +10,7 @@ export const GET = async (request, response) => {
       console.log("No products found for category: " + products);
       return new Response("No products found", { status: 404 });
     }
-
+    console.log(products);
     return new Response(JSON.stringify(products), { status: 200 });
   } catch (error) {
     console.error("Error while processing request:", error);
