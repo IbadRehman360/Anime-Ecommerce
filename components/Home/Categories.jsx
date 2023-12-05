@@ -112,7 +112,7 @@ export default function Example() {
       <div className="">
         <div className="border-gray-200">
           <div className="text-center ">
-            <h2 className="text-3xl font-montserratextra font-extrabold sm:text-5xl   sm:pb-6 lg:pb-6 text-gray-900">
+            <h2 className="  font-montserrat text-[1.7rem] tracking-wide    leading-9  font-extrabold sm:text-[2.2rem] lg:text-[2.6rem] uppercase sm:pb-2 lg:pb-2 text-gray-900">
               SHOP BY ANIME
             </h2>
           </div>

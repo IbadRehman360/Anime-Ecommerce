@@ -21,8 +21,8 @@ function ProductImage({ product }) {
         {product.images.map((src, index) => (
           <div
             key={index}
-            className={`w-2 h-2 xl:h-2.5 xl:w-2.5   rounded-full mx-1 cursor-pointer ${
-              currentImage === src ? " bg-red-600 " : "bg-white"
+            className={`w-2 h-2 xl:h-2.5 xl:w-2.5    z-50  opacity-90 rounded-full mx-1 cursor-pointer ${
+              currentImage === src ? " bg-red-600 " : "bg-gray-300"
             }`}
             onClick={() => handleImageClick(src)}
           ></div>

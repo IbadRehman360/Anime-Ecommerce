@@ -11,17 +11,16 @@ function ProductInfo({ product, reviews }) {
   return (
     <div>
       <div className="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
-        <h1 className="text-xl   uppercase mb-2 lg:mb-4  lg:text-3xl font-montserrat  text-gray-800 sm:text-3xl">
+        <h1 className="text-xl line-clamp-2   uppercase mb-2 lg:mb-4  lg:text-3xl font-montserrat  text-gray-800 sm:text-3xl">
           {product.title}
         </h1>
       </div>
-
       <div className="mt-4 lg:row-span-3 pb-1.5 lg:mt-0">
         <h2 className="sr-only">Product information</h2>
         <div className="flex items-center">
           {product.discount_price ? (
             <>
-              <div className="text-[1.1rem]    font-lato  lg:text-[1.4rem] mr-5 tracking-wider lg:tracking-wider lg:text-green-700 text-gray-900">
+              <div className="text-[1.1rem]   font-inter  lg:text-[1.4rem] mr-5 tracking-wider lg:tracking-wider  text-green-700 ">
                 <span className="tracking-normal lg:text-[1.4rem] mr-1">
                   {" "}
                   Rs. {product.discount_price}.00
@@ -35,7 +34,7 @@ function ProductInfo({ product, reviews }) {
               </div>
             </>
           ) : (
-            <div className="text-[1.1rem]    font-lato  lg:text-[1.4rem] mr-5 tracking-wider lg:tracking-wider lg:text-green-700 text-gray-900">
+            <div className="text-[1.1rem]  font-inter  lg:text-[1.4rem] mr-5 tracking-wider lg:tracking-wider  text-green-700  ">
               <span className="tracking-normal lg:text-[1.4rem] mr-1">
                 {" "}
                 Rs.
@@ -76,11 +75,12 @@ function ProductInfo({ product, reviews }) {
           </div>
         </div>
       </div>
-
-      <div className="  font-satoshi lg:hidden flex line-through tracking-wider lg:text-[1.2rem]  text-sm     text-gray-500">
-        <span className="tracking-normal mr-1"> Rs.</span>
-        {product.discount_price}.00
-      </div>
+      {product.discount_price && (
+        <div className="  font-inter  lg:hidden flex line-through tracking-wider lg:text-[1.2rem]  text-sm     text-gray-500">
+          <span className="tracking-normal mr-1"> Rs.</span>
+          {product.price}.00
+        </div>
+      )}
     </div>
   );
 }

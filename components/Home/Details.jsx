@@ -11,7 +11,7 @@ function Details() {
           />
         </div>
         <div className="leading-7  tracking-  xl:mr-32 lg:mr-10 ">
-          <h2 className="text-[1.6rem]   tracking-tight  font-montserrat text-gray-900 sm:text-4xl">
+          <h2 className="text-[1.5rem]    tracking-tight  font-montserrat text-gray-900 sm:text-4xl">
             Anime Phone Case
           </h2>
           <p className="mt-4 text-[0.9rem] lg:text-[0.99rem]    line-clamp-3  font-raleway text-gray-500  tracking-wide leading-7">
@@ -24,7 +24,7 @@ function Details() {
           </p>{" "}
           <div className="mt-6">
             <Link
-              className="border bg-center    font-montserrat   bg-red-500  text-sm   tracking-widest   py-2 px-3 lg:py-3 lg:px-6   font-semibold   text-white mt-6 lg:mt-4  rounded-md"
+              className="border bg-center    font-montserrat   bg-red-500  text-sm   tracking-widest   py-2.5 px-5 lg:py-3 lg:px-6   font-semibold   text-white mt-6 lg:mt-4  rounded-md"
               href={"https://www.instagram.com/pakistani_senpai_merch"}
             >
               <button>CONTACT NOW</button>

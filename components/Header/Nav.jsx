@@ -37,11 +37,10 @@ function Nav({ setOpen, signOut, session, cartItems, isCartOpen }) {
       console.error("Error fetching products:", error.message);
     }
   };
-
+  console.log(products);
   const handleSearchTextChange = (e) => {
     const searchText = e.target.value;
     setSearchText(searchText);
-
     if (searchText.length >= 3) {
       const filtered = products.filter((product) =>
         product.title.toLowerCase().includes(searchText.toLowerCase())
@@ -166,7 +165,7 @@ function Nav({ setOpen, signOut, session, cartItems, isCartOpen }) {
       </div>
       {mbSearch && (
         <div
-          class="  w-full border-b-2 border-b-black lg:hidden flex  bg-white shadow-xl"
+          class="  w-full border  lg:hidden flex  bg-white shadow-xl"
           id="search-content"
         >
           <MagnifyingGlassIcon

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { BsInstagram } from "react-icons/bs";
 const Testimonials = () => {
   return (
-    <div className="  px-4  sm:px-6 lg:py-16 pt-4 lg:pt-10 pb-20">
+    <div className="  px-4  sm:px-6 lg:py-16 pt-4 lg:pt-10 pb-12">
       <div className="relative">
         <div className="mx-auto grid justify-center items-center">
           <div className="flex justify-center my-4  text-3xl ">
@@ -30,7 +30,7 @@ const Testimonials = () => {
         </div>
 
         <h6
-          className=" text-center my-8 font-montserrat text-2xl    italic"
+          className=" text-center mt-9 mb-6 sm:my-8 font-montserrat  text-[1.5rem] sm:text-2xl    italic"
           style={{ fontWeight: "800" }}
         >
           TOP CATEGORIES{" "}
