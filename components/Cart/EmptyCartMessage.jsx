@@ -5,7 +5,7 @@ const EmptyCartMessage = () => {
   return (
     <section aria-labelledby="cart-heading" className="lg:col-span-7 mt-10  ">
       <div className="flex flex-col items-center justify-center ">
-        <MdInfo className="text-5xl mb-4 text-gray-500" />
+        <MdInfo className="text-5xl mb-4 text-gray-600" />
         <p
           className="sm:text-2xl  text-xl  text-center   font-montserrat
          mb-4 text-gray-800"

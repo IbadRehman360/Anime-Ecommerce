@@ -28,10 +28,10 @@ const customerSchema = new Schema({
         type: String,
     },
     phone: {
-        type: String,
+        type: Number,
     },
     secondPhone: {
-        type: String,
+        type: Number,
     },
 });
 

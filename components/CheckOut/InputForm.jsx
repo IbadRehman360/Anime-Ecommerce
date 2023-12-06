@@ -81,7 +81,7 @@ function InputForm({ control }) {
             <FormInput
               label="Phone Number (Primary required)"
               name="phone"
-              type="text"
+              type="number"
               autoComplete="tel"
               rules={{
                 required: "Primary phone number is required",
@@ -95,7 +95,7 @@ function InputForm({ control }) {
             <FormInput
               label="Phone Number (Secondary optional)"
               name="secondPhone"
-              type="text"
+              type="number"
               autoComplete="tel"
               rules={{}}
               control={control}

@@ -19,8 +19,10 @@ export default async function MustHave({ products }) {
         href="/category/all-products"
         className="mt-10 flex items-center justify-center"
       >
-        <button className="flex items-center text-white font-montserrat  mt-4 space-x-2 bg-[#1f1f1f] hover:bg-[#4c4b4b] px-4 py-2 rounded">
-          <span className="text-center">VIEW MORE</span>
+        <button className="flex items-center    text-white   font-montserrat mt-4 space-x-2 bg-[#1f1f1f] hover:bg-[#4c4b4b] px-4 py-3 rounded">
+          <span className="text-center  text-sm md:text-[1rem] ">
+            VIEW MORE
+          </span>
           <FaArrowRight />
         </button>
       </Link>

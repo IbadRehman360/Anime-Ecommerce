@@ -9,7 +9,7 @@ import InputForm from "@components/CheckOut/InputForm";
 import { useState } from "react";
 import { selectCartItems } from "@app/Global/Features/cartSlice";
 import { useSession } from "next-auth/react";
-// import toast from "react-hot-toast";
+import toast from "react-hot-toast";
 
 const deliveryMethods = [
   {
@@ -34,49 +34,48 @@ export default function Checkout() {
     deliveryMethods[0]
   );
   const onSubmit = async (data) => {
-    console.log(data);
-    // try {
-    //   const response = await fetch("api/place-order", {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify({
-    //       data,
-    //       selectedDeliveryMethod,
-    //       cartItems,
-    //       session,
-    //     }),
-    //   });
-    //   if (response.ok) {
-    //     const responseData = await response.json();
-    //     const trackingId = responseData._id;
-    //     console.log("Order placed successfully:", responseData);
-    //     const sendResponse = await fetch("/api/send", {
-    //       method: "POST",
-    //       headers: { "Content-Type": "application/json" },
-    //       body: JSON.stringify(data),
-    //     });
-    //     if (sendResponse.status === 200) {
-    //       toast.success(
-    //         `Order successfully placed! Your tracking ID (${trackingId}) has been sent to ${data.email_address}.`
-    //       );
-    //     } else {
-    //       toast.error(
-    //         "Failed to send tracking information. Please contact support."
-    //       );
-    //     }
-    //   } else {
-    //     console.error("Failed to place the order. Status:", response.status);
-    //     toast.error("Oops! Order unsuccessful. Please try again.");
-    //   }
-    // } catch (error) {
-    //   console.error("An error occurred while processing the request:", error);
-    //   toast.error(
-    //     "An unexpected error occurred. Please try again later.",
-    //     error.message
-    //   );
-    // }
+    try {
+      const response = await fetch("api/place-order", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          data,
+          selectedDeliveryMethod,
+          cartItems,
+          session,
+        }),
+      });
+      if (response.ok) {
+        const responseData = await response.json();
+        const trackingId = responseData._id;
+        console.log("Order placed successfully:", responseData);
+        const sendResponse = await fetch("/api/send", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        });
+        if (sendResponse.status === 200) {
+          toast.success(
+            `Order successfully placed! Your tracking ID (${trackingId}) has been sent to ${data.email_address}.`
+          );
+        } else {
+          toast.error(
+            "Failed to send tracking information. Please contact support."
+          );
+        }
+      } else {
+        console.error("Failed to place the order. Status:", response.status);
+        toast.error("Oops! Order unsuccessful. Please try again.");
+      }
+    } catch (error) {
+      console.error("An error occurred while processing the request:", error);
+      toast.error(
+        "An unexpected error occurred. Please try again later.",
+        error.message
+      );
+    }
   };
 
   return (

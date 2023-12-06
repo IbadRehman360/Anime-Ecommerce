@@ -1,7 +1,7 @@
 "use client";
 const { BsSearch } = require("react-icons/bs");
 const { TiShoppingCart } = require("react-icons/ti");
-import QuickView from "@components/QuickView";
+import QuickView from "@components/ProductByCategory/QuickView";
 import Link from "next/link";
 import { useState } from "react";
 export default function ProductItem({ product }) {

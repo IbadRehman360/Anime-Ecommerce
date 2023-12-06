@@ -7,7 +7,7 @@ import { connectToDB } from "@utils/database";
 export const GET = async (req, res) => {
   try {
     await connectToDB();
-    const email = "ibadhashim6@gmail.com";
+    const email = req.nextUrl.searchParams.get("email");
     const user = await User.findOne({ email: email });
 
     if (!user) {

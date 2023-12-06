@@ -68,13 +68,13 @@ export default function Cart() {
                           </button>
                         </div>
                       </div>
-                      {cartItems ? (
+                      {!cartItems.length ? (
                         <section
                           aria-labelledby="cart-heading"
                           className="lg:col-span-7 h-full      mx-auto flex items-center justify-center text-center"
                         >
                           <div className="flex flex-col  items-center justify-center">
-                            <MdInfo className="text-5xl mb-4 text-gray-500" />
+                            <MdInfo className="text-5xl mb-4 text-gray-700" />
                             <p className="sm:text-2xl text-xl px-2 text-center leading-7 tracking-tight font-montserrat mb-4 text-gray-800">
                               Your cart is currently empty.
                             </p>
@@ -197,21 +197,21 @@ export default function Cart() {
                         <div className="flex">
                           <Link
                             href="/cart"
-                            className="flex uppercase text-[0.7rem]  lg:text-sm   items-center    w-2/5 justify-center rounded-md border border-transparent bg-stone-800 opacity-80 hover:bg-stone-200 hover:text-black     font-montserrat py-3    md:px-6 md:py-3.5 font-medium text-white shadow-sm hover-bg-gray-700 " // Add ml-2 for some horizontal spacing
+                            className="flex uppercase text-[0.7rem]  lg:text-sm   items-center    w-2/5 justify-center rounded-md border border-transparent bg-slate-800 opacity-80  hover:bg-gray-200 hover:text-black     font-montserrat py-3    md:px-6 md:py-3.5 font-medium text-white shadow-sm hover-bg-gray-700 " // Add ml-2 for some horizontal spacing
                           >
                             Your Cart
                           </Link>
 
                           <Link
                             href="/checkout"
-                            className="flex uppercase text-[0.7rem] lg:text-sm   items-center    w-3/5 justify-center rounded-md border border-transparent bg-stone-800 opacity-80 hover:bg-stone-200 hover:text-black    font-montserrat py-3   md:px-6 md:py-3.5 font-medium text-white shadow-sm hover-bg-gray-700 ml-2" // Add ml-2 for some horizontal spacing
+                            className="flex uppercase text-[0.7rem] lg:text-sm   items-center    w-3/5 justify-center rounded-md border border-transparent bg-slate-800  opacity-70 hover:bg-gray-300 hover:text-black    font-montserrat py-3   md:px-6 md:py-3.5 font-medium text-white shadow-sm hover-bg-stone-700 ml-2" // Add ml-2 for some horizontal spacing
                           >
                             Checkout order
                           </Link>
                         </div>
                       </div>
 
-                      <div className="mt-3 flex justify-center text-center   text-gray-500">
+                      <div className="mt-3 flex justify-center text-center   text-stone-500">
                         <p className="mr-3 font-poppins">or</p>
                         <button
                           type="button"

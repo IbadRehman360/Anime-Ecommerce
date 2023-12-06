@@ -9,33 +9,22 @@ export default async function OrderPage() {
   }
 
   return (
-    <main className="max-w-2xl   mx-auto   pb-8 md:pb-24 pt-8 sm:pt-16 sm:px-6 lg:max-w-7xl lg:px-8">
-      {session ? (
-        <>
-          <OrderDisplay data={data} />
-        </>
+    <main className="max-w-2xl mx-auto pb-8 md:pb-24 pt-2 sm:pt-16 sm:px-6 lg:max-w-7xl lg:px-8">
+      {session && data ? (
+        <OrderDisplay data={data} />
       ) : (
-        <TrackOrder />
+        <TrackOrder data={data} />
       )}
     </main>
   );
 }
-
 export async function getOrderStatus(email) {
-  try {
-    console.log(email);
-    const response = await fetch(
-      `${process.env.NEXTAUTH_URL}/api/find-order?email=${email}`
-    );
-
-    if (!response.ok) {
-      throw new Error(`No orders found for email: ${email}`);
-    }
-
+  const response = await fetch(
+    `${process.env.NEXTAUTH_URL}/api/find-order?email=${email}`
+  );
+  if (response.ok) {
     const responseData = await response.json();
     return responseData;
-  } catch (error) {
-    console.error("Error in getOrderStatus:", error);
-    throw error;
   }
+  return null;
 }
