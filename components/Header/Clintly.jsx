@@ -6,13 +6,18 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 import { Fragment } from "react";
+import Navigation from "./Navigation";
 
 function Cliently({ navigation }) {
   const [hoveredPage, setHoveredPage] = useState(null);
-  const [isCursorOverList, setIsCursorOverList] = useState(false);
-
+  const handleListMouseLeave = () => {
+    setHoveredPage(null);
+  };
   return (
-    <Popover.Group className="hidden z-20 p-5    lg:flex justify-center items-center  border   border-gray-500  ">
+    <Popover.Group
+      onMouseLeave={handleListMouseLeave}
+      className="hidden z-20 p-5    lg:flex justify-center items-center  border    border-gray-500  "
+    >
       <div className="flex h-full space-x-10">
         {navigation.categories.map((category) => (
           <Popover key={category.name} className="flex">
@@ -111,51 +116,12 @@ function Cliently({ navigation }) {
             )}
           </Popover>
         ))}
-        {navigation.category.map((page) => (
-          <div
-            key={page.name}
-            className="relative z-20 inline-block bg-white text-sm font-medium text-gray-600 whitespace-nowrap tracking-wider hover:text-gray-800"
-            onMouseEnter={() => {
-              setHoveredPage(page);
-              setIsCursorOverList(true);
-            }}
-            onMouseLeave={() => {
-              if (!isCursorOverList) {
-                setHoveredPage(null);
-              }
-            }}
-          >
-            <Link href={page.href} className="flex items-center">
-              {page.icon}
-              <span className="ml-4 font-inter">{page.name}</span>
-            </Link>
-
-            {hoveredPage === page && isCursorOverList && (
-              <div
-                onMouseEnter={() => {
-                  setIsCursorOverList(true);
-                }}
-                onMouseLeave={() => {
-                  setIsCursorOverList(false);
-                }}
-                className={`  ${
-                  page.list
-                    ? "bg-white border-gray-300 absolute mt-5 border-t pt-4 pr-6 -left-6 pb-5 border grid space-y-3"
-                    : ""
-                }`}
-              >
-                {page.list &&
-                  page.list.map((item) => (
-                    <Link href={"/category/" + item.id} key={item.id}>
-                      <div className="ml-6 text-gray-600 text-[1rem] font-poppins hover:text-black">
-                        {item.name}
-                      </div>
-                    </Link>
-                  ))}
-              </div>
-            )}
-          </div>
-        ))}
+        <Navigation
+          navigation={navigation}
+          handleListMouseLeave={handleListMouseLeave}
+          setHoveredPage={setHoveredPage}
+          hoveredPage={hoveredPage}
+        />
 
         {navigation.pages.map((page) => (
           <div

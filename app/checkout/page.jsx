@@ -1,5 +1,5 @@
 "use client";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { redirect } from "next/navigation";
 import OrderSummary from "@components/CheckOut/OrderSummary";
 import FormInput from "@components/CheckOut/FormInputs";
@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form";
 import RadioGroups from "@components/CheckOut/RadioGroups";
 import InputForm from "@components/CheckOut/InputForm";
 import { useState } from "react";
-import { selectCartItems } from "@app/Global/Features/cartSlice";
+import { clearCart, selectCartItems } from "@app/Global/Features/cartSlice";
 import { useSession } from "next-auth/react";
 import toast from "react-hot-toast";
 
@@ -29,6 +29,8 @@ export default function Checkout() {
   const cartItems = useSelector(selectCartItems);
   const { data: session } = useSession();
   const { control, handleSubmit } = useForm();
+  const dispatch = useDispatch();
+
   if (!cartItems.length) redirect("/");
   const [selectedDeliveryMethod, setSelectedDeliveryMethod] = useState(
     deliveryMethods[0]
@@ -56,6 +58,8 @@ export default function Checkout() {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(data),
         });
+        dispatch(clearCart());
+
         if (sendResponse.status === 200) {
           toast.success(
             `Order successfully placed! Your tracking ID (${trackingId}) has been sent to ${data.email_address}.`

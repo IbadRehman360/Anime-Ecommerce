@@ -24,6 +24,7 @@ const TrackOrder = ({ data }) => {
         const data = await response.json();
         setData([]);
         setData(data);
+        console.log(data);
         if (isData) {
           setIsOrderFound(true);
         }
@@ -167,6 +168,7 @@ const TrackOrder = ({ data }) => {
                     placeholder="65604d282b7beda3767245c9"
                     className="border  w-full  p-2 mt-2"
                     value={trackingId}
+                    disabled={phoneNumber}
                     onChange={(e) => setTrackingId(e.target.value)}
                   />
                 </div>
@@ -192,6 +194,7 @@ const TrackOrder = ({ data }) => {
                         placeholder="321281****"
                         className="border   w-full flex  sm:w-auto p-2"
                         value={phoneNumber}
+                        disabled={trackingId}
                         onChange={(e) => setPhoneNumber(e.target.value)}
                       />
                     </div>

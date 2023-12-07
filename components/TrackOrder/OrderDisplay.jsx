@@ -4,7 +4,6 @@ import { Fragment } from "react";
 
 function OrderDisplay({ data }) {
   const product = Array.isArray(data) ? data : [data];
-
   const subtotal = product
     .map((product) => {
       return product.items.map((item) => {
@@ -165,7 +164,6 @@ function OrderDisplay({ data }) {
                   </div>
                 </div>
               ))}
-
               <div className="border-t border-gray-200  py-6 px-4 sm:px-6 lg:p-8">
                 <h4 className="sr-only">Status</h4>
                 <p className="text-sm font-medium text-gray-900">
