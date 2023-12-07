@@ -27,7 +27,7 @@ function Nav({ setOpen, signOut, session, cartItems, isCartOpen }) {
       });
 
       if (!response.ok) {
-        console.log("BYE");
+        console.log("ERROR: " + response.message);
       }
       const data = await response.json();
       setProducts(data);

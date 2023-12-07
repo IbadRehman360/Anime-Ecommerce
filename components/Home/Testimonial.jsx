@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { BsInstagram } from "react-icons/bs";
+import Image from "next/image";
+
 const Testimonials = () => {
   return (
     <div className="  px-4  sm:px-6 lg:py-16 pt-4 lg:pt-10 pb-12">
@@ -15,14 +17,15 @@ const Testimonials = () => {
             FOLLOW & TAG US ON INSTAGRAM{" "}
           </h4>
         </div>
-        <div className="grid gap-1 md:gap-2 xl:grid-cols-6 grid-cols-3 py-5 grid-rows-2 xl:grid-rows-1">
+        <div className="grid gap-1 md:gap-2 xl:grid-cols-6 grid-cols-3 py-6 grid-rows-2 xl:grid-rows-1">
           {reviews.map((person, index) => (
             <div key={person.name} className="flex-none   md:py-6">
               <div className=" ">
-                <img
+                <Image
+                  width={300}
+                  height={300}
                   src={`/assets/reviewImg/${index + 1}.webp`}
                   alt={`Review by ${person.name}`}
-                  className="w-full max-h-28   sm:max-h-56 lg:max-h-56"
                 />
               </div>
             </div>

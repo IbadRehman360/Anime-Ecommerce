@@ -2,6 +2,7 @@
 import { useState } from "react";
 import OrderDisplay from "./OrderDisplay";
 import { BsXCircle } from "react-icons/bs";
+import Image from "next/image";
 
 const TrackOrder = ({ data }) => {
   const [trackingId, setTrackingId] = useState("");
@@ -84,12 +85,12 @@ const TrackOrder = ({ data }) => {
                   </g>
                 </svg>{" "}
               </span>
-              Hey there, it seems like you haven't placed any orders yet
+              Hey there, it seems like you haven&apos;t placed any orders yet
             </h1>
           </div>
           <p class="mt-4 text-gray-600 leading-7  text-center font-poppins  ">
-            Don't worry! You can easily track your order manually. Click the
-            button below and enter the tracking ID provided on the gmail.
+            Don&apos;t worry! You can easily track your order manually. Click
+            the button below and enter the tracking ID provided on the gmail.
           </p>
         </div>
 
@@ -137,12 +138,13 @@ const TrackOrder = ({ data }) => {
                   </g>
                 </svg>{" "}
                 <h4 className="mt-3     justify-center items-center mx-auto      flex  font-poppins  text-gray-900">
-                  It seems like you haven't placed any orders yet
+                  It seems like you haven&apos;t placed any orders yet
                 </h4>
               </div>
               <p className=" mt-5 text-sm   leading-6  mb-4 px-5 text-center font-poppins   text-gray-600">
-                Don't worry! You can easily track your order manually. Click the
-                button below and enter the tracking ID provided on the gmail.
+                Don&apos;t worry! You can easily track your order manually.
+                Click the button below and enter the tracking ID provided on the
+                gmail.
               </p>
             </div>
             <div className="border   ">
@@ -152,7 +154,9 @@ const TrackOrder = ({ data }) => {
                     <h5 className="font-bold font-poppins">Track Your Order</h5>
                   </div>
                   <div className="w-16">
-                    <img
+                    <Image
+                      width={40}
+                      height={40}
                       className="img-fluid"
                       src="https://i.imgur.com/Rzjor3M.png"
                       alt="Order Icon"

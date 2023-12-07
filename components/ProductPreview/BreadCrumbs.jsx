@@ -1,7 +1,6 @@
 import Link from "next/link";
 
 function BreadCrumbs({ product }) {
-  console.log(product);
   return (
     <nav
       aria-label="Breadcrumb"

@@ -4,6 +4,8 @@ const { TiShoppingCart } = require("react-icons/ti");
 import QuickView from "@components/ProductByCategory/QuickView";
 import Link from "next/link";
 import { useState } from "react";
+import Image from "next/image";
+
 export default function ProductItem({ product }) {
   const [isHovered, setIsHovered] = useState(false);
   const [isQuickViewOpen, setIsQuickViewOpen] = useState(false);
@@ -23,9 +25,12 @@ export default function ProductItem({ product }) {
         onMouseLeave={() => setIsHovered(false)}
       >
         <Link href={`/product/${product._id}`}>
-          <img
+          <Image
+            width={400}
+            height={400}
+            alt=""
             src={product.images}
-            className="w-full h-full border object-center object-cover sm:w-full sm:h-full"
+            className="w-full h-full border  object-center object-cover sm:w-full sm:h-full"
           />
         </Link>
         {isHovered && (

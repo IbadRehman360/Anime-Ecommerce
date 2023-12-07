@@ -18,7 +18,7 @@ export default function Footer() {
     <>
       <div className="bg-white  ">
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4 border-t p-9  border-gray-200 sm:place-self-center sm:place-items-center">
-          <div className="md:col-span-1 flex  text-gray-900">
+          <div className="md:col-span-1 flex  ">
             <FaShippingFast size={18} className="mt-0.5 mr-1" />
             <div className="ml-2">
               <p
@@ -28,16 +28,16 @@ export default function Footer() {
                 {" "}
                 FREE SHIPPING
               </p>
-              <p className="text-gray-600 text-xs       font-poppins">
+              <p className="text-gray-600 text-xs     font-poppins">
                 From all orders over Rs 499
               </p>
             </div>
           </div>
-          <div className="md:col-span-1 flex text-gray-900">
+          <div className="md:col-span-1 flex  ">
             <FaLock size={14} className="mt-0.5 mr-1" />
             <div className="ml-2">
               <p
-                className="  font-poppins  tracking-wide text-[0.85rem]"
+                className="  font-poppins  tracking-wide text-gray-700 text-[0.85rem]"
                 style={{ fontWeight: "700" }}
               >
                 {" "}
@@ -48,7 +48,7 @@ export default function Footer() {
               </p>
             </div>
           </div>
-          <div className="md:col-span-1 flex text-gray-900">
+          <div className="md:col-span-1 flex  ">
             <FaPercent size={14} className="mt-1 mr-1 " />
             <div className="ml-2">
               <p
@@ -62,11 +62,11 @@ export default function Footer() {
               </p>
             </div>
           </div>
-          <div className="md:col-span-1 flex text-gray-900">
+          <div className="md:col-span-1 flex ">
             <FaTshirt size={18} className="mt-0.5 mr-1" />
             <div className="ml-2">
               <p
-                className=" font-poppins  tracking-wide text-[0.85rem]"
+                className=" font-poppins  text-gray-700 tracking-wide text-[0.85rem]"
                 style={{ fontWeight: "700" }}
               >
                 {" "}

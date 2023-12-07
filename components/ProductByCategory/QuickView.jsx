@@ -3,6 +3,7 @@ import { Fragment, useState } from "react";
 import { Dialog, RadioGroup, Transition } from "@headlessui/react";
 import { BsStar, BsXCircle } from "react-icons/bs";
 import { classNames } from "@app/product/[id]/page";
+import Image from "next/image";
 
 export default function QuickView({ product, isOpen, onClose }) {
   const [selectedColor, setSelectedColor] = useState(product.colors[0]);
@@ -59,9 +60,12 @@ export default function QuickView({ product, isOpen, onClose }) {
 
                 <div className="w-full grid grid-cols-1 gap-y-8 gap-x-6 items-start sm:grid-cols-12 lg:items-center lg:gap-x-8">
                   <div className="aspect-w-2 aspect-h-3 h-full  border border-gray-800 rounded-lg bg-gray-100 overflow-hidden sm:col-span-4 lg:col-span-5">
-                    <img
+                    <Image
+                      width="500"
+                      height="500"
+                      alt=""
                       src={product.images[0]}
-                      className="object-center  object-fill h-full w-full"
+                      className="object-center  object-cover h-full w-full"
                     />
                   </div>
                   <div className="sm:col-span-8 lg:col-span-7">

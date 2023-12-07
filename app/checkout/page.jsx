@@ -52,7 +52,6 @@ export default function Checkout() {
       if (response.ok) {
         const responseData = await response.json();
         const trackingId = responseData._id;
-        console.log("Order placed successfully:", responseData);
         const sendResponse = await fetch("/api/send", {
           method: "POST",
           headers: { "Content-Type": "application/json" },

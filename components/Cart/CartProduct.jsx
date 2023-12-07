@@ -5,6 +5,7 @@ import { selectCartItems } from "../../app/Global/Features/cartSlice";
 import { AiOutlineClose } from "react-icons/ai";
 import EmptyCartMessage from "./EmptyCartMessage";
 import { useProductUtils } from "@utils/productUtils";
+import Image from "next/image";
 
 function CartProduct() {
   const products = useSelector(selectCartItems);
@@ -23,16 +24,19 @@ function CartProduct() {
         {products.map((product, productIdx) => (
           <li key={productIdx} className="flex py-6 sm:py-8">
             <div className="flex-shrink-0">
-              <img
+              <Image
+                width={100}
+                height={100}
                 src={product.product.images}
-                className="w-24 h-28 shadow-md    rounded-md object-center object-cover sm:w-48 sm:h-48"
+                className="w-28 h-28 shadow-md    rounded-md object-center object-cover sm:w-48 sm:h-48"
+                alt=""
               />
             </div>
 
             <div className=" flex-1 flex flex-col justify-between ml-5 sm:ml-8  ">
               <div className="relative flex">
-                <div className="flex-grow">
-                  <h2 className="text-[0.89rem] line-clamp-1 sm:text-base font-medium text-gray-800">
+                <div className="flex-grow mt-0.5 sm:mt-1">
+                  <h2 className="text-[0.89rem]  font-poppins  line-clamp-1 sm:text-base font-medium text-gray-800">
                     {product.size} - {product.product.title}
                   </h2>
                 </div>
@@ -56,7 +60,7 @@ function CartProduct() {
                 </p>
               </div>
               <div>
-                <p className="text-sm lg:text-[0.92rem] mt-2 sm:mt-1  sm:mb-1   font-satoshi ">
+                <p className="text-sm lg:text-[0.95rem]  line-clamp-1 mt-2 sm:mt-1  sm:mb-1   font-satoshi ">
                   {product.product.discount_price ? (
                     <span>
                       <span className="text-red-600">
@@ -72,7 +76,7 @@ function CartProduct() {
                 </p>
                 <Quantity quantity={product.quantity} product={product} />{" "}
               </div>
-              <p className=" mb-3 flex text-[0.85rem] sm:text-sm   mt-2 sm:mt-1  font-satoshi  text-gray-700 space-x-2">
+              <p className=" mb-3 flex text-[0.8rem] sm:text-sm   mt-2 sm:mt-1  font-satoshi  text-gray-700 space-x-2">
                 {product.inStock ? (
                   <CheckIcon
                     className="flex-shrink-0 h-5 w-5 text-green-500"
@@ -85,7 +89,7 @@ function CartProduct() {
                   />
                 )}
 
-                <span>
+                <span className="line-clamp-1 ">
                   {product.inStock
                     ? "In stock"
                     : `Ships in ${product.leadTime}`}

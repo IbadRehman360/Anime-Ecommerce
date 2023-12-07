@@ -1,6 +1,7 @@
 "use client";
 import { classNames } from "@app/product/[id]/page";
 import { Fragment } from "react";
+import Image from "next/image";
 
 function OrderDisplay({ data }) {
   const product = Array.isArray(data) ? data : [data];
@@ -79,7 +80,9 @@ function OrderDisplay({ data }) {
                 >
                   <div className="sm:flex lg:col-span-7">
                     <div className="flex-shrink-0 w-full aspect-w-1 aspect-h-1 rounded-lg overflow-hidden sm:aspect-none sm:w-40 sm:h-40">
-                      <img
+                      <Image
+                        width={400}
+                        height={400}
                         src={product.product_id.images[0]}
                         alt={product.product_id.title}
                         className="w-full h-full object-center object-cover sm:w-full sm:h-full"

@@ -31,6 +31,7 @@ export default function HeroCarousel() {
             <Image
               width={10}
               height={10}
+              alt=""
               className="w-full  h-[1px] bg-black"
               src="/assets/lll.webp"
             />

@@ -8,6 +8,7 @@ import { selectCartItems } from "../app/Global/Features/cartSlice";
 import { useSelector } from "react-redux";
 import { useProductUtils } from "@utils/productUtils";
 import { MdInfo } from "react-icons/md";
+import Image from "next/image";
 
 export default function Cart() {
   const cartItems = useSelector(selectCartItems);
@@ -95,7 +96,10 @@ export default function Cart() {
                               {cartItems.map((product, index) => (
                                 <li key={index + 10} className="flex py-6">
                                   <div className="  h-28 w-28 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
-                                    <img
+                                    <Image
+                                      alt=""
+                                      width={40}
+                                      height={50}
                                       src={product.product.images}
                                       className="h-full border border-gray-50 w-full object-cover object-center"
                                     />

@@ -60,7 +60,7 @@ export default function WriteReview({ reviews, product }) {
       {showReviewForm ? (
         <>
           <div className="flex justify-between">
-            <p className="text-[0.9rem] text-black uppercase   tracking-wide    tracking-wider font-satoshi">
+            <p className="text-[0.9rem] text-black uppercase     tracking-wider   font-satoshi">
               {reviews.length
                 ? "Submit a Review"
                 : "Be the first to write a review"}

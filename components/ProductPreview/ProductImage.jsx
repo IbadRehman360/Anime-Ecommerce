@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 
 import React, { useState } from "react";
 import ProductMoreImage from "./ProductMoreImage";
@@ -12,10 +13,12 @@ function ProductImage({ product }) {
 
   return (
     <div className="relative w-full h-full">
-      <img
+      <Image
         src={currentImage}
-        className="border-2   max-h-[65vh] lg:h-[700px] w-full   object-fill "
+        className="border-2   max-h-[80vh] lg:h-[700px] w-full   object-fill "
         alt="Product Image"
+        width={400}
+        height={400}
       />
       <div className="absolute left-0 right-0  lg:bottom-32 xl:bottom-28 bottom-4 p-2 flex justify-center items-center">
         {product.images.map((src, index) => (
