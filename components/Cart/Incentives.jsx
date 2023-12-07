@@ -1,3 +1,4 @@
+import Image from "next/image";
 const incentives = [
   {
     name: "Free Shipping",
@@ -36,10 +37,11 @@ function Incentives({}) {
           <div className="grid grid-cols-1 gap-y-12 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-4 lg:gap-x-12 justify-center items-center">
             {incentives.map((incentive) => (
               <div key={incentive.name} className="text-center">
-                <img
+                <Image
+                  width={400}
+                  height={400}
                   src={incentive.imageSrc}
                   alt=""
-                  className="h-20 lg:h-24 w-auto mx-auto"
                 />
                 <h3 className="mt-6 text-sm font-roboto text-gray-900">
                   {incentive.name}

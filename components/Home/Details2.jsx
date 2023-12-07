@@ -1,5 +1,7 @@
 import { FaCogs } from "react-icons/fa";
 import Link from "next/link";
+import Image from "next/image";
+
 function Details2() {
   return (
     <div className="  sm:border-t border-b sm:border-none  pt-10 pb-8 sm:pt-12 sm:pb-10 lg:pt-16 lg:pb-12">
@@ -11,9 +13,11 @@ function Details2() {
         </h3>
       </div>
       <div className="mx-auto grid   pt-8  px-3 sm:px-6 grid-cols-1 items-center  w-full    lg:grid-cols-2 lg:px-8">
-        <img
+        <Image
+          width={600}
+          height={600}
           src="/assets/Des/2.jpg"
-          className="  rounded-md      lg:h-[32rem] w-full  "
+          className="  rounded-md     w-full lg:w-auto    "
           alt="Walnut card tray filled with cards and card angled in dedicated groove."
         />
 

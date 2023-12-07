@@ -47,7 +47,6 @@ export async function getProductByCategory(id) {
         `Failed to fetch product. Status: ${response.status}, Error: ${errorText}`
       );
     }
-    console.log(response);
 
     return response.json();
   } catch (error) {

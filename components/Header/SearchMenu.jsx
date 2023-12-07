@@ -1,5 +1,7 @@
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
+import Image from "next/image";
+
 export default function SearchMenu({
   searchText,
   filteredProducts,
@@ -20,13 +22,19 @@ export default function SearchMenu({
         aria-hidden="true"
       />
       {filteredProducts.length > 0 && (
-        <div className="  px-2.5 pt-3 pb-1  text-black w-1/6  absolute   max-h-screen left-52 top-[7.5rem] rounded-lg  border    cursor-pointer z-50   gap-4 grid    divide-y shadow   overflow-y-auto bg-white ...">
-          <h5 className="font-inter  uppercase text-sm"> Products Related </h5>
+        <div className="  px-3   bg-white  opacity-95  pt-3  pb-1  text-black w-1/5  absolute   max-h-screen left-52 top-[7.5rem] rounded-lg  border    cursor-pointer z-50   gap-4 grid    divide-y shadow   overflow-y-auto   ...">
+          <h5 className="font-inter  uppercase "> Products Related </h5>
           <ul>
             {filteredProducts.map((product) => (
               <Link href={`/product/${product._id}`} key={product._id}>
-                <li className=" flex gap-4    mb-2  ">
-                  <img className="w-20 border" src={product.images[0]} />
+                <li className=" my-2 flex gap-4      mb-2  ">
+                  <Image
+                    width={80}
+                    height={80}
+                    className="border "
+                    src={product.images[0]}
+                    alt=""
+                  />
                   <div>
                     <p className="mt-2 text-[1rem] text-gray-900  font-poppins">
                       {" "}

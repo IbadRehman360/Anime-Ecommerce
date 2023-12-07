@@ -74,11 +74,11 @@ function Nav({ setOpen, signOut, session, cartItems, isCartOpen }) {
                 href={"/"}
                 className="absolute left-1/2 transform    -translate-x-1/2"
               >
-                <img
+                <Image
                   src="/assets/AnimeSiteLogo.png"
                   alt="Senpai Merch Logo"
-                  layout="responsive"
-                  className="w-[4rem] md:w-[4.5rem] "
+                  width={66}
+                  height={66}
                 />
               </Link>
             </div>
@@ -91,9 +91,9 @@ function Nav({ setOpen, signOut, session, cartItems, isCartOpen }) {
                 <Image
                   src="/assets/country.png"
                   alt=""
-                  width={90}
-                  height={90}
-                  className="block border-2 border-gray-700 h-auto w-5 flex-shrink-0"
+                  width={30}
+                  height={30}
+                  className="border  flex-shrink-0 block"
                 />
                 <span className="ml-3 block text-sm font-medium">PKR</span>
                 <span className="sr-only">, change currency</span>
@@ -190,16 +190,22 @@ function Nav({ setOpen, signOut, session, cartItems, isCartOpen }) {
                 {filteredProducts.map((product) => (
                   <Link href={`/product/${product._id}`} key={product._id}>
                     <li className=" flex gap-4  border-b  py-2    pb-2  ">
-                      <img className=" h-20   " src={product.images[0]} />
+                      <Image
+                        width={80}
+                        height={80}
+                        alt=""
+                        src={product.images[0]}
+                        className="rounded-md"
+                      />
                       <div>
                         <p className="mt-2 text-[0.9rem]  line-clamp-3  font-poppins">
                           {" "}
                           {product.title}
                         </p>
-                        <p className="text-sm   font-inter line-clamp-1 tracking-wide mt-0.5 lg:mt-0.5">
+                        <p className="    font-opensans   line-clamp-1 tracking-wide mt-0.5 lg:mt-0.5">
                           {product.discount_price ? (
                             <span>
-                              <span className="text-red-500">
+                              <span className="text-red-600">
                                 Rs {product.discount_price.toFixed(2)}
                               </span>
                               <del className="text-gray-600 ml-3">

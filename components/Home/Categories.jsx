@@ -2,6 +2,7 @@
 import Link from "next/link";
 // import { FaArrowRight } from "react-icons/fa";
 // import { FaGreaterThan } from "react-icons/fa6";
+import Image from "next/image";
 
 const callouts = [
   {
@@ -38,7 +39,8 @@ const callouts = [
     name: "One Piece",
     path: "/category/654cc5ce72d1fa8b7fc130f3",
     description: "Daily commute essentials",
-    imageSrc: "https://i.ebayimg.com/images/g/EWEAAOSwXT9iHBcT/s-l1600.jpg",
+    imageSrc:
+      "https://atsuko.com/cdn/shop/files/BPA67ZJONP_003_d01c90ca-6eaa-41f3-8cef-fcb0f1aa3c97_750x960_crop_center.jpg?v=1700133123&quot",
     imageAlt: "Collection of four insulated travel bottles on wooden shelf.",
     href: "#",
   },
@@ -98,7 +100,7 @@ const callouts = [
     description: "Daily commute essentials",
     path: "/category/654cc5d172d1fa8b7fc13105",
     imageSrc:
-      "https://e1.pxfuel.com/desktop-wallpaper/671/592/desktop-wallpaper-naruto-symbol-naruto-anime-symbols.jpg",
+      "https://atsuko.com/cdn/shop/files/BPA67ZJONP_003_d01c90ca-6eaa-41f3-8cef-fcb0f1aa3c97_750x960_crop_center.jpg?v=1700133123&quot",
 
     imageAlt: "Collection of four insulated travel bottles on wooden shelf.",
     href: "#",
@@ -125,10 +127,12 @@ export default function Example() {
                 className="flex-none   w-[calc(55%-0.6rem)]  sm:w-[calc(52%-1rem)] md:w-[calc(34%-1rem)] lg:w-[calc(25.2%-1rem)] xl:w-[calc(20%-1.5rem)] shadow-2xl border-black border relative callout"
               >
                 <div className="relative overflow-hidden  bg-white sm:aspect-h-1 sm:aspect-w-2 lg:aspect-h-1 lg:aspect-w-1">
-                  <img
+                  <Image
                     src={callout.imageSrc}
+                    width={200}
+                    height={200}
                     alt={callout.imageAlt}
-                    className="custom-animation w-full h-[16rem] sm:h-[19rem] object-cover    img-hover-effect"
+                    className="custom-animation w-full h-[16rem] sm:h-[22rem] object-cover    img-hover-effect"
                   />
 
                   <div className="absolute inset-0 bg-black opacity-30 hover:opacity-10"></div>
@@ -159,10 +163,12 @@ export default function Example() {
                 className="flex-none   w-[calc(54.5%-0.6rem)] sm:w-[calc(52%-1rem)]  lg:w-[calc(34%-1rem)] xl:w-[calc(25%-1.5rem)] shadow-2xl border-black border relative callout"
               >
                 <div className=" ">
-                  <img
+                  <Image
                     src={callout.imageSrc}
+                    width={250}
+                    height={250}
                     alt={callout.imageAlt}
-                    className="custom-animation w-full h-[16rem] sm:h-[19rem] img-hover-effect"
+                    className="custom-animation w-full h-[16rem] sm:h-[21rem] object-contain img-hover-effect"
                   />
                   <div className="absolute inset-0 bg-black opacity-30  hover:opacity-10"></div>
 

@@ -1,13 +1,17 @@
 import Link from "next/link";
+import Image from "next/image";
+
 function Details() {
   return (
     <div className=" border-b-2  ">
       <div className="mx-auto grid pt-10 md:pt-16 px-3 sm:px-6 lg:mb-20 mb-10 grid-cols-1 items-center  w-full   lg:grid-cols-2 lg:px-8">
         <div className=" justify-end lg:hidden ">
-          <img
+          <Image
             src="/assets/Des/2.webp"
+            width={1000}
+            height={1000}
             alt="Walnut card tray with white powder coated steel divider and 3 punchout holes."
-            className="rounded-lg   bg-gray-100 lg:hidden flex  mb-8 lg:mb-10   w-full"
+            className="rounded-lg   bg-gray-100 lg:hidden flex  mb-8 lg:mb-10    "
           />
         </div>
         <div className="leading-7  tracking-  xl:mr-32 lg:mr-10 ">
@@ -32,10 +36,12 @@ function Details() {
           </div>
         </div>
         <div className=" justify-end hidden lg:flex">
-          <img
+          <Image
+            width={600}
+            height={600}
             src="/assets/Des/2.webp"
             alt="Walnut card tray with white powder coated steel divider and 3 punchout holes."
-            className="  rounded-md     h-[32rem] w-full "
+            className="  rounded-md   "
           />
         </div>
       </div>

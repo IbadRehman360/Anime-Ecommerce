@@ -85,10 +85,10 @@ function HeaderTransition({ setOpen, open, navigation, session }) {
                             <div className="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg bg-gray-50 group-hover:opacity-75">
                               <Image
                                 src={item.imageSrc}
-                                width={50}
-                                height={50}
+                                width={200}
+                                height={80}
                                 alt={item.imageAlt}
-                                className="w-full  object-center"
+                                className="  object-center"
                               />
                             </div>
                             <Link
@@ -249,11 +249,11 @@ function HeaderTransition({ setOpen, open, navigation, session }) {
                   <Image
                     src="/assets/country.png"
                     alt=""
-                    width={50}
-                    height={50}
-                    className="block h-auto w-5 flex-shrink-0"
+                    width={30}
+                    height={30}
+                    className="block  flex-shrink-0"
                   />
-                  <span className="ml-3 block text-base font-medium text-gray-900">
+                  <span className="ml-3 block  font-poppins    text-base text-gray-900">
                     PKR
                   </span>
                   <span className="sr-only">, change currency</span>

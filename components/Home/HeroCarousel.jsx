@@ -7,6 +7,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/autoplay";
 import HeroImages from "./HeroImages";
+import Image from "next/image";
 
 export default function HeroCarousel() {
   const images = Array.from({ length: 1 }, (_, index) => `${index + 1}.webp`);
@@ -27,7 +28,12 @@ export default function HeroCarousel() {
         {images.map((imageUrl, index) => (
           <SwiperSlide key={imageUrl}>
             <HeroImages index={index} imageUrl={imageUrl} />
-            <img className="w-full  h-[2px] bg-black" src="/assets/lll.webp" />
+            <Image
+              width={10}
+              height={10}
+              className="w-full  h-[1px] bg-black"
+              src="/assets/lll.webp"
+            />
           </SwiperSlide>
         ))}
       </Swiper>

@@ -1,6 +1,8 @@
 "use client";
 import { Popover, Transition } from "@headlessui/react";
 import Link from "next/link";
+import Image from "next/image";
+
 import React, { useState } from "react";
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -84,10 +86,12 @@ function Cliently({ navigation }) {
                             {category.featured.map((item) => (
                               <div key={item.name} className="col-span-1">
                                 <div className="aspect-w-1 aspect-h-1 rounded-lg relative bg-gray-100 overflow-hidden   flex items-center justify-center">
-                                  <img
+                                  <Image
                                     src={item.imageSrc}
                                     alt={item.imageAlt}
-                                    className="object-center object-cover opacity-90   h-48 w-full"
+                                    width={400}
+                                    height={400}
+                                    className="object-center object-cover opacity-90    "
                                   />
                                   <div className="absolute inset-0 bg-black opacity-40  hover:opacity-60"></div>
                                   <div className="absolute mt-2 text-white   font-medium   font-poppins tracking-widest">

@@ -2,6 +2,7 @@ import { selectCartItems } from "@app/Global/Features/cartSlice";
 import { QuestionMarkCircleIcon, TrashIcon } from "@heroicons/react/24/outline";
 import { useProductUtils } from "@utils/productUtils";
 import { useSelector } from "react-redux";
+import Image from "next/image";
 function OrderSummary({ selectedDeliveryMethod }) {
   const cartItems = useSelector(selectCartItems);
   const { handleRemoveItem, handleUpdateQuantity } = useProductUtils();
@@ -30,7 +31,13 @@ function OrderSummary({ selectedDeliveryMethod }) {
           {cartItems.map((product, index) => (
             <li key={index} className="flex py-6 px-4 sm:px-6">
               <div className="flex-shrink-0">
-                <img src={product.product.images} className="w-20 rounded-md" />
+                <Image
+                  width={90}
+                  alt=""
+                  height={90}
+                  src={`${product.product.images}`}
+                  className=" rounded-md"
+                />
               </div>
 
               <div className=" ml-4   sm:ml-6 flex-1 flex flex-col">

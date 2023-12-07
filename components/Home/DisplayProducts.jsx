@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { TiShoppingCart } from "react-icons/ti";
+import Image from "next/image";
 
 const ProductCard = ({ products }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -16,9 +17,11 @@ const ProductCard = ({ products }) => {
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
           >
-            <img
+            <Image
               src={products.images}
               alt={products.imageAlt}
+              width={100}
+              height={100}
               className="w-full h-full border border-gray-100 object-center object-cover object-contain transition-transform transform hover:scale-105"
             />
             <div className="absolute top-0   inset-x-0 h-72 rounded-lg p-4 flex items-end justify-end overflow-hidden">
