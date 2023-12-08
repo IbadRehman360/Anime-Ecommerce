@@ -47,7 +47,7 @@ const ReviewForm = ({ product, reviews, setShowReviewForm }) => {
   };
 
   return (
-    <div className="bg-white w-full mt-5 rounded-lg md:text-lg">
+    <div className="bg-white w-full   mt-5 rounded-lg md:text-lg">
       <h6 className="text-gray-900 mb-4 md:text-lg uppercase font-montserrat">
         {reviews
           ? `Write a review about ${product.title}`

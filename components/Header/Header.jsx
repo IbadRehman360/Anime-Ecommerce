@@ -2,8 +2,8 @@
 import Clintly from "./Clintly";
 import { signOut, useSession } from "next-auth/react";
 import { selectCartItems } from "@app/Global/Features/cartSlice";
-import { BsShop, BsBag, BsGrid, BsPeople, BsGrid3X3 } from "react-icons/bs";
 import { useSelector } from "react-redux";
+import { BsShop, BsBag, BsGrid, BsPeople, BsGrid3X3 } from "react-icons/bs";
 import Nav from "./Nav";
 import SubHeader from "./SubHeader";
 import HeaderTransition from "./HeaderTransition";

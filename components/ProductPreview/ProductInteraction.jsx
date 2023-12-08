@@ -34,7 +34,7 @@ function ProductInteraction({
   return (
     <form
       className={` border-t ${
-        setSelectedSize && selectedSize && ""
+        setSelectedSize && selectedSize && "pt-6"
       }   "pt-6"     ${!selectedColor && !selectedSize ? "" : "pt-6"} `}
     >
       <div className={`${!selectedColor ? "hidden" : "flex"} `}>

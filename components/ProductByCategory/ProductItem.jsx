@@ -56,9 +56,17 @@ export default function ProductItem({ product }) {
             {product.title}
           </Link>
         </h2>
-        <p className="text-xs italic text-gray-500 text-center   font-poppins">
-          Colors : {product.colors.length} | Sizes :{" "}
-          {Object.values(product.sizes).filter((size) => size).length}
+        <p className="text-xs italic text-gray-500 text-center font-poppins">
+          {product.colors && product.colors.length > 0 && (
+            <>Colors: {product.colors.length} | </>
+          )}
+          {product.sizes &&
+            Object.values(product.sizes).filter((size) => size).length > 0 && (
+              <>
+                Sizes:{" "}
+                {Object.values(product.sizes).filter((size) => size).length}
+              </>
+            )}
         </p>
 
         <div className=" flex justify-center  text-center mt-auto">

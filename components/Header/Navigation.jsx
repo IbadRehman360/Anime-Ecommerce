@@ -23,7 +23,7 @@ function Navigation({
       {navigation.category.map((page) => (
         <div
           key={page.name}
-          className="relative z-20 inline-block bg-white text-sm font-medium text-gray-600 whitespace-nowrap tracking-wider hover:text-gray-800"
+          className="relative   z-10 inline-block bg-white text-sm font-medium text-gray-600 whitespace-nowrap tracking-wider hover:text-gray-800"
           onMouseEnter={() => handlePageHover(page)}
         >
           <Link href={page.href} className="flex items-center">

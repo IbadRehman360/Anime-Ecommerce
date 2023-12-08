@@ -6,7 +6,7 @@ import Image from "next/image";
 
 const callouts = [
   {
-    name: "Full Metal Alchemist",
+    name: "Baruto",
     description: "Work from home accessories",
     imageSrc:
       "https://atsuko.com/cdn/shop/files/BPA67ZJONP_003_d01c90ca-6eaa-41f3-8cef-fcb0f1aa3c97_750x960_crop_center.jpg?v=1700133123&quot",

@@ -13,10 +13,10 @@ export default function WriteReview({ reviews, product }) {
     setShowReviewForm(!showReviewForm);
   };
   return (
-    <div className=" border  py-8 lg:mt-10 px-6 text-black   middle none center  mx-2      font-sans text-xs font-bold uppercase     focus:shadow-none active:opacity-[0.9] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none rounded-lg bg-white ">
+    <div className="    border py-8 px-5   lg:mt-10   text-black pb-8   middle none center        font-sans text-xs font-bold uppercase     focus:shadow-none active:opacity-[0.9] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none rounded-lg bg-white ">
       {!showReviewForm && (
         <>
-          <h2 className=" mb-4 lg:text-xl text-gray-800 text-lg    tracking-wide   font-raleway">
+          <h2 className=" mb-4 lg:text-xl text-gray-800     tracking-wide   font-inter">
             Customer Reviews
           </h2>
           <div className="md:flex justify-between">
@@ -26,13 +26,13 @@ export default function WriteReview({ reviews, product }) {
                   {[1, 2, 3, 4, 5].map((starRating) => (
                     <StarIcon
                       key={starRating}
-                      className={`h-6 w-6 lg:w-6 lg:h-6 flex-shrink-0 cursor-pointer  text-gray-300 `}
+                      className={`h-5 w-5 lg:w-6 lg:h-6 flex-shrink-0 cursor-pointer  text-gray-300 `}
                       aria-hidden="true"
                     />
                   ))}
                 </div>
               </div>{" "}
-              <p className="mb-1.5 text-[0.9rem]    lowercase font-medium  font-poppins lg:ml-4 ml-1 mt-3 sm:mt-2 lg:mt-0 md:text-[1rem]  text-gray-900  tracking-wider  ">
+              <p className="mb-1.5 text-[0.9rem] font-medium  font-opensans  lg:ml-4 ml-1 mt-2 lg:mt-0 md:text-[1rem]   tracking-wider  ">
                 {reviews.length
                   ? "Submit a Review"
                   : "Be the first to write a review"}
@@ -46,7 +46,7 @@ export default function WriteReview({ reviews, product }) {
                 Write a review
               </Link>
             ) : (
-              <div className="group relative h-12 border   mt-6 w-60 overflow-hidden flex justify-center text-center   middle none center mr-4  opacity-90    py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-blue-500/10 transition-all hover:shadow-lg hover:shadow-blue-500/10 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none rounded-lg bg-white  ">
+              <div className="group relative h-12 border border-gray-400 rounded-md hover:border-gray-300   w-60 overflow-hidden flex justify-center   middle none center mr-4  opacity-90    py-3 px-6 font-sans text-xs  ">
                 <button
                   onClick={handleWriteReviewClick}
                   className="relative text-black font-montserrat lg:text-sm  "

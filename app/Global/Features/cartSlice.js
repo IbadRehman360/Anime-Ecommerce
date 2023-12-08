@@ -27,7 +27,6 @@ const cartSlice = createSlice({
         },
         increaseQuantity: (state, action) => {
             const { product, size, color } = action.payload;
-            console.log(product, size, color);
             const item = state.items.find(
                 (item) =>
                     item.product._id === product._id &&
@@ -40,7 +39,6 @@ const cartSlice = createSlice({
         },
         decreaseQuantity: (state, action) => {
             const { product, size, color } = action.payload;
-            console.log(product, size, color)
             const item = state.items.find(
                 (item) =>
                     item.product._id === product._id &&

@@ -130,7 +130,7 @@ function Cliently({ navigation }) {
         {navigation.pages.map((page) => (
           <div
             key={page.name}
-            className="z-20 inline-block bg-white text-sm font-medium text-gray-600 whitespace-nowrap tracking-wider hover:text-gray-800"
+            className="z-10 inline-block bg-white text-sm font-medium text-gray-600 whitespace-nowrap tracking-wider hover:text-gray-800"
           >
             <Link href={page.href} className="flex items-center">
               {page.icon}

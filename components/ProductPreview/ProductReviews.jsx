@@ -34,47 +34,52 @@ export default function ProductReviews({ reviews }) {
 
   const startIdx = (currentPage - 1) * reviewsPerPage;
   const endIdx = startIdx + reviewsPerPage;
-  return (
-    <div className="bg-white p-4  ">
-      {reviews.slice(startIdx, endIdx).map((review, reviewIdx) => (
-        <div key={review._id}>
-          <div>
-            <div className="flex items-start text-sm text-gray-600 border-b border-gray-200 pt-4 pb-6">
-              <div className="flex-none mr-4   ">
-                <div className="w-10 h-10 bg-gray-100 font-roboto rounded-full flex items-center justify-center text-gray-600 text-lg">
-                  {review.user_id.username.charAt(0).toUpperCase()}
-                </div>
-              </div>
-              <div className="flex-1  ">
-                <h3 className="font-semibold text-[0.9rem]  tracking-wide text-gray-800 ">
-                  {review.user_id.username}
-                </h3>
-                <div className="flex items-center space-x-2 mb-2">
-                  <div className="flex items-center flex-grow">
-                    {[0, 1, 2, 3, 4].map((rating) => (
-                      <StarIcon
-                        key={rating}
-                        className={classNames(
-                          review.rating > rating
-                            ? "text-yellow-500 fill-current"
-                            : "text-gray-300",
-                          "h-5 w-5 flex-shrink-0"
-                        )}
-                        aria-hidden="true"
-                      />
-                    ))}
+  console.log(reviews.length);
+  if (reviews.length - 1 > 0)
+    return (
+      <div className=" bg-white p-4 my-4 border   rounded-xl">
+        <div className="   ">
+          {reviews.slice(startIdx, endIdx).map((review, reviewIdx) => (
+            <div className="" key={review._id}>
+              <div className="flex items-start text-sm text-gray-600 border-b border-gray-200 pt-4 pb-6">
+                <div className="flex-none mr-4   ">
+                  <div className="w-10 h-10 bg-gray-100 font-roboto rounded-full flex items-center justify-center text-gray-600 text-lg">
+                    {review.user_id.username.charAt(0).toUpperCase()}
                   </div>
-                  <p className=" text-xs mt-2 sm:text-[0.85rem] text-gray-500 mb-2  ">
-                    <time>{formatDate(review.createdAt)}</time>
-                  </p>
                 </div>
+                <div className="flex-1  ">
+                  <h3 className="font-semibold text-[0.9rem]  tracking-wide text-gray-800 ">
+                    {review.user_id.username}
+                  </h3>
+                  <div className="flex items-center space-x-2 mb-2">
+                    <div className="flex items-center flex-grow">
+                      {[0, 1, 2, 3, 4].map((rating) => (
+                        <StarIcon
+                          key={rating}
+                          className={classNames(
+                            review.rating > rating
+                              ? "text-yellow-500 fill-current"
+                              : "text-gray-300",
+                            "h-5 w-5 flex-shrink-0"
+                          )}
+                          aria-hidden="true"
+                        />
+                      ))}
+                    </div>
+                    <p className=" text-xs mt-2 sm:text-[0.85rem] text-gray-500 mb-2  ">
+                      <time>{formatDate(review.createdAt)}</time>
+                    </p>
+                  </div>
 
-                <div className="prose prose-sm max-w-none font-satoshi tracking-wide     text-gray-600">
-                  <p dangerouslySetInnerHTML={{ __html: review.review_text }} />
+                  <div className="prose prose-sm max-w-none font-satoshi tracking-wide     text-gray-600">
+                    <p
+                      dangerouslySetInnerHTML={{ __html: review.review_text }}
+                    />
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          ))}
           <nav className="border-t border-gray-200 px-4 flex items-center justify-between sm:px-0">
             <div className="-mt-px w-0 flex-1 flex">
               {currentPage > 1 && (
@@ -122,7 +127,6 @@ export default function ProductReviews({ reviews }) {
             </div>
           </nav>
         </div>
-      ))}
-    </div>
-  );
+      </div>
+    );
 }
