@@ -14,8 +14,8 @@ function Details2() {
       </div>
       <div className="mx-auto grid   pt-8  px-3 sm:px-6 grid-cols-1 items-center  w-full    lg:grid-cols-2 lg:px-8">
         <Image
-          width={600}
-          height={600}
+          width={900}
+          height={900}
           src="/assets/Des/2.jpg"
           className="  rounded-md     w-full lg:w-auto    "
           alt="Walnut card tray filled with cards and card angled in dedicated groove."

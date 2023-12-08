@@ -9,7 +9,11 @@ export default async function OrderPage() {
   }
 
   return (
-    <main className="max-w-2xl mx-auto pb-8 md:pb-24 pt-2 sm:pt-16 sm:px-6 lg:max-w-[90rem] lg:px-8">
+    <main
+      className={`max-w-2xl mx-auto pb-8 md:pb-24 pt-2 sm:pt-16 sm:px-6 ${
+        session ? "lg:max-w-7xl" : "lg:max-w-[90rem] "
+      } lg:px-8`}
+    >
       {session && data ? (
         <OrderDisplay data={data} />
       ) : (
