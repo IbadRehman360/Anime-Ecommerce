@@ -37,7 +37,7 @@ export default function Footer() {
             <FaLock size={14} className="mt-0.5 mr-1" />
             <div className="ml-2">
               <p
-                className="  font-poppins  tracking-wide text-gray-700 text-[0.85rem]"
+                className="  font-poppins  tracking-wide text-gray-800 text-[0.85rem]"
                 style={{ fontWeight: "700" }}
               >
                 {" "}
@@ -66,7 +66,7 @@ export default function Footer() {
             <FaTshirt size={18} className="mt-0.5 mr-1" />
             <div className="ml-2">
               <p
-                className=" font-poppins  text-gray-700 tracking-wide text-[0.85rem]"
+                className=" font-poppins  text-gray-800 tracking-wide text-[0.85rem]"
                 style={{ fontWeight: "700" }}
               >
                 {" "}
@@ -79,71 +79,91 @@ export default function Footer() {
           </div>
         </div>
 
-        <footer className="footer grid  gap-6  grid-rows-1  grid-cols-none   bg-[#0f0f0f] p-4 py-10 sm:p-8 md:p-10  text-white sm:justify-between sm:gap-8 lg:grid-cols-4 lg:grid-rows-1">
+        <footer className="footer grid  gap-6  grid-rows-1  grid-cols-none    bg-gray-100 p-4 py-10 sm:p-8 md:p-10  text-gray-800 sm:justify-between sm:gap-8 lg:grid-cols-4 lg:grid-rows-1">
           <div>
             <span
               id="whity-text"
-              className="uppercase font-semibold text-gray-100 mb-1"
+              className="uppercase  sm:mr-28 md:mr-0   font-semibold font-poppins text-[1.05rem] text-gray-700 mb-1"
             >
-              ABOUT STORE
+              Our Story
             </span>
 
-            <div className=" gap-2 text-[0.8rem]  w-[17.5rem] font-poppins    md:w- lg:w-72 text-[#d2d2d2]">
-              In the midst of quarantine, our Instagram shop emerged in 2020,
-              offering a curated selection of unique trinkets inspired by
-              popular trends. Catering to aficionados, we present a collection
-              featuring beloved characters, creating a haven for enthusiasts
-              seeking distinctive and charming items.
+            <div className=" gap-2 text-[0.86rem]  w-[17.5rem] font-poppins    md:w- lg:w-72 text-gray-800">
+              Welcome to Senpai Merch, go-to spot for Pakistani anime fans.
+              Explore a variety of custom shirts and merchandise featuring your
+              beloved anime characters. Join our 6,000+ member strong Instagram
+              community bonded by a passion for anime culture. Senpai Merch –
+              where your anime journey starts.{" "}
+              <Link className="text-blue-500" href="/policies/about">
+                About us
+              </Link>
             </div>
           </div>
           <div className="flex sm:hidden"></div>
 
           <div className=" md:flex-col   lg:flex">
             <div className="grid gap-2 lg:ml-20   ">
-              <span className="uppercase  sm:mr-28 md:mr-0 font-semibold text-gray-100 mb-1">
-                Legal
+              <span className="uppercase  sm:mr-28 md:mr-0   font-semibold font-poppins text-[1rem] text-gray-700 mb-1">
+                ABOUT
               </span>
-              <div className="text-[0.8rem] grid gap-1 font-poppins ">
-                <Link href="/" className="link-hover text-[#d2d2d2] link">
-                  Terms of use
+              <div className="text-[0.86rem]  grid gap-1.5 font-poppins ">
+                <Link
+                  href="/policies/about-us"
+                  className="link-hover text-gray-800 link"
+                >
+                  About us
                 </Link>
-                <Link href="/" className="link-hover text-[#d2d2d2] link">
-                  Privacy policy
+
+                <Link href="/" className="link-hover text-gray-800 link">
+                  Instagram
                 </Link>
-                <Link href="/" className="link-hover text-[#d2d2d2] link">
-                  Cookie policy
+                <Link href="/" className="link-hover text-gray-800 link">
+                  Facebook
                 </Link>
               </div>
             </div>
           </div>
           <div className="flex sm:hidden"></div>
           <div className="flex-col sm:flex">
-            <span className="uppercase   font-semibold text-gray-100 mb-1">
-              Company
+            <span className="uppercase  sm:mr-28 md:mr-0   font-semibold font-poppins text-[1rem] text-gray-700 mb-1">
+              Our Policies
             </span>
-            <div className="grid gap-1 text-[0.8rem] font-poppins">
-              <Link href="/" className="link-hover text-[#d2d2d2] link">
-                About us
+            <div className="grid gap-1.5 text-[0.86rem] font-poppins">
+              <Link
+                href="/policies/contact-us"
+                className="link-hover text-gray-800 link"
+              >
+                Contact Us
               </Link>
-              <Link href="/" className="link-hover text-[#d2d2d2] link">
-                Contact
+              <Link
+                href="/policies/returns"
+                className="link-hover text-gray-800 link"
+              >
+                Refund Policy
               </Link>
-              <Link href="/" className="link-hover text-[#d2d2d2] link">
-                Jobs
+              <Link
+                href="/policies/shipping"
+                className="link-hover text-gray-800 link"
+              >
+                Shopping Policy
               </Link>
-              <Link href="/" className="link-hover text-[#d2d2d2] link">
-                Press kit
+
+              <Link
+                href="/track-order"
+                className="link-hover text-gray-800 link"
+              >
+                Track Order
               </Link>
             </div>
           </div>
-          <div className="col-span-2 mt-4 sm:w-full sm:mt-0 md:flex md:flex-col lg:flex">
+          <div className="col-span-2 mt-4 sm:w-full  sm:mt-0 md:flex md:flex-col lg:flex">
             <div className="w-full flex-col sm:flex">
-              <span className="uppercase font-semibold text-gray-100 mb-1">
+              <span className="uppercase  sm:mr-28 md:mr-0   font-semibold font-poppins text-[0.98rem] text-gray-700 mb-1">
                 Want style Ideas and Treats?
               </span>
               <div className="form-control">
                 <label className="label my-1">
-                  <span className="label-text text-xm font-poppins text-[#d2d2d2] lg:text-sm">
+                  <span className="label-text  font-poppins text-gray-800 ">
                     Enter your email
                   </span>
                 </label>
@@ -161,7 +181,7 @@ export default function Footer() {
             </div>
           </div>
         </footer>
-        <footer className="footer footer-center border-t border-gray-800 bg-[#0f0f0f] p-7 text-white">
+        <footer className="footer footer-center border-t border-gray-300   font-poppins   bg-gray-100  p-7 text-gray-900">
           <div>
             <p>Copyright © 2023 - All rights reserved by SenpaiMerch Ltd</p>
           </div>
