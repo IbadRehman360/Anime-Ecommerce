@@ -20,7 +20,7 @@ function ProductImage({ product }) {
         width={400}
         height={400}
       />
-      <div className="absolute left-0 right-0  lg:bottom-32 xl:bottom-28 bottom-4 p-2 flex justify-center items-center">
+      <div className="absolute left-6 right-0  lg:bottom-32 xl:bottom-28 bottom-3  sm:bottom-4 p-2 flex justify-center items-center">
         {product.images.map((src, index) => (
           <div
             key={index}
@@ -32,7 +32,7 @@ function ProductImage({ product }) {
         ))}
       </div>
       <div className="block">
-        <div className="lg:hidden flex absolute bottom-2 left-4 z-10">
+        <div className="lg:hidden flex absolute bottom-2 left-2 sm:left-4 z-10">
           <ProductMoreImage
             product={product}
             handleImageClick={handleImageClick}
