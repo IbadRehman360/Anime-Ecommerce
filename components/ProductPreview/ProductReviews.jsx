@@ -35,14 +35,11 @@ export default function ProductReviews({ reviews }) {
   const startIdx = (currentPage - 1) * reviewsPerPage;
   const endIdx = startIdx + reviewsPerPage;
   return (
-    <div className="bg-white p-4 shadow-md rounded-md">
-      <div>
-        <div>
-          {reviews.slice(startIdx, endIdx).map((review, reviewIdx) => (
-            <div
-              key={review._id}
-              className="flex items-start text-sm text-gray-600 border-b border-gray-200 pt-4 pb-6"
-            >
+    <div className="bg-white p-4  ">
+      {reviews.slice(startIdx, endIdx).map((review, reviewIdx) => (
+        <div key={review._id}>
+          <div>
+            <div className="flex items-start text-sm text-gray-600 border-b border-gray-200 pt-4 pb-6">
               <div className="flex-none mr-4   ">
                 <div className="w-10 h-10 bg-gray-100 font-roboto rounded-full flex items-center justify-center text-gray-600 text-lg">
                   {review.user_id.username.charAt(0).toUpperCase()}
@@ -77,55 +74,55 @@ export default function ProductReviews({ reviews }) {
                 </div>
               </div>
             </div>
-          ))}
+          </div>
+          <nav className="border-t border-gray-200 px-4 flex items-center justify-between sm:px-0">
+            <div className="-mt-px w-0 flex-1 flex">
+              {currentPage > 1 && (
+                <button
+                  onClick={handleShowLess}
+                  className="border-t-2 border-transparent pt-4 pr-1 inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300"
+                >
+                  <ArrowLeftIcon
+                    className="mr-3 h-5 w-4 text-gray-400"
+                    aria-hidden="true"
+                  />
+                  Previous
+                </button>
+              )}
+            </div>
+            <div className="hidden md:-mt-px md:flex">
+              {Array.from({ length: totalPages }).map((_, index) => (
+                <a
+                  key={index + 1}
+                  href="#"
+                  onClick={(e) => handlePageClick(index + 1, e)}
+                  className={`border-transparent ${
+                    currentPage === index + 1
+                      ? "text-indigo-600 border-indigo-500"
+                      : "text-gray-500 hover:text-gray-700 hover:border-gray-300"
+                  } border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium`}
+                >
+                  {index + 1}
+                </a>
+              ))}
+            </div>
+            <div className="-mt-px w-0 flex-1 flex justify-end">
+              {currentPage < totalPages && (
+                <button
+                  onClick={handleShowMore}
+                  className="border-t-2 border-transparent pt-4 pl-1 inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300"
+                >
+                  Next
+                  <ArrowRightIcon
+                    className="ml-3 h-5 w-4  text-gray-400"
+                    aria-hidden="true"
+                  />
+                </button>
+              )}
+            </div>
+          </nav>
         </div>
-        <nav className="border-t border-gray-200 px-4 flex items-center justify-between sm:px-0">
-          <div className="-mt-px w-0 flex-1 flex">
-            {currentPage > 1 && (
-              <button
-                onClick={handleShowLess}
-                className="border-t-2 border-transparent pt-4 pr-1 inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300"
-              >
-                <ArrowLeftIcon
-                  className="mr-3 h-5 w-4 text-gray-400"
-                  aria-hidden="true"
-                />
-                Previous
-              </button>
-            )}
-          </div>
-          <div className="hidden md:-mt-px md:flex">
-            {Array.from({ length: totalPages }).map((_, index) => (
-              <a
-                key={index + 1}
-                href="#"
-                onClick={(e) => handlePageClick(index + 1, e)}
-                className={`border-transparent ${
-                  currentPage === index + 1
-                    ? "text-indigo-600 border-indigo-500"
-                    : "text-gray-500 hover:text-gray-700 hover:border-gray-300"
-                } border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium`}
-              >
-                {index + 1}
-              </a>
-            ))}
-          </div>
-          <div className="-mt-px w-0 flex-1 flex justify-end">
-            {currentPage < totalPages && (
-              <button
-                onClick={handleShowMore}
-                className="border-t-2 border-transparent pt-4 pl-1 inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300"
-              >
-                Next
-                <ArrowRightIcon
-                  className="ml-3 h-5 w-4  text-gray-400"
-                  aria-hidden="true"
-                />
-              </button>
-            )}
-          </div>
-        </nav>
-      </div>
+      ))}
     </div>
   );
 }

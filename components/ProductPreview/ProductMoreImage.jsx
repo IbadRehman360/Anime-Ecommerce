@@ -1,8 +1,19 @@
 import Image from "next/image";
 
-export default function ProductMoreImage({ product, handleImageClick }) {
+export default function ProductMoreImage({
+  product,
+  handleImageClick,
+  selectedColor,
+  selectedSize,
+}) {
   return (
-    <div className="flex space-x-2 sm:space-x-3 mt-4   ">
+    <div
+      className={`    ${
+        !selectedSize || !selectedColor
+          ? "    space-y-1 "
+          : " lg:flex lg:space-x-2     "
+      }`}
+    >
       {product.images.map((src, index) => (
         <Image
           key={index}
@@ -11,7 +22,7 @@ export default function ProductMoreImage({ product, handleImageClick }) {
           height={70}
           alt={`Small Image ${index}`}
           onClick={() => handleImageClick(src)}
-          className={`lg:w-20 lg:h-auto w-auto  h-10  border-2 rounded-md border-black border-opacity-60   cursor-pointer  `}
+          className={`  lg:h-28 lg:w-28  w-12  sm:w-16  border-2 rounded-md   border-gray-300 border-opacity-60   cursor-pointer  `}
         />
       ))}
     </div>

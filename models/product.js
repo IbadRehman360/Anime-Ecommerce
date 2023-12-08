@@ -50,10 +50,12 @@ const productSchema = new Schema({
     }],
     colors: [{
         type: String,
+        required: false,
     }],
     sizes: {
         type: Map,
         of: Boolean,
+        required: false,
     },
     highlights: [{
         type: String,

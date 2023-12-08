@@ -9,15 +9,15 @@ function ProductInfo({ product, reviews }) {
 
   const averageRating = totalRatings > 0 ? sumRatings / totalRatings : 0;
   return (
-    <div>
+    <div className=" ">
       <div className="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
-        <h1 className="text-xl line-clamp-2   uppercase mb-2 lg:mb-4  lg:text-3xl font-montserrat  text-gray-800 sm:text-3xl">
+        <h1 className="text-xl lg:line-clamp-1 xl:line-clamp-2 line-clamp-2    uppercase mb-2 lg:mb-4  lg:text-3xl font-montserrat  text-gray-800 sm:text-3xl">
           {product.title}
         </h1>
       </div>
-      <div className="mt-4 lg:row-span-3 pb-1.5 lg:mt-0">
+      <div className="mt-4 lg:row-span-3 pb-1.5 lg:mt-0 ">
         <h2 className="sr-only">Product information</h2>
-        <div className="flex items-center">
+        <div className="flex items-center ">
           {product.discount_price ? (
             <>
               <div className="text-[1.1rem]   font-inter  lg:text-[1.4rem] mr-5 tracking-wider lg:tracking-wider  text-green-700 ">

@@ -7,12 +7,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { addItem, selectCartItems } from "../../app/Global/Features/cartSlice";
 import { useProductUtils } from "@utils/productUtils";
 
-function ProductInteraction({ product }) {
+function ProductInteraction({
+  product,
+  selectedColor,
+  setSelectedColor,
+  sizeNames,
+  setSelectedSize,
+  selectedSize,
+}) {
   const { incrementQuantity, decrementQuantity } = useProductUtils();
 
-  const [selectedColor, setSelectedColor] = useState(product.colors[0]);
-  const sizeNames = Object.keys(product.sizes);
-  const [selectedSize, setSelectedSize] = useState(sizeNames[0]);
   const dispatch = useDispatch();
   const cartItems = useSelector(selectCartItems);
 
@@ -28,27 +32,37 @@ function ProductInteraction({ product }) {
   };
 
   return (
-    <form className="pt-6 border-t">
-      <ProductColor
-        product={product}
-        selectedColor={selectedColor}
-        setSelectedColor={setSelectedColor}
-      />
-      <ProductSizes
-        product={product}
-        setSelectedSize={setSelectedSize}
-        selectedSize={selectedSize}
-        sizeNames={sizeNames}
-      />
-      <ProductBtn
-        product={product}
-        incrementQuantity={incrementQuantity}
-        decrementQuantity={decrementQuantity}
-        handleAddToCart={handleAddToCart}
-        cartItems={cartItems}
-        selectedColor={selectedColor}
-        selectedSize={selectedSize}
-      />
+    <form
+      className={` border-t ${
+        setSelectedSize && selectedSize && ""
+      }   "pt-6"     ${!selectedColor && !selectedSize ? "" : "pt-6"} `}
+    >
+      <div className={`${!selectedColor ? "hidden" : "flex"} `}>
+        <ProductColor
+          product={product}
+          selectedColor={selectedColor}
+          setSelectedColor={setSelectedColor}
+        />
+      </div>
+      <div className={`${!selectedSize ? "hidden" : "grid"} `}>
+        <ProductSizes
+          product={product}
+          setSelectedSize={setSelectedSize}
+          selectedSize={selectedSize}
+          sizeNames={sizeNames}
+        />{" "}
+      </div>
+      <div>
+        <ProductBtn
+          product={product}
+          incrementQuantity={incrementQuantity}
+          decrementQuantity={decrementQuantity}
+          handleAddToCart={handleAddToCart}
+          cartItems={cartItems}
+          selectedColor={selectedColor}
+          selectedSize={selectedSize}
+        />
+      </div>
     </form>
   );
 }

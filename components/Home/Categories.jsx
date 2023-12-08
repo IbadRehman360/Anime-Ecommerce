@@ -6,7 +6,7 @@ import Image from "next/image";
 
 const callouts = [
   {
-    name: "One piece",
+    name: "Full Metal Alchemist",
     description: "Work from home accessories",
     imageSrc:
       "https://atsuko.com/cdn/shop/files/BPA67ZJONP_003_d01c90ca-6eaa-41f3-8cef-fcb0f1aa3c97_750x960_crop_center.jpg?v=1700133123&quot",
@@ -16,7 +16,7 @@ const callouts = [
     href: "#",
   },
   {
-    name: "Berserk",
+    name: "Code Grease",
     description: "Journals and note-taking",
     imageSrc:
       "https://atsuko.com/cdn/shop/files/OWM2JQXCRU_003_78f4367b-68c1-496a-a45e-05f25fb740c3_750x960_crop_center.jpg?v=1700133310",
@@ -36,7 +36,7 @@ const callouts = [
     href: "#",
   },
   {
-    name: "One Piece",
+    name: "Food War",
     path: "/category/654cc5ce72d1fa8b7fc130f3",
     description: "Daily commute essentials",
     imageSrc:
@@ -55,7 +55,7 @@ const callouts = [
     href: "#",
   },
   {
-    name: "One Piece",
+    name: "Attack on Titans",
     description: "Daily commute essentials",
     imageSrc: "https://i.ebayimg.com/images/g/EWEAAOSwXT9iHBcT/s-l1600.jpg",
     path: "/category/654cc5d172d1fa8b7fc13105",
@@ -64,7 +64,7 @@ const callouts = [
     href: "#",
   },
   {
-    name: "Jujustsu Kaisen",
+    name: "Half City",
     description: "Daily commute essentials",
     imageSrc:
       "https://atsuko.com/cdn/shop/files/BPA67ZJONP_003_d01c90ca-6eaa-41f3-8cef-fcb0f1aa3c97_750x960_crop_center.jpg?v=1700133123&quot",
@@ -85,7 +85,7 @@ const callouts = [
     href: "#",
   },
   {
-    name: "One Piece",
+    name: "Death Note",
     description: "Daily commute essentials",
     path: "https://atsuko.com/cdn/shop/files/BPA67ZJONP_003_d01c90ca-6eaa-41f3-8cef-fcb0f1aa3c97_750x960_crop_center.jpg?v=1700133123&quot",
 
@@ -123,7 +123,7 @@ export default function Example() {
             {callouts.slice(0, 5).map((callout, index) => (
               <Link
                 href={callout.path}
-                key={callout.name + 10}
+                key={callout.name + 20}
                 className="flex-none   w-[calc(55%-0.6rem)]  sm:w-[calc(52%-1rem)] md:w-[calc(34%-1rem)] lg:w-[calc(25.2%-1rem)] xl:w-[calc(20%-1.5rem)] shadow-2xl border-black border relative callout"
               >
                 <div className="relative overflow-hidden  bg-white sm:aspect-h-1 sm:aspect-w-2 lg:aspect-h-1 lg:aspect-w-1">

@@ -8,6 +8,7 @@ import ReviewSection from "@components/ProductPreview/ReviewSection";
 import FrequentlyBoughtTogether from "@components/ProductPreview/FrequentlyBoughtTogether";
 import ProductImage from "@components/ProductPreview/ProductImage";
 import ProductInteraction from "@components/ProductPreview/ProductInteraction";
+import ProductRowOne from "@components/ProductPreview/ProductRowOne";
 
 export function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -26,18 +27,7 @@ export default async function Example({ params: { id } }) {
         <BreadCrumbs product={product} />
       </div>
       <div className="lg:grid lg:grid-cols-2 lg:grid-rows-1 lg:px-3  lg:mb-12   lg:max-w-[90rem] w-full lg:mx-auto">
-        <ProductImage product={product} />
-
-        <div className="lg:col-span-1 px-3 lg:pl-16">
-          <div className="flex flex-col  ">
-            <div className="mt-5 mb-4 lg:hidden flex">
-              <BreadCrumbs product={product} />
-            </div>
-            <ProductInfo product={product} reviews={reviews} />
-            <ProductHighLights product={product} />
-            <ProductInteraction product={product} />
-          </div>
-        </div>
+        <ProductRowOne product={product} reviews={reviews} />
         <div className="lg:col-span-1">
           <ProductDetails product={product} />
           <TrustListSvgs />

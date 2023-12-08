@@ -52,11 +52,7 @@ export default function Checkout() {
       if (response.ok) {
         const responseData = await response.json();
         const trackingId = responseData._id;
-        const sendResponse = await fetch("/api/send", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(data),
-        });
+
         dispatch(clearCart());
 
         if (sendResponse.status === 200) {

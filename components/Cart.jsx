@@ -113,7 +113,10 @@ export default function Cart() {
                                       <div className="sm:flex sm:justify-between mt-1 text-[0.89rem]  line-clamp-1   sm:text-base font-medium text-gray-800">
                                         <h3>
                                           <a href={product.href}>
-                                            {product.size} -{" "}
+                                            {product.size && (
+                                              <span>{product.size} - </span>
+                                            )}
+
                                             {product.product.title}
                                           </a>
                                         </h3>
@@ -145,7 +148,11 @@ export default function Cart() {
                                           )}
                                         </p>
                                         <p className="  text-[0.7rem] hidden sm:flex uppercase tracking-wider mt-2 font-lato text-gray-500">
-                                          color: {product.color}
+                                          {product.size && (
+                                            <span className="ml-1">
+                                              color: {product.color}
+                                            </span>
+                                          )}
                                         </p>
                                       </div>
                                     </div>
