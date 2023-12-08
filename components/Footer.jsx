@@ -16,19 +16,19 @@ const sections = [
 export default function Footer() {
   return (
     <>
-      <div className="bg-white  ">
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4 border-t p-9  border-gray-200 sm:place-self-center sm:place-items-center">
+      <div className="bg-gray-100 ">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4 border-t p-9 border  border-gray-200 sm:place-self-center sm:place-items-center">
           <div className="md:col-span-1 flex  ">
             <FaShippingFast size={18} className="mt-0.5 mr-1" />
             <div className="ml-2">
               <p
-                className="font-poppins  tracking-wide text-[0.85rem]"
+                className="font-poppins text-gray-800  tracking-wider text-[0.85rem]"
                 style={{ fontWeight: "700" }}
               >
                 {" "}
                 FREE SHIPPING
               </p>
-              <p className="text-gray-600 text-xs     font-poppins">
+              <p className="text-gray-600 text-[0.76rem]       font-poppins">
                 From all orders over Rs 499
               </p>
             </div>
@@ -37,13 +37,13 @@ export default function Footer() {
             <FaLock size={14} className="mt-0.5 mr-1" />
             <div className="ml-2">
               <p
-                className="  font-poppins  tracking-wide text-gray-800 text-[0.85rem]"
+                className="font-poppins text-gray-800  tracking-wider text-[0.85rem]"
                 style={{ fontWeight: "700" }}
               >
                 {" "}
                 100% SECURE PAYMENT
               </p>
-              <p className="text-gray-600 text-xs       font-poppins">
+              <p className="text-gray-600 text-[0.76rem]       font-poppins">
                 We use razorpay with secure net
               </p>
             </div>
@@ -52,7 +52,7 @@ export default function Footer() {
             <FaPercent size={14} className="mt-1 mr-1 " />
             <div className="ml-2">
               <p
-                className="  font-poppins  tracking-wide text-[0.85rem]"
+                className="font-poppins text-gray-800  tracking-wider text-[0.85rem]"
                 style={{ fontWeight: "700" }}
               >
                 UP TO 40% DISCOUNT
@@ -66,13 +66,13 @@ export default function Footer() {
             <FaTshirt size={18} className="mt-0.5 mr-1" />
             <div className="ml-2">
               <p
-                className=" font-poppins  text-gray-800 tracking-wide text-[0.85rem]"
+                className="font-poppins text-gray-800  tracking-wider text-[0.85rem]"
                 style={{ fontWeight: "700" }}
               >
                 {" "}
                 OVER 200+ STYLES
               </p>
-              <p className="text-gray-600 text-xs       font-poppins">
+              <p className="text-gray-600 text-[0.76rem]       font-poppins">
                 We have everything you need
               </p>
             </div>
@@ -114,10 +114,19 @@ export default function Footer() {
                   About us
                 </Link>
 
-                <Link href="/" className="link-hover text-gray-800 link">
+                <Link
+                  href="https://www.instagram.com/pakistani_senpai_merch"
+                  className="link-hover text-gray-800 link"
+                >
                   Instagram
                 </Link>
-                <Link href="/" className="link-hover text-gray-800 link">
+                <p className="link-hover text-gray-800 link">
+                  Whatsapp +923218202052
+                </p>
+                <Link
+                  href="https://www.facebook.com/Pakistanisenpaimerch"
+                  className="link-hover text-gray-800 link"
+                >
                   Facebook
                 </Link>
               </div>
@@ -129,12 +138,6 @@ export default function Footer() {
               Our Policies
             </span>
             <div className="grid gap-1.5 text-[0.86rem] font-poppins">
-              <Link
-                href="/policies/contact-us"
-                className="link-hover text-gray-800 link"
-              >
-                Contact Us
-              </Link>
               <Link
                 href="/policies/returns"
                 className="link-hover text-gray-800 link"
@@ -148,6 +151,12 @@ export default function Footer() {
                 Shopping Policy
               </Link>
 
+              <Link
+                href="/policies/contact-us"
+                className="link-hover text-gray-800 link"
+              >
+                Contact Us
+              </Link>
               <Link
                 href="/track-order"
                 className="link-hover text-gray-800 link"
