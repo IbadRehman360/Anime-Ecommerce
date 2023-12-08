@@ -20,9 +20,8 @@ const ProductCard = ({ products }) => {
             <Image
               alt={"HI" + 1}
               src={products.images[0]}
-              width={100}
-              height={100}
-              className="w-full h-full border border-gray-100 object-center object-cover  transition-transform transform hover:scale-105"
+              fill
+              className="w-full h-full border border-gray-100 object-center object-cover  n transition-transform transform hover:scale-105"
             />
             <div className="absolute top-0   inset-x-0 h-72 rounded-lg p-4 flex items-end justify-end overflow-hidden">
               <div

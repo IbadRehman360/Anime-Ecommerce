@@ -95,17 +95,16 @@ export default function Cart() {
                             >
                               {cartItems.map((product, index) => (
                                 <li key={index + 10} className="flex py-6">
-                                  <div className="  h-28 w-28 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
+                                  <div className="  w-28 h-28 sm:w-auto sm:h-auto   flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                                     <Image
+                                      width={138}
+                                      height={138}
                                       alt=""
-                                      width={40}
-                                      height={50}
-                                      src={product.product.images}
-                                      className="h-full border border-gray-50 w-full object-cover object-center"
+                                      src={product.product.images[0]}
                                     />
                                   </div>
 
-                                  <div className="ml-4 flex flex-1 flex-col">
+                                  <div className="ml-4  mt-1 flex flex-1 flex-col">
                                     <div>
                                       <p className="   text-[0.8rem] uppercase  tracking-wider font-lato text-gray-500">
                                         {product.product.category_id.name}

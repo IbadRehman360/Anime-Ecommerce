@@ -27,7 +27,7 @@ function CartProduct() {
               <Image
                 width={100}
                 height={100}
-                src={product.product.images}
+                src={product.product.images[0]}
                 className="w-28 h-28 shadow-md    rounded-md object-center object-cover sm:w-48 sm:h-48"
                 alt=""
               />

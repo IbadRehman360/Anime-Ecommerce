@@ -2,8 +2,10 @@
 import { classNames } from "@app/product/[id]/page";
 import { Fragment } from "react";
 import Image from "next/image";
+import { useSession } from "next-auth/react";
 
 function OrderDisplay({ data }) {
+  const { data: session } = useSession();
   const product = Array.isArray(data) ? data : [data];
   const subtotal = product
     .map((product) => {
@@ -79,28 +81,32 @@ function OrderDisplay({ data }) {
                   className="py-6 px-4 sm:px-6 lg:grid lg:grid-cols-12 lg:gap-x-8 lg:p-8"
                 >
                   <div className="sm:flex lg:col-span-7">
-                    <div className="flex-shrink-0 w-full aspect-w-1 aspect-h-1 rounded-lg overflow-hidden sm:aspect-none sm:w-40 sm:h-40">
+                    <div className="flex-shrink-0 w-full aspect-w-1 aspect-h-1 rounded-lg overflow-hidden sm:aspect-none  sm:w-36 sm:h-36">
                       <Image
-                        width={400}
-                        height={400}
+                        width={500}
+                        height={500}
                         src={product.product_id.images[0]}
                         alt={product.product_id.title}
                         className="w-full h-full object-center object-cover sm:w-full sm:h-full"
                       />
                     </div>
 
-                    <div className="mt-6 sm:mt-0 sm:ml-6">
-                      <h3 className="text-base font-medium text-gray-900">
+                    <div className="mt-6 sm:mt-0 sm:ml-6  ">
+                      <h3
+                        className={`text-base font-medium ${
+                          session ? "" : "line-clamp-2"
+                        } text-gray-900`}
+                      >
                         <a href="#">
                           {" "}
-                          <span className="text-gray-600   text-sm tracking-wider font-lato">
+                          <span className="text-gray-800     text-sm tracking-wider font-lato">
                             {" "}
                             QTY {product.quantity}{" "}
                           </span>{" "}
                           - {product.product_id.title}
                         </a>
                       </h3>
-                      <p className=" text-[0.9rem] sm:text-sm      font-roboto   tracking-wider mt-1.5">
+                      <p className=" text-[0.9rem] sm:text-sm       font-roboto   tracking-wider mt-1.5">
                         {product.discounted_price ? (
                           <span>
                             <span className="text-red-500">
@@ -118,18 +124,35 @@ function OrderDisplay({ data }) {
                         color: {product.color} / Size {product.size}
                       </p>
 
-                      <p className="mt-2 hidden md:flex text-[0.8rem]   font-poppins  leading-5    text-gray-500">
+                      <p
+                        className={`mt-2  ${
+                          session ? "md:flex" : "hidden"
+                        }    text-[0.8rem]   font-poppins line-clamp-2  leading-5    text-gray-500`}
+                      >
                         {product.product_id.description
                           .split(" ")
-                          .slice(0, 24)
+                          .slice(0, 20)
                           .join(" ")}
                       </p>
-                      <p className="mt-2 flex md:hidden text-[0.75rem]   font-poppins  leading-5    text-gray-500">
+                      <p
+                        className={`mt-2    ${
+                          session ? " hidden" : "md:hidden flex "
+                        }  text-[0.8rem]   font-poppins line-clamp-2   leading-5   text-gray-500`}
+                      >
                         {product.product_id.description
                           .split(" ")
-                          .slice(0, 18)
+                          .slice(0, 20)
                           .join(" ")}
-                        .
+                      </p>
+                      <p
+                        className={`mt-2    ${
+                          session ? " hidden" : "md:flex hidden"
+                        }  text-[0.8rem]   font-poppins line-clamp-2   leading-5   text-gray-500`}
+                      >
+                        {product.product_id.description
+                          .split(" ")
+                          .slice(0, 12)
+                          .join(" ")}
                       </p>
                     </div>
                   </div>

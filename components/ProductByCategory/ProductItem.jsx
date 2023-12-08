@@ -29,7 +29,7 @@ export default function ProductItem({ product }) {
             width={400}
             height={400}
             alt=""
-            src={product.images}
+            src={product.images[0]}
             className="w-full h-full border  object-center object-cover sm:w-full sm:h-full"
           />
         </Link>
