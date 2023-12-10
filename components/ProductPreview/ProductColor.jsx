@@ -35,7 +35,6 @@ function ProductColor({ product, selectedColor, setSelectedColor }) {
   return (
     <div>
       <h3 className="text-sm font-semibold text-gray-700 font-inter">Color</h3>
-
       <RadioGroup
         value={selectedColor}
         onChange={setSelectedColor}

@@ -9,7 +9,6 @@ import InputForm from "@components/CheckOut/InputForm";
 import { useState } from "react";
 import { clearCart, selectCartItems } from "@app/Global/Features/cartSlice";
 import { useSession } from "next-auth/react";
-import toast from "react-hot-toast";
 
 const deliveryMethods = [
   {

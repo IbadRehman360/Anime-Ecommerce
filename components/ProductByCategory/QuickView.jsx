@@ -6,32 +6,47 @@ import { classNames } from "@app/product/[id]/page";
 import Image from "next/image";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
-import { selectCartItems } from "@app/Global/Features/cartSlice";
+import { addItem, selectCartItems } from "@app/Global/Features/cartSlice";
+import toast from "react-hot-toast";
 
 export default function QuickView({ product, isOpen, onClose }) {
-  const [selectedColor, setSelectedColor] = useState(product.colors[0] || []);
-  const initialSelectedSize = product.sizes ? product.sizes[1] : [];
-  const [selectedSize, setSelectedSize] = useState(initialSelectedSize);
+  const [selectedColor, setSelectedColor] = useState();
+  const [selectedSize, setSelectedSize] = useState();
   const sizeNames = Object.keys(product.sizes || []);
   const dispatch = useDispatch();
   const cartItems = useSelector(selectCartItems);
-  //   const cartItem = cartItems.find(
-  //     (item) =>
-  //       item.product._id === product._id &&
-  //       item.size === size &&
-  //       item.color === selectedColor
-  //   );
-  //   return cartItem ? cartItem.quantity : 0;
-  // };
-  // const getProductSizeQuantity = (size) => {
-  //   const cartItem = cartItems.find(
-  //     (item) =>
-  //       item.product._id === product._id &&
-  //       item.size === size &&
-  //       item.color === selectedColor
-  //   );
-  //   return cartItem ? cartItem.quantity : 0;
-  // };              {getProductSizeQuantity(selectedSize)}
+  const handleAddToCart = () => {
+    if (product.colors.length && !selectedColor) {
+      toast.error("Please select a color before proceeding.");
+      return;
+    }
+
+    if (sizeNames.length && !selectedSize) {
+      toast.error("Please select a size before proceeding.");
+      return;
+    }
+
+    if (
+      product.colors.length &&
+      sizeNames.length &&
+      !selectedSize &&
+      !selectedColor
+    ) {
+      toast.error("Please select both color and size before proceeding.");
+      return;
+    }
+
+    dispatch(
+      addItem({
+        product,
+        quantity: 1,
+        color: selectedColor,
+        size: selectedSize,
+      })
+    );
+
+    toast.success("The product has been added to the cart");
+  };
 
   return (
     <Transition.Root show={isOpen} as={Fragment}>
@@ -142,7 +157,7 @@ export default function QuickView({ product, isOpen, onClose }) {
                     </section>
                     <p
                       className={`text-gray-900 ${
-                        !selectedSize?.length && !selectedColor?.length
+                        !product.colors.length && !sizeNames.length
                           ? "  pt-4"
                           : "hidden"
                       } flex font-poppins lg:leading-7 lg:text-[0.92rem] leading-6 text-[0.82rem] tracking-wider`}
@@ -154,11 +169,9 @@ export default function QuickView({ product, isOpen, onClose }) {
                       <h3 id="options-heading" className="sr-only">
                         Product options
                       </h3>
-
                       <form>
-                        {selectedColor?.length > 0 && (
+                        {product.colors.length ? (
                           <div>
-                            {" "}
                             <h4 className="text-sm font-medium text-gray-900">
                               Color
                             </h4>
@@ -203,8 +216,10 @@ export default function QuickView({ product, isOpen, onClose }) {
                               </div>
                             </RadioGroup>
                           </div>
+                        ) : (
+                          <></>
                         )}
-                        {sizeNames.length > 0 && (
+                        {sizeNames.length ? (
                           <div className="mt-4 mb-6">
                             <div className="flex items-center justify-between">
                               <h4 className="text-sm font-medium text-gray-900">
@@ -290,14 +305,15 @@ export default function QuickView({ product, isOpen, onClose }) {
                               </div>
                             </RadioGroup>
                           </div>
+                        ) : (
+                          <></>
                         )}
-                        <button className="group relative h-12 border  bg-black   opacity-90    font-poppins w-full overflow-hidden   middle none center mr-4       py-3 px-6      shadow-sm shadow-blue-500/10 transition-all hover:shadow-sm hover:shadow-blue-500/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none rounded-lg    ">
-                          <Link
-                            href={"/checkout"}
-                            className="relative text-white    "
-                          >
-                            Add To Cart
-                          </Link>
+                        <button
+                          type="button"
+                          onClick={handleAddToCart}
+                          className="group relative h-12 border text-white bg-black   opacity-90    font-poppins w-full overflow-hidden   middle none center mr-4       py-3 px-6      shadow-sm shadow-blue-500/10 transition-all hover:shadow-sm hover:shadow-blue-500/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none rounded-lg    "
+                        >
+                          Add To Cart
                         </button>
                         <p className="absolute top-4 font-poppins left-4 text-center sm:static sm:mt-4">
                           <Link
