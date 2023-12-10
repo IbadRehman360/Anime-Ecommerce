@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import toast from "react-hot-toast";
 
 const cartSlice = createSlice({
     name: 'cart',
@@ -11,7 +12,7 @@ const cartSlice = createSlice({
             const existingItem = state.items.find(item => item.product._id === product._id && item.color === color && item.size === size);
 
             if (existingItem) {
-                throw new Error('Product is already in the cart. Use increaseQuantity instead.');
+                throw new Error('Product already in cart. Use increaseQuantity.');
             } else {
                 state.items.push({ product, quantity, color, size });
             }

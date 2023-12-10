@@ -7,7 +7,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { addItem, selectCartItems } from "@app/Global/Features/cartSlice";
-import toast from "react-hot-toast";
 
 export default function QuickView({ product, isOpen, onClose }) {
   const [selectedColor, setSelectedColor] = useState();
@@ -36,16 +35,20 @@ export default function QuickView({ product, isOpen, onClose }) {
       return;
     }
 
-    dispatch(
-      addItem({
-        product,
-        quantity: 1,
-        color: selectedColor,
-        size: selectedSize,
-      })
-    );
-
-    toast.success("The product has been added to the cart");
+    try {
+      dispatch(
+        addItem({
+          product,
+          quantity: 1,
+          color: selectedColor,
+          size: selectedSize,
+        })
+      );
+      toast.success("Product added to cart successfully");
+    } catch (error) {
+      console.error("Error adding product to cart:", error);
+      toast.error("Product already in cart. Use increaseQuantity.");
+    }
   };
 
   return (

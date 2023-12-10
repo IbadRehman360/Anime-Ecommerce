@@ -5,6 +5,7 @@ import Productlist from "@components/ProductByCategory/ProductLists";
 
 export default async function Example({ params: { id } }) {
   const products = await getProductByCategory(id);
+
   return (
     <div className="bg-white">
       <div>
@@ -35,23 +36,21 @@ export default async function Example({ params: { id } }) {
     </div>
   );
 }
-
 export async function getProductByCategory(id) {
   try {
     const response = await fetch(
       `${process.env.NEXTAUTH_URL}/api/category/${id}`
     );
+
     if (!response.ok) {
-      const errorText = await response.text();
-      throw new Error(
-        `Failed to fetch product. Status: ${response.status}, Error: ${errorText}`
-      );
+      throw new Error(`HTTP error! Status: ${response.status}`);
     }
 
-    return response.json();
+    const data = await response.json();
+    return data;
   } catch (error) {
-    console.error("Error in getProductByID:", error);
-    throw error;
+    console.error("Error fetching data:", error);
+    return [];
   }
 }
 

@@ -58,6 +58,7 @@ function ProductBread({ products }) {
               aria-current="page"
               className="font-medium text-gray-500 hover:text-gray-600"
             >
+              {console.log(products[0].anime_category_id)}
               {products[0].anime_category_id.title}
             </Link>
           </li>

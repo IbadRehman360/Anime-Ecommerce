@@ -17,7 +17,7 @@ function ProductImage({ product, selectedColor, selectedSize }) {
           selectedColor && selectedSize ? "" : " grid  lg:grid-cols-12 "
         }     gap-4`}
       >
-        {!selectedSize && !selectedColor ? (
+        {!selectedSize || !selectedColor ? (
           <div className="lg:flex hidden col-span-2">
             <ProductMoreImage
               product={product}
@@ -31,14 +31,15 @@ function ProductImage({ product, selectedColor, selectedSize }) {
           <Image
             src={currentImage}
             className={`border-2 max-h-[80vh] ${
-              selectedColor && selectedSize
+              selectedColor || selectedSize
                 ? "lg:h-[630px]"
-                : " lg:h-[560px] w-full"
-            } w-full  object-cover`}
+                : "lg:h-[560px]  w-full"
+            }   w-full object-cover`}
             alt="Product Image"
             width={400}
             height={400}
           />
+
           <div
             className={`absolute    ${
               selectedColor && selectedSize
@@ -62,7 +63,7 @@ function ProductImage({ product, selectedColor, selectedSize }) {
       <div className="block">
         <div
           className={`       ${
-            !selectedSize && !selectedColor
+            !selectedSize || !selectedColor
               ? "absolute mt-3   hidden  z-10 "
               : "   lg:flex absolute mt-3 hidden     z-10"
           }   `}

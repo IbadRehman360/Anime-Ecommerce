@@ -94,7 +94,7 @@ export default function Footer() {
               beloved anime characters. Join our 6,000+ member strong Instagram
               community bonded by a passion for anime culture. Senpai Merch –
               where your anime journey starts.{" "}
-              <Link className="text-blue-500" href="/policies/about">
+              <Link className="text-blue-500" href="/policies/about-us">
                 About us
               </Link>
             </div>
