@@ -82,7 +82,9 @@ export default function ProductItem({ product }) {
               </span>
             ) : (
               <>
-                <span>Rs {product.price.toFixed(2)}</span>
+                <span className="   text-[1.1rem]  opacity-90        tracking-wider mt-0.5 lg:mt-1">
+                  Rs {product.price.toFixed(2)}
+                </span>
                 <div className="w-10 h-5  "> </div>
               </>
             )}
