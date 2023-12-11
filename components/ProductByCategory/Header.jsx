@@ -12,8 +12,13 @@ function Header({ products, sortOptions, setMobileFiltersOpen }) {
   return (
     <div className="relative flex items-baseline justify-between pt-10 pb-6 border-b border-gray-200">
       <h1 className="text-2xl md:text-3xl    font-montserrat tracking-tight text-gray-900">
-        {products[0]?.anime_category_id?.title ||
-          products[0]?.category_id?.name}
+        {products[0]?.anime_category_id?.title
+          ? products[0].anime_category_id.title
+          : products[0]?.category_id?.name
+          ? products[0].category_id?.name
+          : products?.title
+          ? products?.title
+          : products?.name}
       </h1>
 
       <div className="flex items-center z-10">

@@ -1,5 +1,6 @@
 import React from "react";
 import { MdInfo } from "react-icons/md";
+import Link from "next/link";
 
 const EmptyCartMessage = () => {
   return (
@@ -17,12 +18,13 @@ const EmptyCartMessage = () => {
           shopping cart. You will find a lot of interesting products on our
           &ldquo;Shop&ldquo; page.
         </p>
-        <button
+        <Link
+          href={"/"}
           className={`  bg-gray-700 uppercase font-montserrat border border-transparent rounded-md shadow-sm py-3 px-4 tracking-wide text-xs md:text-sm text-white  
           focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-indigo-500`}
         >
           GO BACK TO HOMEPAGE
-        </button>
+        </Link>
       </div>
     </section>
   );

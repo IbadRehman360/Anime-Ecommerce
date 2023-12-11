@@ -31,7 +31,7 @@ function ProductBread({ products }) {
             </div>
           </li>
           <li>
-            <div className="flex items-center">
+            <div className="flex  items-center">
               <Link
                 href={"#"}
                 className="mr-4 text-sm font-medium text-gray-700 hover:text-gray-500"
@@ -51,16 +51,29 @@ function ProductBread({ products }) {
               </svg>
             </div>
           </li>
-
-          <li className="text-sm">
-            <Link
-              href={`${products[0].anime_category_id.title}`}
-              aria-current="page"
-              className="font-medium text-gray-500 hover:text-gray-600"
-            >
-              {console.log(products[0].anime_category_id)}
-              {products[0].anime_category_id.title}
-            </Link>
+          <li>
+            <div className="flex    items-center">
+              <Link
+                href={`/${
+                  products[0]?.anime_category_id?.title
+                    ? products[0].anime_category_id.title
+                    : products[0]?.category_id?.name
+                    ? products[0].category_id?.name
+                    : products?.title
+                    ? products?.title
+                    : products?.name
+                }`}
+                className="mr-4 text-sm font-medium text-gray-700 hover:text-gray-500"
+              >
+                {products[0]?.anime_category_id?.title
+                  ? products[0].anime_category_id.title
+                  : products[0]?.category_id?.name
+                  ? products[0].category_id?.name
+                  : products?.title
+                  ? products?.title
+                  : products?.name}
+              </Link>
+            </div>
           </li>
         </ol>
       </nav>

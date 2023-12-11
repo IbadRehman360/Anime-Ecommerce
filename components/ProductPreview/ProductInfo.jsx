@@ -34,7 +34,7 @@ function ProductInfo({ product, reviews }) {
               </div>
             </>
           ) : (
-            <div className="text-[1.1rem]  font-inter  lg:text-[1.4rem] mr-5 tracking-wider lg:tracking-wider  text-green-700  ">
+            <div className="text-[1.2rem]   font-inter  lg:text-[1.5rem] mr-5 tracking-wider lg:tracking-wider  text-green-700  ">
               <span className="tracking-normal lg:text-[1.4rem] mr-1">
                 {" "}
                 Rs.
@@ -78,7 +78,7 @@ function ProductInfo({ product, reviews }) {
       {product.discount_price && (
         <div className="  font-inter  lg:hidden flex line-through tracking-wider lg:text-[1.2rem]  text-sm     text-gray-500">
           <span className="tracking-normal mr-1"> Rs.</span>
-          {product.price}.00
+          {product.price}.00{" "}
         </div>
       )}
     </div>

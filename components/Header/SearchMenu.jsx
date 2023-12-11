@@ -22,7 +22,7 @@ export default function SearchMenu({
         aria-hidden="true"
       />
       {filteredProducts.length > 0 && (
-        <div className="  px-3   bg-white  opacity-95  pt-3  pb-1  text-black w-1/5  absolute   max-h-screen left-52 top-[7.5rem] rounded-lg  border    cursor-pointer z-50   gap-4 grid    divide-y shadow   overflow-y-auto   ...">
+        <div className="  px-3 border-gray-300   bg-white    pt-3  pb-1   text-black   absolute    left-6 2xl:left-52 top-[7.5rem] rounded-lg  border    cursor-pointer z-50   gap-4 grid    divide-y shadow   overflow-y-auto  w-96    max-h-[80vh]   ...">
           <h5 className="font-inter  uppercase "> Products Related </h5>
           <ul>
             {filteredProducts.map((product) => (
@@ -36,7 +36,7 @@ export default function SearchMenu({
                     alt=""
                   />
                   <div>
-                    <p className="mt-2 text-[1rem] text-gray-900  font-poppins">
+                    <p className="mt-2 text-[1rem] line-clamp-1 text-gray-900  font-poppins">
                       {" "}
                       {product.title}
                     </p>
@@ -55,7 +55,9 @@ export default function SearchMenu({
                         </span>
                       ) : (
                         <>
-                          <span>Rs {product.price.toFixed(2)}</span>
+                          <span className="   text-[1.05rem]   font-poppins tracking-wide mt-0.5 lg:mt-1">
+                            Rs {product.price.toFixed(2)}
+                          </span>
                           <div className="w-10 h-5  "> </div>
                         </>
                       )}

@@ -52,7 +52,9 @@ const ProductCard = ({ products }) => {
                 </span>
               ) : (
                 <>
-                  <span>Rs {products.price.toFixed(2)}</span>
+                  <span className="   text-[1.1rem]  opacity-95    font-inter tracking-wide mt-0.5 lg:mt-1">
+                    Rs {products.price.toFixed(2)}
+                  </span>
                   <div className="w-10 h-5  "> </div>
                 </>
               )}

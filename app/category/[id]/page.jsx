@@ -27,7 +27,6 @@ export default async function Example({ params: { id } }) {
               <DesktopFilter filters={filters} />
               <div className="lg:col-span-3">
                 <Productlist products={products} />
-                <Pagination />
               </div>
             </div>
           </section>
