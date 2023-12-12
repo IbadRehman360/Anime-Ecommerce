@@ -59,7 +59,7 @@ var navigation = {
         {
           name: "For Customized Order",
           href: "https: //www.facebook.com/Pakistanisenpaimerch",
-          imageSrc: "/assets/Des/1.jpeg ",
+          imageSrc: "/assets/Des/1.jpeg",
           imageAlt:
             "Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees.",
           buttonMsg: "View Now 🤍",
