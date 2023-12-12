@@ -7,10 +7,9 @@ export const GET = async (request, response) => {
 
     const products = await Product.find().populate("category_id");
     if (!products || products.length === 0) {
-      console.log("No products found for category: " + products);
+      console.log("No products found for category: ");
       return new Response("No products found", { status: 404 });
     }
-    console.log(products);
     return new Response(JSON.stringify(products), { status: 200 });
   } catch (error) {
     console.error("Error while processing request:", error);

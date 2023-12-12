@@ -60,7 +60,7 @@ const cartSlice = createSlice({
                     item.color === color &&
                     item.size === size
                 ) {
-                    console.log(item.product)
+
                     return { ...item, quantity: newQuantity };
                 }
                 return item;

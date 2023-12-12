@@ -10,8 +10,7 @@ export const GET = async (request, response) => {
     const requestedProduct = await Product.findById(id).populate("category_id");
 
     if (!requestedProduct) {
-      console.log("No product found with ID: " + id);
-      return new Response("Product not found", { status: 404 });
+      return new Response("Product not found" + id, { status: 404 });
     }
 
     const productsWithSameCategory = await Product.find({

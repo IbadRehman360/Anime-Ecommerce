@@ -3,7 +3,7 @@ import { QuestionMarkCircleIcon, TrashIcon } from "@heroicons/react/24/outline";
 import { useProductUtils } from "@utils/productUtils";
 import { useSelector } from "react-redux";
 import Image from "next/image";
-function OrderSummary({ selectedDeliveryMethod }) {
+function OrderSummary({ selectedDeliveryMethod, isSubmitting }) {
   const cartItems = useSelector(selectCartItems);
   const { handleRemoveItem, handleUpdateQuantity } = useProductUtils();
   const subtotal = cartItems.reduce((total, product) => {
@@ -172,8 +172,12 @@ function OrderSummary({ selectedDeliveryMethod }) {
           </div>
         </div>
         <div className="border-t border-gray-200 py-6 px-4 sm:px-6">
-          <button className="w-full bg-black opacity-95 hover:opacity-90   font-montserrat uppercase text-xs md:text-sm tracking-wider border border-transparent rounded-md shadow-sm py-3 px-4    text-white   focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-indigo-500">
-            Continue to shipping
+          <button
+            type="submit"
+            className="w-full bg-black opacity-90 hover:opacity-80   font-montserrat uppercase text-xs md:text-sm tracking-wider border border-transparent rounded-md shadow-sm py-3 px-4    text-white   focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-indigo-500"
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? "Placing Order..." : "Continue to shipping"}
           </button>
         </div>
       </div>

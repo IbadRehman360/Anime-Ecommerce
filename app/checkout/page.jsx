@@ -35,8 +35,12 @@ export default function Checkout() {
   const [selectedDeliveryMethod, setSelectedDeliveryMethod] = useState(
     deliveryMethods[0]
   );
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const onSubmit = async (data) => {
     try {
+      setIsSubmitting(true);
+
       const orderResponse = await fetch("api/place-order", {
         method: "POST",
         headers: {
@@ -54,6 +58,7 @@ export default function Checkout() {
         const { _id: trackingId } = await orderResponse.json();
 
         dispatch(clearCart());
+
         const contactResponse = await fetch("/api/contact", {
           body: JSON.stringify(data),
           method: "POST",
@@ -94,6 +99,9 @@ export default function Checkout() {
         "An unexpected error occurred. Please try again later.",
         error.message
       );
+    } finally {
+      // Enable the button after submission (whether successful or with an error)
+      setIsSubmitting(false);
     }
   };
 
@@ -137,7 +145,10 @@ export default function Checkout() {
                 />
               </div>
             </div>
-            <OrderSummary selectedDeliveryMethod={selectedDeliveryMethod} />
+            <OrderSummary
+              isSubmitting={isSubmitting}
+              selectedDeliveryMethod={selectedDeliveryMethod}
+            />
           </form>
         </div>
       </main>

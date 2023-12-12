@@ -28,7 +28,6 @@ export async function POST(req) {
     try {
         const data = await req.json();
         const subject = "HI";
-        console.log("HI", data)
         const emailStatus = await transporter.sendMail({
             ...mailOptions,
             ...generateEmailContent(data, subject),

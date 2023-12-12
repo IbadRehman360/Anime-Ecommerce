@@ -7,7 +7,6 @@ export const POST = async (request, response) => {
 
     const body = await request.json();
     const { title } = body;
-    console.log("Title:", title);
 
     const newCategory = new GeneralCategory({
       name: title,
