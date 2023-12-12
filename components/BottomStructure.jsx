@@ -27,7 +27,7 @@ async function BottomStructure() {
         </Link>
       </div>
       <div
-        className="fixed bottom-0 text-md py-2 pt-3 bg-white w-full lg:hidden flex justify-around z-10"
+        className="fixed bottom-0 text-md py-1.5 pt-2.5 bg-white w-full lg:hidden flex justify-around z-10"
         style={{ boxShadow: "0 0 10px rgba(0, 0, 0, 0.2)" }}
       >
         <Link href={"/"} className="flex flex-col items-center">
