@@ -7,7 +7,6 @@ export const GET = async (request, response) => {
   try {
     await connectToDB();
     const id = request.url.split("/").pop();
-
     if (id === "accessories") {
       const accessoriesData = await Product.find({
         is_accessories: true,
@@ -16,7 +15,6 @@ export const GET = async (request, response) => {
         console.log("No accessories found");
         return new Response("Accessories not found", { status: 404 });
       }
-
       return new Response(JSON.stringify(accessoriesData), { status: 200 });
     } else if (id === "all-products") {
       const allProducts = await Product.find({}).populate("anime_category_id");
@@ -48,6 +46,7 @@ export const GET = async (request, response) => {
             }
             products = AnimeCategoryName;
           }
+          products = GeneralCategoryName;
         }
       }
 

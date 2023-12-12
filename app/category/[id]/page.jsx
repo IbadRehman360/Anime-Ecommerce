@@ -10,6 +10,7 @@ export default async function Example({ params: { id } }) {
     <div className="bg-white">
       <div>
         <BreedDialogHeader
+          paramsId={id}
           products={products}
           sortOptions={sortOptions}
           filters={filters}

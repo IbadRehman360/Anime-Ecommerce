@@ -172,7 +172,7 @@ function OrderSummary({ selectedDeliveryMethod }) {
           </div>
         </div>
         <div className="border-t border-gray-200 py-6 px-4 sm:px-6">
-          <button className="w-full bg-slate-800   font-montserrat uppercase text-xs md:text-sm tracking-wider border border-transparent rounded-md shadow-sm py-3 px-4    text-white hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-indigo-500">
+          <button className="w-full bg-black opacity-95 hover:opacity-90   font-montserrat uppercase text-xs md:text-sm tracking-wider border border-transparent rounded-md shadow-sm py-3 px-4    text-white   focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-indigo-500">
             Continue to shipping
           </button>
         </div>

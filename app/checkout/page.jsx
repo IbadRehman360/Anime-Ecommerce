@@ -9,6 +9,7 @@ import InputForm from "@components/CheckOut/InputForm";
 import { useState } from "react";
 import { clearCart, selectCartItems } from "@app/Global/Features/cartSlice";
 import { useSession } from "next-auth/react";
+import toast from "react-hot-toast";
 
 const deliveryMethods = [
   {
@@ -36,7 +37,7 @@ export default function Checkout() {
   );
   const onSubmit = async (data) => {
     try {
-      const response = await fetch("api/place-order", {
+      const orderResponse = await fetch("api/place-order", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -48,23 +49,43 @@ export default function Checkout() {
           session,
         }),
       });
-      if (response.ok) {
-        const responseData = await response.json();
-        const trackingId = responseData._id;
+
+      if (orderResponse.ok) {
+        const { _id: trackingId } = await orderResponse.json();
 
         dispatch(clearCart());
+        const contactResponse = await fetch("/api/contact", {
+          body: JSON.stringify(data),
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+        });
 
-        if (sendResponse.status === 200) {
+        if (contactResponse.ok) {
+          const responseData = await contactResponse.json();
           toast.success(
             `Order successfully placed! Your tracking ID (${trackingId}) has been sent to ${data.email_address}.`
           );
+          return responseData;
         } else {
-          toast.error(
-            "Failed to send tracking information. Please contact support."
-          );
+          try {
+            const errorData = await contactResponse.json();
+            toast.error(
+              "Error:",
+              errorData.message ||
+                "Failed to send tracking information. Please contact support."
+            );
+          } catch (error) {
+            console.error("Failed to parse error response:", error);
+            toast.error(
+              "Failed to send tracking information. Please contact support."
+            );
+          }
         }
       } else {
-        console.error("Failed to place the order. Status:", response.status);
+        console.error(
+          "Failed to place the order. Status:",
+          orderResponse.status
+        );
         toast.error("Oops! Order unsuccessful. Please try again.");
       }
     } catch (error) {
