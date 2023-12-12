@@ -50,10 +50,10 @@ function Nav({ setOpen, signOut, session, cartItems, isCartOpen }) {
   return (
     <nav aria-label="Top" className="mx-auto      lg:px-8 2xl:px-60">
       <div className="border-b   ml-3  mr-3">
-        <div className="flex h-[80px] items-center">
+        <div className="flex h-[65px] md:h-[80px] items-center">
           <button
             type="button"
-            className="relative rounded-md border border-gray-300 bg-white p-2 text-gray-400 lg:hidden"
+            className="relative rounded-md border border-gray-300 bg-white p-1.5 text-gray-400 lg:hidden"
             onClick={() => setOpen(true)}
           >
             <span className="absolute -inset-0.5" />

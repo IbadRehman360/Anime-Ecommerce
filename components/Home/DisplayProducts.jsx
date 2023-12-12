@@ -37,10 +37,10 @@ const ProductCard = ({ products }) => {
             )}
           </div>
           <div className="product-details mt-2 md:mt-4 text-center">
-            <h2 className="products-title text-sm lg:text-[1.1rem] px-4   line-clamp-1   font-poppins  font-medium text-center">
+            <h2 className="products-title text-[0.92rem] lg:text-[1.1rem]  px-1  line-clamp-1   font-poppins  font-medium text-center">
               {products.title}
             </h2>
-            <p className="text-sm lg:text-[1.05rem]     font-roboto  px-4     tracking-wide mt-1 lg:mt-2">
+            <p className="text-[0.91rem]  lg:text-[1.05rem]     font-roboto  px-4     tracking-wide mt-1 lg:mt-2">
               {products.discount_price ? (
                 <span>
                   <span className="text-red-500">
@@ -52,7 +52,7 @@ const ProductCard = ({ products }) => {
                 </span>
               ) : (
                 <>
-                  <span className="   text-[1.1rem]  opacity-95    font-inter tracking-wide mt-0.5 lg:mt-1">
+                  <span className=" text-[0.91rem]  lg:text-[1.1rem]  opacity-95    font-inter tracking-wide mt-0.5 lg:mt-1">
                     Rs {products.price.toFixed(2)}
                   </span>
                   <div className="w-10 h-5  "> </div>

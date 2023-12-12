@@ -124,7 +124,7 @@ export default function Example() {
               <Link
                 href={callout.path}
                 key={callout.name + 20}
-                className="flex-none   w-[calc(55%-0.6rem)]  sm:w-[calc(52%-1rem)] md:w-[calc(34%-1rem)] lg:w-[calc(25.2%-1rem)] xl:w-[calc(20%-1.5rem)] shadow-2xl border-black border relative callout"
+                className="flex-none   w-[calc(65%-0.6rem)]  sm:w-[calc(52%-1rem)] md:w-[calc(34%-1rem)] lg:w-[calc(25.2%-1rem)] xl:w-[calc(20%-1.5rem)] shadow-2xl border-black border relative callout"
               >
                 <div className="relative overflow-hidden  bg-white sm:aspect-h-1 sm:aspect-w-2 lg:aspect-h-1 lg:aspect-w-1">
                   <Image
@@ -132,7 +132,7 @@ export default function Example() {
                     width={200}
                     height={200}
                     alt={callout.imageAlt}
-                    className="custom-animation w-full h-[16rem] sm:h-[22rem] object-cover    img-hover-effect"
+                    className="custom-animation w-full h-[16rem] sm:h-[22rem] object-fill    img-hover-effect"
                   />
 
                   <div className="absolute inset-0 bg-black opacity-30 hover:opacity-10"></div>
@@ -160,7 +160,7 @@ export default function Example() {
               <Link
                 href={callout.path}
                 key={callout.name + index + 10 + 20}
-                className="flex-none   w-[calc(54.5%-0.6rem)] sm:w-[calc(52%-1rem)]  lg:w-[calc(34%-1rem)] xl:w-[calc(25%-1.5rem)] shadow-2xl border-black border relative callout"
+                className="flex-none   w-[calc(65%-0.6rem)]  sm:w-[calc(52%-1rem)] md:w-[calc(34%-1rem)] lg:w-[calc(25.2%-1rem)] xl:w-[calc(20%-1.5rem)] shadow-2xl border-black border relative callout"
               >
                 <div className=" ">
                   <Image
@@ -168,7 +168,7 @@ export default function Example() {
                     width={250}
                     height={250}
                     alt={callout.imageAlt}
-                    className="custom-animation w-full h-[16rem] sm:h-[21rem] object-contain img-hover-effect"
+                    className="custom-animation w-full h-[16rem] sm:h-[21rem]   object-fill img-hover-effect"
                   />
                   <div className="absolute inset-0 bg-black opacity-30  hover:opacity-10"></div>
 

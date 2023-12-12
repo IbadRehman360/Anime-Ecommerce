@@ -9,9 +9,9 @@ export default function HeroImages({ index, imageUrl }) {
           alt={`bg ${index}`}
         />
         <img
-          src="https://thesagacity.s3.ap-south-1.amazonaws.com/media/new_banner_-_oversized_tshirts_mobile.webp"
+          src={`/assets/ppp.webp`}
           alt={`bg ${index}`}
-          className="sm:hidden  aspect-square w-full mx-auto my-auto"
+          className="sm:hidden   h-64    object-cover w-full mx-auto my-auto"
         ></img>
       </div>
     </div>
