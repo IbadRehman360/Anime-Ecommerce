@@ -124,7 +124,7 @@ export default function Example() {
               <Link
                 href={callout.path}
                 key={callout.name + 20}
-                className="flex-none   w-[calc(65%-0.6rem)]  sm:w-[calc(52%-1rem)] md:w-[calc(34%-1rem)] lg:w-[calc(25.2%-1rem)] xl:w-[calc(20%-1.5rem)] shadow-2xl border-black border relative callout"
+                className="flex-none    shadow-2xl border-black border relative callout"
               >
                 <div className="relative overflow-hidden  bg-white sm:aspect-h-1 sm:aspect-w-2 lg:aspect-h-1 lg:aspect-w-1">
                   <Image
@@ -155,12 +155,12 @@ export default function Example() {
             ))}
           </div>
 
-          <div className="flex gap-2 sm:gap-4 mt-10 mb-5  mr-2 pl-2 overflow-x-auto">
+          <div className="flex gap-2 sm:gap-4 mt-6  sm:justify-center  sm:items-center   sm:mt-8 md:mt-10 mb-5 mr-2 pl-2 overflow-x-auto">
             {callouts.slice(4, 8).map((callout, index) => (
               <Link
                 href={callout.path}
                 key={callout.name + index + 10 + 20}
-                className="flex-none   w-[calc(65%-0.6rem)]  sm:w-[calc(52%-1rem)] md:w-[calc(34%-1rem)] lg:w-[calc(25.2%-1rem)] xl:w-[calc(20%-1.5rem)] shadow-2xl border-black border relative callout"
+                className="flex-none   shadow-2xl border-black border relative callout"
               >
                 <div className=" ">
                   <Image
