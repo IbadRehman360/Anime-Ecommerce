@@ -14,11 +14,6 @@ const FrequentlyBoughtTogether = ({ suggestions }) => {
         {suggestions.slice(0, 2).map((product, index) => (
           <div key={index} className="flex items-center   ">
             <DisplayProducts width={40} products={product} />
-            {index === 0 && (
-              <span className="text-xl bg-stone-200 rounded-full z-50  ml-3 font-bold">
-                <BsPlus />
-              </span>
-            )}
           </div>
         ))}
       </div>

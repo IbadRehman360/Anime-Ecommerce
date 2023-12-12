@@ -106,7 +106,7 @@ export default function QuickView({ product, isOpen, onClose }) {
                       width="500"
                       height="500"
                       alt=""
-                      src={product.images[2]}
+                      src={product.images[0]}
                       className={`object-center  object-cover  h-full  `}
                     />
                   </div>

@@ -56,7 +56,6 @@ export default function Checkout() {
 
       if (orderResponse.ok) {
         const { _id: trackingId } = await orderResponse.json();
-
         dispatch(clearCart());
 
         const contactResponse = await fetch("/api/contact", {
@@ -100,7 +99,6 @@ export default function Checkout() {
         error.message
       );
     } finally {
-      // Enable the button after submission (whether successful or with an error)
       setIsSubmitting(false);
     }
   };

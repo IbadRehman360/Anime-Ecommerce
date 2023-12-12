@@ -53,15 +53,15 @@ export default function ProductBtn({
             Add to Cart
           </button>
         </div>
-        <button className="group relative h-12 border  w-full overflow-hidden   middle none center mr-4     py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-blue-500/10 transition-all hover:shadow-lg hover:shadow-blue-500/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none rounded-lg bg-white  ">
+        <Link
+          href={"/checkout"}
+          className="group relative block justify-center text-center h-12 border  w-full overflow-hidden   middle none center mr-4     py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-blue-500/10 transition-all hover:shadow-lg hover:shadow-blue-500/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none rounded-lg bg-white  "
+        >
           <div className="absolute inset-0 w-10 bg-black opacity-90  transition-all duration-[250ms] ease-out group-hover:w-full"></div>
-          <Link
-            href={"/checkout"}
-            className="relative text-black font-montserrat lg:text-sm  group-hover:text-white"
-          >
+          <button className="relative text-black font-montserrat lg:text-sm  group-hover:text-white">
             PURCHASE NOW
-          </Link>
-        </button>
+          </button>
+        </Link>
       </div>
     </div>
   );

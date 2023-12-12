@@ -34,10 +34,16 @@ const cartSlice = createSlice({
                     item.size === size &&
                     item.color === color
             );
+
             if (item) {
-                item.quantity += 1;
+                if (item.quantity < product.stock_quantity) {
+                    item.quantity += 1;
+                } else {
+                    console.warn('Cannot increase quantity, stock limit reached.');
+                }
             }
         },
+
         decreaseQuantity: (state, action) => {
             const { product, size, color } = action.payload;
             const item = state.items.find(

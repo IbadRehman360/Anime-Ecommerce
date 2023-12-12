@@ -33,7 +33,6 @@ export const POST = async (req, res) => {
       secondPhone,
     });
     const customer = await newCustomer.save();
-
     const orderItems = cartItems.map((item) => ({
       product_id: item.product._id,
       quantity: item.quantity,
@@ -60,6 +59,12 @@ export const POST = async (req, res) => {
     });
 
     const order = await newOrder.save();
+
+    for (const item of cartItems) {
+      await Product.findByIdAndUpdate(item.product._id, {
+        $inc: { stock_quantity: -item.quantity },
+      });
+    }
 
     return new Response(JSON.stringify(order), { status: 200 });
   } catch (error) {

@@ -95,10 +95,10 @@ export default function Cart() {
                             >
                               {cartItems.map((product, index) => (
                                 <li key={index + 10} className="flex py-6">
-                                  <div className="  w-28 h-28 sm:w-auto sm:h-auto   flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
+                                  <div className="  w-24 h-24 sm:w-auto   sm:h-32  flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                                     <Image
-                                      width={138}
-                                      height={138}
+                                      width={130}
+                                      height={130}
                                       alt=""
                                       src={product.product.images[0]}
                                     />
@@ -106,11 +106,11 @@ export default function Cart() {
 
                                   <div className="ml-4  mt-1 flex flex-1 flex-col">
                                     <div>
-                                      <p className="   text-[0.8rem] uppercase  tracking-wider font-lato text-gray-500">
+                                      <p className="   text-[0.87rem] uppercase  tracking-wide font-lato text-gray-500">
                                         {product.product.category_id.name}
                                       </p>
 
-                                      <div className="sm:flex sm:justify-between mt-1 text-[0.89rem]  line-clamp-1   sm:text-base font-medium text-gray-800">
+                                      <div className="sm:flex sm:justify-between mt-1 text-[0.89rem]  line-clamp-1   sm:text-base   font-medium text-gray-800">
                                         <h3>
                                           <a href={product.href}>
                                             {product.size && (
@@ -124,7 +124,7 @@ export default function Cart() {
                                       </div>
                                       <div className="sm:flex sm:justify-between text-[0.89rem]   line-clamp-1  sm:text-base font-medium text-gray-800">
                                         <p className="  text-[0.7rem] flex sm:hidden uppercase tracking-wider  font-lato text-gray-500"></p>
-                                        <p className=" text-[0.9rem] sm:text-sm lg:text-[0.95rem]     font-roboto   tracking-wide mt-1.5">
+                                        <p className=" text-[0.9rem] sm:text-sm lg:text-[1rem]     font-roboto   tracking-wide mt-1.5">
                                           {product.product.discount_price ? (
                                             <span>
                                               <span className="text-red-500">

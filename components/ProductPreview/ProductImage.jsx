@@ -34,7 +34,7 @@ function ProductImage({ product, selectedColor, selectedSize }) {
               selectedColor || selectedSize
                 ? "lg:h-[630px]"
                 : "lg:h-[560px]  w-full"
-            }   w-full object-cover`}
+            }   w-full  object-contain`}
             alt="Product Image"
             width={400}
             height={400}
