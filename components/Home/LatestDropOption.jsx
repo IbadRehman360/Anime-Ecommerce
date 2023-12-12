@@ -14,7 +14,7 @@ function LatestDropOption({ selectedCategory, handleCategorySelect }) {
   const borderDirection = selectedIndex > -1 ? selectedIndex * 100 : 0;
 
   return (
-    <div className="flex justify-center md:pt-6 pt-4 text-[0.8rem] md:text-[0.9rem] lg:mt-0 scroll-hidden">
+    <div className="flex justify-center md:pt-6 pt-2.5 sm:pt-4 text-[0.8rem] md:text-[0.9rem] lg:mt-0 scroll-hidden">
       <div className="flex overflow-x-auto gap-6 border-gray-300 border-b  whitespace-nowrap relative">
         {options.map((option, index) => (
           <button
