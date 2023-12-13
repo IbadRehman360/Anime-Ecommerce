@@ -19,13 +19,13 @@ export default async function Home() {
       <div className="mx-auto md:max-w-[93rem]">
         <LatestDrop products={products} />
       </div>
-      <div className=" border border-gray-200">
+      <div className=" border bg-gray-50 px-0.5 border-gray-200">
         <div className="mx-auto md:max-w-[95rem]">
           <Categories />
         </div>
       </div>
 
-      <div className="border bg-gray-50  ">
+      <div className="border   ">
         <div className="mx-auto md:max-w-[95rem]">
           <TrendingProduct products={products} />
         </div>
