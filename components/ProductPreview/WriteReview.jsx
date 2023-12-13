@@ -16,7 +16,7 @@ export default function WriteReview({ reviews, product }) {
     <div className="    border py-8 px-5   lg:mt-10   text-black pb-8   middle none center        font-sans text-xs font-bold uppercase     focus:shadow-none active:opacity-[0.9] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none rounded-lg bg-white ">
       {!showReviewForm && (
         <>
-          <h2 className=" mb-4 lg:text-xl text-gray-800     tracking-wide   font-inter">
+          <h2 className=" mb-4 lg:text-xl text-gray-900 text-lg     tracking-wide   font-inter">
             Customer Reviews
           </h2>
           <div className="md:flex justify-between">
@@ -32,7 +32,7 @@ export default function WriteReview({ reviews, product }) {
                   ))}
                 </div>
               </div>{" "}
-              <p className="mb-1.5 text-[0.9rem] font-medium  font-opensans  lg:ml-4 ml-1 mt-2 lg:mt-0 md:text-[1rem]   tracking-wider  ">
+              <p className="mb-1.5 text-[0.9rem]     opacity-95 text-gray-900 font-inter lg:ml-4 ml-1 mt-2 lg:mt-0 md:text-[1rem]     tracking-wider ">
                 {reviews.length
                   ? "Submit a Review"
                   : "Be the first to write a review"}
@@ -41,7 +41,7 @@ export default function WriteReview({ reviews, product }) {
             {!session ? (
               <Link
                 href={"/login"}
-                className="border-black border  text-center items-center justify-center flex  md:h-9 mt-4 md:mt-0 w-full md:w-40 p-1 rounded"
+                className="border-black border  border:opacity-80  opacity-95  h-8 text-center items-center justify-center flex  md:h-9 mt-4 md:mt-0 w-full md:w-40 p-1 rounded"
               >
                 Write a review
               </Link>

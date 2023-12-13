@@ -5,23 +5,23 @@ import { FaCheck, FaTimes } from "react-icons/fa";
 
 function ProductHighLights({ product }) {
   const buttonStyle = {
-    base: "py-1.5 text-sm tracking-wider border w-40 text-center",
+    base: "py-1  text-[0.7rem] sm:text-xs  xl:py-1.5 lg:text-sm tracking-wider border w-32 mb-1  sm:w-36   xl:w-40 text-center",
     inStock: "border-green-600 text-green-600",
     outOfStock: "border-red-600 text-red-600",
   };
   return (
     <div className="md:mt-4 mt-6 pb-7">
-      <div className="flex    justify-between ">
-        <h3 className="text-gray-600 text-[1.08rem]  font-opensans mb-3 tracking-wide mr-10">
+      <div className="flex  line-clamp-1 overflow-hidden   justify-between ">
+        <h3 className="text-gray-600  line-clamp-1 text-[1.02rem]  font-opensans mb-3 tracking-wide mr-10">
           Product details
         </h3>
-        <div className="font-poppins flex font-semibold">
+        <div className="font-poppins flex font-semibold pb-2 ">
           {product.stock_quantity === 0 ? (
             <button
               className={`${buttonStyle.base} ${buttonStyle.outOfStock} hover:opacity-80  `}
             >
-              <div className="flex   justify-center text-center     items-center ">
-                <span className="border   flex justify-center items-center rounded-full   pl-1 border-red-600 mr-2">
+              <div className="flex  justify-center text-center   items-center">
+                <span className="border   flex justify-center items-center rounded-full   pl-1 border-red-600 mr-1 sm:mr-2">
                   <FaTimes className="   " /> &nbsp;
                 </span>{" "}
                 &nbsp;Out of Stock
@@ -31,8 +31,8 @@ function ProductHighLights({ product }) {
             <button
               className={`${buttonStyle.base} ${buttonStyle.inStock}  hover:opacity-95     ${buttonStyle.hover}`}
             >
-              <div className="flex  justify-center text-center   items-center">
-                <span className="border   flex justify-center items-center rounded-full  tracking-wider   pl-1 border-green-600 mr-2">
+              <div className="flex  justify-center text-center    items-center">
+                <span className="border   flex justify-center items-center rounded-full  tracking-wider   pl-1 border-green-600 mr-1 sm:mr-2">
                   <FaCheck className="   " /> &nbsp;
                 </span>
                 {product.stock_quantity} In Stock

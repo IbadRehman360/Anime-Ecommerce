@@ -48,14 +48,14 @@ export default function ProductBtn({
           <button
             type="button"
             onClick={handleAddToCart}
-            className="flex w-full items- font-montserrat lg:py-3.5 lg:text-md lg:tracking-wider text-xs justify-center rounded-md border border-transparent bg-black py-2.5  opacity-90  uppercase font-medium text-white  hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+            className="flex w-full items- font-montserrat lg:py-3.5 lg:text-md lg:tracking-wider text-xs justify-center rounded-md border border-transparent bg-black py-3  opacity-90  uppercase font-medium text-white  hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
           >
             Add to Cart
           </button>
         </div>
         <Link
           href={"/checkout"}
-          className="group relative block justify-center text-center h-12 border  w-full overflow-hidden   middle none center mr-4     py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-blue-500/10 transition-all hover:shadow-lg hover:shadow-blue-500/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none rounded-lg bg-white  "
+          className="group relative block justify-center text-center   h-11 sm:h-12 border  w-full overflow-hidden   middle none center mr-4     py-3 px-6 font-sans text-xs font-bold uppercase text-whiteshadow-md sm:shadow-blue-500/10 transition-all hover:shadow-lg hover:shadow-blue-500/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none rounded-lg bg-white  "
         >
           <div className="absolute inset-0 w-10 bg-black opacity-90  transition-all duration-[250ms] ease-out group-hover:w-full"></div>
           <button className="relative text-black font-montserrat lg:text-sm  group-hover:text-white">

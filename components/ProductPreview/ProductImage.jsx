@@ -32,7 +32,7 @@ function ProductImage({ product, selectedColor, selectedSize }) {
             src={currentImage}
             className={`border-2 max-h-[80vh] ${
               selectedColor || selectedSize
-                ? "lg:h-[630px]"
+                ? "lg:h-[650px]   object-fill"
                 : "lg:h-[560px]  w-full"
             }   w-full  object-contain`}
             alt="Product Image"

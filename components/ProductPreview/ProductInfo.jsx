@@ -20,13 +20,14 @@ function ProductInfo({ product, reviews }) {
         <div className="flex items-center ">
           {product.discount_price ? (
             <>
-              <div className="text-[1.1rem]   font-inter  lg:text-[1.4rem] mr-5 tracking-wider lg:tracking-wider  text-green-700 ">
-                <span className="tracking-normal lg:text-[1.6rem] mr-1">
+              <div className="text-[1.1rem]   font-inter  lg:text-[1.4rem] mr-3 xl:mr-5 tracking-wider lg:tracking-wider  text-green-700 ">
+                <span className="tracking-normal text-[1.4rem] xl:text-[1.6rem]  ">
                   {" "}
                   Rs. {product.discount_price}.00
                 </span>
               </div>
-              <div className="font-satoshi line-through tracking-wider lg:flex hidden lg:text-[1.2rem] text-sm text-gray-500">
+
+              <div className="font-satoshi line-through tracking-wider  lg:flex hidden lg:text-[1.1rem] xl:text-[1.2rem] text-sm text-gray-500">
                 <span className="tracking-normal mr-1">
                   {" "}
                   Rs. {product.price}.00
@@ -42,8 +43,7 @@ function ProductInfo({ product, reviews }) {
               {product.price}.00
             </div>
           )}
-
-          <div className="flex items-center -mt-[6px] lg:mr-6 ml-auto">
+          <div className="flex items-center -mt-[6px]   ml-auto">
             <div className="flex mb-[1px] cursor-pointer justify-end items-end">
               {[...Array(5).keys()].map((index) => (
                 <StarIcon
@@ -58,7 +58,7 @@ function ProductInfo({ product, reviews }) {
                       : averageRating >= index + 0.25
                       ? "text-yellow-500"
                       : "text-gray-200",
-                    "h-[19px] w-[19px] lg:w-[24px] lg:h-[28px] flex-shrink-0 transition-colors duration-300 ease-in-out"
+                    "h-[19px] w-[19px] lg:w-[24px] lg:h-[24px] xl:h-[28px] flex-shrink-0 transition-colors duration-300 ease-in-out"
                   )}
                   aria-hidden="true"
                 />
@@ -68,7 +68,7 @@ function ProductInfo({ product, reviews }) {
             <p className="sr-only">{averageRating} out of 5 stars</p>
             <a
               href={reviews.href}
-              className="ml-2 text-xs sm:text-sm lg:text-[1rem] font-medium text-indigo-700 hover:text-indigo-500"
+              className="ml-2 text-sm sm:text-s lg:text-[1rem] font-medium text-indigo-700 hover:text-indigo-500"
             >
               {reviews.length} reviews
             </a>
@@ -76,7 +76,7 @@ function ProductInfo({ product, reviews }) {
         </div>
       </div>
       {product.discount_price && (
-        <div className="  font-inter  lg:hidden flex line-through tracking-wider lg:text-[1.6rem]  text-sm     text-gray-500">
+        <div className="  font-inter  text-[1.02rem] lg:hidden flex line-through tracking-wider lg:text-[1.6rem]     text-gray-500">
           <span className="tracking-normal mr-1"> Rs.</span>
           {product.price}.00{" "}
         </div>

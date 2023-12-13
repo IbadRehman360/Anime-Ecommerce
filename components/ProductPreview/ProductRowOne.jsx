@@ -20,7 +20,7 @@ function ProductRowOne({ product, reviews }) {
         selectedSize={selectedSize}
       />
 
-      <div className="lg:col-span-1 px-3 lg:pl-16">
+      <div className="lg:col-span-1 px-3 lg:pl-12">
         <div className="flex flex-col  ">
           <div className="mt-5 mb-4 lg:hidden flex">
             <BreadCrumbs product={product} />
