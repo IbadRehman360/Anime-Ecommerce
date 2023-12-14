@@ -11,11 +11,11 @@ function ProductInfo({ product, reviews }) {
   return (
     <div className=" ">
       <div className="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
-        <h1 className="text-xl lg:line-clamp-1 xl:line-clamp-2 line-clamp-2    uppercase mb-2 lg:mb-4  lg:text-3xl font-montserrat  text-gray-800 sm:text-3xl">
+        <h1 className="text-xl lg:line-clamp-1 xl:line-clamp-2 line-clamp-2    uppercase mb lg:mb-4  lg:text-2xl  xl:text-3xl lg:mt-2 font-montserrat  text-gray-800 sm:text-2xl">
           {product.title}
         </h1>
       </div>
-      <div className="mt-4 lg:row-span-3 pb-1.5 lg:mt-0 ">
+      <div className="mt-2 sm:mt-4 lg:row-span-3 pb-1.5 lg:mt-0 ">
         <h2 className="sr-only">Product information</h2>
         <div className="flex items-center ">
           {product.discount_price ? (
@@ -35,12 +35,13 @@ function ProductInfo({ product, reviews }) {
               </div>
             </>
           ) : (
-            <div className="text-[1.2rem]   font-inter  lg:text-[1.6rem] mr-5 tracking-wider lg:tracking-wider  text-green-700  ">
+            <div className="text-[1.3rem] sm:text-[1.4rem]   font-inter  lg:text-[1.5rem]   mr-3 mb-0.5 tracking-wider lg:tracking-wider  text-green-700  ">
               <span className="tracking-normal lg:text-[1.5rem] mr-1">
                 {" "}
                 Rs.
               </span>
-              {product.price}.00
+              {product.price}
+              <span className="hidden sm:inline-flex">.00</span>
             </div>
           )}
           <div className="flex items-center -mt-[6px]   ml-auto">
@@ -76,7 +77,7 @@ function ProductInfo({ product, reviews }) {
         </div>
       </div>
       {product.discount_price && (
-        <div className="  font-inter  text-[1.02rem] lg:hidden flex line-through tracking-wider lg:text-[1.6rem]     text-gray-500">
+        <div className="     font-poppins  text-[1.1rem] lg:hidden flex line-through tracking-wider lg:text-[1.6rem]     text-gray-700">
           <span className="tracking-normal mr-1"> Rs.</span>
           {product.price}.00{" "}
         </div>

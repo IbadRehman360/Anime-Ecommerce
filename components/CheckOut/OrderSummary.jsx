@@ -49,16 +49,14 @@ function OrderSummary({ selectedDeliveryMethod, isSubmitting }) {
                       </a>
                     </h4>
                   </div>
-                  <div className="ml-4 flex-shrink-0 flow-root">
-                    <button
-                      type="button"
-                      onClick={() => handleRemoveItem(product.product._id)}
-                      className="-m-2.5 bg-white p-2.5 flex items-center justify-center text-gray-400 hover:text-gray-500"
-                    >
-                      <span className="sr-only">Remove</span>
-                      <TrashIcon className="h-5 w-5" aria-hidden="true" />
-                    </button>
-                  </div>
+                  <button
+                    type="button"
+                    onClick={() => handleRemoveItem(product.product._id)}
+                    className="-m-2.5 bg-white p-2.5 flex items-center justify-center text-gray-400 hover:text-gray-500"
+                  >
+                    <span className="sr-only">Remove</span>
+                    <TrashIcon className="h-5 w-5" aria-hidden="true" />
+                  </button>
                 </div>
 
                 <div className="flex items-center mt-4 justify-between">
@@ -86,11 +84,6 @@ function OrderSummary({ selectedDeliveryMethod, isSubmitting }) {
                       <option value={1}>1</option>
                       <option value={2}>2</option>
                       <option value={3}>3</option>
-                      <option value={4}>4</option>
-                      <option value={5}>5</option>
-                      <option value={6}>6</option>
-                      <option value={7}>7</option>
-                      <option value={8}>8</option>
                     </select>
                     <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                       <svg

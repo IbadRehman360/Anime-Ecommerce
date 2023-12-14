@@ -12,14 +12,16 @@ const cartSlice = createSlice({
             const existingItem = state.items.find(item => item.product._id === product._id && item.color === color && item.size === size);
 
             if (existingItem) {
-                throw new Error('Product already in cart. Use increaseQuantity.');
+                toast.error('Product already in cart. Increase quantity to add more.')
+
             } else {
+                toast.success('Product successfully Added to the cart.');
+
                 state.items.push({ product, quantity, color, size });
             }
         },
         removeItem: (state, action) => {
-            const indexToRemove = state.items.findIndex(item => item.product.id === action.payload.product.id);
-
+            const indexToRemove = state.items.findIndex(item => item.product._id === action.payload.product);
             if (indexToRemove !== -1) {
                 state.items.splice(indexToRemove, 1);
             } else {
@@ -37,12 +39,17 @@ const cartSlice = createSlice({
 
             if (item) {
                 if (item.quantity < product.stock_quantity) {
-                    item.quantity += 1;
+                    if (item.quantity + 1 > 3) {
+                        toast.error('Sorry, you can\'t add more than 3 of the same product.');
+                    } else {
+                        item.quantity += 1;
+                    }
                 } else {
-                    console.warn('Cannot increase quantity, stock limit reached.');
+                    toast.error('Sorry, we don\'t have enough stock for this product.');
                 }
             }
         },
+
 
         decreaseQuantity: (state, action) => {
             const { product, size, color } = action.payload;

@@ -46,13 +46,13 @@ const ProductCard = ({ products }) => {
                   <span className="text-red-500">
                     Rs {products.discount_price.toFixed(2)}
                   </span>
-                  <del className="text-gray-600 ml-3">
+                  <del className="text-gray-600 opacity-90 ml-3">
                     Rs {products.price.toFixed(2)}
                   </del>
                 </span>
               ) : (
                 <>
-                  <span className=" text-[0.94rem]  lg:text-[1.2rem]  opacity-95    font-inter tracking-wide mt-0.5 lg:mt-1">
+                  <span className=" text-[0.94rem]  lg:text-[1.2rem]      opacity-90  font-lato tracking-wide mt-0.5 lg:mt-1">
                     Rs {products.price.toFixed(2)}
                   </span>
                   <div className="w-10 h-5  "> </div>

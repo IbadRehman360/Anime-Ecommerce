@@ -22,7 +22,7 @@ function ProductRowOne({ product, reviews }) {
 
       <div className="lg:col-span-1 px-3 lg:pl-12">
         <div className="flex flex-col  ">
-          <div className="mt-5 mb-4 lg:hidden flex">
+          <div className="mt-3.5 mb-2.5 sm:mt-4 sm:mb-4 lg:mt-5 lg:hidden flex">
             <BreadCrumbs product={product} />
           </div>
           <ProductInfo product={product} reviews={reviews} />

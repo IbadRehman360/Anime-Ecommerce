@@ -51,7 +51,7 @@ export default function Cart() {
                   <div className="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
                     <div className="flex-1  overflow-y-auto  ">
                       <div className="flex px-4 py-6 sm:px-6    bg-gray-50 items-start justify-between">
-                        <Dialog.Title className="text-lg font-medium  font-montserrat  text-gray-900">
+                        <Dialog.Title className="text-lg font-medium  2xl:text-xl font-montserrat  text-black opacity-90">
                           Shopping cart
                         </Dialog.Title>
                         <div className="ml-3 flex    h-7  items-center">
@@ -75,11 +75,11 @@ export default function Cart() {
                           className="lg:col-span-7 h-full      mx-auto flex items-center justify-center text-center"
                         >
                           <div className="flex flex-col  items-center justify-center">
-                            <MdInfo className="text-5xl mb-4 text-gray-700" />
-                            <p className="sm:text-2xl text-xl px-2 text-center leading-7 tracking-tight font-montserrat mb-4 text-gray-800">
+                            <MdInfo className="text-5xl mb-4 text-black opacity-80" />
+                            <p className="sm:text-2xl text-xl px-2 text-center leading-7 tracking-tight font-montserrat mb-4 text-black opacity-90">
                               Your cart is currently empty.
                             </p>
-                            <p className="text-sm text-center mb-6 sm:px-6     px-4 font-poppins text-gray-600">
+                            <p className="text-sm text-center mb-6 sm:px-6     px-4 font-poppins text-black opacity-80">
                               Add items to your cart before checking out to, and
                               delve into our diverse and intriguing product
                               assortment.
@@ -207,14 +207,14 @@ export default function Cart() {
                         <div className="flex">
                           <Link
                             href="/cart"
-                            className="flex uppercase text-[0.7rem]  lg:text-sm   items-center    w-2/5 justify-center rounded-md border border-transparent bg-black    opacity-75 hover:bg-gray-200 hover:text-black     font-montserrat py-3    md:px-6 md:py-3.5 font-medium text-white shadow-sm hover-bg-gray-700 " // Add ml-2 for some horizontal spacing
+                            className="flex uppercase text-[0.7rem]  lg:text-sm   items-center    w-2/5 justify-center rounded-md border border-transparent bg-black    opacity-80 hover:bg-gray-200 hover:text-black     font-montserrat py-3    md:px-6 md:py-3.5 font-medium text-white shadow-sm hover-bg-gray-700 " // Add ml-2 for some horizontal spacing
                           >
                             Your Cart
                           </Link>
 
                           <Link
                             href="/checkout"
-                            className="flex uppercase text-[0.7rem] lg:text-sm   items-center    w-3/5 justify-center rounded-md border border-transparent bg-black     opacity-75     hover:bg-gray-300 hover:text-black    font-montserrat py-3   md:px-6 md:py-3.5 font-medium text-white shadow-sm hover-bg-stone-700 ml-2" // Add ml-2 for some horizontal spacing
+                            className="flex uppercase text-[0.7rem] lg:text-sm   items-center    w-3/5 justify-center rounded-md border border-transparent bg-black     opacity-80     hover:bg-gray-200 hover:text-black    font-montserrat py-3   md:px-6 md:py-3.5 font-medium text-white shadow-sm hover-bg-stone-700 ml-2" // Add ml-2 for some horizontal spacing
                           >
                             Checkout order
                           </Link>

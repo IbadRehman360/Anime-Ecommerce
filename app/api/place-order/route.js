@@ -1,6 +1,7 @@
 import Customer from "@models/customer";
 import Order from "@models/order";
 import OrderItem from "@models/orderItems";
+import Product from "@models/product";
 import User from "@models/user";
 import { connectToDB } from "@utils/database";
 export const POST = async (req, res) => {
@@ -61,9 +62,15 @@ export const POST = async (req, res) => {
     const order = await newOrder.save();
 
     for (const item of cartItems) {
-      await Product.findByIdAndUpdate(item.product._id, {
+      console.log(item.product._id, item.quantity);
+      const result = await Product.findByIdAndUpdate(item.product._id, {
         $inc: { stock_quantity: -item.quantity },
       });
+      if (!result) {
+        console.log(`Product with ID ${item.product._id} not found.`);
+      } else {
+        console.log(`Stock quantity updated for product with ID ${item.product._id}`);
+      }
     }
 
     return new Response(JSON.stringify(order), { status: 200 });

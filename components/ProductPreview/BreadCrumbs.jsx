@@ -11,7 +11,7 @@ function BreadCrumbs({ product }) {
           <div className=" items-center  hidden sm:flex">
             <Link
               href="/ "
-              className="mr-2 mt-[1.5px] text-sm font-medium text-gray-600"
+              className="mr-2 mt-[1.5px] text-sm sm:text-[0.92rem]  font-medium text-gray-600"
             >
               Home
             </Link>
@@ -31,7 +31,7 @@ function BreadCrumbs({ product }) {
           <Link
             aria-current="page"
             href={"/category/" + product.category_id.name}
-            className="  first-letter:uppercase  text-sm  font-medium text-gray-600    hover:text-gray-500"
+            className="  first-letter:uppercase text-sm sm:text-[0.92rem] tracking-wider   font-medium text-gray-600    hover:text-gray-500"
           >
             {product.category_id.name}
           </Link>
@@ -50,7 +50,7 @@ function BreadCrumbs({ product }) {
           <Link
             href={"/product/" + product._id}
             aria-current="page"
-            className="  first-letter:uppercase  text-sm ml-1 sm:ml-0  text-gray-700    hover:text-gray-500"
+            className="  first-letter:uppercase  text-sm sm:text-[0.92rem] ml-1 sm:ml-0  text-gray-700    hover:text-gray-500"
           >
             {product.title.split(" ").slice(0, 3).join(" ")}
           </Link>

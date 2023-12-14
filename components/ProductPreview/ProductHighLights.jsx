@@ -29,7 +29,7 @@ function ProductHighLights({ product }) {
             </button>
           ) : (
             <button
-              className={`${buttonStyle.base} ${buttonStyle.inStock}  hover:opacity-95     ${buttonStyle.hover}`}
+              className={`${buttonStyle.base} ${buttonStyle.inStock}    hover:shadow-md hover:shadow-green-100     ${buttonStyle.hover}`}
             >
               <div className="flex  justify-center text-center    items-center">
                 <span className="border   flex justify-center items-center rounded-full  tracking-wider   pl-1 border-green-600 mr-1 sm:mr-2">

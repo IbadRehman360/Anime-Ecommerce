@@ -16,7 +16,7 @@ export default function WriteReview({ reviews, product }) {
     <div className="    border py-8 px-5   lg:mt-10   text-black pb-8   middle none center        font-sans text-xs font-bold uppercase     focus:shadow-none active:opacity-[0.9] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none rounded-lg bg-white ">
       {!showReviewForm && (
         <>
-          <h2 className=" mb-4 lg:text-xl text-gray-900 text-lg     tracking-wide   font-inter">
+          <h2 className=" mb-4 lg:text-xl  opacity-90  text-black text-lg     tracking-wide   font-inter">
             Customer Reviews
           </h2>
           <div className="md:flex justify-between">
@@ -26,13 +26,13 @@ export default function WriteReview({ reviews, product }) {
                   {[1, 2, 3, 4, 5].map((starRating) => (
                     <StarIcon
                       key={starRating}
-                      className={`h-5 w-5 lg:w-6 lg:h-6 flex-shrink-0 cursor-pointer  text-gray-300 `}
+                      className={`h-6 w-6 lg:w-6 lg:h-6 flex-shrink-0 cursor-pointer  text-gray-300 `}
                       aria-hidden="true"
                     />
                   ))}
                 </div>
               </div>{" "}
-              <p className="mb-1.5 text-[0.9rem]     opacity-95 text-gray-900 font-inter lg:ml-4 ml-1 mt-2 lg:mt-0 md:text-[1rem]     tracking-wider ">
+              <p className="mb-1.5 text-[0.9rem]     opacity-95  text-black font-inter lg:ml-4 ml-1 mt-2 lg:mt-0 md:text-[1rem]     tracking-wider ">
                 {reviews.length
                   ? "Submit a Review"
                   : "Be the first to write a review"}
@@ -41,19 +41,17 @@ export default function WriteReview({ reviews, product }) {
             {!session ? (
               <Link
                 href={"/login"}
-                className="border-black border  border:opacity-80  opacity-95  h-8 text-center items-center justify-center flex  md:h-9 mt-4 md:mt-0 w-full md:w-40 p-1 rounded"
+                className="border-black border     opacity-95  text-black  h-8 text-center items-center justify-center flex  md:h-9 mt-4 md:mt-0 w-full md:w-40 p-1 rounded"
               >
                 Write a review
               </Link>
             ) : (
-              <div className="group relative h-12 border border-gray-400 rounded-md hover:border-gray-300   w-60 overflow-hidden flex justify-center   middle none center mr-4  opacity-90    py-3 px-6 font-sans text-xs  ">
-                <button
-                  onClick={handleWriteReviewClick}
-                  className="relative text-black font-montserrat lg:text-sm  "
-                >
-                  Write a review
-                </button>
-              </div>
+              <Link
+                href={"/login"}
+                className="border-black border     opacity-95  text-black  h-8 text-center items-center justify-center flex  md:h-9 mt-4 md:mt-0 w-full md:w-40 p-1 rounded"
+              >
+                Write a review
+              </Link>
             )}
           </div>
         </>
