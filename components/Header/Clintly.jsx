@@ -11,27 +11,18 @@ import { Fragment } from "react";
 import Navigation from "./Navigation";
 
 function Cliently({ navigation }) {
-  const [hoveredPage, setHoveredPage] = useState(null);
-  const handleListMouseLeave = () => {
-    setHoveredPage(null);
-  };
   return (
-    <Popover.Group
-      onMouseLeave={handleListMouseLeave}
-      className="hidden z-20 p-5    lg:flex justify-center items-center  border    border-gray-500  "
-    >
+    <Popover.Group className="hidden z-20 p-5    lg:flex justify-center items-center  border    border-gray-500  ">
       <div className="flex h-full space-x-10">
         {navigation.categories.map((category) => (
           <Popover key={category.name} className="flex">
             {({ open }) => (
               <>
-                <div className="relative flex ">
+                <div className="relative flex">
                   <Popover.Button
                     className={classNames(
-                      open
-                        ? "   text-black"
-                        : "  text-gray-600 hover:text-gray-800",
-                      "relative z-20 -mb-px flex items-center border-none focus:border-none   pt-px text-sm font-medium whitespace-nowrap transition-colors duration-200 ease-out"
+                      open ? "text-black" : "text-gray-600 hover:text-gray-800",
+                      "relative z-20 -mb-px flex items-center border-none focus:border-none pt-px text-sm font-medium whitespace-nowrap transition-colors duration-200 ease-out"
                     )}
                   >
                     <a href={category.href} className="flex items-center">
@@ -52,7 +43,7 @@ function Cliently({ navigation }) {
                 >
                   <Popover.Panel className="absolute inset-x-0 top-full text-sm  text-gray-500">
                     <div className="relative z-20 rounded-sm bg-white">
-                      <div className="mx-auto max-w-7xl px-8">
+                      <div className="mx-auto max-w-7xl px-8 ">
                         <div className="grid grid-cols-3  gap-y-10  pb-6 pt-8">
                           <div className="row-start-1 col-span-2 grid grid-cols-4  -space-x-2   text-sm">
                             {category.sections.map((section) => (
@@ -120,12 +111,7 @@ function Cliently({ navigation }) {
             )}
           </Popover>
         ))}
-        <Navigation
-          navigation={navigation}
-          handleListMouseLeave={handleListMouseLeave}
-          setHoveredPage={setHoveredPage}
-          hoveredPage={hoveredPage}
-        />
+        <Navigation navigation={navigation} />
 
         {navigation.pages.map((page) => (
           <div

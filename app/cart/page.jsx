@@ -7,7 +7,7 @@ export default function Example() {
   return (
     <div className=" ">
       <main className="max-w-2xl mx-auto pt-10  md:pt-16 pb-24 px-4 sm:px-6 lg:max-w-7xl lg:px-8">
-        <h1 className="text-3xl text-center sm:text-start font-montserrat lg:text-4xl      text-slate-900     ">
+        <h1 className="text-3xl text-center sm:text-start font-montserrat lg:text-4xl      text-black opacity-95     ">
           Shopping Cart
         </h1>
 

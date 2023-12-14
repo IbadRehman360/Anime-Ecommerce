@@ -15,10 +15,10 @@ export default function CategoryCard({ Anime }) {
             {Anime.name}
           </p>
 
-          <div className="flex justify-center    border px-3 sm:px-6 bg-white text-black  bg-gray-50/25 py-1 sm:py-1.5 lg:py-2">
+          <div className="flex justify-center    border px-3 sm:px-8 bg-white text-black  bg-gray-50/25 py-1 sm:py-1.5 lg:py-2">
             <Link
               href="#"
-              className="  flex text-center    font-cabin tracking-widest  text-white     text-[0.7rem] sm:text-xs  "
+              className="  flex text-center    font-cabin tracking-widest        text-[0.7rem] sm:text-xs  "
             >
               SHOP NOW
             </Link>

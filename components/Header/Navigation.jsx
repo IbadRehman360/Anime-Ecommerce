@@ -1,50 +1,49 @@
+import { Popover, Transition } from "@headlessui/react";
 import Link from "next/link";
+import { Fragment } from "react";
 
-function Navigation({
-  navigation,
-  handleListMouseLeave,
-  setHoveredPage,
-  hoveredPage,
-}) {
-  const handlePageHover = (page) => {
-    setHoveredPage(page);
-  };
-
-  const getPageListClassName = (page) => {
-    return page.list
-      ? `bg-white border-gray-300 absolute mt-5 border-t pt-4 pr-6 -left-6 pb-5 border grid space-y-3 ${
-          hoveredPage === page ? "visible" : "hidden"
-        }`
-      : "";
-  };
-
+function Navigation({ navigation }) {
   return (
     <>
-      {navigation.category.map((page) => (
-        <div
-          key={page.name}
-          className="relative   z-10 inline-block bg-white text-sm font-medium text-gray-600 whitespace-nowrap tracking-wider hover:text-gray-800"
-          onMouseEnter={() => handlePageHover(page)}
-        >
-          <Link href={page.href} className="flex items-center">
-            {page.icon}
-            <span className="ml-4 font-inter">{page.name}</span>
-          </Link>
+      {navigation.category.map((page, index) => (
+        <Popover key={page.name} className="relative z-10 inline-block">
+          {({ open }) => (
+            <>
+              <Popover.Button className="flex items-center cursor-pointer bg-white text-sm font-medium text-gray-600 whitespace-nowrap tracking-wider hover:text-gray-800">
+                {page.icon}
+                <span className="ml-4 font-inter">{page.name}</span>
+              </Popover.Button>
 
-          <div
-            className={getPageListClassName(page)}
-            onMouseLeave={handleListMouseLeave}
-          >
-            {page.list &&
-              page.list.map((item) => (
-                <Link href={`/category/${item.id}`} key={item.id}>
-                  <div className="ml-6 text-gray-600 text-[1rem] font-poppins hover:text-black">
-                    {item.name}
-                  </div>
-                </Link>
-              ))}
-          </div>
-        </div>
+              <Transition
+                as={Fragment}
+                enter="transition ease-out duration-200"
+                enterFrom="opacity-0"
+                enterTo="opacity-100"
+                leave="transition ease-in duration-150"
+                leaveFrom="opacity-100"
+                leaveTo="opacity-0"
+              >
+                <Popover.Panel
+                  static
+                  className={`bg-white border-gray-300 absolute mt-5 pt-4     ${
+                    index === 0
+                      ? "w-48 pr-2   border-t     -left-6"
+                      : "w-auto pr-5    ml-3 "
+                  }  overflow-y-auto   max-h-[75vh]    border grid space-y-2.5 pb-4 text-lg`}
+                >
+                  {page.list &&
+                    page.list.map((item) => (
+                      <Link key={item.id} href={`/category/${item.id}`}>
+                        <div className="ml-4  text-gray-600 text-[1.04rem] font-poppins hover:text-black">
+                          {item.name}
+                        </div>
+                      </Link>
+                    ))}
+                </Popover.Panel>
+              </Transition>
+            </>
+          )}
+        </Popover>
       ))}
     </>
   );

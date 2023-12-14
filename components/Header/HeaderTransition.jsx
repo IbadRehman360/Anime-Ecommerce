@@ -9,7 +9,6 @@ import { signOut } from "next-auth/react";
 
 function HeaderTransition({ setOpen, open, navigation, session }) {
   const [hoveredPage, setHoveredPage] = useState(null);
-
   return (
     <Transition.Root show={open} as={Fragment}>
       <Dialog as="div" className="relative  z-20 lg:hidden" onClose={setOpen}>

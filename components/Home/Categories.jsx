@@ -34,7 +34,7 @@ export default function Example() {
               <h2 className="mx-auto flex justify-center items-center font-montserrat  pl-4 sm:pl-28 text-[1.7rem] tracking-wide leading-9 font-extrabold sm:text-[2.2rem] lg:text-[2.6rem] uppercase sm:pb-2 lg:pb-2 text-gray-900">
                 SHOP BY ANIME
               </h2>
-              <Link href={"/all-products"}>
+              <Link href={"/category/all-products"}>
                 <div className=" items-center md:flex hidden gap-2">
                   <span className="font-poppins mr-1">Discover All</span>
                   <div className="rounded-full border-[1px] border-black bg-white p-1 shadow-sm">

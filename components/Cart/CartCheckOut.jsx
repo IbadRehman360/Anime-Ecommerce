@@ -85,10 +85,10 @@ function CartCheckOut() {
       <div className="mt-6">
         <Link href={isCartEmpty ? "#" : "/checkout"}>
           <button
-            className={`w-full bg-slate-800 uppercase font-montserrat border border-transparent rounded-md shadow-sm py-3 px-4 tracking-wide text-xs sm:text-sm text-white ${
+            className={`w-full bg-black opacity-90 uppercase font-montserrat border border-transparent rounded-md shadow-sm py-3 px-4 tracking-wide text-xs sm:text-sm text-white ${
               isCartEmpty
-                ? "cursor-not-allowed opacity-70"
-                : "hover:bg-slate-800"
+                ? "cursor-not-allowed opacity-90"
+                : "hover:bg-black hover:opacity-80"
             } focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-indigo-500`}
             disabled={isCartEmpty}
           >
