@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function CategoryCard({ Anime }) {
   return (
-    <Link href={"/dashboard"}>
+    <Link href={`${Anime.path}`}>
       <div className="relative flex flex-col  mx-1 sm:px-1 ">
         <img
           src={`${Anime.imageSrc}`}

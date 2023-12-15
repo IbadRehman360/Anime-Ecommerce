@@ -28,25 +28,30 @@ export const GET = async (request, response) => {
       const productsInCategory = await Product.find({
         anime_category_id: id,
       }).populate("anime_category_id");
+
       if (productsInCategory.length > 0) {
         products = productsInCategory;
       } else {
         const productsInGeneralCategory = await Product.find({
           category_id: id,
         }).populate("category_id");
+
         if (productsInGeneralCategory.length > 0) {
           products = productsInGeneralCategory;
         } else {
           const GeneralCategoryName = await GeneralCategory.findById(id);
+
           if (!GeneralCategoryName) {
             const AnimeCategoryName = await AnimeCategory.findById(id);
+            console.log(AnimeCategoryName, id);
             if (!AnimeCategoryName) {
               console.log("HI");
               return new Response("No Such Category Found", { status: 404 });
             }
             products = AnimeCategoryName;
+          } else {
+            products = GeneralCategoryName;
           }
-          products = GeneralCategoryName;
         }
       }
 
