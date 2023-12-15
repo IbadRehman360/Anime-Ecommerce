@@ -43,7 +43,6 @@ export const GET = async (request, response) => {
 
           if (!GeneralCategoryName) {
             const AnimeCategoryName = await AnimeCategory.findById(id);
-            console.log(AnimeCategoryName, id);
             if (!AnimeCategoryName) {
               console.log("HI");
               return new Response("No Such Category Found", { status: 404 });

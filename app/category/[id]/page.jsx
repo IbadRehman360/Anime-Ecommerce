@@ -39,7 +39,8 @@ export default async function Example({ params: { id } }) {
 export async function getProductByCategory(id) {
   try {
     const response = await fetch(
-      `${process.env.NEXTAUTH_URL}/api/category/${id}`
+      `${process.env.NEXTAUTH_URL}/api/category/${id}`,
+      { cache: "no-store" }
     );
 
     if (!response.ok) {

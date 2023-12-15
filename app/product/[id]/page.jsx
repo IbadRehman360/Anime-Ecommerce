@@ -50,9 +50,7 @@ export async function getProductByID(id) {
   try {
     const response = await fetch(
       `${process.env.NEXTAUTH_URL}/api/products/${id}`,
-      {
-        headers: { tags: ["products"] },
-      }
+      { cache: "no-store" }
     );
 
     if (!response.ok) {
