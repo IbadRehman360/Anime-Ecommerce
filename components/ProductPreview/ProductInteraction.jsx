@@ -2,7 +2,6 @@
 import ProductBtn from "./ProductBtn";
 import ProductColor from "./ProductColor";
 import ProductSizes from "./ProductSizes";
-import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addItem, selectCartItems } from "../../app/Global/Features/cartSlice";
 import { useProductUtils } from "@utils/productUtils";
@@ -16,7 +15,6 @@ function ProductInteraction({
   selectedSize,
 }) {
   const { incrementQuantity, decrementQuantity } = useProductUtils();
-
   const dispatch = useDispatch();
   const cartItems = useSelector(selectCartItems);
 

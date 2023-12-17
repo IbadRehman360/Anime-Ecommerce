@@ -3,8 +3,8 @@ import { useDispatch } from 'react-redux';
 
 export const useProductUtils = () => {
     const dispatch = useDispatch();
-    const incrementQuantity = (product, size, color) => {
-        dispatch(increaseQuantity({ product, size, color }));
+    const incrementQuantity = (product, size, color, quantity) => {
+        dispatch(increaseQuantity({ product, size, color, quantity }));
     };
 
     const decrementQuantity = (product, size, color) => {

@@ -5,7 +5,7 @@ import Image from "next/image";
 function Details2() {
   return (
     <div className="  sm:border-t border-b sm:border-none  pt-10 pb-8 sm:pt-12 sm:pb-10 lg:pt-16 lg:pb-12">
-      <div className="text-center   ">
+      <div className="text-center">
         <h3 className=" font-montserrat text-[1.8rem]    leading-9  font-extrabold sm:text-[2.2rem] lg:text-[2.6rem]   pt-2 sm:pt-4 lg:pt-8 pb-2   sm:pb-4  uppercase       text-center  justify-center  tracking-wider flex  text-gray-900  ">
           <FaCogs className="  mr-6 sm:inline-block hidden " />
           CUSTOMLY MADE
@@ -40,7 +40,7 @@ function Details2() {
           <div className="mt-6">
             <Link
               href={"https://www.instagram.com/pakistani_senpai_merch"}
-              className="border bg-center    font-montserrat   bg-gray-800  text-sm   tracking-widest   py-2.5 px-5  lg:py-3 lg:px-6   font-semibold   text-white mt-6 lg:mt-4  rounded-md"
+              className="border bg-center font-montserrat bg-black opacity-95  text-sm   tracking-widest   py-2.5 px-5  lg:py-3 lg:px-6   font-semibold   text-white mt-6 lg:mt-4  rounded-md"
             >
               <button>PURCHASE NOW</button>
             </Link>

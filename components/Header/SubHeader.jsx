@@ -4,7 +4,7 @@ import Link from "next/link";
 
 function SubHeader() {
   return (
-    <div className="flex h-10 md:h-12 items-center  justify-between px-4 sm:px-6 lg:px-8 text-[0.8rem] sm:text-sm font-medium text-white   bg-black">
+    <div className="flex  opacity-95 h-10 md:h-12 items-center  justify-between px-4 sm:px-6 lg:px-8 text-[0.8rem] sm:text-sm font-medium text-white   bg-black">
       <div className="    items-center space-x-4">
         <Link
           href="https://www.instagram.com/pakistani_senpai_merch"

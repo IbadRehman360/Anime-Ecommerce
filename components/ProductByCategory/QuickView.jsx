@@ -7,6 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { addItem, selectCartItems } from "@app/Global/Features/cartSlice";
+import toast from "react-hot-toast";
 
 export default function QuickView({ product, isOpen, onClose }) {
   const [selectedColor, setSelectedColor] = useState();
@@ -44,7 +45,6 @@ export default function QuickView({ product, isOpen, onClose }) {
           size: selectedSize,
         })
       );
-      toast.success("Product added to cart successfully");
     } catch (error) {
       console.error("Error adding product to cart:", error);
       toast.error("Product already in cart. Use increaseQuantity.");
@@ -320,7 +320,7 @@ export default function QuickView({ product, isOpen, onClose }) {
                         </button>
                         <p className="absolute top-4 font-poppins left-4 text-center sm:static sm:mt-4">
                           <Link
-                            href={""}
+                            href={`/product/${product._id}`}
                             className="font-medium  text-sm text-gray-800 hover:text-gray-600"
                           >
                             View full details

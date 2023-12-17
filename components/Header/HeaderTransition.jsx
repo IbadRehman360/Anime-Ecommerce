@@ -67,7 +67,6 @@ function HeaderTransition({ setOpen, open, navigation, session }) {
                     ))}
                   </Tab.List>
                 </div>
-                {/* onClick={() => setOpen(false)} */}
                 <Tab.Panels as={Fragment}>
                   {navigation.categories.map((category) => (
                     <Tab.Panel

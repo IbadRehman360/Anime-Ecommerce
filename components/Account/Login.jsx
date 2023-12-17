@@ -50,6 +50,7 @@ export default function Login() {
             },
           }}
           placeholder="E-mail"
+          type="email"
         />
 
         <InputField
@@ -58,6 +59,7 @@ export default function Login() {
           label="Password"
           rules={{ required: "Password is required" }}
           error={errors.password}
+          type="password"
         />
         {error && (
           <div className="bg-red-500 text-white w-fit text-sm py-1 px-3 rounded-md mt-2">

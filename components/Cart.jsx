@@ -207,6 +207,7 @@ export default function Cart() {
                         <div className="flex">
                           <Link
                             href="/cart"
+                            onClick={() => setOpen(false)}
                             className="flex uppercase text-[0.7rem]  lg:text-sm   items-center    w-2/5 justify-center rounded-md border border-transparent bg-black    opacity-80 hover:bg-gray-200 hover:text-black     font-montserrat py-3    md:px-6 md:py-3.5 font-medium text-white shadow-sm hover-bg-gray-700 " // Add ml-2 for some horizontal spacing
                           >
                             Your Cart
@@ -214,6 +215,7 @@ export default function Cart() {
 
                           <Link
                             href="/checkout"
+                            onClick={() => setOpen(false)}
                             className="flex uppercase text-[0.7rem] lg:text-sm   items-center    w-3/5 justify-center rounded-md border border-transparent bg-black     opacity-80     hover:bg-gray-200 hover:text-black    font-montserrat py-3   md:px-6 md:py-3.5 font-medium text-white shadow-sm hover-bg-stone-700 ml-2" // Add ml-2 for some horizontal spacing
                           >
                             Checkout order

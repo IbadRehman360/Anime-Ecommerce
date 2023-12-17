@@ -26,12 +26,12 @@ export default function Example() {
 
   const visibleData = callouts.slice(currentSlide * 5, (currentSlide + 1) * 5);
   return (
-    <div className="pt-10 pb-4 sm:pt-12 sm:pb-8 lg:pt-16 lg:pb-16">
+    <div className="pt-10 pb-4   dark sm:pt-12 sm:pb-8 lg:pt-16 lg:pb-16">
       <div className="">
         <div className="border-gray-200">
           <div className="text-center">
             <div className="  flex items-center justify-between">
-              <h2 className="mx-auto flex justify-center items-center font-montserrat  pl-4 sm:pl-28 text-[1.7rem] tracking-wide leading-9 font-extrabold sm:text-[2.2rem] lg:text-[2.6rem] uppercase sm:pb-2 lg:pb-2 text-gray-900">
+              <h2 className="mx-auto flex  justify-center items-center font-montserrat pl-4 sm:pl-28 text-[1.7rem] tracking-wide leading-9 font-extrabold sm:text-[2.2rem] lg:text-[2.6rem] uppercase sm:pb-2 lg:pb-2 text-gray-900">
                 SHOP BY ANIME
               </h2>
               <Link href={"/category/all-products"}>
@@ -46,7 +46,7 @@ export default function Example() {
               </Link>
               <div className="sm:hidden mr-1.5 mb-1">
                 {currentSlide < 1 && (
-                  <div className="rounded-full border-[1px] border-black bg-white p-0.5 shadow-sm">
+                  <div className="rounded-full border-[1px] border-black   bg-white p-0.5 shadow-sm">
                     <a
                       onClick={handleNextPage}
                       href="#mbTrendingGiftCardsSlide2"
@@ -57,7 +57,7 @@ export default function Example() {
                   </div>
                 )}
                 {currentSlide > 0 && (
-                  <div className="rounded-full border-[1px] border-black bg-white p-1 shadow-sm">
+                  <div className="rounded-full border-[1px] border-black   bg-white p-1 shadow-sm">
                     <a
                       onClick={handlePrevPage}
                       href="#mbTrendingGiftCardsSlide1"
@@ -72,7 +72,7 @@ export default function Example() {
           </div>
         </div>
 
-        <div className="mt-6 md:mt-8 bg-[#fdfdfd]">
+        <div className="mt-6 md:mt-8   bg-[#fdfdfd]">
           <div className="carousel-center mx-2   hidden w-full gap-x-4 rounded-lg lg:carousel">
             <div
               id="trendingGiftCardsSlide1"

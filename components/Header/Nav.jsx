@@ -10,12 +10,17 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaSignOutAlt, FaUser } from "react-icons/fa";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 function Nav({ setOpen, signOut, session, cartItems, isCartOpen }) {
   const [products, setProducts] = useState([]);
-  const [searchText, setSearchText] = useState("");
-  const [filteredProducts, setFilteredProducts] = useState([]);
   const [mbSearch, setMbSearch] = useState(false);
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [searchText, setSearchText] = useState("");
+  const router = useRouter;
+  useEffect(() => {
+    setFilteredProducts([]);
+  }, [router.asPath]);
 
   useEffect(() => {
     getProductsData();
@@ -66,6 +71,8 @@ function Nav({ setOpen, signOut, session, cartItems, isCartOpen }) {
               handleSearchTextChange={handleSearchTextChange}
               filteredProducts={filteredProducts}
               searchText={searchText}
+              setFilteredProducts={setFilteredProducts}
+              setSearchText={setSearchText}
             />
           </div>
           <div className="flex items-center w-full">

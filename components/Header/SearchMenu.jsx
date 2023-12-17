@@ -1,14 +1,37 @@
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import Image from "next/image";
+import { useEffect, useRef } from "react";
 
 export default function SearchMenu({
   searchText,
+  setSearchText,
   filteredProducts,
   handleSearchTextChange,
+  setFilteredProducts,
 }) {
+  const searchMenuRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        searchMenuRef.current &&
+        !searchMenuRef.current.contains(event.target)
+      ) {
+        setSearchText("");
+        setFilteredProducts([]);
+      }
+    };
+
+    document.addEventListener("click", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, [searchMenuRef, setSearchText, setFilteredProducts]);
+
   return (
-    <div className="lg:flex hidden">
+    <div ref={searchMenuRef} className="lg:flex hidden">
       <input
         type="text"
         className="w-72 relative h-11 p-2 pl-12 font-cabin mt-0.5 text-gray-900 border border-gray-500 rounded-full hover:border-none focus:border-blue-50"
@@ -26,14 +49,21 @@ export default function SearchMenu({
           <h5 className="font-inter  uppercase "> Products Related </h5>
           <ul>
             {filteredProducts.map((product) => (
-              <Link href={`/product/${product._id}`} key={product._id}>
+              <Link
+                onClick={() => {
+                  setSearchText("");
+                  setFilteredProducts("");
+                }}
+                href={`/product/${product._id}`}
+                key={product._id}
+              >
                 <li className=" my-2 flex gap-4      mb-2  ">
                   <Image
-                    width={80}
-                    height={80}
-                    className="border "
+                    width={84}
+                    height={84}
+                    className="border object-cover "
                     src={product.images[0]}
-                    alt=""
+                    alt=" "
                   />
                   <div>
                     <p className="mt-2 text-[1rem] line-clamp-1 text-gray-900  font-poppins">
@@ -55,7 +85,7 @@ export default function SearchMenu({
                         </span>
                       ) : (
                         <>
-                          <span className="   text-[1.05rem]   font-poppins tracking-wide mt-0.5 lg:mt-1">
+                          <span className="   text-[1.05rem]  opacity-95  font-poppins tracking-wide mt-0.5 lg:mt-1">
                             Rs {product.price.toFixed(2)}
                           </span>
                           <div className="w-10 h-5  "> </div>

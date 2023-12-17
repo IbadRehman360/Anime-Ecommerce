@@ -16,7 +16,7 @@ function Cliently({ navigation }) {
       <div className="flex h-full space-x-10">
         {navigation.categories.map((category) => (
           <Popover key={category.name} className="flex">
-            {({ open }) => (
+            {({ open, close }) => (
               <>
                 <div className="relative flex">
                   <Popover.Button
@@ -41,7 +41,7 @@ function Cliently({ navigation }) {
                   leaveFrom="opacity-100"
                   leaveTo="opacity-0"
                 >
-                  <Popover.Panel className="absolute inset-x-0 top-full text-sm  text-gray-500">
+                  <Popover.Panel className="absolute inset-x-0 top-full text-sm border-b text-gray-500">
                     <div className="relative z-20 rounded-sm bg-white">
                       <div className="mx-auto max-w-7xl px-8 ">
                         <div className="grid grid-cols-3  gap-y-10  pb-6 pt-8">
@@ -56,8 +56,11 @@ function Cliently({ navigation }) {
                                 </p>
                                 <ul
                                   role="list"
+                                  onClick={() => {
+                                    close();
+                                  }}
                                   aria-labelledby={`${section.name}-heading`}
-                                  className="mt-6 space-y-6 sm:mt-4 sm:space-y-4"
+                                  className="mt-6 text-[0.92rem] space-y-6 sm:mt-4 sm:space-y-4"
                                 >
                                   {section.items.map((item) => (
                                     <li key={item.name} className="flex">
@@ -73,10 +76,15 @@ function Cliently({ navigation }) {
                               </div>
                             ))}
                           </div>
-                          <div className="row-start-1 grid grid-cols-2          gap-x-8 text-sm">
+                          <div className="row-start-1 grid grid-cols-2 gap-x-8 text-sm">
                             {category.featured.map((item) => (
                               <div key={item.name} className="col-span-1">
-                                <div className="aspect-w-1 aspect-h-1 rounded-lg relative bg-gray-100 overflow-hidden   flex items-center justify-center">
+                                <div
+                                  onClick={() => {
+                                    close();
+                                  }}
+                                  className="aspect-w-1 aspect-h-1 rounded-lg relative bg-gray-100 overflow-hidden   flex items-center justify-center"
+                                >
                                   <Image
                                     src={item.imageSrc}
                                     alt={item.imageAlt}

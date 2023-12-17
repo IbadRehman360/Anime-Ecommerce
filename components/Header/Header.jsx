@@ -47,7 +47,7 @@ var navigation = {
       featured: [
         {
           name: "View All Accessories",
-          href: "https://www.instagram.com/pakistani_senpai_merch ",
+          href: "/category/accessories",
           imageSrc:
             "https://m.media-amazon.com/images/I/61GBHLWoreL._AC_SX679_.jpg",
           imageAlt:
@@ -58,7 +58,7 @@ var navigation = {
         },
         {
           name: "For Customized Order",
-          href: "https: //www.facebook.com/Pakistanisenpaimerch",
+          href: "https://www.instagram.com/pakistani_senpai_merch",
           imageSrc: "/assets/Des/1.jpeg",
           imageAlt:
             "Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees.",
