@@ -9,8 +9,9 @@ function InputForm({ control }) {
       <h2 className="text-xl    font-medium text-gray-900">
         Shipping information
       </h2>
-      <div className="mt-4 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-4">
+      <div className="mt-4  grid grid-cols-1 gap-y-5 sm:grid-cols-2 sm:gap-x-4">
         <FormInput
+          id="first_name"
           label="First name"
           name="first_name"
           type="text"
@@ -23,6 +24,7 @@ function InputForm({ control }) {
           <FormInput
             label="Last name"
             name="last_name"
+            id="last_name"
             type="text"
             autoComplete="family-name"
             rules={{ required: "Last name is required" }}
@@ -35,6 +37,7 @@ function InputForm({ control }) {
             label="Address"
             name="address"
             type="text"
+            id="address"
             autoComplete="street-address"
             rules={{ required: "Address is required" }}
             control={control}
@@ -46,6 +49,7 @@ function InputForm({ control }) {
             label="Apartment, suite, etc."
             name="apartment"
             type="text"
+            id="apartment"
             autoComplete="street-address"
             rules={{ required: "Apartment is required" }}
             control={control}
@@ -55,6 +59,7 @@ function InputForm({ control }) {
         <div>
           <FormInput
             label="City"
+            id="city"
             name="city"
             type="text"
             autoComplete="address-level2"
@@ -67,6 +72,7 @@ function InputForm({ control }) {
           <FormInput
             label="Country"
             name="country"
+            id={"country"}
             type="select"
             autoComplete="country-name"
             rules={{ required: "Country is required" }}
@@ -79,9 +85,10 @@ function InputForm({ control }) {
         <div>
           <div className="sm:col-span-2">
             <FormInput
-              label="Phone Number (Primary required)"
+              label="Phone Number (Required)"
               name="phone"
               type="number"
+              id="phone"
               autoComplete="tel"
               rules={{
                 required: "Primary phone number is required",
@@ -93,9 +100,10 @@ function InputForm({ control }) {
         <div>
           <div className="sm:col-span-2">
             <FormInput
-              label="Phone Number (Secondary optional)"
+              label="Phone Number (Optional)"
               name="secondPhone"
               type="number"
+              id={"secondPhone"}
               autoComplete="tel"
               rules={{}}
               control={control}

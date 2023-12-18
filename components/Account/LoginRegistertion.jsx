@@ -336,7 +336,7 @@ function LoginRegistertion() {
           <p className="text-center  text-sm lg:text-[1rem] mt-2 mb-6 font-medium text-gray-500">
             Please enter your e-mail and password:
           </p>
-          {isCurrently ? <Login /> : <Register />}
+          <div className="w-full">{isCurrently ? <Login /> : <Register />}</div>
         </div>
       </div>
     </div>

@@ -1,4 +1,5 @@
 "use client";
+import toast from "react-hot-toast";
 
 import { useState } from "react";
 import ReviewForm from "./ReviewForm";
@@ -12,6 +13,7 @@ export default function WriteReview({ reviews, product }) {
   const handleWriteReviewClick = () => {
     setShowReviewForm(!showReviewForm);
   };
+
   return (
     <div className="    border py-8 px-5   lg:mt-10   text-black pb-8   middle none center        font-sans text-xs font-bold uppercase     focus:shadow-none active:opacity-[0.9] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none rounded-lg bg-white ">
       {!showReviewForm && (
@@ -46,12 +48,12 @@ export default function WriteReview({ reviews, product }) {
                 Write a review
               </Link>
             ) : (
-              <Link
-                href={"/login"}
+              <button
+                onClick={handleWriteReviewClick}
                 className="border-black border     opacity-95  text-black  h-8 text-center items-center justify-center flex  md:h-9 mt-4 md:mt-0 w-full md:w-40 p-1 rounded"
               >
                 Write a review
-              </Link>
+              </button>
             )}
           </div>
         </>

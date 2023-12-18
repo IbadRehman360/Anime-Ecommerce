@@ -36,8 +36,9 @@ const ReviewForm = ({ product, reviews, setShowReviewForm }) => {
 
       if (response.ok) {
         const responseData = await response.json();
-        console.log("Review submitted successfully:", responseData);
+        console.log("Review submitted successfully ");
         setShowReviewForm(false);
+        window.location.reload();
       } else {
         console.error("Error submitting review:", response.statusText);
       }

@@ -37,10 +37,11 @@ export default function Login() {
 
   return (
     <div className=" ">
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4   ">
         <InputField
           name="email"
           label="E-mail"
+          id="email"
           control={control}
           rules={{
             required: "Email is required",
@@ -55,6 +56,7 @@ export default function Login() {
 
         <InputField
           name="password"
+          id="password"
           control={control}
           label="Password"
           rules={{ required: "Password is required" }}
@@ -76,12 +78,13 @@ export default function Login() {
                 <>
                   <input
                     {...field}
+                    id="checkbox"
                     type="checkbox"
-                    className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                    className="h-4 w-4 rounded border-gray-300     "
                   />
                   <label
-                    htmlFor="remember-me"
-                    className="ml-3 text-gray-700 text-[0.85rem] hover:text-gray-500"
+                    htmlFor="checkbox"
+                    className="ml-3 -mt-0.5 text-gray-700 text-[0.85rem] hover:text-gray-500"
                   >
                     Remember me
                   </label>

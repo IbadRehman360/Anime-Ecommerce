@@ -1,18 +1,12 @@
+"use client";
 import { classNames } from "@app/product/[id]/page";
 import { RadioGroup } from "@headlessui/react";
+import SizeChart from "./SizeChart";
 
 function ProductSizes({ product, selectedSize, setSelectedSize, sizeNames }) {
   return (
     <div className="mt-6">
-      <div className="flex items-center justify-between">
-        <h3 className="text-sm font-semibold text-gray-700 font-inter">Size</h3>
-        <a
-          href="#"
-          className="text-sm font-medium text-indigo-600 hover:text-indigo-500"
-        >
-          Size Chart &gt;
-        </a>
-      </div>
+      <SizeChart />
       <RadioGroup
         value={selectedSize}
         onChange={setSelectedSize}

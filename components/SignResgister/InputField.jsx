@@ -1,25 +1,11 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 import { Controller } from "react-hook-form";
+import styles from "./styles.module.css";
 
 const InputField = ({ label, id, name, control, error, type = "text" }) => {
-  const [isLabelUp, setIsLabelUp] = useState(false);
-  const inputRef = useRef(null);
-
-  const handleInputClick = () => {
-    setIsLabelUp(true);
-  };
-
-  const handleInputBlur = () => {
-    if (inputRef.current) {
-      if (!inputRef.current.value) {
-        setIsLabelUp(false);
-      }
-    }
-  };
-
   return (
-    <div className="mt-2">
-      <div className="relative">
+    <div className={`${styles.root} ${styles.box} w-full`}>
+      <div className={styles.input__wrapper}>
         <Controller
           name={name}
           control={control}
@@ -27,32 +13,22 @@ const InputField = ({ label, id, name, control, error, type = "text" }) => {
             <input
               {...field}
               id={id}
-              ref={(el) => {
-                field.ref(el);
-                inputRef.current = el;
-              }}
-              onClick={handleInputClick}
-              onBlur={handleInputBlur}
               type={type}
-              autocomplete="false"
-              readonly
-              className="block w-full py-3 px-3 border border-gray-300 rounded-md placeholder-none sm:text-sm"
+              title="Minimum 6 characters, at least 1 Alphabet and 1 Number"
+              placeholder={label}
+              readOnly
+              className={`${styles.input__field}    block w-full  py-3 px-3 `}
             />
           )}
         />
         <label
           htmlFor={id}
-          autocomplete="autocomplete_off_randString"
-          className={`absolute left-3 transform ${
-            isLabelUp
-              ? "-top-2 text-xs tracking-wider bg-white px-1"
-              : "bottom-3 block text-sm tracking-wider leading-6 text-gray-900"
-          }`}
+          className={`  ${styles.input__label} font-poppins   -mt-3.5  `}
         >
           {label}
         </label>
       </div>
-      {error && <p className="text-red-600">{error.message}</p>}
+      {error && <p className={styles["text-red-600"]}>{error.message}</p>}
     </div>
   );
 };

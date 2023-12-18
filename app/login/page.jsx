@@ -7,8 +7,13 @@ export default async function Example() {
   const session = await getServerSession();
   if (session) redirect("/");
 
-  return <LoginRegistertion />;
+  return (
+    <div>
+      <LoginRegistertion />
+    </div>
+  );
 }
+
 {
   /* <div className="relative min-h-screen flex">
   <div className="flex flex-col sm:flex-row items-center md:items-start sm:justify-center md:justify-start flex-auto min-w-0 bg-white">

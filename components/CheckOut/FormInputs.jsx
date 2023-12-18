@@ -1,12 +1,18 @@
 import { useForm, Controller } from "react-hook-form";
+import styles from "../SignResgister/styles.module.css";
 
-const FormFields = ({ label, name, type, autoComplete, rules, control }) => {
+const FormFields = ({
+  label,
+  name,
+  type,
+  autoComplete,
+  rules,
+  control,
+  id,
+}) => {
   return (
-    <div>
-      <label htmlFor={name} className="block text-sm font-medium text-gray-700">
-        {label}
-      </label>
-      <div className="mt-2.5 tracking-wide">
+    <div className={`${styles.root} ${styles.box} w-full`}>
+      <div className={styles.input__wrapper}>
         <Controller
           name={name}
           control={control}
@@ -14,13 +20,24 @@ const FormFields = ({ label, name, type, autoComplete, rules, control }) => {
           render={({ field }) => (
             <input
               {...field}
+              id={id}
               type={type}
-              id={name}
+              rules={rules}
+              title="Minimum 6 characters, at least 1 Alphabet and 1 Number"
+              placeholder={label}
+              value={label === "Country" ? "Pakistan" : ""}
+              readOnly
               autoComplete={autoComplete}
-              className="block w-full py-3 pl-2  border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              className={`${styles.input__field}    block w-full  py-3 px-3 `}
             />
           )}
         />
+        <label
+          htmlFor={id}
+          className={`  ${styles.input__label} font-poppins   -mt-3.5  `}
+        >
+          {label}
+        </label>
       </div>
     </div>
   );

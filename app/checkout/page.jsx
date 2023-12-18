@@ -104,7 +104,7 @@ export default function Checkout() {
   };
 
   return (
-    <div className="bg-gray-50">
+    <div className=" ">
       <main className="max-w-7xl mx-auto pt-16 pb-24 px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl mx-auto lg:max-w-none">
           <h1 className="sr-only">Checkout</h1>
@@ -123,6 +123,7 @@ export default function Checkout() {
                     label="Email address"
                     name="email_address"
                     type="email"
+                    id="email_address"
                     autoComplete="email"
                     rules={{
                       required: "Email is required",

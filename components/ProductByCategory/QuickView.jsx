@@ -8,6 +8,7 @@ import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { addItem, selectCartItems } from "@app/Global/Features/cartSlice";
 import toast from "react-hot-toast";
+import SizeChart from "@components/ProductPreview/SizeChart";
 
 export default function QuickView({ product, isOpen, onClose }) {
   const [selectedColor, setSelectedColor] = useState();
@@ -224,17 +225,7 @@ export default function QuickView({ product, isOpen, onClose }) {
                         )}
                         {sizeNames.length ? (
                           <div className="mt-4 mb-6">
-                            <div className="flex items-center justify-between">
-                              <h4 className="text-sm font-medium text-gray-900">
-                                Size
-                              </h4>
-                              <a
-                                href="#"
-                                className="text-sm font-medium  text-gray-700"
-                              >
-                                Size guide
-                              </a>
-                            </div>
+                            <SizeChart QuickView={true} />
 
                             <RadioGroup
                               value={selectedSize}
