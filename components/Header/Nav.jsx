@@ -137,21 +137,21 @@ function Nav({ setOpen, signOut, session, cartItems, isCartOpen }) {
               <button
                 type="button"
                 onClick={() => signOut()}
-                className="hidden lg:flex border-l text-sm     uppercase pl-5 lg:items-center        font-roboto hover:text-gray-600 tracking-wide lg:justify-end lg:space-x-6"
+                className="hidden lg:flex border-l text-sm   mt-1   uppercase pl-5 lg:items-center          font-roboto hover:text-gray-400 tracking-wide lg:justify-end lg:space-x-6"
               >
-                <FaSignOutAlt className="mr-2" /> logout
+                <FaSignOutAlt className="mr-2 mb-0.5" /> logout
               </button>
             )}
             <Link href={"/track-order"} className=" hidden lg:pl-4 lg:flex">
               <LiaBoxOpenSolid
-                className="h-7 w-7  hide-using-css  flex-shrink-0 mr-2 ml-4 mb-0.5    text-gray-400 group-hover:text-gray-500"
+                className="h-7 w-7  hide-using-css  flex-shrink-0 mr-2 ml-4     text-gray-400 group-hover:text-gray-500"
                 aria-hidden="true"
               />
             </Link>
             <div className="ml-3 flow-root lg:ml-2">
               <Link
                 href={"/cart"}
-                className="group -mt-[3px]  lg:ml-4  flex items-center p-21"
+                className="group    lg:ml-4  flex items-center p-21"
               >
                 <ShoppingBagIcon
                   className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"

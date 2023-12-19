@@ -45,7 +45,6 @@ const cartSlice = createSlice({
                 }
             }
         },
-
         increaseQuantity: (state, action) => {
             const { product, size, color, quantity } = action.payload;
             const item = state.items.find(
@@ -78,8 +77,6 @@ const cartSlice = createSlice({
                 }
             }
         },
-
-
         decreaseQuantity: (state, action) => {
             const { product, size, color } = action.payload;
             const item = state.items.find(
@@ -92,34 +89,29 @@ const cartSlice = createSlice({
             if (item && item.quantity > 1) {
                 item.quantity -= 1;
             }
-        }
+        },
+        clearCart: (state) => {
+            state.items = [];
+        },
+        updateQuantity: (state, action) => {
+            const { product, newQuantity, size, color } = action.payload;
+            console.log(product, color, size, newQuantity)
+            const updatedItems = state.items.map(item => {
+                if (
+                    item.product._id === product.product._id &&
+                    item.color === color &&
+                    item.size === size
+                ) {
+
+                    return { ...item, quantity: newQuantity };
+                }
+                return item;
+            });
+
+            return { ...state, items: updatedItems };
+        },
     },
-
-
-    updateQuantity: (state, action) => {
-        const { product, newQuantity, size, color } = action.payload;
-
-        const updatedItems = state.items.map(item => {
-            if (
-                item.product._id === product.product._id &&
-                item.color === color &&
-                item.size === size
-            ) {
-
-                return { ...item, quantity: newQuantity };
-            }
-            return item;
-        });
-
-        return { ...state, items: updatedItems };
-    },
-
-
-    clearCart: (state) => {
-        state.items = [];
-    },
-},
-);
+});
 
 export const { addItem, removeItem, increaseQuantity, decreaseQuantity, clearCart, updateQuantity } = cartSlice.actions;
 export const selectCartItems = (state) => state.cart.items;

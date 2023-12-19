@@ -70,12 +70,11 @@ function InputForm({ control }) {
 
         <div>
           <FormInput
-            label="Country"
+            label="Pakistan"
             name="country"
             id={"country"}
             type="select"
             autoComplete="country-name"
-            rules={{ required: "Country is required" }}
             control={control}
           >
             <option value="Pakistan">Pakistan</option>
@@ -85,7 +84,7 @@ function InputForm({ control }) {
         <div>
           <div className="sm:col-span-2">
             <FormInput
-              label="Phone Number (Required)"
+              label="Phone Number (Required +92)"
               name="phone"
               type="number"
               id="phone"
@@ -100,7 +99,7 @@ function InputForm({ control }) {
         <div>
           <div className="sm:col-span-2">
             <FormInput
-              label="Phone Number (Optional)"
+              label="Phone Number (Optional +92)"
               name="secondPhone"
               type="number"
               id={"secondPhone"}

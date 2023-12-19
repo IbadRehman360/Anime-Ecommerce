@@ -3,24 +3,19 @@ import { QuestionMarkCircleIcon, TrashIcon } from "@heroicons/react/24/outline";
 import { useProductUtils } from "@utils/productUtils";
 import { useSelector } from "react-redux";
 import Image from "next/image";
-function OrderSummary({ selectedDeliveryMethod, isSubmitting }) {
-  const cartItems = useSelector(selectCartItems);
+import { useState } from "react";
+function OrderSummary({
+  isSubmitting,
+  subtotal,
+  shipping,
+  totalAmount,
+  isCartEmpty,
+  cartItems,
+  tax,
+}) {
   const { handleRemoveItem, handleUpdateQuantity } = useProductUtils();
-  const subtotal = cartItems.reduce((total, product) => {
-    const price = product.product.discount_price || product.product.price;
-    const quantity = product.quantity || 1;
-    return total + price * quantity;
-  }, 0);
-  const shippingCost = selectedDeliveryMethod.price;
-  const taxRate = 0.08;
-
-  const shipping = shippingCost;
-  const tax = subtotal * taxRate;
-
-  const totalAmount = subtotal + shipping + tax;
-
-  const isCartEmpty = cartItems.length === 0;
-
+  const [shippingHover, setShippingHover] = useState(false);
+  const [taxHover, setTaxHover] = useState(false);
   return (
     <div className="mt-10 lg:mt-0">
       <h2 className="text-lg font-medium text-gray-900">Order summary</h2>
@@ -119,7 +114,9 @@ function OrderSummary({ selectedDeliveryMethod, isSubmitting }) {
               <span>Shipping estimate</span>
               <a
                 href="#"
-                className="ml-2 flex-shrink-0 text-gray-400 hover:text-gray-500"
+                className="ml-2 flex-shrink-0 text-gray-400 hover:text-gray-500 relative"
+                onMouseEnter={() => setShippingHover(true)}
+                onMouseLeave={() => setShippingHover(false)}
               >
                 <span className="sr-only">
                   Learn more about how shipping is calculated
@@ -128,6 +125,13 @@ function OrderSummary({ selectedDeliveryMethod, isSubmitting }) {
                   className="h-5 w-5"
                   aria-hidden="true"
                 />
+                {shippingHover && (
+                  <div className="absolute bg-gray-50 border z-20 text-gray-700 font-poppins text-xs   bottom-6 w-48 p-2 rounded-lg mt-2">
+                    Choose between Standard and Express shipping for varying
+                    costs. Select the best option for your delivery needs on
+                    checkout.
+                  </div>
+                )}
               </a>
             </dt>
             <dd className="text-sm font-medium text-gray-800">
@@ -139,7 +143,9 @@ function OrderSummary({ selectedDeliveryMethod, isSubmitting }) {
               <span>Tax estimate</span>
               <a
                 href="#"
-                className="ml-2 flex-shrink-0 text-gray-400 hover:text-gray-500"
+                className="ml-2 flex-shrink-0 text-gray-400 hover:text-gray-500 relative"
+                onMouseEnter={() => setTaxHover(true)}
+                onMouseLeave={() => setTaxHover(false)}
               >
                 <span className="sr-only">
                   Learn more about how tax is calculated
@@ -148,6 +154,12 @@ function OrderSummary({ selectedDeliveryMethod, isSubmitting }) {
                   className="h-5 w-5"
                   aria-hidden="true"
                 />
+                {taxHover && (
+                  <div className="absolute bg-gray-50 border z-20 text-gray-700 font-poppins text-xs   bottom-6 w-48 p-2 rounded-lg mt-2">
+                    Tax is estimated based on the total amount of your selected
+                    products.
+                  </div>
+                )}
               </a>
             </dt>
             <dd className="text-sm font-medium text-gray-900">

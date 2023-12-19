@@ -20,7 +20,7 @@ const DisplayImage = ({
                 selectedColor || selectedSize
                   ? "lg:h-[650px]    "
                   : "lg:h-[560px]  "
-              }  h-auto   w-[1200px]  p-1    border-gray-200 object-fill`}
+              }  h-auto   w-[1200px]  p-0.5    border-gray-200 object-fill`}
               alt="Product Image"
               width={400}
               height={400}

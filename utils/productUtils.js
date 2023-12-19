@@ -16,6 +16,7 @@ export const useProductUtils = () => {
     };
 
     const handleUpdateQuantity = (product, newQuantity, size, color) => {
+        console.log(product, color, size, newQuantity)
         dispatch(updateQuantity({ product, newQuantity, size, color }));
     };
     const isValidPhoneNumber = (value) => {

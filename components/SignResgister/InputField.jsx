@@ -16,7 +16,6 @@ const InputField = ({ label, id, name, control, error, type = "text" }) => {
               type={type}
               title="Minimum 6 characters, at least 1 Alphabet and 1 Number"
               placeholder={label}
-              readOnly
               className={`${styles.input__field}    block w-full  py-3 px-3 `}
             />
           )}

@@ -20,10 +20,18 @@ const orderSchema = new Schema({
         ref: 'User',
     },
     status: {
-        type: String,
-        required: true,
-        enum: ['Pending', 'Shipped', 'Delivered', 'Canceled', "Approved"],
+        type: Number,
+        default: 0,
     },
+    total: {
+        type: Number,
+        required: true,
+    },
+    subtotal: {
+        type: Number,
+        required: true,
+    }
+
 }, { timestamps: true });
 
 const Order = models.Order || model('Order', orderSchema);

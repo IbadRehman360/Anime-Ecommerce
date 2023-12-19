@@ -168,7 +168,7 @@ export default function Footer() {
           <div className="col-span-2 mt-4 sm:w-full  sm:mt-0 md:flex md:flex-col lg:flex">
             <div className="w-full flex-col sm:flex">
               <span className="uppercase  sm:mr-28 md:mr-0   font-semibold font-poppins text-[0.98rem] text-gray-700 mb-1">
-                Want style Ideas and Treats?
+                Want Free Gift and Treats?
               </span>
               <div className="form-control">
                 <label className="label my-1">
@@ -190,9 +190,9 @@ export default function Footer() {
             </div>
           </div>
         </footer>
-        <footer className="footer footer-center border-t border-gray-300   font-poppins   bg-gray-100  p-7 text-gray-900">
+        <footer className="footer footer-center border-t border-gray-300   font-poppins  text-sm  bg-gray-100  p-7 text-gray-900">
           <div>
-            <p>Copyright © 2023 - All rights reserved by SenpaiMerch Ltd</p>
+            <p>Copyright © 2024 - All rights reserved by SenpaiMerch Ltd</p>
           </div>
         </footer>
       </div>

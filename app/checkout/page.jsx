@@ -37,6 +37,21 @@ export default function Checkout() {
   );
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  const subtotal = cartItems.reduce((total, product) => {
+    const price = product.product.discount_price || product.product.price;
+    const quantity = product.quantity || 1;
+    return total + price * quantity;
+  }, 0);
+  const shippingCost = selectedDeliveryMethod.price;
+  const taxRate = 0.08;
+
+  const shipping = shippingCost;
+  const tax = subtotal * taxRate;
+
+  const totalAmount = subtotal + shipping + tax;
+
+  const isCartEmpty = cartItems.length === 0;
+
   const onSubmit = async (data) => {
     try {
       setIsSubmitting(true);
@@ -51,15 +66,16 @@ export default function Checkout() {
           selectedDeliveryMethod,
           cartItems,
           session,
+          totalAmount,
+          subtotal,
         }),
       });
 
       if (orderResponse.ok) {
         const { _id: trackingId } = await orderResponse.json();
-        dispatch(clearCart());
 
         const contactResponse = await fetch("/api/contact", {
-          body: JSON.stringify(data),
+          body: JSON.stringify({ data, trackingId, cartItems, totalAmount }),
           method: "POST",
           headers: { "Content-Type": "application/json" },
         });
@@ -146,7 +162,12 @@ export default function Checkout() {
             </div>
             <OrderSummary
               isSubmitting={isSubmitting}
-              selectedDeliveryMethod={selectedDeliveryMethod}
+              subtotal={subtotal}
+              shipping={shipping}
+              totalAmount={totalAmount}
+              tax={tax}
+              isCartEmpty={isCartEmpty}
+              cartItems={cartItems}
             />
           </form>
         </div>

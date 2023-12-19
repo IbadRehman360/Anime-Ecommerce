@@ -9,7 +9,7 @@ export const POST = async (req, res) => {
     await connectToDB();
     const res_data = await req.json();
 
-    const { selectedDeliveryMethod, cartItems, data, session } = res_data;
+    const { selectedDeliveryMethod, cartItems, data, session, totalAmount, subtotal } = res_data;
     const {
       email_address,
       first_name,
@@ -21,7 +21,6 @@ export const POST = async (req, res) => {
       phone,
       secondPhone,
     } = data;
-
     const newCustomer = new Customer({
       email_address,
       first_name,
@@ -50,19 +49,19 @@ export const POST = async (req, res) => {
       const user = await User.findOne({ email: session.user.email });
       user_id = user._id;
     }
-
+    console.log(totalAmount, subtotal)
     const newOrder = new Order({
       customer: customer._id,
       items: savedOrderItems.map((item) => item._id),
       delivery: selectedDeliveryMethod.delivery,
       user_id: user_id,
-      status: "Pending",
+      total: totalAmount,
+      subtotal: subtotal
     });
 
     const order = await newOrder.save();
 
     for (const item of cartItems) {
-      console.log(item.product._id, item.quantity);
       const result = await Product.findByIdAndUpdate(item.product._id, {
         $inc: { stock_quantity: -item.quantity },
       });
