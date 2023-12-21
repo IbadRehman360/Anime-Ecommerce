@@ -169,14 +169,14 @@ function Nav({ setOpen, signOut, session, cartItems, isCartOpen }) {
       </div>
       {mbSearch && (
         <div
-          class="  w-full border  lg:hidden flex  bg-white shadow-xl"
+          class=" z-40   w-full border   lg:hidden flex     "
           id="search-content"
         >
           <MagnifyingGlassIcon
             className="  mt-4 ml-3 mr-2     font-bold  h-5 w-5  text-gray-900"
             aria-hidden="true"
           />
-          <div class="     py-2    w-full    px-0 text-black">
+          <div class=" z-40    py-2  bg-white   w-full    px-0 text-black">
             <input
               id="searchfield"
               type="search"
@@ -188,24 +188,24 @@ function Nav({ setOpen, signOut, session, cartItems, isCartOpen }) {
             />
           </div>
           {filteredProducts.length > 0 && (
-            <div className=" grid     text-black   absolute     w-full  top-[11.45rem]  rounded-b-sm   pt-4  pl-2      cursor-pointer z-50   gap-4     divide-y shadow   overflow-y-auto bg-white ...">
-              <h5 className="font-inter  uppercase text-sm">
+            <div className=" grid  z-40    text-black   absolute     border w-full md:top-[11.5rem] top-[10rem]  rounded-b-sm      pl-2      cursor-pointer         divide-y shadow   overflow-y-auto bg-white ...">
+              <h5 className="font-inter py-4 bg-gray-50  opacity-80    uppercase text-sm">
                 {" "}
                 Products Related{" "}
               </h5>
               <ul>
                 {filteredProducts.map((product) => (
                   <Link href={`/product/${product._id}`} key={product._id}>
-                    <li className=" flex gap-4  border-b  py-2    pb-2  ">
+                    <li className=" pr-4 flex gap-4  border-b  py-2    pb-2  ">
                       <Image
                         width={80}
                         height={80}
                         alt=""
                         src={product.images[0]}
-                        className="rounded-md"
+                        className="rounded-md border p-0.5"
                       />
                       <div>
-                        <p className="mt-2 text-[0.9rem]  line-clamp-3  font-poppins">
+                        <p className="mt-2 text-[0.94rem]  line-clamp-3  font-poppins">
                           {" "}
                           {product.title}
                         </p>

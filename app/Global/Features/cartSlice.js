@@ -29,23 +29,6 @@ const cartSlice = createSlice({
             }
         },
         increaseQuantity: (state, action) => {
-            const { product, size, color } = action.payload;
-            const item = state.items.find(
-                (item) =>
-                    item.product._id === product._id &&
-                    item.size === size &&
-                    item.color === color
-            );
-
-            if (item) {
-                if (item.quantity < product.stock_quantity) {
-                    item.quantity += 1;
-                } else {
-                    console.warn('Cannot increase quantity, stock limit reached.');
-                }
-            }
-        },
-        increaseQuantity: (state, action) => {
             const { product, size, color, quantity } = action.payload;
             const item = state.items.find(
                 (item) =>
@@ -110,9 +93,36 @@ const cartSlice = createSlice({
 
             return { ...state, items: updatedItems };
         },
+        updateCartItems: (state, action) => {
+            const { productId, quantity } = action.payload;
+            console.log("Hi")
+            const existingCartItem = state.cartItems.find(item => item.product._id === productId);
+
+            if (existingCartItem) {
+                existingCartItem.quantity = quantity;
+            } else {
+                state.cartItems.push({ product: { _id: productId }, quantity });
+            }
+        },
+        removeItemsWithZeroQuantity: (state, action) => {
+            const { productId } = action.payload;
+            const updatedCartItems = state.items.filter(item => item.product._id !== productId);
+            state.items = updatedCartItems;
+        },
+
     },
 });
 
-export const { addItem, removeItem, increaseQuantity, decreaseQuantity, clearCart, updateQuantity } = cartSlice.actions;
+
+export const {
+    addItem,
+    removeItem,
+    increaseQuantity,
+    decreaseQuantity,
+    clearCart,
+    updateQuantity,
+    updateCartItems,
+    removeItemsWithZeroQuantity
+} = cartSlice.actions;
 export const selectCartItems = (state) => state.cart.items;
 export default cartSlice.reducer;

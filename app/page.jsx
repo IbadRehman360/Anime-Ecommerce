@@ -50,7 +50,7 @@ export default async function Home() {
 
 async function getProductsData() {
   const response = await fetch(`${process.env.NEXTAUTH_URL}/api/products`, {
-    cache: "force-cache",
+    next: { revalidate: 600 },
   });
 
   if (!response.ok) {

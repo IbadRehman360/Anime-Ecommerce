@@ -8,7 +8,7 @@ import { classNames } from "@app/product/[id]/page";
 import { signOut } from "next-auth/react";
 
 function HeaderTransition({ setOpen, open, navigation, session }) {
-  const [hoveredPage, setHoveredPage] = useState(null);
+  const [options, setOptions] = useState(null);
   return (
     <Transition.Root show={open} as={Fragment}>
       <Dialog as="div" className="relative  z-20 lg:hidden" onClose={setOpen}>
@@ -143,63 +143,66 @@ function HeaderTransition({ setOpen, open, navigation, session }) {
                 </Tab.Panels>
               </Tab.Group>
 
-              <div className="space-y-6 border-t border-gray-200   text-gray-700 px-4   py-6">
-                {navigation.category.map((page) => (
+              <div className="space-y-6 border-t border-gray-200   text-gray-700">
+                {navigation.category.map((page, index) => (
                   <div
                     key={page.name}
-                    className="relative flow-root          bg-white text-sm    whitespace-nowrap tracking-wider hover:text-gray-800"
-                    onMouseEnter={() => setHoveredPage(page)}
-                    onMouseLeave={() => setHoveredPage(null)}
+                    onClick={() =>
+                      setOptions((prev) =>
+                        prev === page.name ? null : page.name
+                      )
+                    }
+                    className={`flow-root bg-white text-sm whitespace-nowrap tracking-wider hover:text-gray-800`}
                   >
                     <div />
-                    <Link href={"#"} className="flex text-sm   items-center">
+                    <Link
+                      href={"#"}
+                      className={`flex text-sm ${
+                        index === 0 ? "pt-6" : "pb-6"
+                      } px-4 items-center`}
+                    >
                       {page.icon}
-
-                      <span className="ml-4   font-opensans ">{page.name}</span>
+                      <span className="ml-4 font-opensans">{page.name}</span>
                     </Link>
-                    {hoveredPage === page && page.list && (
-                      <div className="absolute  z-50   mt-5 border-t pt-4  pr-8 pb-5 border border-gray-300 font-poppins  bg-white space-y-3">
+
+                    {options === page.name && (
+                      <div
+                        key={page.name}
+                        className="border mt-4    border-gray-300 font-poppins bg-white space-y-3"
+                      >
                         {page.list.map((item) => (
-                          <div
-                            href=""
+                          <Link
                             key={item.id}
-                            className="ml-6   text-black hover:text-gray-800"
+                            href={item.id}
+                            onClick={() => setOpen(false)}
                           >
-                            {item.name}
-                          </div>
+                            <div className="ml-6 mt-4 mb-4 text-[0.98rem] font-poppins text-gray-700 hover:text-gray-800">
+                              {item.name}
+                            </div>
+                          </Link>
                         ))}
                       </div>
                     )}
                   </div>
                 ))}
               </div>
+
               <div className="space-y-6 border-t border-gray-200   text-gray-700 px-4   py-6">
                 {navigation.pages.map((page) => (
                   <div
                     key={page.name}
                     className="relative flow-root          bg-white text-sm    whitespace-nowrap tracking-wider hover:text-gray-800"
-                    onMouseEnter={() => setHoveredPage(page)}
-                    onMouseLeave={() => setHoveredPage(null)}
                   >
                     <div />
-                    <Link href={"#"} className="flex text-sm   items-center">
+                    <Link
+                      href={page.href}
+                      onClick={() => setOpen(false)}
+                      className="flex text-sm   items-center"
+                    >
                       {page.icon}
 
                       <span className="ml-4   font-opensans ">{page.name}</span>
                     </Link>
-                    {hoveredPage === page && page.list && (
-                      <div className="absolute  z-50   mt-5 border-t pt-4  pr-8 pb-5 border border-gray-300 font-poppins  bg-white space-y-3">
-                        {page.list.map((item) => (
-                          <div
-                            href=""
-                            key={item.id}
-                            className="ml-6   text-black hover:text-gray-800"
-                          >
-                            {item.name}
-                          </div>
-                        ))}
-                      </div>
-                    )}
                   </div>
                 ))}
               </div>
@@ -208,6 +211,7 @@ function HeaderTransition({ setOpen, open, navigation, session }) {
                   <div className="     lg:items-center font-satoshi tracking-wide lg:justify-end lg:space-x-6">
                     <Link
                       href="/login"
+                      onClick={() => setOpen(false)}
                       className="text-sm  text-gray-700 hover:text-gray-800 flex items-center"
                     >
                       <FaUser className="mr-4" />
@@ -223,6 +227,7 @@ function HeaderTransition({ setOpen, open, navigation, session }) {
                   <div className="     lg:items-center font-satoshi tracking-wide lg:justify-end lg:space-x-6">
                     <Link
                       href="/login"
+                      onClick={() => setOpen(false)}
                       className="text-sm   font-poppins text-black hover:text-gray-800 flex items-center"
                     >
                       <FaUser className="mr-4" />
@@ -243,7 +248,11 @@ function HeaderTransition({ setOpen, open, navigation, session }) {
               )}
 
               <div className="border-t pb-6  border-gray-200 px-4 py-6">
-                <Link href="#" className="-m-2 flex items-center p-2">
+                <Link
+                  href="#"
+                  onClick={() => setOpen(false)}
+                  className="-m-2 flex items-center p-2"
+                >
                   <Image
                     src="/assets/country.png"
                     alt=""

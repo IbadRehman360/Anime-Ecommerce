@@ -73,7 +73,7 @@ export default function Checkout() {
 
       if (orderResponse.ok) {
         const { _id: trackingId } = await orderResponse.json();
-
+        dispatch(clearCart());
         const contactResponse = await fetch("/api/contact", {
           body: JSON.stringify({ data, trackingId, cartItems, totalAmount }),
           method: "POST",

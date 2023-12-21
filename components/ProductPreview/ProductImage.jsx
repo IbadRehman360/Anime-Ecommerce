@@ -42,7 +42,7 @@ function ProductImage({ product, selectedColor, selectedSize }) {
         <div
           className={`       ${
             !selectedSize || !selectedColor
-              ? "absolute mt-3   hidden  z-10 "
+              ? "absolute  mt-3   hidden  z-10 "
               : "   lg:flex absolute mt-3 hidden     z-10"
           }   `}
         >
@@ -55,7 +55,7 @@ function ProductImage({ product, selectedColor, selectedSize }) {
         </div>
         <div
           className={`     
-             absolute  lg:hidden top-28 mt-2  right-2  z-10 
+             absolute  md:mt-8 lg:hidden top-28 mt-2  right-2  z-10 
           `}
         >
           <ProductMoreImage

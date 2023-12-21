@@ -32,6 +32,7 @@ export const POST = async (req, res) => {
       phone,
       secondPhone,
     });
+
     const customer = await newCustomer.save();
     const orderItems = cartItems.map((item) => ({
       product_id: item.product._id,

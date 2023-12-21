@@ -16,7 +16,7 @@ function ProductHighLights({ product }) {
           Product details
         </h3>
         <div className="font-poppins flex font-semibold pb-2 ">
-          {product.stock_quantity === 0 ? (
+          {product.stock_quantity <= 0 ? (
             <button
               className={`${buttonStyle.base} ${buttonStyle.outOfStock} hover:opacity-80  `}
             >
