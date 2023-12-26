@@ -35,20 +35,6 @@
   opacity: 0.15;
 } */
 
-::-webkit-scrollbar {
-  width: 0;
-  height: 0;
-  background: transparent;
-}
-
-/* Optional: You can style the thumb and track */
-::-webkit-scrollbar-thumb {
-  background: transparent;
-}
-
-::-webkit-scrollbar-track {
-  background: transparent;
-}
 @media screen and (min-width: 641px) {
   .img-hover-effect {
     transition: transform 0.5s ease-in-out, opacity 0.2s ease-in-out;

@@ -1,7 +1,7 @@
 import { connectToDB } from "../../../utils/database";
-import Review from "@models/review";
-import User from "@models/user";
-import Product from "@models/product";
+import Review from "@app/models/review";
+import User from "@app/models/user";
+import Product from "@app/models/product";
 
 export const POST = async (req, res) => {
   try {

@@ -1,8 +1,8 @@
 // import Product from "@models/product";
 // import Customer from "@models/customer";
 // import OrderItem from "@models/orderItems";
-import Order from "@models/order";
-import User from "@models/user";
+import Order from "@app/models/order";
+import User from "@app/models/user";
 import { connectToDB } from "@utils/database";
 export const GET = async (req, res) => {
   try {

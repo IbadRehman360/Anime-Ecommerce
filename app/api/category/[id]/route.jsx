@@ -1,6 +1,6 @@
-import AnimeCategory from "@models/animeCategory";
-import GeneralCategory from "@models/category";
-import Product from "@models/product";
+import AnimeCategory from "@app/models/animeCategory";
+import GeneralCategory from "@app/models/category";
+import Product from "@app/models/product";
 import { connectToDB } from "@utils/database";
 
 export const GET = async (request, response) => {

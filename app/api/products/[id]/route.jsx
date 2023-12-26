@@ -1,7 +1,7 @@
-import Category from "@models/category";
-import Product from "@models/product";
+import Category from "@app/models/category";
+import Product from "@app/models/product";
 import { connectToDB } from "@utils/database";
-import Review from "@models/review";
+import Review from "@app/models/review";
 
 export const GET = async (request, response) => {
   try {
