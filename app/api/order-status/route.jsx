@@ -1,7 +1,7 @@
-import Order from "@app/models/order";
-import Product from "@app/models/product";
-import Customer from "@app/models/customer";
-import OrderItem from "@app/models/orderItems";
+import Order from "@models/order";
+import Product from "@models/product";
+import Customer from "@models/customer";
+import OrderItem from "@models/orderItems";
 import { connectToDB } from "@utils/database";
 export const POST = async (request, response) => {
   try {

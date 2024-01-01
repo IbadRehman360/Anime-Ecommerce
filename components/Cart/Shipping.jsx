@@ -6,8 +6,8 @@ function Shipping({ products }) {
   const [taxHover, setTaxHover] = useState(false);
 
   const subtotal = products.reduce((total, product) => {
-    const price = product.product.discount_price || product.product.price;
-    const quantity = product.quantity || 1; // default to 1 if quantity is not present
+    const price = product.discount_price || product.price;
+    const quantity = product.quantity || 1;
     return total + price * quantity;
   }, 0);
 

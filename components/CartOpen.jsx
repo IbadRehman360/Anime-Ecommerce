@@ -16,48 +16,49 @@ function CartOpen() {
   const toggleCart = () => {
     setIsOpen(!isOpen);
   };
-  const delay = 5000;
-  const checkAvailability = async () => {
-    try {
-      const response = await fetch("api/availability", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ cartItems }),
-      });
+  // const delay = 5000;
+  // const checkAvailability = async () => {
+  //   try {
+  //     const response = await fetch("/api/availability", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify({ cartItems }),
+  //     });
 
-      if (!response.ok) {
-        console.error("Error:", response.statusText);
-        return;
-      }
+  //     if (!response.ok) {
+  //       console.error("Failed to check availability:", response.statusText);
+  //       return;
+  //     }
 
-      const data = await response.json();
+  //     const data = await response.json();
 
-      cartItems.forEach((cartItem) => {
-        const product = data.find((p) => p._id === cartItem.product._id);
+  //     cartItems.forEach((cartItem) => {
+  //       const product = data.find((p) => p._id === cartItem.product._id);
 
-        if (product.stock_quantity <= 0) {
-          dispatch(removeItemsWithZeroQuantity({ productId: product._id }));
-        } else if (product.stock_quantity < cartItem.quantity) {
-          dispatch(
-            updateCartItems({
-              productId: cartItem.product._id,
-              quantity: product.stock_quantity,
-            })
-          );
-          console.log("Cart updated successfully:", data);
-        }
-      });
-    } catch (error) {
-      console.error("API error:", error.message);
-    }
-  };
-
-  setInterval(checkAvailability, delay);
-
+  //       if (product.stock_quantity <= 0) {
+  //         console.log("Product out of stock:", product._id);
+  //         dispatch(removeItemsWithZeroQuantity({ productId: product._id }));
+  //       } else if (product.stock_quantity < cartItem.quantity) {
+  //         console.log("Updating cart item quantity:", product._id);
+  //         dispatch(
+  //           updateCartItems({
+  //             productId: cartItem.product._id,
+  //             quantity: product.stock_quantity,
+  //           })
+  //         );
+  //       }
+  //     });
+  //   } catch (error) {
+  //     console.error("Error checking availability:", error.message);
+  //   }
+  // };
+  // if (cartItems.length > 0) {
+  //   setInterval(checkAvailability, delay);
+  // }
   return (
-    <div className="fixed bottom-10  hidden lg:flex right-8 md:bottom-3">
+    <div className="fixed bottom-10 z-50 hidden lg:flex right-8 md:bottom-3">
       <div
         className="bg-white lg:p-3 p-2.5 rounded-full border shadow-sm border-gray-300 hover:shadow-lg transition duration-300 cursor-pointer"
         style={{ display: "inline-block" }}

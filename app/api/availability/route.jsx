@@ -1,4 +1,4 @@
-import Product from "@app/models/product";
+import Product from "@models/product";
 import { connectToDB } from "@utils/database";
 
 export const POST = async (req, res) => {
@@ -11,10 +11,8 @@ export const POST = async (req, res) => {
       const product = await Product.findById(cartItem.product._id);
       products.push(product);
     }
-
     return new Response(JSON.stringify(products), { status: 200 });
   } catch (error) {
-    console.error(error);
     return new Response("An error occurred while adding a product", {
       status: 500,
     });

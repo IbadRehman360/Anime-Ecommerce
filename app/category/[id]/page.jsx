@@ -40,9 +40,7 @@ export async function getProductByCategory(id) {
   try {
     const response = await fetch(
       `${process.env.NEXTAUTH_URL}/api/category/${id}`,
-      {
-        next: { revalidate: 600 },
-      }
+      { cache: "no-store" }
     );
 
     if (!response.ok) {

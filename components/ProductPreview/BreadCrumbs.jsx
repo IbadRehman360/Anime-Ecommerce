@@ -27,15 +27,27 @@ function BreadCrumbs({ product }) {
             </svg>
           </div>
         </li>
-        <li className="   ">
-          <Link
-            aria-current="page"
-            href={"/category/" + product.category_id.name}
-            className="  first-letter:uppercase text-sm sm:text-[0.92rem] tracking-wider   font-medium text-gray-600    hover:text-gray-500"
-          >
-            {product.category_id.name}
-          </Link>
-        </li>
+        {product.category_id.name ? (
+          <li className="   ">
+            <Link
+              aria-current="page"
+              href={"/category/" + product.category_id.name}
+              className="  first-letter:uppercase text-sm sm:text-[0.92rem] tracking-wider   font-medium text-gray-600    hover:text-gray-500"
+            >
+              {product.category_id.name}
+            </Link>
+          </li>
+        ) : (
+          <li className="   ">
+            <Link
+              aria-current="page"
+              href={"/category/" + product.anime_category_id.name}
+              className="  first-letter:uppercase text-sm sm:text-[0.92rem] tracking-wider   font-medium text-gray-600    hover:text-gray-500"
+            >
+              {product.anime_category_id.name}
+            </Link>
+          </li>
+        )}
         <svg
           width={16}
           height={20}

@@ -3,20 +3,20 @@ import { useDispatch } from 'react-redux';
 
 export const useProductUtils = () => {
     const dispatch = useDispatch();
-    const incrementQuantity = (product, size, color, quantity) => {
-        dispatch(increaseQuantity({ product, size, color, quantity }));
+    const incrementQuantity = (product, size, color, quantity, price,
+        discount_price) => {
+        dispatch(increaseQuantity({ product, size, color, quantity, price, discount_price }));
     };
 
     const decrementQuantity = (product, size, color) => {
         dispatch(decreaseQuantity({ product, size, color }));
     };
 
-    const handleRemoveItem = (product) => {
-        dispatch(removeItem({ product }));
+    const handleRemoveItem = (product, size, color) => {
+        dispatch(removeItem({ product, size, color }));
     };
 
     const handleUpdateQuantity = (product, newQuantity, size, color) => {
-        console.log(product, color, size, newQuantity)
         dispatch(updateQuantity({ product, newQuantity, size, color }));
     };
     const isValidPhoneNumber = (value) => {

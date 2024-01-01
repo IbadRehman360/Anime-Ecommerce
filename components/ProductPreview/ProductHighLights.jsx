@@ -9,33 +9,56 @@ function ProductHighLights({ product }) {
     inStock: "border-green-600 text-green-600",
     outOfStock: "border-red-600 text-red-600",
   };
+  const calculateTotalQuantity = () => {
+    if (product.stock && product.stock.colorswithsize) {
+      return Object.values(product.stock.colorswithsize)
+        .flatMap((sizes) => Object.values(sizes))
+        .reduce((total, details) => total + details.quantity, 0);
+    } else if (product.stock && product.stock.sizes) {
+      return Object.values(product.stock.sizes).reduce(
+        (total, details) => total + details.quantity,
+        0
+      );
+    } else if (product.stock && product.stock.colors) {
+      return Object.values(product.stock.colors).reduce(
+        (total, details) => total + details.quantity,
+        0
+      );
+    } else if (product.stock && product.stock.quantity) {
+      return product.stock.quantity;
+    } else {
+      return 0;
+    }
+  };
+
+  const totalQuantity = calculateTotalQuantity();
   return (
     <div className="md:mt-4 mt-6 pb-7">
       <div className="flex  line-clamp-1 overflow-hidden   justify-between ">
         <h3 className="text-gray-600  line-clamp-1 text-[1.02rem]  font-opensans mb-3 tracking-wide mr-10">
           Product details
         </h3>
-        <div className="font-poppins flex font-semibold pb-2 ">
-          {product.stock_quantity <= 0 ? (
+        <div className="font-poppins flex font-semibold pb-2">
+          {totalQuantity === 0 ? (
             <button
               className={`${buttonStyle.base} ${buttonStyle.outOfStock} hover:opacity-80  `}
             >
-              <div className="flex  justify-center text-center   items-center">
-                <span className="border   flex justify-center items-center rounded-full   pl-1 border-red-600 mr-1 sm:mr-2">
-                  <FaTimes className="   " /> &nbsp;
+              <div className="flex justify-center text-center items-center">
+                <span className="border flex justify-center items-center rounded-full pl-1 border-red-600 mr-1 sm:mr-2">
+                  <FaTimes className="" /> &nbsp;
                 </span>{" "}
                 &nbsp;Out of Stock
               </div>
             </button>
           ) : (
             <button
-              className={`${buttonStyle.base} ${buttonStyle.inStock}    hover:shadow-md hover:shadow-green-100     ${buttonStyle.hover}`}
+              className={`${buttonStyle.base} ${buttonStyle.inStock} hover:shadow-md hover:shadow-green-100 ${buttonStyle.hover}`}
             >
-              <div className="flex  justify-center text-center    items-center">
-                <span className="border   flex justify-center items-center rounded-full  tracking-wider   pl-1 border-green-600 mr-1 sm:mr-2">
-                  <FaCheck className="   " /> &nbsp;
+              <div className="flex justify-center text-center items-center">
+                <span className="border flex justify-center items-center rounded-full tracking-wider pl-1 border-green-600 mr-1 sm:mr-2">
+                  <FaCheck className="" /> &nbsp;
                 </span>
-                {product.stock_quantity} In Stock
+                {totalQuantity} In Stock
               </div>
             </button>
           )}

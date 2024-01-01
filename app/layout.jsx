@@ -6,6 +6,8 @@ import CartOpen from "@components/CartOpen";
 import Providers from "@components/Providers";
 import ReduxProvider from "./Global/ReduxProvider";
 import BottomStructure from "@components/BottomStructure";
+import Head from "next/head";
+
 export const metadata = {
   title: "SenpaiMerch",
   description:
@@ -17,6 +19,9 @@ const RootLayout = ({ children }) => (
     <body suppressHydrationWarning={true}>
       <Providers>
         <ReduxProvider>
+          <head>
+            <link rel="icon" href="/assets/square3.jpg" />
+          </head>
           <div className="main">
             <div className="gradient" />
           </div>

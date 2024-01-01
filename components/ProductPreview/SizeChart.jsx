@@ -3,12 +3,14 @@ import Image from "next/image";
 import { useState } from "react";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 
-function SizeChart({ QuickView }) {
+function SizeChart({ QuickView, selectedSize }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className="flex items-center justify-between">
-      <h3 className="text-sm font-semibold text-gray-700 font-inter">Size</h3>
+      <h3 className="text-sm font-semibold text-gray-700 font-inter">
+        Size: <span className="ml-0.5"> {selectedSize} </span>{" "}
+      </h3>
       {isOpen && (
         <div
           className={`fixed px-2 top-0 left-0 w-full h-full flex z-50 justify-center items-center  ${

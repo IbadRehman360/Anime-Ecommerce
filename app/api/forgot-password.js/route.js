@@ -1,4 +1,4 @@
-import User from "@app/models/user";
+import User from "@models/user";
 
 // const jwt = require("jsonwebtoken");
 // const bcrypt = require("bcrypt");

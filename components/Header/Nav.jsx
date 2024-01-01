@@ -209,22 +209,140 @@ function Nav({ setOpen, signOut, session, cartItems, isCartOpen }) {
                           {" "}
                           {product.title}
                         </p>
-                        <p className="    font-opensans   line-clamp-1 tracking-wide mt-0.5 lg:mt-0.5">
-                          {product.discount_price ? (
-                            <span>
-                              <span className="text-red-600">
-                                Rs {product.discount_price.toFixed(2)}
-                              </span>
-                              <del className="text-gray-600 ml-3">
-                                Rs {product.price.toFixed(2)}
-                              </del>
-                            </span>
-                          ) : (
+                        <p className="font-opensans line-clamp-1 tracking-wide mt-0.5 lg:mt-0.5">
+                          {product.stock ? (
                             <>
-                              <span>Rs {product.price.toFixed(2)}</span>
-                              <div className="w-10 h-5  "> </div>
+                              {product.stock.colorswithsize ? (
+                                <>
+                                  {Object.entries(
+                                    product.stock.colorswithsize
+                                  ).map(([color, sizes], index) => {
+                                    if (index === 0) {
+                                      const firstSizeKey =
+                                        Object.keys(sizes)[0];
+                                      const firstSizeDetails =
+                                        sizes[firstSizeKey];
+                                      return (
+                                        <span key={`${color}-${firstSizeKey}`}>
+                                          {firstSizeDetails.discount_price >
+                                          0 ? (
+                                            <span>
+                                              <span className="text-red-600">
+                                                Rs{" "}
+                                                {firstSizeDetails.discount_price.toFixed(
+                                                  2
+                                                )}
+                                              </span>
+                                              <del className="text-gray-600 ml-3">
+                                                Rs{" "}
+                                                {firstSizeDetails.price.toFixed(
+                                                  2
+                                                )}
+                                              </del>
+                                            </span>
+                                          ) : (
+                                            <>
+                                              <span>
+                                                Rs{" "}
+                                                {firstSizeDetails.price.toFixed(
+                                                  2
+                                                )}
+                                              </span>
+                                              <div className="w-10 h-5"> </div>
+                                            </>
+                                          )}
+                                        </span>
+                                      );
+                                    }
+                                    return null;
+                                  })}
+                                </>
+                              ) : product.stock.sizes ? (
+                                <>
+                                  {Object.entries(product.stock.sizes).map(
+                                    ([size, details], index) =>
+                                      index === 0 ? (
+                                        <span key={size}>
+                                          {details.discount_price > 0 ? (
+                                            <span>
+                                              <span className="text-red-600">
+                                                Rs{" "}
+                                                {details.discount_price.toFixed(
+                                                  2
+                                                )}
+                                              </span>
+                                              <del className="text-gray-600 ml-3">
+                                                Rs {details.price.toFixed(2)}
+                                              </del>
+                                            </span>
+                                          ) : (
+                                            <>
+                                              <span>
+                                                Rs {details.price.toFixed(2)}
+                                              </span>
+                                              <div className="w-10 h-5"> </div>
+                                            </>
+                                          )}
+                                        </span>
+                                      ) : null
+                                  )}
+                                </>
+                              ) : product.stock.colors ? (
+                                <>
+                                  {Object.entries(product.stock.colors).map(
+                                    ([color, details], index) =>
+                                      index === 0 ? (
+                                        <span key={color}>
+                                          {details.discount_price > 0 ? (
+                                            <span>
+                                              <span className="text-red-600">
+                                                Rs{" "}
+                                                {details.discount_price.toFixed(
+                                                  2
+                                                )}
+                                              </span>
+                                              <del className="text-gray-600 ml-3">
+                                                Rs {details.price.toFixed(2)}
+                                              </del>
+                                            </span>
+                                          ) : (
+                                            <>
+                                              <span>
+                                                Rs {details.price.toFixed(2)}
+                                              </span>
+                                              <div className="w-10 h-5"> </div>
+                                            </>
+                                          )}
+                                        </span>
+                                      ) : null
+                                  )}
+                                </>
+                              ) : (
+                                <>
+                                  {product.stock.discount_price > 0 ? (
+                                    <span>
+                                      <span className="text-red-600">
+                                        Rs{" "}
+                                        {product.stock.discount_price.toFixed(
+                                          2
+                                        )}
+                                      </span>
+                                      <del className="text-gray-600 ml-3">
+                                        Rs {product.stock.price.toFixed(2)}
+                                      </del>
+                                    </span>
+                                  ) : (
+                                    <>
+                                      <span>
+                                        Rs {product.stock.price.toFixed(2)}
+                                      </span>
+                                      <div className="w-10 h-5"> </div>
+                                    </>
+                                  )}
+                                </>
+                              )}
                             </>
-                          )}
+                          ) : null}
                         </p>
                       </div>
                     </li>

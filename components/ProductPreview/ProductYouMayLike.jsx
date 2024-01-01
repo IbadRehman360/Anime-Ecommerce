@@ -8,7 +8,6 @@ function ProductYouMayLike({ randomSuggestion }) {
       <div className="text-center  ">
         <h2 className="text-[1.2rem]    font-inter sm:text-[1.7rem]    flex  text-gray-700  font-nunito    ">
           YOU MAY ALSO LIKE{" "}
-          {/* <span className="hidden sm:flex pl-3">Products</span> */}
           <MdTrendingUp className="inline-block  ml-3 mb-3.5 " />
         </h2>
       </div>

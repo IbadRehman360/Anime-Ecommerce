@@ -13,20 +13,10 @@ function ProductImage({ product, selectedColor, selectedSize }) {
     <div className="">
       <div
         className={`relative ${
-          selectedColor && selectedSize ? "" : " lg:grid  lg:grid-cols-12 "
-        }     gap-4`}
+          selectedColor && selectedSize ? "" : "lg:grid lg:grid-cols-12 "
+        } gap-4`}
       >
-        {!selectedSize || !selectedColor ? (
-          <div className="lg:flex hidden col-span-2">
-            <ProductMoreImage
-              product={product}
-              handleImageClick={handleImageClick}
-            />
-          </div>
-        ) : (
-          <></>
-        )}
-        <div className="lg:col-span-10">
+        <div className="lg:col-span-12 relative">
           <DisplayImage
             selectedColor={selectedColor}
             currentImage={currentImage}
@@ -36,6 +26,15 @@ function ProductImage({ product, selectedColor, selectedSize }) {
             handleImageClick={handleImageClick}
           />
         </div>
+
+        {!selectedSize || !selectedColor ? (
+          <div className="lg:flex hidden lg:absolute top-3 left-2  col-span-2    ">
+            <ProductMoreImage
+              product={product}
+              handleImageClick={handleImageClick}
+            />
+          </div>
+        ) : null}
       </div>
 
       <div className="block">
@@ -53,9 +52,10 @@ function ProductImage({ product, selectedColor, selectedSize }) {
             selectedSize={selectedSize}
           />
         </div>
+
         <div
           className={`     
-             absolute  md:mt-8 lg:hidden top-28 mt-2  right-2  z-10 
+             absolute  ml-20 md:mt-8 lg:hidden top-28 mt-2  right-2    z-10 
           `}
         >
           <ProductMoreImage

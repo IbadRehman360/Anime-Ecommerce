@@ -14,6 +14,22 @@ export default function ProductItem({ product }) {
     setIsQuickViewOpen(true);
   };
 
+  function renderPrice(details) {
+    return details.discount_price > 0 ? (
+      <span>
+        <span className="text-red-500">
+          Rs {details.discount_price.toFixed(2)}
+        </span>
+        <del className="text-gray-600 opacity-90 ml-3">
+          Rs {details.price.toFixed(2)}
+        </del>
+      </span>
+    ) : (
+      <span className="text-[0.94rem] lg:text-[1.2rem] opacity-90 font-lato tracking-wide mt-0.5 lg:mt-1">
+        Rs {details.price.toFixed(2)}
+      </span>
+    );
+  }
   return (
     <div className="group relative border bg-white rounded-lg flex flex-col overflow-hidden">
       <div
@@ -68,24 +84,58 @@ export default function ProductItem({ product }) {
               </>
             )}
         </p>
-
-        <div className=" flex justify-center  text-center mt-auto">
-          <p className="text-sm lg:text-[1.05rem]     font-roboto  px-4     tracking-wide mt-1 ">
-            {product.discount_price ? (
-              <span>
-                <span className="text-red-500">
-                  Rs {product.discount_price.toFixed(2)}
-                </span>
-                <del className="text-gray-500 ml-3">
-                  Rs {product.price.toFixed(2)}
-                </del>
-              </span>
+        <div className="flex justify-center text-center mt-auto">
+          <p className="text-sm lg:text-[1.05rem] font-roboto px-4 tracking-wide mt-1">
+            {product.stock.colorswithsize ? (
+              <>
+                {Object.entries(product.stock.colorswithsize).map(
+                  ([color, sizes], index) => {
+                    if (index === 0) {
+                      const firstSizeKey = Object.keys(sizes)[0];
+                      const firstSizeDetails = sizes[firstSizeKey];
+                      return (
+                        <span key={`${color}-${firstSizeKey}`}>
+                          {renderPrice(firstSizeDetails)}
+                          <div className="w-10 h-5"> </div>
+                        </span>
+                      );
+                    }
+                    return null;
+                  }
+                )}
+              </>
+            ) : product.stock.sizes ? (
+              <>
+                {Object.entries(product.stock.sizes).map(
+                  ([size, details], index) =>
+                    index === 0 && (
+                      <span key={size}>
+                        {renderPrice(details)}
+                        <div className="w-10 h-5"> </div>
+                      </span>
+                    )
+                )}
+              </>
+            ) : product.stock.colors ? (
+              <>
+                {Object.entries(product.stock.colors).map(
+                  ([color, details], index) =>
+                    index === 0 && (
+                      <span key={color}>
+                        {renderPrice(details)}
+                        <div className="w-10 h-5"> </div>
+                      </span>
+                    )
+                )}
+              </>
             ) : (
               <>
-                <span className="   text-[1.1rem]  opacity-90        tracking-wider mt-0.5 lg:mt-1">
-                  Rs {product.price.toFixed(2)}
-                </span>
-                <div className="w-10 h-5  "> </div>
+                {product.stock && (
+                  <span>
+                    {renderPrice(product.stock)}
+                    <div className="w-10 h-5"> </div>
+                  </span>
+                )}
               </>
             )}
           </p>

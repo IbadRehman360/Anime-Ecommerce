@@ -1,5 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit';
 import toast from "react-hot-toast";
+function handleQuantityUpdate(item, quantity, maxQuantity, maxAllowedQuantity) {
+    const totalQuantity = item.quantity + quantity;
+
+    if (totalQuantity > maxQuantity || totalQuantity > maxAllowedQuantity) {
+        const errorMessage = totalQuantity > maxQuantity
+            ? `Sorry, only ${maxQuantity} in stock.`
+            : `Sorry, max ${maxAllowedQuantity} items allowed.`;
+
+        toast.error(errorMessage);
+    } else {
+        item.quantity += quantity;
+    }
+}
+
 
 const cartSlice = createSlice({
     name: 'cart',
@@ -8,56 +22,87 @@ const cartSlice = createSlice({
     },
     reducers: {
         removeItem: (state, action) => {
-            const indexToRemove = state.items.findIndex(item => item.product._id === action.payload.product);
+            const { product, color, size } = action.payload;
+            const indexToRemove = state.items.findIndex(item => {
+                const isProductIdMatch = item.product._id.toUpperCase() === product.toUpperCase();
+                const isColorMatch = color ? item.color.toUpperCase() === color.toUpperCase() : true;
+                const isSizeMatch = size ? item.size.toUpperCase() === size.toUpperCase() : true;
+
+                return isProductIdMatch && isColorMatch && isSizeMatch;
+            });
+
+
+
             if (indexToRemove !== -1) {
-                state.items.splice(indexToRemove, 1);
-            } else {
-                throw new Error('Product not found in the cart.');
+                const updatedItems = [
+                    ...state.items.slice(0, indexToRemove),
+                    ...state.items.slice(indexToRemove + 1)
+                ];
+
+                state.items = updatedItems;
             }
         },
+
+
         addItem: (state, action) => {
-            const { product, quantity, color, size } = action.payload;
+            const { product, quantity, color, size, price, discount_price } = action.payload;
             const existingItem = state.items.find(item => item.product._id === product._id && item.color === color && item.size === size);
 
             if (existingItem) {
-                toast.error('Product already in cart. Increase quantity to add more.')
+                toast.error('Product already in cart. Increase quantity')
 
             } else {
                 toast.success('Product successfully Added to the cart.');
 
-                state.items.push({ product, quantity, color, size });
+                state.items.push({ product, quantity, color, size, price, discount_price });
             }
         },
         increaseQuantity: (state, action) => {
-            const { product, size, color, quantity } = action.payload;
+            const { product, size, color, quantity, price, discount_price } = action.payload;
             const item = state.items.find(
-                (item) =>
-                    item.product._id === product._id &&
-                    item.size === size &&
-                    item.color === color
+                (item) => {
+                    const match = item.product._id === product._id && item.size === size && item.color === color;
+                    return match;
+                }
             );
             if (!item) {
-                const existingItem = state.items.find(item => item.product._id === product._id && item.color === color && item.size === size);
+                toast.success('Product successfully Added to the cart.');
+                state.items.push({ product, quantity, color, size, price, discount_price });
+            } else {
 
-                if (existingItem) {
-                    toast.error('Product already in cart. Increase quantity to add more.')
+                const { stock } = product;
 
-                } else {
-                    toast.success('Product successfully Added to the cart.');
-
-                    state.items.push({ product, quantity, color, size });
-                }
-            }
-            if (item) {
-                if (item.quantity < product.stock_quantity) {
-                    if (item.quantity + 1 > 3) {
-                        toast.error('Sorry, you can\'t add more than 3 of the same product.');
-                    } else {
-                        item.quantity += 1;
+                if (stock && stock.colorswithsize) {
+                    if (stock.colorswithsize[color] && stock.colorswithsize[color][size]) {
+                        const maxQuantity = stock.colorswithsize[color][size].quantity;
+                        handleQuantityUpdate(item, quantity, maxQuantity, 3);
+                        return;
                     }
-                } else {
-                    toast.error('Sorry, we don\'t have enough stock for this product.');
                 }
+
+                if (stock && stock.sizes) {
+                    if (stock.sizes[size]) {
+                        const maxQuantity = stock.sizes[size].quantity;
+                        handleQuantityUpdate(item, quantity, maxQuantity, 3);
+                        return;
+                    }
+                }
+
+                if (stock && stock.colors) {
+                    if (stock.colors[color]) {
+                        const maxQuantity = stock.colors[color].quantity;
+                        handleQuantityUpdate(item, quantity, maxQuantity, 3);
+                        return;
+                    }
+                }
+
+                if (stock && stock.quantity !== undefined) {
+                    const maxQuantity = stock.quantity;
+                    handleQuantityUpdate(item, quantity, maxQuantity, 3);
+                    return;
+                }
+                toast.error('Invalid product stock information.');
+
             }
         },
         decreaseQuantity: (state, action) => {
@@ -76,26 +121,10 @@ const cartSlice = createSlice({
         clearCart: (state) => {
             state.items = [];
         },
-        updateQuantity: (state, action) => {
-            const { product, newQuantity, size, color } = action.payload;
-            console.log(product, color, size, newQuantity)
-            const updatedItems = state.items.map(item => {
-                if (
-                    item.product._id === product.product._id &&
-                    item.color === color &&
-                    item.size === size
-                ) {
 
-                    return { ...item, quantity: newQuantity };
-                }
-                return item;
-            });
-
-            return { ...state, items: updatedItems };
-        },
         updateCartItems: (state, action) => {
             const { productId, quantity } = action.payload;
-            console.log("Hi")
+            console.log(productId, quantity)
             const existingCartItem = state.cartItems.find(item => item.product._id === productId);
 
             if (existingCartItem) {
@@ -103,6 +132,47 @@ const cartSlice = createSlice({
             } else {
                 state.cartItems.push({ product: { _id: productId }, quantity });
             }
+        },
+        updateQuantity: (state, action) => {
+            const { product, size, color, newQuantity } = action.payload;
+            const updatedItems = state.items.map(item => {
+                if (
+                    item.product._id === product.product._id &&
+                    item.color === color &&
+                    item.size === size
+                ) {
+                    const { stock } = product.product;
+                    if (stock && stock.colorswithsize) {
+                        if (stock.colorswithsize[color] && stock.colorswithsize[color][size]) {
+                            const maxQuantity = stock.colorswithsize[color][size].quantity;
+                            return { ...item, quantity: Math.min(newQuantity, maxQuantity) };
+                        }
+                    }
+
+                    if (stock && stock.sizes) {
+                        if (stock.sizes[size]) {
+                            const maxQuantity = stock.sizes[size].quantity;
+                            return { ...item, quantity: Math.min(newQuantity, maxQuantity) };
+                        }
+                    }
+
+                    if (stock && stock.colors) {
+                        if (stock.colors[color]) {
+                            const maxQuantity = stock.colors[color].quantity;
+                            return { ...item, quantity: Math.min(newQuantity, maxQuantity) };
+                        }
+                    }
+
+                    if (stock && stock.quantity !== undefined) {
+                        const maxQuantity = stock.quantity;
+                        return { ...item, quantity: Math.min(newQuantity, maxQuantity) };
+                    }
+
+                }
+                return item;
+            });
+
+            return { ...state, items: updatedItems };
         },
         removeItemsWithZeroQuantity: (state, action) => {
             const { productId } = action.payload;

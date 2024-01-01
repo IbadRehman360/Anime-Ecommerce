@@ -26,11 +26,11 @@ function Quantity({ quantity, border, product }) {
       <button
         type="button"
         onClick={() =>
-          incrementQuantity(product.product, product.size, product.color)
+          incrementQuantity(product.product, product.size, product.color, 1)
         }
         className={`${
           border === "true" ? "border px-2.5 p-0.5" : "px-2 p-1"
-        } text-gray-600  focus:outline-none`}
+        } text-gray-600 focus:outline-none`}
       >
         +
       </button>

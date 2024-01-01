@@ -1,8 +1,8 @@
-import Customer from "@app/models/customer";
-import Order from "@app/models/order";
-import OrderItem from "@app/models/orderItems";
-import Product from "@app/models/product";
-import User from "@app/models/user";
+import Customer from "@models/customer";
+import Order from "@models/order";
+import OrderItem from "@models/orderItems";
+import Product from "@models/product";
+import User from "@models/user";
 import { connectToDB } from "@utils/database";
 export const POST = async (req, res) => {
   try {
@@ -21,6 +21,7 @@ export const POST = async (req, res) => {
       phone,
       secondPhone,
     } = data;
+
     const newCustomer = new Customer({
       email_address,
       first_name,

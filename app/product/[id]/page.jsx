@@ -20,7 +20,6 @@ export default async function Example({ params: { id } }) {
   const suggestions = data.productsWithSameCategory;
   const randomSuggestion = data.randomProducts;
   const reviews = data.reviews;
-
   return (
     <div className="lg:max-w-[90rem]  lg:mx-auto">
       <div className="mt-3 lg:mb-10 px-3 lg:flex hidden">

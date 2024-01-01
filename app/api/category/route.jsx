@@ -1,4 +1,4 @@
-import GeneralCategory from "@app/models/category";
+import GeneralCategory from "@models/category";
 import { connectToDB } from "@utils/database";
 
 export const POST = async (request, response) => {

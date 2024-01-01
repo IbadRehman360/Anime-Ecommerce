@@ -46,7 +46,10 @@ export default function SearchMenu({
       />
       {filteredProducts.length > 0 && (
         <div className="  px-3 border-gray-300   bg-white    pt-3  pb-1   text-black   absolute    left-6 2xl:left-52 top-[7.5rem] rounded-lg  border    cursor-pointer z-50   gap-4 grid    divide-y shadow   overflow-y-auto  w-96    max-h-[80vh]   ...">
-          <h5 className="font-inter  uppercase "> Products Related </h5>
+          <h5 className="font-inter  uppercase text-gray-800 ">
+            {" "}
+            Products Related{" "}
+          </h5>
           <ul>
             {filteredProducts.map((product) => (
               <Link
@@ -73,22 +76,144 @@ export default function SearchMenu({
                     <p
                       className="     font-poppins tracking-wide mt-0.5 lg:mt-1"
                       style={{ fontWeight: "500" }}
-                    >
-                      {product.discount_price ? (
-                        <span>
-                          <span className="text-red-500">
-                            Rs {product.discount_price.toFixed(2)}
-                          </span>
-                          <del className="text-gray-600 ml-3">
-                            Rs {product.price.toFixed(2)}
-                          </del>
-                        </span>
+                    ></p>
+                    <p className="mt-2 text-[1rem] line-clamp-1 text-gray-900 font-poppins">
+                      {product.stock.colorswithsize ? (
+                        <>
+                          {Object.entries(product.stock.colorswithsize).map(
+                            ([color, sizes], index) => {
+                              if (index === 0) {
+                                const firstSizeKey = Object.keys(sizes)[0];
+                                const firstSizeDetails = sizes[firstSizeKey];
+                                return (
+                                  <div key={`${color}-${firstSizeKey}`}>
+                                    <p
+                                      className="font-poppins tracking-wide mt-0.5 lg:mt-1"
+                                      style={{ fontWeight: "500" }}
+                                    >
+                                      {firstSizeDetails.discount_price > 0 ? (
+                                        <span>
+                                          <span className="text-red-500">
+                                            Rs{" "}
+                                            {firstSizeDetails.discount_price.toFixed(
+                                              2
+                                            )}
+                                          </span>
+                                          <del className="text-gray-600 ml-3">
+                                            Rs{" "}
+                                            {firstSizeDetails.price.toFixed(2)}
+                                          </del>
+                                        </span>
+                                      ) : (
+                                        <>
+                                          <span className="text-[1.05rem] opacity-95 font-poppins tracking-wide mt-0.5 lg:mt-1">
+                                            Rs{" "}
+                                            {firstSizeDetails.price.toFixed(2)}
+                                          </span>
+                                          <div className="w-10 h-5"> </div>
+                                        </>
+                                      )}
+                                    </p>
+                                  </div>
+                                );
+                              }
+                              return null;
+                            }
+                          )}
+                        </>
+                      ) : product.stock.sizes ? (
+                        <>
+                          {Object.entries(product.stock.sizes).map(
+                            ([size, details], index) =>
+                              index === 0 ? (
+                                <div key={size}>
+                                  <p
+                                    className="font-poppins tracking-wide mt-0.5 lg:mt-1"
+                                    style={{ fontWeight: "500" }}
+                                  >
+                                    {details.discount_price > 0 ? (
+                                      <span>
+                                        <span className="text-red-500">
+                                          Rs {details.discount_price.toFixed(2)}
+                                        </span>
+                                        <del className="text-gray-600 ml-3">
+                                          Rs {details.price.toFixed(2)}
+                                        </del>
+                                      </span>
+                                    ) : (
+                                      <>
+                                        <span className="text-[1.05rem] opacity-95 font-poppins tracking-wide mt-0.5 lg:mt-1">
+                                          Rs {details.price.toFixed(2)}
+                                        </span>
+                                        <div className="w-10 h-5"> </div>
+                                      </>
+                                    )}
+                                  </p>
+                                </div>
+                              ) : null
+                          )}
+                        </>
+                      ) : product.stock.colors ? (
+                        <>
+                          {Object.entries(product.stock.colors).map(
+                            ([color, details], index) =>
+                              index === 0 ? (
+                                <div key={color}>
+                                  <p
+                                    className="font-poppins tracking-wide mt-0.5 lg:mt-1"
+                                    style={{ fontWeight: "500" }}
+                                  >
+                                    {details.discount_price > 0 ? (
+                                      <span>
+                                        <span className="text-red-500">
+                                          Rs {details.discount_price.toFixed(2)}
+                                        </span>
+                                        <del className="text-gray-600 ml-3">
+                                          Rs {details.price.toFixed(2)}
+                                        </del>
+                                      </span>
+                                    ) : (
+                                      <>
+                                        <span className="text-[1.05rem] opacity-95 font-poppins tracking-wide mt-0.5 lg:mt-1">
+                                          Rs {details.price.toFixed(2)}
+                                        </span>
+                                        <div className="w-10 h-5"> </div>
+                                      </>
+                                    )}
+                                  </p>
+                                </div>
+                              ) : null
+                          )}
+                        </>
                       ) : (
                         <>
-                          <span className="   text-[1.05rem]  opacity-95  font-poppins tracking-wide mt-0.5 lg:mt-1">
-                            Rs {product.price.toFixed(2)}
-                          </span>
-                          <div className="w-10 h-5  "> </div>
+                          {product.stock && (
+                            <div>
+                              <p
+                                className="font-poppins tracking-wide mt-0.5 lg:mt-1"
+                                style={{ fontWeight: "500" }}
+                              >
+                                {product.stock.discount_price > 0 ? (
+                                  <span>
+                                    <span className="text-red-500">
+                                      Rs{" "}
+                                      {product.stock.discount_price.toFixed(2)}
+                                    </span>
+                                    <del className="text-gray-600 ml-3">
+                                      Rs {product.stock.price.toFixed(2)}
+                                    </del>
+                                  </span>
+                                ) : (
+                                  <>
+                                    <span className="text-[1.05rem] opacity-95 font-poppins tracking-wide mt-0.5 lg:mt-1">
+                                      Rs {product.stock.price.toFixed(2)}
+                                    </span>
+                                    <div className="w-10 h-5"> </div>
+                                  </>
+                                )}
+                              </p>
+                            </div>
+                          )}
                         </>
                       )}
                     </p>

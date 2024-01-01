@@ -1,7 +1,5 @@
-import { selectCartItems } from "@app/Global/Features/cartSlice";
 import { QuestionMarkCircleIcon, TrashIcon } from "@heroicons/react/24/outline";
 import { useProductUtils } from "@utils/productUtils";
-import { useSelector } from "react-redux";
 import Image from "next/image";
 import { useState } from "react";
 function OrderSummary({
@@ -16,6 +14,7 @@ function OrderSummary({
   const { handleRemoveItem, handleUpdateQuantity } = useProductUtils();
   const [shippingHover, setShippingHover] = useState(false);
   const [taxHover, setTaxHover] = useState(false);
+
   return (
     <div className="mt-10 lg:mt-0">
       <h2 className="text-lg font-medium text-gray-900">Order summary</h2>
@@ -34,7 +33,6 @@ function OrderSummary({
                   className=" rounded-md"
                 />
               </div>
-
               <div className=" ml-4   sm:ml-6 flex-1 flex flex-col">
                 <div className="flex">
                   <div className="min-w-0 flex-1">
@@ -46,7 +44,13 @@ function OrderSummary({
                   </div>
                   <button
                     type="button"
-                    onClick={() => handleRemoveItem(product.product._id)}
+                    onClick={() =>
+                      handleRemoveItem(
+                        product.product._id,
+                        product.size,
+                        product.color
+                      )
+                    }
                     className="-m-2.5 bg-white p-2.5 flex items-center justify-center text-gray-400 hover:text-gray-500"
                   >
                     <span className="sr-only">Remove</span>

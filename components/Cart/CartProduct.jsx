@@ -28,7 +28,7 @@ function CartProduct() {
                 width={100}
                 height={100}
                 src={product.product.images[0]}
-                className="w-28 h-28 shadow-md    rounded-md object-center object-cover sm:w-48 sm:h-48"
+                className="w-28 h-28 shadow-md   border-t   rounded-md object-center object-cover sm:w-44 sm:h-44"
                 alt=""
               />
             </div>
@@ -37,14 +37,20 @@ function CartProduct() {
               <div className="relative flex">
                 <div className="flex-grow mt-0.5 sm:mt-1">
                   <h2 className="text-[0.89rem]  font-poppins  line-clamp-1 sm:text-base font-medium text-gray-800">
-                    {product.size} - {product.product.title}
+                    {product.size} {product.size && "-"} {product.product.title}
                   </h2>
                 </div>
                 <div className="flex pl-5 justify-end">
                   <button
                     type="button"
                     className="font-medium text-gray-600 hover:text-gray-500"
-                    onClick={() => handleRemoveItem(product.product._id)}
+                    onClick={() =>
+                      handleRemoveItem(
+                        product.product._id,
+                        product.size,
+                        product.color
+                      )
+                    }
                   >
                     <AiOutlineClose />
                   </button>
@@ -61,17 +67,17 @@ function CartProduct() {
               </div>
               <div>
                 <p className="text-sm lg:text-[0.95rem]  line-clamp-1 mt-2 sm:mt-1  sm:mb-1   font-satoshi ">
-                  {product.product.discount_price ? (
+                  {product.discount_price ? (
                     <span>
                       <span className="text-red-600">
-                        Rs {product.product.discount_price.toFixed(2)}
+                        Rs {product.discount_price.toFixed(2)}
                       </span>
                       <del className="text-gray-700 ml-3">
-                        Rs {product.product.price.toFixed(2)}
+                        Rs {product.price.toFixed(2)}
                       </del>
                     </span>
                   ) : (
-                    <span>Rs {product.product.price.toFixed(2)}</span>
+                    <span>Rs {product.price.toFixed(2)}</span>
                   )}
                 </p>
                 <Quantity quantity={product.quantity} product={product} />{" "}
@@ -92,7 +98,7 @@ function CartProduct() {
                 <span className="line-clamp-1 ">
                   {product.inStock
                     ? "In stock"
-                    : `Ships in ${product.leadTime}`}
+                    : `Choose shipping days during checkout`}
                 </span>
               </p>
             </div>

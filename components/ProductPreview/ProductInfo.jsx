@@ -2,12 +2,32 @@
 import { classNames } from "@app/product/[id]/page";
 import { StarIcon } from "@heroicons/react/20/solid";
 
-function ProductInfo({ product, reviews }) {
+function ProductInfo({ product, reviews, selectedColor, selectedSize }) {
   const reviewRatings = reviews.map((review) => review.rating);
   const totalRatings = reviewRatings.length;
   const sumRatings = reviewRatings.reduce((sum, rating) => sum + rating, 0);
 
   const averageRating = totalRatings > 0 ? sumRatings / totalRatings : 0;
+  let priceInfo = {};
+
+  const getPriceInfo = () => {
+    let priceInfo = {};
+
+    if (product.stock.colorswithsize) {
+      const colorInfo = product.stock.colorswithsize[selectedColor] || {};
+      priceInfo = colorInfo[selectedSize] || {};
+    } else if (product.stock.sizes) {
+      priceInfo = product.stock.sizes[selectedSize] || {};
+    } else if (product.stock.colors) {
+      priceInfo = product.stock.colors[selectedColor] || {};
+    } else {
+      priceInfo = product.stock;
+    }
+
+    return priceInfo;
+  };
+
+  const { price, discount_price, quantity } = getPriceInfo();
   return (
     <div className=" ">
       <div className="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
@@ -18,32 +38,31 @@ function ProductInfo({ product, reviews }) {
       <div className="mt-2 sm:mt-4 lg:row-span-3 pb-1.5 lg:mt-0 ">
         <h2 className="sr-only">Product information</h2>
         <div className="flex items-center ">
-          {product.discount_price ? (
-            <>
-              <div className="text-[1.1rem]   font-inter  lg:text-[1.4rem] mr-3 xl:mr-5 tracking-wider lg:tracking-wider  text-green-700 ">
-                <span className="tracking-normal text-[1.4rem] xl:text-[1.6rem]  ">
-                  {" "}
-                  Rs. {product.discount_price}.00
-                </span>
-              </div>
+          <>
+            {discount_price ? (
+              <>
+                <div className="text-[1.1rem] font-inter lg:text-[1.4rem] mr-3 xl:mr-5 tracking-wider lg:tracking-wider text-green-700">
+                  <span className="tracking-normal text-[1.4rem] xl:text-[1.6rem] ">
+                    Rs. {discount_price}.00
+                  </span>
+                </div>
 
-              <div className="font-satoshi line-through tracking-wider  lg:flex hidden lg:text-[1.1rem] xl:text-[1.2rem] text-sm text-gray-500">
-                <span className="tracking-normal mr-1">
+                <div className="font-satoshi line-through tracking-wider lg:flex hidden lg:text-[1.1rem] xl:text-[1.2rem] text-sm text-gray-500">
+                  <span className="tracking-normal mr-1"> Rs. {price}.00</span>
+                </div>
+              </>
+            ) : (
+              <div className="text-[1.3rem] sm:text-[1.4rem] font-inter lg:text-[1.5rem] mr-3 mb-0.5 tracking-wider lg:tracking-wider text-green-700 ">
+                <span className="tracking-normal lg:text-[1.5rem] mr-1">
                   {" "}
-                  Rs. {product.price}.00
+                  Rs.
                 </span>
+                {price}
+                <span className="hidden sm:inline-flex">.00</span>
               </div>
-            </>
-          ) : (
-            <div className="text-[1.3rem] sm:text-[1.4rem]   font-inter  lg:text-[1.5rem]   mr-3 mb-0.5 tracking-wider lg:tracking-wider  text-green-700  ">
-              <span className="tracking-normal lg:text-[1.5rem] mr-1">
-                {" "}
-                Rs.
-              </span>
-              {product.price}
-              <span className="hidden sm:inline-flex">.00</span>
-            </div>
-          )}
+            )}
+          </>
+
           <div className="flex items-center -mt-[6px]   ml-auto">
             <div className="flex mb-[1px] cursor-pointer justify-end items-end">
               {[...Array(5).keys()].map((index) => (

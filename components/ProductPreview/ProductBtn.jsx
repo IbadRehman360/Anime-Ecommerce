@@ -7,6 +7,9 @@ export default function ProductBtn({
   cartItems,
   selectedColor,
   selectedSize,
+  quantityNum,
+  price,
+  discount_price,
 }) {
   const getProductSizeQuantity = (size) => {
     const cartItem = cartItems.find(
@@ -26,7 +29,7 @@ export default function ProductBtn({
           <div className="flex border first-letter: border-gray-300    bg-white ">
             <button
               type="button"
-              disabled={product.stock_quantity <= 0}
+              disabled={quantityNum <= 0}
               onClick={() =>
                 decrementQuantity(product, selectedSize, selectedColor)
               }
@@ -39,13 +42,15 @@ export default function ProductBtn({
             </div>
             <button
               type="button"
-              disabled={product.stock_quantity <= 0}
+              disabled={quantityNum <= 0}
               onClick={() =>
                 incrementQuantity(
                   product,
                   selectedSize,
                   selectedColor,
-                  quantity
+                  quantity,
+                  price,
+                  discount_price
                 )
               }
               className="group relative h-11  w-full overflow-hidden   middle none center  text-xl  py-1 px-6 font-sans   uppercase text-black    bg-white  "
@@ -55,14 +60,14 @@ export default function ProductBtn({
           </div>
           <button
             type="button"
-            disabled={product.stock_quantity <= 0}
+            disabled={quantityNum <= 0}
             onClick={handleAddToCart}
             className="flex w-full items- font-montserrat lg:py-3.5 lg:text-md lg:tracking-wider text-xs justify-center rounded-md border border-transparent bg-black py-3  opacity-90  uppercase font-medium text-white  hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
           >
             Add to Cart
           </button>
         </div>
-        {product.stock_quantity > 0 ? (
+        {quantityNum > 0 ? (
           <Link
             href={`/checkout`}
             onClick={handleAddToCart}

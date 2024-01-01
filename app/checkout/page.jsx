@@ -38,7 +38,7 @@ export default function Checkout() {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const subtotal = cartItems.reduce((total, product) => {
-    const price = product.product.discount_price || product.product.price;
+    const price = product.discount_price || product.price;
     const quantity = product.quantity || 1;
     return total + price * quantity;
   }, 0);

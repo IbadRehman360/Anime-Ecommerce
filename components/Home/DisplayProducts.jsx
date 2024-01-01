@@ -40,22 +40,110 @@ const ProductCard = ({ products }) => {
             <h2 className="products-title text-[0.95rem] lg:text-[1.1rem]  px-1  line-clamp-1   font-poppins  font-medium text-center">
               {products.title}
             </h2>
-            <p className="text-[0.94rem]  lg:text-[1.1rem]     font-roboto  px-4     tracking-wide mt-1 lg:mt-2">
-              {products.discount_price ? (
-                <span>
-                  <span className="text-red-500">
-                    Rs {products.discount_price.toFixed(2)}
-                  </span>
-                  <del className="text-gray-600 opacity-90 ml-3">
-                    Rs {products.price.toFixed(2)}
-                  </del>
-                </span>
+            <p className="text-[0.94rem] lg:text-[1.1rem] font-roboto px-4 tracking-wide mt-1 lg:mt-2">
+              {products.stock.colorswithsize ? (
+                <>
+                  {Object.entries(products.stock.colorswithsize).map(
+                    ([color, sizes], index) => {
+                      if (index === 0) {
+                        const firstSizeKey = Object.keys(sizes)[0];
+                        const firstSizeDetails = sizes[firstSizeKey];
+                        return (
+                          <span key={`${color}-${firstSizeKey}`}>
+                            {firstSizeDetails.discount_price > 0 ? (
+                              <span>
+                                <span className="text-red-500">
+                                  Rs{" "}
+                                  {firstSizeDetails.discount_price.toFixed(2)}
+                                </span>
+                                <del className="text-gray-600 opacity-90 ml-3">
+                                  Rs {firstSizeDetails.price.toFixed(2)}
+                                </del>
+                              </span>
+                            ) : (
+                              <span className="text-[0.94rem] lg:text-[1.2rem] opacity-90 font-lato tracking-wide mt-0.5 lg:mt-1">
+                                Rs {firstSizeDetails.price.toFixed(2)}
+                              </span>
+                            )}
+                            <div className="w-10 h-5"> </div>
+                          </span>
+                        );
+                      }
+                      return null;
+                    }
+                  )}
+                </>
+              ) : products.stock.sizes ? (
+                <>
+                  {Object.entries(products.stock.sizes).map(
+                    ([size, details], index) =>
+                      index === 0 && (
+                        <span key={size}>
+                          {details.discount_price > 0 ? (
+                            <span>
+                              <span className="text-red-500">
+                                Rs {details.discount_price.toFixed(2)}
+                              </span>
+                              <del className="text-gray-600 opacity-90 ml-3">
+                                Rs {details.price.toFixed(2)}
+                              </del>
+                            </span>
+                          ) : (
+                            <span className="text-[0.94rem] lg:text-[1.2rem] opacity-90 font-lato tracking-wide mt-0.5 lg:mt-1">
+                              Rs {details.price.toFixed(2)}
+                            </span>
+                          )}
+                          <div className="w-10 h-5"> </div>
+                        </span>
+                      )
+                  )}
+                </>
+              ) : products.stock.colors ? (
+                <>
+                  {Object.entries(products.stock.colors).map(
+                    ([color, details], index) =>
+                      index === 0 && (
+                        <span key={color}>
+                          {details.discount_price > 0 ? (
+                            <span>
+                              <span className="text-red-500">
+                                Rs {details.discount_price.toFixed(2)}
+                              </span>
+                              <del className="text-gray-600 opacity-90 ml-3">
+                                Rs {details.price.toFixed(2)}
+                              </del>
+                            </span>
+                          ) : (
+                            <span className="text-[0.94rem] lg:text-[1.2rem] opacity-90 font-lato tracking-wide mt-0.5 lg:mt-1">
+                              Rs {details.price.toFixed(2)}
+                            </span>
+                          )}
+                          <div className="w-10 h-5"> </div>
+                        </span>
+                      )
+                  )}
+                </>
               ) : (
                 <>
-                  <span className=" text-[0.94rem]  lg:text-[1.2rem]      opacity-90 font-lato tracking-wide mt-0.5 lg:mt-1">
-                    Rs {products.price.toFixed(2)}
-                  </span>
-                  <div className="w-10 h-5  "> </div>
+                  {products.stock && (
+                    <span>
+                      {products.stock.discount_price > 0 ? (
+                        <span>
+                          <span className="text-red-500">
+                            Rs {products.stock.discount_price.toFixed(2)}
+                          </span>
+                          <del className="text-gray-600 opacity-90 ml-3">
+                            Rs {products.stock.price.toFixed(2)}
+                          </del>
+                        </span>
+                      ) : (
+                        <span className="text-[0.94rem] lg:text-[1.2rem] opacity-90 font-lato tracking-wide mt-0.5 lg:mt-1">
+                          Rs {products.stock.price.toFixed(2)}
+                        </span>
+                      )}
+                      <div className="w-10 h-5"> </div>
+                    </span>
+                  )}
                 </>
               )}
             </p>

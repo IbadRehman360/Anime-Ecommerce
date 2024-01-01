@@ -1,5 +1,5 @@
 "use client";
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
@@ -15,7 +15,7 @@ export default function Cart() {
   const [open, setOpen] = useState(true);
   const { handleRemoveItem } = useProductUtils();
   const total = cartItems.reduce((total, product) => {
-    const price = product.product.discount_price || product.product.price;
+    const price = product.discount_price || product.price;
     const quantity = product.quantity || 1;
     return total + price * quantity;
   }, 0);
@@ -103,13 +103,11 @@ export default function Cart() {
                                       src={product.product.images[0]}
                                     />
                                   </div>
-
                                   <div className="ml-4  mt-1 flex flex-1 flex-col">
                                     <div>
                                       <p className="   text-[0.87rem] uppercase  tracking-wide font-lato text-gray-500">
                                         {product.product.category_id.name}
                                       </p>
-
                                       <div className="sm:flex sm:justify-between mt-1 text-[0.89rem]  line-clamp-1   sm:text-base   font-medium text-gray-800">
                                         <h3>
                                           <a href={product.href}>
@@ -122,33 +120,29 @@ export default function Cart() {
                                         </h3>
                                         <p className="  text-[0.7rem] uppercase tracking-wider font-lato text-gray-500"></p>
                                       </div>
-                                      <div className="sm:flex sm:justify-between text-[0.89rem]   line-clamp-1  sm:text-base font-medium text-gray-800">
-                                        <p className="  text-[0.7rem] flex sm:hidden uppercase tracking-wider  font-lato text-gray-500"></p>
+                                      <div className="sm:flex sm:justify-between text-[0.89rem] line-clamp-1 sm:text-base font-medium text-gray-800">
+                                        <p className="text-[0.7rem] flex sm:hidden uppercase tracking-wider font-lato text-gray-500"></p>
                                         <p className=" text-[0.9rem] sm:text-sm lg:text-[1rem]     font-roboto   tracking-wide mt-1.5">
-                                          {product.product.discount_price ? (
+                                          {product.discount_price ? (
                                             <span>
                                               <span className="text-red-500">
                                                 Rs{" "}
-                                                {product.product.discount_price.toFixed(
+                                                {product.discount_price.toFixed(
                                                   2
                                                 )}
                                               </span>
                                               <span className="text-gray-600 ml-3 line-through">
-                                                Rs{" "}
-                                                {product.product.price.toFixed(
-                                                  2
-                                                )}
+                                                Rs {product.price.toFixed(2)}
                                               </span>
                                             </span>
                                           ) : (
                                             <span>
-                                              Rs{" "}
-                                              {product.product.price.toFixed(2)}
+                                              Rs {product.price.toFixed(2)}
                                             </span>
                                           )}
                                         </p>
-                                        <p className="  text-[0.7rem] hidden sm:flex uppercase tracking-wider mt-2 font-lato text-gray-500">
-                                          {product.size && (
+                                        <p className="text-[0.7rem] hidden sm:flex uppercase tracking-wider mt-2 font-lato text-gray-500">
+                                          {product.color && (
                                             <span className="ml-1">
                                               color: {product.color}
                                             </span>
@@ -167,7 +161,9 @@ export default function Cart() {
                                           className="font-medium sm:flex hidden -mt-6 text-gray-600 hover:text-gray-500"
                                           onClick={() =>
                                             handleRemoveItem(
-                                              product.product._id
+                                              product.product._id,
+                                              product.size,
+                                              product.color
                                             )
                                           }
                                         >
@@ -178,7 +174,9 @@ export default function Cart() {
                                           className=" text-sm sm:hidden flex -mt-6 text-gray-600 hover:text-gray-500"
                                           onClick={() =>
                                             handleRemoveItem(
-                                              product.product._id
+                                              product.product._id,
+                                              product.size,
+                                              product.color
                                             )
                                           }
                                         >

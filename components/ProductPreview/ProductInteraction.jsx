@@ -5,19 +5,41 @@ import ProductSizes from "./ProductSizes";
 import { useDispatch, useSelector } from "react-redux";
 import { addItem, selectCartItems } from "../../app/Global/Features/cartSlice";
 import { useProductUtils } from "@utils/productUtils";
+import { clearCart } from "@app/Global/Features/cartSlice";
+import { useEffect } from "react";
 
 function ProductInteraction({
   product,
   selectedColor,
   setSelectedColor,
-  sizeNames,
   setSelectedSize,
   selectedSize,
 }) {
   const { incrementQuantity, decrementQuantity } = useProductUtils();
   const dispatch = useDispatch();
   const cartItems = useSelector(selectCartItems);
+  const getPriceInfo = () => {
+    let priceInfo = {};
 
+    if (product.stock.colorswithsize) {
+      const colorInfo = product.stock.colorswithsize[selectedColor] || {};
+      priceInfo = colorInfo[selectedSize] || {};
+    } else if (product.stock.sizes) {
+      priceInfo = product.stock.sizes[selectedSize] || {};
+    } else if (product.stock.colors) {
+      priceInfo = product.stock.colors[selectedColor] || {};
+    } else {
+      priceInfo = product.stock;
+    }
+
+    return priceInfo;
+  };
+
+  const { price, discount_price, quantity } = getPriceInfo();
+
+  // useEffect(() => {
+  //   dispatch(clearCart());
+  // }, []);
   const handleAddToCart = () => {
     dispatch(
       addItem({
@@ -25,10 +47,11 @@ function ProductInteraction({
         quantity: 1,
         color: selectedColor,
         size: selectedSize,
+        price: price,
+        discount_price: discount_price,
       })
     );
   };
-
   return (
     <form
       className={` border-t ${
@@ -40,14 +63,15 @@ function ProductInteraction({
           product={product}
           selectedColor={selectedColor}
           setSelectedColor={setSelectedColor}
+          selectedSize={selectedSize}
         />
       </div>
       <div className={`${!selectedSize ? "hidden" : "grid"} `}>
         <ProductSizes
           product={product}
+          selectedColor={selectedColor}
           setSelectedSize={setSelectedSize}
           selectedSize={selectedSize}
-          sizeNames={sizeNames}
         />{" "}
       </div>
       <div>
@@ -59,6 +83,9 @@ function ProductInteraction({
           cartItems={cartItems}
           selectedColor={selectedColor}
           selectedSize={selectedSize}
+          quantityNum={quantity}
+          price={price}
+          discount_price={discount_price}
         />
       </div>
     </form>

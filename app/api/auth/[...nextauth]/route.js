@@ -1,4 +1,4 @@
-import User from "@app/models/user";
+import User from "@models/user";
 import { connectToDB } from "@utils/database"
 import NextAuth from "next-auth/next"
 import GoogleProviders from "next-auth/providers/google"
