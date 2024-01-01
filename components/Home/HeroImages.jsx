@@ -11,6 +11,7 @@ export default function HeroImages({ index, imageUrl }) {
     "/assets/mb6.png",
     "/assets/mb7.png",
     "/assets/mb8.png",
+    "/assets/mb9.png",
   ];
   const [currentIndex, setCurrentIndex] = useState(0);
 
