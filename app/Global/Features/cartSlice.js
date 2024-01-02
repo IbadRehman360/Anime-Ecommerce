@@ -25,13 +25,11 @@ const cartSlice = createSlice({
             const { product, color, size } = action.payload;
             const indexToRemove = state.items.findIndex(item => {
                 const isProductIdMatch = item.product._id.toUpperCase() === product.toUpperCase();
-                const isColorMatch = color ? item.color.toUpperCase() === color.toUpperCase() : true;
-                const isSizeMatch = size ? item.size.toUpperCase() === size.toUpperCase() : true;
+                const isColorMatch = color ? (item.color && item.color.toUpperCase() === color.toUpperCase()) : true;
+                const isSizeMatch = size ? (item.size && item.size.toUpperCase() === size.toUpperCase()) : true;
 
                 return isProductIdMatch && isColorMatch && isSizeMatch;
             });
-
-
 
             if (indexToRemove !== -1) {
                 const updatedItems = [
@@ -122,17 +120,6 @@ const cartSlice = createSlice({
             state.items = [];
         },
 
-        updateCartItems: (state, action) => {
-            const { productId, quantity } = action.payload;
-            console.log(productId, quantity)
-            const existingCartItem = state.cartItems.find(item => item.product._id === productId);
-
-            if (existingCartItem) {
-                existingCartItem.quantity = quantity;
-            } else {
-                state.cartItems.push({ product: { _id: productId }, quantity });
-            }
-        },
         updateQuantity: (state, action) => {
             const { product, size, color, newQuantity } = action.payload;
             const updatedItems = state.items.map(item => {
@@ -174,11 +161,31 @@ const cartSlice = createSlice({
 
             return { ...state, items: updatedItems };
         },
+        updateCartItems: (state, action) => {
+            const { productId, quantity } = action.payload;
+            console.log(productId, quantity)
+            const existingCartItem = state.cartItems.find(item => item.product._id === productId);
+
+            if (existingCartItem) {
+                existingCartItem.quantity = quantity;
+            } else {
+                state.cartItems.push({ product: { _id: productId }, quantity });
+            }
+        },
         removeItemsWithZeroQuantity: (state, action) => {
-            const { productId } = action.payload;
-            const updatedCartItems = state.items.filter(item => item.product._id !== productId);
+            const { productId, color, size } = action.payload;
+            console.log(productId, color, size);
+            const updatedCartItems = state.items.filter(
+                (item) =>
+                    item.product._id !== productId ||
+
+                    (item.color === color && item.size === size)
+            );
+
             state.items = updatedCartItems;
         },
+
+
 
     },
 });

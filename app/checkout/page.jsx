@@ -6,8 +6,13 @@ import FormInput from "@components/CheckOut/FormInputs";
 import { useForm } from "react-hook-form";
 import RadioGroups from "@components/CheckOut/RadioGroups";
 import InputForm from "@components/CheckOut/InputForm";
-import { useState } from "react";
-import { clearCart, selectCartItems } from "@app/Global/Features/cartSlice";
+import { useEffect, useState } from "react";
+import {
+  clearCart,
+  selectCartItems,
+  removeItemsWithZeroQuantity,
+  updateCartItems,
+} from "@app/Global/Features/cartSlice";
 import { useSession } from "next-auth/react";
 import toast from "react-hot-toast";
 
@@ -28,29 +33,37 @@ const deliveryMethods = [
 export default function Checkout() {
   const cartItems = useSelector(selectCartItems);
   const { data: session } = useSession();
-  const { control, handleSubmit } = useForm();
   const dispatch = useDispatch();
+  const delay = 5000;
+  const isCartEmpty = cartItems.length === 0;
+
+  const { control, handleSubmit } = useForm();
 
   if (!cartItems.length) redirect("/");
+
   const [selectedDeliveryMethod, setSelectedDeliveryMethod] = useState(
     deliveryMethods[0]
   );
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const subtotal = cartItems.reduce((total, product) => {
-    const price = product.discount_price || product.price;
-    const quantity = product.quantity || 1;
-    return total + price * quantity;
-  }, 0);
-  const shippingCost = selectedDeliveryMethod.price;
-  const taxRate = 0.08;
+  const calculateOrderDetails = () => {
+    const subtotal = cartItems.reduce((total, product) => {
+      const price = product.discount_price || product.price;
+      const quantity = product.quantity || 1;
+      return total + price * quantity;
+    }, 0);
 
-  const shipping = shippingCost;
-  const tax = subtotal * taxRate;
+    const shippingCost = selectedDeliveryMethod.price;
+    const taxRate = 0.08;
 
-  const totalAmount = subtotal + shipping + tax;
+    const shipping = shippingCost;
+    const tax = subtotal * taxRate;
 
-  const isCartEmpty = cartItems.length === 0;
+    const totalAmount = subtotal + shipping + tax;
+
+    return { subtotal, shipping, tax, totalAmount };
+  };
+  const { subtotal, shipping, tax, totalAmount } = calculateOrderDetails();
 
   const onSubmit = async (data) => {
     try {
@@ -118,6 +131,75 @@ export default function Checkout() {
       setIsSubmitting(false);
     }
   };
+
+  const checkAvailability = async (cartItems, dispatch) => {
+    try {
+      const response = await fetch("/api/availability", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ cartItems }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Failed to check availability: ${response.statusText}`);
+      }
+
+      const data = await response.json();
+
+      cartItems.forEach((cartItem) => {
+        const { stock } =
+          data.find((p) => p._id === cartItem.product._id) || {};
+        if (!stock) return;
+        const { color, size } = cartItem;
+        let stockQty = 0;
+
+        if (stock.colorswithsize?.[color]?.[size]) {
+          stockQty = stock.colorswithsize[color][size].quantity;
+        } else if (stock.sizes?.[size]) {
+          stockQty = stock.sizes[size].quantity;
+        } else if (stock.colors?.[color]) {
+          stockQty = stock.colors[color].quantity;
+        } else {
+          stockQty = stock.quantity;
+        }
+
+        if (stockQty <= 0) {
+          dispatch(
+            removeItemsWithZeroQuantity({
+              productId: stock._id,
+              color,
+              size,
+            })
+          );
+        } else if (stock.quantity < cartItem.quantity) {
+          console.log("Updating cart item quantity:", stock._id);
+          dispatch(
+            updateCartItems({
+              productId: cartItem.product._id,
+              quantity: stock.quantity,
+            })
+          );
+        }
+      });
+    } catch (error) {
+      console.log(error);
+      console.error("Error checking availability:", error.message);
+    }
+  };
+
+  useEffect(() => {
+    const checkAvailabilityOnce = async () => {
+      await checkAvailability(cartItems, dispatch);
+      console.log("HI");
+      clearInterval(intervalId);
+    };
+
+    const intervalId = setInterval(checkAvailabilityOnce, delay);
+
+    checkAvailabilityOnce();
+
+    return () => clearInterval(intervalId);
+  }, []);
 
   return (
     <div className=" ">

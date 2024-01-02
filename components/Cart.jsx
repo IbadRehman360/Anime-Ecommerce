@@ -132,12 +132,12 @@ export default function Cart() {
                                                 )}
                                               </span>
                                               <span className="text-gray-600 ml-3 line-through">
-                                                Rs {product.price.toFixed(2)}
+                                                Rs {product?.price?.toFixed(2)}
                                               </span>
                                             </span>
                                           ) : (
                                             <span>
-                                              Rs {product.price.toFixed(2)}
+                                              Rs {product?.price?.toFixed(2)}
                                             </span>
                                           )}
                                         </p>

@@ -12,7 +12,9 @@ export default async function Home() {
   if (!process.env.NEXTAUTH_URL) {
     return null;
   }
+
   const products = await getProductsData();
+
   return (
     <section className="relative     w-full main flex-center flex-col">
       <HeroCarousel />

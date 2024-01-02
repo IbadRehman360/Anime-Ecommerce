@@ -24,59 +24,36 @@ const productSchema = new Schema(
             ref: 'Review',
         }],
         stock: {
-            type: {
-                quantity: {
-                    type: Number,
-                    required: true,
-                },
-                discount_price: {
-                    type: Number,
-                    required: true,
-                },
-                price: {
-                    type: Number,
-                    required: true,
+            colors: {
+                type: Map,
+                of: {
+                    quantity: { type: Number, default: 0, required: true },
+                    price: { type: Number, required: true },
+                    discount_price: { type: Number },
                 },
             },
             sizes: {
                 type: Map,
                 of: {
-                    type: {
-                        quantity: Number,
-                        price: Number,
-                        discount_price: Number,
-                    },
-                    required: true,
+                    quantity: { type: Number, default: 0, required: true },
+                    price: { type: Number, required: true },
+                    discount_price: { type: Number },
                 },
-                required: true,
-            },
-            colors: {
-                type: Map,
-                of: {
-                    type: {
-                        quantity: Number,
-                        price: Number,
-                        discount_price: Number,
-                    },
-                    required: true,
-                },
-                required: true,
             },
             colorswithsize: {
                 type: Map,
                 of: {
-                    type: {
-                        sizes: {
-                            type: Map,
-                            of: {
-                                quantity: Number,
-                                price: Number,
-                                discount_price: Number,
-                            },
-                        },
+                    type: Map,
+                    of: {
+                        quantity: { type: Number, default: 0, required: true },
+                        price: { type: Number, required: true },
+                        discount_price: { type: Number },
                     },
                 },
             },
+            discount_price: { type: Number },
+            price: { type: Number },
+            quantity: { type: Number },
         },
         images: {
             type: [String],
@@ -85,8 +62,7 @@ const productSchema = new Schema(
         highlights: {
             type: [String],
             required: true,
-        },
-        createdAt: {
+        }, createdAt: {
             type: Date,
             required: true,
         },
@@ -97,10 +73,6 @@ const productSchema = new Schema(
         is_accessories: {
             type: Boolean,
             required: true,
-        },
-        __v: {
-            type: Number,
-            default: 0,
         },
     },
     { timestamps: true }

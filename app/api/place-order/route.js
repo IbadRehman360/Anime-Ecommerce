@@ -33,15 +33,14 @@ export const POST = async (req, res) => {
       phone,
       secondPhone,
     });
-
     const customer = await newCustomer.save();
     const orderItems = cartItems.map((item) => ({
       product_id: item.product._id,
       quantity: item.quantity,
       size: item.size,
       color: item.color,
-      price: item.product.price,
-      discounted_price: item.product.discount_price,
+      price: item.price,
+      discounted_price: item.discount_price,
     }));
 
     const savedOrderItems = await OrderItem.insertMany(orderItems);
@@ -51,28 +50,59 @@ export const POST = async (req, res) => {
       const user = await User.findOne({ email: session.user.email });
       user_id = user._id;
     }
-    console.log(totalAmount, subtotal)
     const newOrder = new Order({
       customer: customer._id,
       items: savedOrderItems.map((item) => item._id),
       delivery: selectedDeliveryMethod.delivery,
       user_id: user_id,
       total: totalAmount,
-      subtotal: subtotal
+      subtotal: subtotal,
     });
 
     const order = await newOrder.save();
+    let updateResults = [];
+
+
 
     for (const item of cartItems) {
-      const result = await Product.findByIdAndUpdate(item.product._id, {
-        $inc: { stock_quantity: -item.quantity },
-      });
-      if (!result) {
-        console.log(`Product with ID ${item.product._id} not found.`);
+      const productId = item.product._id;
+      const color = item.color;
+      const size = item.size;
+
+      let updateQuery = {};
+      let newQuantity;
+
+      if (color && size) {
+        newQuantity = item.quantity > 0 ? -item.quantity : 0;
+        updateQuery = {
+          $inc: { [`stock.colorswithsize.${color}.${size}.quantity`]: newQuantity },
+        };
+      } else if (size) {
+        newQuantity = item.quantity > 0 ? -item.quantity : 0;
+        updateQuery = {
+          $inc: { [`stock.sizes.${size}.quantity`]: newQuantity },
+        };
+      } else if (color) {
+        newQuantity = item.quantity > 0 ? -item.quantity : 0;
+        updateQuery = {
+          $inc: { [`stock.colors.${color}.quantity`]: newQuantity },
+        };
       } else {
-        console.log(`Stock quantity updated for product with ID ${item.product._id}`);
+        newQuantity = item.quantity > 0 ? -item.quantity : 0;
+        updateQuery = {
+          $inc: { "stock.quantity": newQuantity },
+        };
+      }
+
+
+      const updatedProduct = await Product.findByIdAndUpdate(productId, updateQuery);
+
+
+      if (!updatedProduct) {
+        console.log("Product not found");
       }
     }
+
 
     return new Response(JSON.stringify(order), { status: 200 });
   } catch (error) {
@@ -82,6 +112,7 @@ export const POST = async (req, res) => {
     });
   }
 };
+
 
 // console.log(
 //   data,

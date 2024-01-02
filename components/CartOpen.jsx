@@ -2,61 +2,16 @@
 import { TiShoppingCart } from "react-icons/ti";
 import Cart from "./Cart";
 import { useState } from "react";
-import {
-  removeItemsWithZeroQuantity,
-  selectCartItems,
-  updateCartItems,
-} from "@app/Global/Features/cartSlice";
-import { useSelector, useDispatch } from "react-redux";
+import { selectCartItems } from "@app/Global/Features/cartSlice";
+import { useSelector } from "react-redux";
 
 function CartOpen() {
-  const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
   const cartItems = useSelector(selectCartItems);
   const toggleCart = () => {
     setIsOpen(!isOpen);
   };
-  // const delay = 5000;
-  // const checkAvailability = async () => {
-  //   try {
-  //     const response = await fetch("/api/availability", {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify({ cartItems }),
-  //     });
 
-  //     if (!response.ok) {
-  //       console.error("Failed to check availability:", response.statusText);
-  //       return;
-  //     }
-
-  //     const data = await response.json();
-
-  //     cartItems.forEach((cartItem) => {
-  //       const product = data.find((p) => p._id === cartItem.product._id);
-
-  //       if (product.stock_quantity <= 0) {
-  //         console.log("Product out of stock:", product._id);
-  //         dispatch(removeItemsWithZeroQuantity({ productId: product._id }));
-  //       } else if (product.stock_quantity < cartItem.quantity) {
-  //         console.log("Updating cart item quantity:", product._id);
-  //         dispatch(
-  //           updateCartItems({
-  //             productId: cartItem.product._id,
-  //             quantity: product.stock_quantity,
-  //           })
-  //         );
-  //       }
-  //     });
-  //   } catch (error) {
-  //     console.error("Error checking availability:", error.message);
-  //   }
-  // };
-  // if (cartItems.length > 0) {
-  //   setInterval(checkAvailability, delay);
-  // }
   return (
     <div className="fixed bottom-10 z-50 hidden lg:flex right-8 md:bottom-3">
       <div
