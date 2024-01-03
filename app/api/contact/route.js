@@ -12,7 +12,7 @@ const generateEmailContent = (data) => {
     const customerServiceContact = `
     If you have any inquiries or concerns regarding your order, feel free to reply to this email or contact our customer service  
     <a href="mailto:ibadhashim4@gmail.com" style="text-decoration: none; color: #007bff;">Email</a>
-    or Whatsapp at 03358202052.
+    or Whatsapp at 03218202052
 `;
     const customerProductList = data.cartItems.map(product => `
   <img src="${product.product.images[0]}" alt="Banner" class="banner-img">

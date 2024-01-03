@@ -4,12 +4,49 @@ import OrderItem from "@models/orderItems";
 import Product from "@models/product";
 import User from "@models/user";
 import { connectToDB } from "@utils/database";
+
 export const POST = async (req, res) => {
   try {
     await connectToDB();
     const res_data = await req.json();
 
-    const { selectedDeliveryMethod, cartItems, data, session, totalAmount, subtotal } = res_data;
+    const { selectedDeliveryMethod, cartItems, data, session, totalAmount, subtotal, availabilityData } = res_data;
+
+    let removedItemCount = 0;
+
+    for (const item of cartItems) {
+      const availabilityItem = availabilityData.find((p) => p._id === item.product._id);
+      const { stock } = availabilityItem || {};
+
+      if (!stock) {
+        console.log(`Stock not found for product ${item.product._id}`);
+        continue;
+      }
+
+      const { color, size } = item;
+      let stockQty = 0;
+
+      if (stock.colorswithsize?.[color]?.[size]) {
+        stockQty = stock.colorswithsize[color][size].quantity;
+      } else if (stock.sizes?.[size]) {
+        stockQty = stock.sizes[size].quantity;
+      } else if (stock.colors?.[color]) {
+        stockQty = stock.colors[color].quantity;
+      } else {
+        stockQty = stock.quantity;
+      }
+
+      if (stockQty <= 0) {
+        removedItemCount++;
+      }
+    }
+
+    if (removedItemCount > 0) {
+      return new Response(` ${removedItemCount} item(s) sold out - Remove them before ordering.`, {
+        status: 400,
+      });
+    }
+
     const {
       email_address,
       first_name,

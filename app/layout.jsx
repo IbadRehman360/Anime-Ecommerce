@@ -19,9 +19,7 @@ const RootLayout = ({ children }) => (
     <body suppressHydrationWarning={true}>
       <Providers>
         <ReduxProvider>
-          <head>
-            <link rel="icon" href="/assets/square3.jpg" />
-          </head>
+          <link rel="icon" href="/assets/logosenpai.png" />
           <div className="main">
             <div className="gradient" />
           </div>

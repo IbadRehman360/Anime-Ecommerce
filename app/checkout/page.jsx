@@ -44,6 +44,8 @@ export default function Checkout() {
   const [selectedDeliveryMethod, setSelectedDeliveryMethod] = useState(
     deliveryMethods[0]
   );
+  const [availabilityData, setAvailabilityData] = useState([]);
+
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const calculateOrderDetails = () => {
@@ -81,6 +83,7 @@ export default function Checkout() {
           session,
           totalAmount,
           subtotal,
+          availabilityData,
         }),
       });
 
@@ -115,11 +118,8 @@ export default function Checkout() {
           }
         }
       } else {
-        console.error(
-          "Failed to place the order. Status:",
-          orderResponse.status
-        );
-        toast.error("Oops! Order unsuccessful. Please try again.");
+        const errorMessage = await orderResponse.text();
+        toast.error(errorMessage);
       }
     } catch (error) {
       console.error("An error occurred while processing the request:", error);
@@ -127,6 +127,7 @@ export default function Checkout() {
         "An unexpected error occurred. Please try again later.",
         error.message
       );
+      setIsSubmitting(false);
     } finally {
       setIsSubmitting(false);
     }
@@ -145,6 +146,10 @@ export default function Checkout() {
       }
 
       const data = await response.json();
+      setAvailabilityData(data);
+
+      let removedItemCount = 0;
+      let toastShown = false;
 
       cartItems.forEach((cartItem) => {
         const { stock } =
@@ -166,11 +171,12 @@ export default function Checkout() {
         if (stockQty <= 0) {
           dispatch(
             removeItemsWithZeroQuantity({
-              productId: stock._id,
+              productId: cartItem.product._id,
               color,
               size,
             })
           );
+          removedItemCount++;
         } else if (stock.quantity < cartItem.quantity) {
           console.log("Updating cart item quantity:", stock._id);
           dispatch(
@@ -180,7 +186,17 @@ export default function Checkout() {
             })
           );
         }
+
+        if (removedItemCount > 0 && !toastShown) {
+          toastShown = true;
+        }
       });
+
+      if (toastShown) {
+        toast.error(
+          `${removedItemCount} item(s) removed from cart - Reason sold out.`
+        );
+      }
     } catch (error) {
       console.log(error);
       console.error("Error checking availability:", error.message);
@@ -190,7 +206,6 @@ export default function Checkout() {
   useEffect(() => {
     const checkAvailabilityOnce = async () => {
       await checkAvailability(cartItems, dispatch);
-      console.log("HI");
       clearInterval(intervalId);
     };
 
@@ -199,7 +214,7 @@ export default function Checkout() {
     checkAvailabilityOnce();
 
     return () => clearInterval(intervalId);
-  }, []);
+  }, [cartItems, dispatch, delay]);
 
   return (
     <div className=" ">

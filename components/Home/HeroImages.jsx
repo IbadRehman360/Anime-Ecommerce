@@ -15,7 +15,7 @@ export default function HeroImages({ index, imageUrl }) {
   return (
     <div className="relative">
       <img
-        className="hidden sm:flex border-x-4     border-y-2  border-black border-opacity-90      3xl:max-h-[40rem] max-h-[32rem] w-full mx-auto filter   brightness-100    contrast-100"
+        className="hidden sm:flex border-x-4     border-y-2  border-black border-opacity-90      3xl:h-auto max-h-[32rem] w-full mx-auto filter   brightness-100    contrast-100"
         src={`/assets/effect.png`}
         alt={`bg ${index}`}
       />

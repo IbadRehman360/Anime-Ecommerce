@@ -174,20 +174,15 @@ const cartSlice = createSlice({
         },
         removeItemsWithZeroQuantity: (state, action) => {
             const { productId, color, size } = action.payload;
-            console.log(productId, color, size);
             const updatedCartItems = state.items.filter(
                 (item) =>
-                    item.product._id !== productId ||
-
-                    (item.color === color && item.size === size)
+                    item.product._id !== productId || (item.color !== color || item.size !== size)
             );
 
             state.items = updatedCartItems;
-        },
 
-
-
-    },
+        }
+    }
 });
 
 
