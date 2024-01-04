@@ -11,8 +11,8 @@ export const POST = async (req, res) => {
     const res_data = await req.json();
 
     const { selectedDeliveryMethod, cartItems, data, session, totalAmount, subtotal, availabilityData } = res_data;
-
     let removedItemCount = 0;
+    let updatedItemCount = 0;
 
     for (const item of cartItems) {
       const availabilityItem = availabilityData.find((p) => p._id === item.product._id);
@@ -35,14 +35,26 @@ export const POST = async (req, res) => {
       } else {
         stockQty = stock.quantity;
       }
-
       if (stockQty <= 0) {
         removedItemCount++;
       }
+
+      if (stockQty >= 1 && stockQty < item.quantity) {
+        updatedItemCount++;
+      }
+
     }
 
-    if (removedItemCount > 0) {
-      return new Response(` ${removedItemCount} item(s) sold out - Remove them before ordering.`, {
+    if (removedItemCount > 0 && updatedItemCount > 0) {
+      return new Response(`${removedItemCount} item(s) sold out and Update quantity of ${updatedItemCount} before ordering.`, {
+        status: 400,
+      });
+    } else if (removedItemCount > 0) {
+      return new Response(`${removedItemCount} item(s) sold out - Remove them before ordering.`, {
+        status: 400,
+      });
+    } else if (updatedItemCount > 0) {
+      return new Response(`Update ${updatedItemCount} item(s) quantity to match availability.`, {
         status: 400,
       });
     }

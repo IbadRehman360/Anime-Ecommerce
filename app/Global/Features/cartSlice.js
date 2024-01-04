@@ -162,14 +162,23 @@ const cartSlice = createSlice({
             return { ...state, items: updatedItems };
         },
         updateCartItems: (state, action) => {
-            const { productId, quantity } = action.payload;
-            console.log(productId, quantity)
-            const existingCartItem = state.cartItems.find(item => item.product._id === productId);
+            const { productId, quantity, color, size } = action.payload;
+            console.log(productId, quantity, color, size);
+            const existingCartItemIndex = state.items.findIndex(
+                (item) =>
+                    item.product._id === productId ||
+                    (item.color === color && item.size === size)
+            );
 
-            if (existingCartItem) {
-                existingCartItem.quantity = quantity;
+            if (existingCartItemIndex !== -1) {
+                state.items[existingCartItemIndex].quantity = quantity;
             } else {
-                state.cartItems.push({ product: { _id: productId }, quantity });
+                state.items.push({
+                    product: { _id: productId },
+                    quantity,
+                    color,
+                    size,
+                });
             }
         },
         removeItemsWithZeroQuantity: (state, action) => {

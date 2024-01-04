@@ -89,7 +89,7 @@ export default function Checkout() {
 
       if (orderResponse.ok) {
         const { _id: trackingId } = await orderResponse.json();
-        dispatch(clearCart());
+        // dispatch(clearCart());
         const contactResponse = await fetch("/api/contact", {
           body: JSON.stringify({ data, trackingId, cartItems, totalAmount }),
           method: "POST",
@@ -149,12 +149,12 @@ export default function Checkout() {
       setAvailabilityData(data);
 
       let removedItemCount = 0;
-      let toastShown = false;
-
+      let updatedItemCount = 0;
       cartItems.forEach((cartItem) => {
         const { stock } =
           data.find((p) => p._id === cartItem.product._id) || {};
         if (!stock) return;
+
         const { color, size } = cartItem;
         let stockQty = 0;
 
@@ -177,24 +177,32 @@ export default function Checkout() {
             })
           );
           removedItemCount++;
-        } else if (stock.quantity < cartItem.quantity) {
-          console.log("Updating cart item quantity:", stock._id);
+        }
+        if (stockQty > 0 && stockQty !== cartItem.quantity) {
+          console.log(cartItem.product._id, stockQty, color, size);
           dispatch(
             updateCartItems({
               productId: cartItem.product._id,
               quantity: stock.quantity,
+              color,
+              size,
             })
           );
-        }
-
-        if (removedItemCount > 0 && !toastShown) {
-          toastShown = true;
+          updatedItemCount++;
         }
       });
 
-      if (toastShown) {
+      if (removedItemCount > 0 && updatedItemCount > 0) {
         toast.error(
-          `${removedItemCount} item(s) removed from cart - Reason sold out.`
+          `${removedItemCount} item(s) removed due to sold out. Updated quantity: ${updatedItemCount}.`
+        );
+      } else if (removedItemCount > 0) {
+        toast.error(
+          `${removedItemCount} item(s) removed from cart - Reason: sold out.`
+        );
+      } else if (updatedItemCount > 0) {
+        toast.success(
+          `Updated ${updatedItemCount} item(s) quantity to match availability.`
         );
       }
     } catch (error) {
