@@ -1,6 +1,7 @@
 import Carousel from "@components/Carousel";
 
 function TrendingProduct({ products }) {
+  const product = products.slice(8, 12);
   return (
     <div className="  mx-auto    md:px-6 px-2 py-2  pt-8 pb-6 sm:pt-12 sm:pb-8 lg:pt-16 lg:pb-10     w-full  ">
       <div className="text-center   pb-4">
@@ -13,7 +14,7 @@ function TrendingProduct({ products }) {
       </div>
       <div className="">
         <Carousel
-          products={products}
+          products={product}
           no={true}
           Feature1={"FeatureProductSlide1"}
           Feature2={"FeatureProductSlide2 "}

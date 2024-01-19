@@ -24,14 +24,14 @@ export default function Example() {
     }
   };
 
-  const visibleData = callouts.slice(currentSlide * 5, (currentSlide + 1) * 5);
+  const visibleData = callouts.slice(currentSlide * 6, (currentSlide + 1) * 6);
   return (
-    <div className="pt-10 pb-4   dark sm:pt-12 sm:pb-8 lg:pt-16 lg:pb-16">
-      <div className="">
-        <div className="border-gray-200">
-          <div className="text-center">
+    <div className="pt-1 pb-1">
+      <div className=" bg-white sm:pt-12 sm:pb-8 lg:pt-16 lg:pb-16  pt-10 pb-4   dark">
+        <div className="border-gray-200 ">
+          <div className="text-center ">
             <div className="  flex items-center justify-between">
-              <h2 className="mx-auto flex  justify-center items-center font-montserrat pl-4 sm:pl-28 text-[1.7rem] tracking-wide leading-9 font-extrabold sm:text-[2.2rem] lg:text-[2.6rem] uppercase sm:pb-2 lg:pb-2 text-gray-900">
+              <h2 className="mx-auto flex text-center  justify-center items-center font-montserrat pl-4 sm:pl-28 text-[1.7rem] tracking-wide leading-9 font-extrabold sm:text-[2.2rem] lg:text-[2.6rem] uppercase sm:pb-2 lg:pb-2 text-gray-900">
                 SHOP BY ANIME
               </h2>
               <Link href={"/category/all-products"}>
@@ -73,7 +73,25 @@ export default function Example() {
         </div>
 
         <div className="mt-6 md:mt-8   bg-[#fdfdfd]">
-          <div className="carousel-center mx-2   hidden w-full gap-x-4 rounded-lg lg:carousel">
+          <div className="carousel-center mx-6   hidden w-full gap-x-4 rounded-lg xl:carousel">
+            <div
+              id="trendingGiftCardsSlide1"
+              className="carousel-item   w-full gap-2  xl:gap-4"
+            >
+              {visibleData.slice(0, 7).map((Anime) => (
+                <CategoryCard key={Anime.id} Anime={Anime} />
+              ))}
+            </div>
+            <div
+              id="trendingGiftCardsSlide2"
+              className="carousel-item w-full gap-4 sm:gap-5 lg:gap-8"
+            >
+              {visibleData.slice(0, 7).map((Anime) => (
+                <CategoryCard key={Anime.id} Anime={Anime} />
+              ))}
+            </div>
+          </div>
+          <div className="carousel-center mx-6 hidden  xl:hidden w-full gap-x-4 rounded-lg lg:carousel">
             <div
               id="trendingGiftCardsSlide1"
               className="carousel-item   w-full gap-2  xl:gap-4"
@@ -92,58 +110,33 @@ export default function Example() {
             </div>
           </div>
 
-          <div className="carousel hidden sm:flex  relative w-full gap-x-4 rounded-lg lg:hidden">
+          <div className="carousel hidden md:flex mx-4 relative w-full gap-x-4 rounded-lg lg:hidden">
             <div
               id="mbTrendingGiftCardsSlide1"
-              className="carousel-item w-full gap-1  sm:gap-2 md:gap-10"
+              className="carousel-item   w-full gap-2  xl:gap-4"
             >
-              {callouts.slice(0, 3).map((Anime) => (
+              {callouts.slice(0, 5).map((Anime) => (
                 <CategoryCard key={Anime.id} Anime={Anime} />
               ))}
             </div>
             <div
               id="mbTrendingGiftCardsSlide2"
-              className="carousel-item w-full    gap-1 sm:gap-5 md:gap-10"
+              className="carousel-item   w-full gap-2  xl:gap-4"
             >
-              {callouts.slice(3, 6).map((Anime) => (
+              {callouts.slice(3, 8).map((Anime) => (
                 <CategoryCard key={Anime.id} Anime={Anime} />
               ))}
             </div>
           </div>
-
-          <div className="carousel    relative w-full gap-x-4 rounded-lg sm:hidden">
-            <div
-              id="mbTrendingGiftCardsSlide1"
-              className="carousel-item w-full gap-1  sm:gap-5 md:gap-10"
-            >
-              {callouts.slice(0, 2).map((Anime) => (
-                <CategoryCard key={Anime.id} Anime={Anime} />
-              ))}
-            </div>
-            <div
-              id="mbTrendingGiftCardsSlide2"
-              className="carousel-item w-full    gap-1 sm:gap-5 md:gap-10"
-            >
-              {callouts.slice(2, 4).map((Anime) => (
-                <CategoryCard key={Anime.id} Anime={Anime} />
-              ))}
-            </div>
-            <div
-              id="mbTrendingGiftCardsSlide3"
-              className="carousel-item w-full    gap-1 sm:gap-5 md:gap-10"
-            >
-              {callouts.slice(4, 6).map((Anime) => (
-                <CategoryCard key={Anime.id} Anime={Anime} />
-              ))}
-            </div>
-            <div
-              id="mbTrendingGiftCardsSlide4"
-              className="carousel-item w-full    gap-1 sm:gap-5 md:gap-10"
-            >
-              {callouts.slice(6, 8).map((Anime) => (
-                <CategoryCard key={Anime.id} Anime={Anime} />
-              ))}
-            </div>
+          <div className="carousel-item w-full  md:hidden  gap-1 sm:gap-5 md:gap-10">
+            {callouts.slice(0, 3).map((Anime) => (
+              <CategoryCard key={Anime.id} Anime={Anime} />
+            ))}
+          </div>
+          <div className="carousel-item w-full  md:hidden   gap-1 sm:gap-5 md:gap-10">
+            {callouts.slice(3, 6).map((Anime) => (
+              <CategoryCard key={Anime.id} Anime={Anime} />
+            ))}
           </div>
 
           <div className="mt-2 flex  font-opensans   justify-center text-xs sm:mt-4 md:mt-6">
@@ -182,7 +175,7 @@ var callouts = [
     name: "Baruto",
     description: "Work from home accessories",
     imageSrc:
-      "https://atsuko.com/cdn/shop/files/BPA67ZJONP_003_d01c90ca-6eaa-41f3-8cef-fcb0f1aa3c97_750x960_crop_center.jpg?v=1700133123&quot",
+      "//www.animehouse.co.nz/cdn/shop/collections/31ebc4370166f179d3bfdc3e4fceb5b0_960x540.jpg?v=1611116599",
     path: "/category/654cc5ce72d1fa8b7fc130f3",
     imageAlt:
       "Desk with leather desk pad, walnut desk organizer, wireless keyboard and mouse, and porcelain mug.",
@@ -192,7 +185,7 @@ var callouts = [
     name: "Code Grease",
     description: "Journals and note-taking",
     imageSrc:
-      "https://atsuko.com/cdn/shop/files/OWM2JQXCRU_003_78f4367b-68c1-496a-a45e-05f25fb740c3_750x960_crop_center.jpg?v=1700133310",
+      "//www.animehouse.co.nz/cdn/shop/collections/Naruto_960x540.jpg?v=1611117629",
     path: "/category/654cc5ce72d1fa8b7fc130f3",
     imageAlt:
       "Wood table with porcelain mug, leather journal, brass pen, leather key ring, and a houseplant.",
@@ -203,7 +196,7 @@ var callouts = [
     path: "/category/654cc5ce72d1fa8b7fc130f3",
     description: "Daily commute essentials",
     imageSrc:
-      "https://atsuko.com/cdn/shop/files/BPA67ZJONP_003_d01c90ca-6eaa-41f3-8cef-fcb0f1aa3c97_750x960_crop_center.jpg?v=1700133123&quot",
+      "//www.animehouse.co.nz/cdn/shop/collections/one_piece_960x540.jpg?v=1611117687",
 
     imageAlt: "Collection of four insulated travel bottles on wooden shelf.",
     href: "#",
@@ -213,7 +206,7 @@ var callouts = [
     path: "/category/654cc5ce72d1fa8b7fc130f3",
     description: "Daily commute essentials",
     imageSrc:
-      "https://atsuko.com/cdn/shop/files/BPA67ZJONP_003_d01c90ca-6eaa-41f3-8cef-fcb0f1aa3c97_750x960_crop_center.jpg?v=1700133123&quot",
+      "//www.animehouse.co.nz/cdn/shop/collections/unnamed_31aae112-c360-4063-b4a1-bb2a35775188_960x540.jpg?v=1611117349",
     imageAlt: "Collection of four insulated travel bottles on wooden shelf.",
     href: "#",
   },
@@ -222,7 +215,7 @@ var callouts = [
     path: "/category/654cc5ce72d1fa8b7fc130f3",
     description: "Daily commute essentials",
     imageSrc:
-      "https://atsuko.com/cdn/shop/files/OWM2JQXCRU_003_78f4367b-68c1-496a-a45e-05f25fb740c3_750x960_crop_center.jpg?v=1700133310",
+      "//www.animehouse.co.nz/cdn/shop/collections/my_hero_960x540.jpg?v=1611117614",
 
     imageAlt: "Collection of four insulated travel bottles on wooden shelf.",
     href: "#",
@@ -231,7 +224,7 @@ var callouts = [
     name: "Attack on Titans",
     description: "Daily commute essentials",
     imageSrc:
-      "https://atsuko.com/cdn/shop/files/BPA67ZJONP_003_d01c90ca-6eaa-41f3-8cef-fcb0f1aa3c97_750x960_crop_center.jpg?v=1700133123&quot",
+      "//www.animehouse.co.nz/cdn/shop/collections/sypoeebfdvox_960x540.jpg?v=1611116633",
 
     path: "/category/654cc5d172d1fa8b7fc13105",
 

@@ -2,7 +2,7 @@ import LatestDropDisplay from "./DisplayProducts";
 import { FaArrowRight } from "react-icons/fa";
 import Link from "next/link";
 export default async function MustHave({ products }) {
-  const product = products.slice(0, 8);
+  const product = products.slice(5, 16);
   return (
     <article className="  pt-12 pb-6     sm:pt-12 sm:pb-8 lg:pt-16 lg:pb-16    mx-auto   px-2 sm:px-6 lg:px-8 ">
       <div className="text-center   pb-6 md:pb-10">
