@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 /* eslint-disable @next/next/no-img-element */
 export default function HeroImages({ index, imageUrl }) {
-  const images = ["/assets/mb1.png", "/assets/mb2.png"];
+  const images = ["/assets/mb1.png", "/assets/dekno.jpg"];
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
