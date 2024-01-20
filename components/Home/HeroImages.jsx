@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 /* eslint-disable @next/next/no-img-element */
 export default function HeroImages({ index, imageUrl }) {
-  const images = ["/assets/mb1.png", "/assets/dekno.jpg"];
+  const images = ["/assets/var.png"];
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
@@ -19,11 +19,11 @@ export default function HeroImages({ index, imageUrl }) {
         src={`/assets/effect.png`}
         alt={`bg ${index}`}
       />
-      <div className="absolute inset-0 bg-white  opacity-5"></div>
+      <div className="absolute inset-0 bg-black  opacity-10 hover:opacity-0"></div>
       <img
         src={images[currentIndex]}
         alt={`bg ${currentIndex + 1}`}
-        className="sm:hidden border    border-black w-full mx-auto my-auto"
+        className="sm:hidden border w-full   border-black    mx-auto my-auto"
       />
     </div>
   );
