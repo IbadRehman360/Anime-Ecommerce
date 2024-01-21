@@ -21,9 +21,9 @@ export default function HeroImages({ index, imageUrl }) {
       />
       <div className="absolute inset-0 bg-black  opacity-5 hover:opacity-0"></div>
       <img
-        src={`/assets/pcvar.svg`}
+        src={images[currentIndex]}
         alt={`bg ${currentIndex + 1}`}
-        className="sm:hidden border w-full h-80    object-fill   border-black    mx-auto my-auto"
+        className="sm:hidden border w-full h-80  object-cover   border-black    mx-auto my-auto"
       />
     </div>
   );
