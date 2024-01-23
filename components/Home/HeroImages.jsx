@@ -15,16 +15,17 @@ export default function HeroImages({ index, imageUrl }) {
   return (
     <div className="relative">
       <img
-        className="hidden sm:flex border-x-4     border-y-2  border-black border-opacity-90 3xl:max-h-[44rem]     max-h-[36rem] w-full mx-auto filter   brightness-100    contrast-100"
-        src={`/assets/pcvar.svg`}
+        className="hidden sm:flex border-x-4     border-y-4  border-black border-opacity-90 3xl:max-h-[44rem]     max-h-[36rem] w-full mx-auto filter   brightness-100    contrast-100"
+        src={`/assets/WEB.svg`}
         alt={`bg ${index}`}
       />
-      <div className="absolute inset-0 bg-black  opacity-5 hover:opacity-0"></div>
+
       <img
         src={images[currentIndex]}
         alt={`bg ${currentIndex + 1}`}
         className="sm:hidden border w-full h-80  object-cover   border-black    mx-auto my-auto"
       />
+      <div className="absolute inset-0 bg-black  opacity-5 hover:opacity-0"></div>
     </div>
   );
 }
