@@ -42,9 +42,9 @@ export default async function Home() {
         </div>
       </div>
 
-      <div className="mx-auto md:max-w-[92rem]">
+      {/* <div className="mx-auto md:max-w-[92rem]">
         <Testimonials />
-      </div>
+      </div> */}
     </section>
   );
 }
