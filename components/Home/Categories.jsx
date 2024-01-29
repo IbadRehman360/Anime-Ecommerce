@@ -72,7 +72,7 @@ export default function Example() {
           </div>
         </div>
 
-        <div className="mt-6 md:mt-8   bg-[#fdfdfd]">
+        <div className="mt-6 md:mt-8  overflow-hidden  bg-[#fdfdfd]">
           <div className="carousel-center mx-6   hidden w-full gap-x-4 rounded-lg xl:carousel">
             <div
               id="trendingGiftCardsSlide1"
