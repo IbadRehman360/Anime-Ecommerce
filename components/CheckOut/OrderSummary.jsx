@@ -70,6 +70,7 @@ function OrderSummary({
                   <div className="relative inline-block">
                     <select
                       defaultValue={product.quantity}
+                      value={product.quantity}
                       onChange={(e) => {
                         handleUpdateQuantity(
                           product,

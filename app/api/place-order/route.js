@@ -10,7 +10,7 @@ export const POST = async (req, res) => {
     await connectToDB();
     const res_data = await req.json();
 
-    const { selectedDeliveryMethod, cartItems, data, session, totalAmount, subtotal, availabilityData } = res_data;
+    const { selectedDeliveryMethod, cartItems, formData, session, totalAmount, subtotal, availabilityData } = res_data;
     let removedItemCount = 0;
     let updatedItemCount = 0;
 
@@ -69,7 +69,7 @@ export const POST = async (req, res) => {
       country,
       phone,
       secondPhone,
-    } = data;
+    } = formData;
 
     const newCustomer = new Customer({
       email_address,
@@ -91,6 +91,9 @@ export const POST = async (req, res) => {
       price: item.price,
       discounted_price: item.discount_price,
     }));
+    orderItems.forEach((orderItem, index) => {
+      console.log(`Order Item ${index + 1}:`, orderItem);
+    });
 
     const savedOrderItems = await OrderItem.insertMany(orderItems);
 
@@ -164,7 +167,7 @@ export const POST = async (req, res) => {
 
 
 // console.log(
-//   data,
+//   formData,
 //   selectedDeliveryMethod.delivery,
 //   cartItems.map((item) => ({
 //     _id: item.product._id,

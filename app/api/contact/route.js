@@ -1,7 +1,7 @@
-import { mailOptions, transporter } from '@config/nodemailer';
-import { NextResponse } from 'next/server';
+import { mailOptions, transporter } from "@config/nodemailer";
+import { NextResponse } from "next/server";
 const generateEmailContent = (data) => {
-    const customerDetails = data.data;
+    const customerDetails = data.formData;
     const trackingInformation = `
         Tracking ID: ${data.trackingId}
          <br/>
@@ -14,14 +14,18 @@ const generateEmailContent = (data) => {
     <a href="mailto:ibadhashim4@gmail.com" style="text-decoration: none; color: #007bff;">Email</a>
     or Whatsapp at 03218202052
 `;
-    const customerProductList = data.cartItems.map(product => `
+    const customerProductList = data.cartItems
+        .map(
+            (product) => `
   <img src="${product.product.images[0]}" alt="Banner" class="banner-img">
   ${product.product.title} - 
-  ${product.size !== null ? product.size : ''} 
-  ${product.color !== null ? product.color : ''}
+  ${product.size !== null ? product.size : ""} 
+  ${product.color !== null ? product.color : ""}
   <br/>
   <br>
-`).join("\n");
+`
+        )
+        .join("\n");
 
     return {
         text: `Please enable HTML to view this email.`,
@@ -56,26 +60,28 @@ const generateEmailContent = (data) => {
                 </style>
                 </head>
                 <body>
-                    <table>
-                        <tr>
-                            <td class="section-padding">
-                                <div class="message-content">
-                                <div class="form-container">
-                                        <p>We are pleased to inform you that your recent order has been successfully placed. Below, you will find comprehensive details regarding your order and its tracking information:</p>
-                                        <h4>Order Details:</h4>
-                                        ${customerProductList}
-                                     <p>Total Amount: ${data.totalAmount.toFixed(2)} <p/>
-                                        <h4>Tracking Information</h4>
-                                        <p>${trackingInformation}</p>
-                                        <br>
-                                        ${customerServiceContact}
-                                        </div>
-                                        <p>[Senpai Merch Ltd] Date of Placement: ${new Date().toLocaleDateString()}</p>
-                                </div >
-                            </td >
-                        </tr >
-                    </table >
-                </body >
+                <table>
+                    <tr>
+                        <td class="section-padding">
+                            <div class="message-content">
+                            <div class="form-container">
+                                    <p>We are pleased to inform you that your recent order has been successfully placed. Below, you will find comprehensive details regarding your order and its tracking information:</p>
+                                    <h4>Order Details:</h4>
+                                    ${customerProductList}
+                                 <p>Total Amount: ${data.totalAmount.toFixed(
+            2
+        )} <p/>
+                                    <h4>Tracking Information</h4>
+                                    <p>${trackingInformation}</p>
+                                    <br>
+                                    ${customerServiceContact}
+                                    </div>
+                                    <p>[Senpai Merch Ltd] Date of Placement: ${new Date().toLocaleDateString()}</p>
+                            </div >
+                        </td >
+                    </tr >
+                </table >
+            </body >
             </html >
     `,
     };
@@ -83,7 +89,7 @@ const generateEmailContent = (data) => {
 export async function POST(req) {
     try {
         const requestData = await req.json();
-        mailOptions.to = requestData.data.email_address;
+        mailOptions.to = requestData.formData.email_address;
 
         const emailStatus = await transporter.sendMail({
             ...mailOptions,
