@@ -8,18 +8,16 @@ import RadioGroups from "@components/CheckOut/RadioGroups";
 import InputForm from "@components/CheckOut/InputForm";
 import { useEffect, useState } from "react";
 import {
-  clearCart,
   selectCartItems,
-  removeItemsWithZeroQuantity,
-  updateCartItems,
 } from "@app/Global/Features/cartSlice";
 import { useSession } from "next-auth/react";
 import toast from "react-hot-toast";
-import { calculateOrderDetailsTotal, submitOrder } from "@utils/OrderUtils";
+import { calculateOrderDetailsTotal, checkAvailability, submitOrder } from "@utils/OrderUtils";
 
 export default function Checkout() {
   const cartItems = useSelector(selectCartItems);
   const { data: session } = useSession();
+  const dispatch = useDispatch();
   const [selectedDeliveryMethod, setSelectedDeliveryMethod] = useState(deliveryMethods[0]);
   const [availabilityData, setAvailabilityData] = useState([]);
   const [isSubmitting, setSubmitting] = useState(false);
@@ -28,6 +26,10 @@ export default function Checkout() {
   const { subtotal, shipping, tax, totalAmount } = calculateOrderDetailsTotal( cartItems, selectedDeliveryMethod );
 
   if (!cartItems.length) redirect("/");
+  
+  useEffect(() => {
+     checkAvailability(cartItems, dispatch,  setAvailabilityData);
+  }, []);
 
   return (
     <div className=" ">
@@ -45,7 +47,8 @@ export default function Checkout() {
                 session,
                 totalAmount,
                 subtotal,
-                availabilityData
+                availabilityData,
+                dispatch
               )
             )}
             className="lg:grid lg:grid-cols-2 lg:gap-x-12 xl:gap-x-16"

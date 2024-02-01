@@ -1,4 +1,7 @@
-export const submitOrder = async (formData, setSubmitting, toast, selectedDeliveryMethod, cartItems, session, totalAmount, subtotal, availabilityData) => {
+import { clearCart, removeItemsWithZeroQuantity, updateCartItems } from "@app/Global/Features/cartSlice";
+import toast from "react-hot-toast";
+
+export const submitOrder = async (formData, setSubmitting, toast, selectedDeliveryMethod, cartItems, session, totalAmount, subtotal, availabilityData, dispatch) => {
     try {
         setSubmitting(true);
 
@@ -26,6 +29,7 @@ export const submitOrder = async (formData, setSubmitting, toast, selectedDelive
 
         const orderData = await orderResponse.json();
         const { _id: trackingId } = orderData;
+        // dispatch(clearCart());
 
         const contactData = { formData, trackingId, cartItems, totalAmount };
         const contactResponse = await fetch("/api/contact", {
@@ -73,83 +77,80 @@ export const calculateOrderDetailsTotal = (cartItems, selectedDeliveryMethod) =>
     return { subtotal, shipping, tax, totalAmount };
 };
 
+export const checkAvailability = async (cartItems, dispatch, setAvailabilityData) => {
+    try {
+        const response = await fetch("/api/availability", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ cartItems }),
+        });
 
+        if (!response.ok) {
+            throw new Error(`Failed to check availability: ${response.statusText}`);
+        }
 
+        const data = await response.json();
+        setAvailabilityData(data);
 
-// const checkAvailability = async (cartItems, dispatch) => {
-//   try {
-//     const response = await fetch("/api/availability", {
-//       method: "POST",
-//       headers: { "Content-Type": "application/json" },
-//       body: JSON.stringify({ cartItems }),
-//     });
+        let removedItemCount = 0;
+        let updatedItemCount = 0;
 
-//     if (!response.ok) {
-//       throw new Error(`Failed to check availability: ${response.statusText}`);
-//     }
+        if (Array.isArray(data)) {
+            cartItems.forEach((cartItem) => {
+                const { stock } = data.find((p) => p._id === cartItem.product._id) || {};
+                if (!stock) return;
 
-//     const data = await response.json();
-//     setAvailabilityData(data);
+                const { color, size } = cartItem;
+                let stockQty = 0;
 
-//     let removedItemCount = 0;
-//     let updatedItemCount = 0;
-//     cartItems.forEach((cartItem) => {
-//       const { stock } =
-//         data.find((p) => p._id === cartItem.product._id) || {};
-//       if (!stock) return;
+                if (stock.colorswithsize?.[color]?.[size]) {
+                    stockQty = stock.colorswithsize[color][size].quantity;
+                } else if (stock.sizes?.[size]) {
+                    stockQty = stock.sizes[size].quantity;
+                } else if (stock.colors?.[color]) {
+                    stockQty = stock.colors[color].quantity;
+                } else {
+                    stockQty = stock.quantity;
+                }
+                if (stockQty <= 0) {
+                    dispatch(
+                        removeItemsWithZeroQuantity({
+                            productId: cartItem.product._id,
+                            color,
+                            size,
+                        })
+                    );
+                    removedItemCount++;
+                } else if (stockQty !== cartItem.quantity) {
+                    dispatch(
+                        updateCartItems({
+                            productId: cartItem.product._id,
+                            quantity: stock.quantity,
+                            color,
+                            size,
+                        })
+                    );
+                    updatedItemCount++;
+                }
+            });
 
-//       const { color, size } = cartItem;
-//       let stockQty = 0;
+            if (removedItemCount > 0 && updatedItemCount > 0) {
+                toast.error(
+                    `${removedItemCount} item(s) removed due to sold out. Updated quantity: ${updatedItemCount}.`
+                );
+            } else if (removedItemCount > 0) {
+                toast.error(
+                    `${removedItemCount} item(s) removed from cart - Reason: sold out.`
+                );
+            } else if (updatedItemCount > 0) {
+                toast.success(
+                    `Updated ${updatedItemCount} item(s) quantity to match availability.`
+                );
+            }
+        }
 
-//       if (stock.colorswithsize?.[color]?.[size]) {
-//         stockQty = stock.colorswithsize[color][size].quantity;
-//       } else if (stock.sizes?.[size]) {
-//         stockQty = stock.sizes[size].quantity;
-//       } else if (stock.colors?.[color]) {
-//         stockQty = stock.colors[color].quantity;
-//       } else {
-//         stockQty = stock.quantity;
-//       }
-
-//       if (stockQty <= 0) {
-//         dispatch(
-//           removeItemsWithZeroQuantity({
-//             productId: cartItem.product._id,
-//             color,
-//             size,
-//           })
-//         );
-//         removedItemCount++;
-//       }
-//       if (stockQty > 0 && stockQty !== cartItem.quantity) {
-//         dispatch(
-//           updateCartItems({
-//             productId: cartItem.product._id,
-//             quantity: stock.quantity,
-//             color,
-//             size,
-//           })
-//         );
-//         updatedItemCount++;
-//       }
-//     });
-
-//     if (removedItemCount > 0 && updatedItemCount > 0) {
-//       toast.error(
-//         `${removedItemCount} item(s) removed due to sold out. Updated quantity: ${updatedItemCount}.`
-//       );
-//     } else if (removedItemCount > 0) {
-//       toast.error(
-//         `${removedItemCount} item(s) removed from cart - Reason: sold out.`
-//       );
-//     } else if (updatedItemCount > 0) {
-//       toast.success(
-//         `Updated ${updatedItemCount} item(s) quantity to match availability.`
-//       );
-//     }
-//   } catch (error) {
-//     console.log(error);
-//     console.error("Error checking availability:", error.message);
-//   }
-// };
-
+    } catch (error) {
+        console.log(error);
+        console.error("Error checking availability:", error.message);
+    }
+};

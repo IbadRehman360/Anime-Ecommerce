@@ -9,28 +9,46 @@ const FormFields = ({
   rules,
   control,
   id,
+  children,  
 }) => {
   return (
     <div className={`${styles.root} ${styles.box} w-full`}>
       <div className={styles.input__wrapper}>
-        <Controller
-          name={name}
-          control={control}
-          rules={rules}
-          render={({ field }) => (
-            <input
-              {...field}
-              id={id}
-              type={type}
-              title="Minimum 6 characters, at least 1 Alphabet and 1 Number"
-              placeholder={label}
-              value={label === "Pakistan" ? "Pakistan" : field.value}
-              disabled={label === "Pakistan"}
-              autoComplete={autoComplete}
-              className={`${styles.input__field} block w-full py-3 px-3`}
-            />
-          )}
-        />
+        {type !== "select" ? (
+          <Controller
+            name={name}
+            control={control}
+            rules={rules}
+            render={({ field }) => (
+              <input
+                {...field}
+                id={id}
+                type={type}
+                title="Minimum 6 characters, at least 1 Alphabet and 1 Number"
+                placeholder={label}
+                value={field.value}
+                autoComplete={autoComplete}
+                className={`${styles.input__field} block w-full py-3 px-3`}
+              />
+            )}
+          />
+        ) : (
+          <Controller
+            name={name}
+            control={control}
+            rules={rules}
+            render={({ field }) => (
+              <select
+                {...field}
+                id={id}
+                autoComplete={autoComplete}
+                className={`${styles.input__field} block w-full py-3 px-3`}
+              >
+                {children}
+              </select>
+            )}
+          />
+        )}
 
         <label
           htmlFor={id}
