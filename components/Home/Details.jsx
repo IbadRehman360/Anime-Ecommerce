@@ -7,7 +7,7 @@ function Details() {
       <div className="mx-auto grid pt-10 md:pt-16 px-3 sm:px-6 lg:mb-20 mb-10 grid-cols-1 items-center  w-full   lg:grid-cols-2 lg:px-8">
         <div className=" justify-end lg:hidden ">
           <Image
-            src="/assets/Des/2.webp"
+            src="/assets/1.webp"
             width={1000}
             height={1000}
             alt="Walnut card tray with white powder coated steel divider and 3 punchout holes."
@@ -39,7 +39,7 @@ function Details() {
           <Image
             width={600}
             height={600}
-            src="/assets/Des/2.webp"
+            src="/assets/1.webp"
             alt="Walnut card tray with white powder coated steel divider and 3 punchout holes."
             className="  rounded-md   "
           />

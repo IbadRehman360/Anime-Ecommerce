@@ -16,7 +16,7 @@ function Details2() {
         <Image
           width={900}
           height={900}
-          src="/assets/Des/2.jpg"
+          src="/assets/2.webp"
           className="  rounded-md     w-full lg:w-auto    "
           alt="Walnut card tray filled with cards and card angled in dedicated groove."
         />

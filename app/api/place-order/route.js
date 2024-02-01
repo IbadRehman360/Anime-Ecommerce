@@ -10,55 +10,7 @@ export const POST = async (req, res) => {
     await connectToDB();
     const res_data = await req.json();
 
-    const { selectedDeliveryMethod, cartItems, formData, session, totalAmount, subtotal, availabilityData } = res_data;
-    let removedItemCount = 0;
-    let updatedItemCount = 0;
-
-    for (const item of cartItems) {
-      const availabilityItem = availabilityData.find((p) => p._id === item.product._id);
-      const { stock } = availabilityItem || {};
-
-      if (!stock) {
-        console.log(`Stock not found for product ${item.product._id}`);
-        continue;
-      }
-
-      const { color, size } = item;
-      let stockQty = 0;
-
-      if (stock.colorswithsize?.[color]?.[size]) {
-        stockQty = stock.colorswithsize[color][size].quantity;
-      } else if (stock.sizes?.[size]) {
-        stockQty = stock.sizes[size].quantity;
-      } else if (stock.colors?.[color]) {
-        stockQty = stock.colors[color].quantity;
-      } else {
-        stockQty = stock.quantity;
-      }
-      if (stockQty <= 0) {
-        removedItemCount++;
-      }
-
-      if (stockQty >= 1 && stockQty < item.quantity) {
-        updatedItemCount++;
-      }
-
-    }
-
-    if (removedItemCount > 0 && updatedItemCount > 0) {
-      return new Response(`${removedItemCount} item(s) sold out and Update quantity of ${updatedItemCount} before ordering.`, {
-        status: 400,
-      });
-    } else if (removedItemCount > 0) {
-      return new Response(`${removedItemCount} item(s) sold out - Remove them before ordering.`, {
-        status: 400,
-      });
-    } else if (updatedItemCount > 0) {
-      return new Response(`Update ${updatedItemCount} item(s) quantity to match availability.`, {
-        status: 400,
-      });
-    }
-
+    const { selectedDeliveryMethod, cartItems, formData, session, totalAmount, subtotal } = res_data;
     const {
       email_address,
       first_name,
@@ -91,9 +43,6 @@ export const POST = async (req, res) => {
       price: item.price,
       discounted_price: item.discount_price,
     }));
-    orderItems.forEach((orderItem, index) => {
-      console.log(`Order Item ${index + 1}:`, orderItem);
-    });
 
     const savedOrderItems = await OrderItem.insertMany(orderItems);
 

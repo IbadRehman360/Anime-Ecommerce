@@ -191,23 +191,23 @@ const cartSlice = createSlice({
         },
         updateCartItems: (state, action) => {
             const { productId, quantity, color, size } = action.payload;
-            const existingCartItem = state.items.find(
-                (item) =>
-                    item.product._id === productId &&
-                    item.color === color &&
-                    item.size === size
-            );
 
-            if (existingCartItem) {
-                existingCartItem.quantity = quantity;
-            } else {
-                state.items.push({
-                    product: { _id: productId },
-                    quantity,
-                    color,
-                    size,
-                });
-            }
+            return {
+                ...state,
+                items: state.items.map((item) => {
+                    if (
+                        item.product._id === productId &&
+                        item.color === color &&
+                        item.size === size
+                    ) {
+                        return {
+                            ...item,
+                            quantity: quantity,
+                        };
+                    }
+                    return item;
+                }),
+            };
         },
         removeItemsWithZeroQuantity: (state, action) => {
             const { productId, color, size } = action.payload;

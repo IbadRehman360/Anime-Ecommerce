@@ -7,30 +7,33 @@ import { useForm } from "react-hook-form";
 import RadioGroups from "@components/CheckOut/RadioGroups";
 import InputForm from "@components/CheckOut/InputForm";
 import { useEffect, useState } from "react";
-import {
-  selectCartItems,
-} from "@app/Global/Features/cartSlice";
+import { selectCartItems } from "@app/Global/Features/cartSlice";
 import { useSession } from "next-auth/react";
 import toast from "react-hot-toast";
-import { calculateOrderDetailsTotal, checkAvailability, submitOrder } from "@utils/OrderUtils";
+import {
+  calculateOrderDetailsTotal,
+  checkAvailability,
+  submitOrder,
+} from "@utils/OrderUtils";
 
 export default function Checkout() {
   const cartItems = useSelector(selectCartItems);
   const { data: session } = useSession();
   const dispatch = useDispatch();
-  const [selectedDeliveryMethod, setSelectedDeliveryMethod] = useState(deliveryMethods[0]);
-  const [availabilityData, setAvailabilityData] = useState([]);
+  const [selectedDeliveryMethod, setSelectedDeliveryMethod] = useState(
+    deliveryMethods[0]
+  );
   const [isSubmitting, setSubmitting] = useState(false);
-  const { handleSubmit, register, watch, control} = useForm();
+  const { handleSubmit, register, watch, control } = useForm();
   const isCartEmpty = cartItems.length === 0;
-  const { subtotal, shipping, tax, totalAmount } = calculateOrderDetailsTotal( cartItems, selectedDeliveryMethod );
-
+  const { subtotal, shipping, tax, totalAmount } = calculateOrderDetailsTotal(
+    cartItems,
+    selectedDeliveryMethod
+  );
   if (!cartItems.length) redirect("/");
-  
   useEffect(() => {
-     checkAvailability(cartItems, dispatch,  setAvailabilityData);
+    checkAvailability(cartItems, dispatch);
   }, []);
-
   return (
     <div className=" ">
       <main className="max-w-7xl mx-auto pt-16 pb-24 px-4 sm:px-6 lg:px-8">
@@ -47,7 +50,6 @@ export default function Checkout() {
                 session,
                 totalAmount,
                 subtotal,
-                availabilityData,
                 dispatch
               )
             )}

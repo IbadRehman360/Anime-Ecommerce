@@ -1,3 +1,4 @@
+import Quantity from "@components/Quantity";
 import { QuestionMarkCircleIcon, TrashIcon } from "@heroicons/react/24/outline";
 import { useProductUtils } from "@utils/productUtils";
 import Image from "next/image";
@@ -67,41 +68,11 @@ function OrderSummary({
                       Size: {product.size}
                     </p>
                   </div>
-                  <div className="relative inline-block">
-                    <select
-                      defaultValue={product.quantity}
-                      value={product.quantity}
-                      onChange={(e) => {
-                        handleUpdateQuantity(
-                          product,
-                          parseInt(e.target.value, 10),
-                          product.size,
-                          product.color
-                        );
-                      }}
-                      className="block appearance-none w-full text-sm  bg-white border border-gray-300 text-gray-700 py-1 pl-3 sm:pl-4 pr-8 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                    >
-                      <option value={1}>1</option>
-                      <option value={2}>2</option>
-                      <option value={3}>3</option>
-                    </select>
-                    <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                      <svg
-                        className="w-4 h-4"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M4 6h16M4 12h16M4 18h16"
-                        ></path>
-                      </svg>
-                    </div>
-                  </div>
+                  <Quantity
+                    quantity={product.quantity}
+                    border={"true"}
+                    product={product}
+                  />
                 </div>
               </div>
             </li>

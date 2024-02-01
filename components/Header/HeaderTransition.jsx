@@ -254,7 +254,7 @@ function HeaderTransition({ setOpen, open, navigation, session }) {
                   className="-m-2 flex items-center p-2"
                 >
                   <Image
-                    src="/assets/country.png"
+                    src="/assets/country.webp"
                     alt=""
                     width={30}
                     height={30}

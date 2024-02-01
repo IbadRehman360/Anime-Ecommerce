@@ -82,7 +82,7 @@ function Nav({ setOpen, signOut, session, cartItems, isCartOpen }) {
                 className="absolute left-1/2 transform    -translate-x-1/2"
               >
                 <Image
-                  src="/assets/AnimeSiteLogo.png"
+                  src="/assets/AnimeSiteLogo.webp"
                   alt="Senpai Merch Logo"
                   width={66}
                   height={66}
@@ -96,7 +96,7 @@ function Nav({ setOpen, signOut, session, cartItems, isCartOpen }) {
                 className="flex items-center text-gray-700 hover:text-gray-800"
               >
                 <Image
-                  src="/assets/country.png"
+                  src="/assets/country.webp"
                   alt=""
                   width={30}
                   height={30}
