@@ -10,16 +10,14 @@ import Head from "next/head";
 
 export const metadata = {
   title: "SenpaiMerchPk",
+  keywords:
+    "anime merch, anime, cosplay, anime cosplay, figure, figurine, statue, dakimakura, nendoroid, funko pop, keychain, mug, t-shirt, hoodie, backpack, hat, wig, prop, replica, sword, armor, accessory, collectible, gift, convention, festival, community, fan art, doujinshi, light novel, manga, webtoon",
   description:
     "SenpaiMerchPk - Your Premier Destination for Anime Merchandise in Pakistan! Explore a World of Japanese Animation Goodies, Apparel, and Collectibles Right at Your Fingertips. Shop Now for Exclusive Deals!",
 };
 
 const RootLayout = ({ children }) => (
   <html lang="en">
-    <Head>
-      <title>{metadata?.name}</title>
-      <meta name={metadata?.name} content={metadata?.description} />
-    </Head>
     <body suppressHydrationWarning={true}>
       <Providers>
         <ReduxProvider>

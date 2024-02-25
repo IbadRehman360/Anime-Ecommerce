@@ -21,28 +21,30 @@ export default async function Example({ params: { id } }) {
   const randomSuggestion = data.randomProducts;
   const reviews = data.reviews;
   return (
-    <div className="lg:max-w-[90rem]  lg:mx-auto">
-      <div className="mt-3 lg:mb-10 px-3 lg:flex hidden">
-        <BreadCrumbs product={product} />
-      </div>
-      <div className="lg:grid lg:grid-cols-2 lg:grid-rows-1 lg:px-3  lg:mb-12   lg:max-w-[90rem] w-full lg:mx-auto">
-        <ProductRowOne product={product} reviews={reviews} />
-        <div className="lg:col-span-1">
-          <ProductDetails product={product} />
-          <TrustListSvgs />
+    <>
+      <div className="lg:max-w-[90rem]  lg:mx-auto">
+        <div className="mt-3 lg:mb-10 px-3 lg:flex hidden">
+          <BreadCrumbs product={product} />
         </div>
-        <div className="lg:col-span-1 mx-8">
-          <FrequentlyBoughtTogether suggestions={suggestions} />
-        </div>
+        <div className="lg:grid lg:grid-cols-2 lg:grid-rows-1 lg:px-3  lg:mb-12   lg:max-w-[90rem] w-full lg:mx-auto">
+          <ProductRowOne product={product} reviews={reviews} />
+          <div className="lg:col-span-1">
+            <ProductDetails product={product} />
+            <TrustListSvgs />
+          </div>
+          <div className="lg:col-span-1 mx-8">
+            <FrequentlyBoughtTogether suggestions={suggestions} />
+          </div>
 
-        <div className="lg:col-span-2">
-          <div className="sm:px-3">
-            <ReviewSection reviews={reviews} product={product} />
+          <div className="lg:col-span-2">
+            <div className="sm:px-3">
+              <ReviewSection reviews={reviews} product={product} />
+            </div>
           </div>
         </div>
+        <ProductYouMayLike randomSuggestion={randomSuggestion} />
       </div>
-      <ProductYouMayLike randomSuggestion={randomSuggestion} />
-    </div>
+    </>
   );
 }
 export async function getProductByID(id) {
