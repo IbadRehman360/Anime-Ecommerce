@@ -90,8 +90,8 @@ function HeaderTransition({ setOpen, open, navigation, session }) {
                               />
                             </div>
                             <Link
-                              href={item.href}
-                              className="mt-3    block font-medium line-clamp-1 text-gray-900"
+                              href={item.href ? item.href : "#"}
+                              className="mt-3    block font-medsium line-clamp-1 text-gray-900"
                             >
                               <span
                                 className="absolute  inset-0 z-10"

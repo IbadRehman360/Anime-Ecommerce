@@ -15,7 +15,7 @@ export default async function Home() {
 
   const products = await getProductsData();
   return (
-    <section className="relative     w-full main flex-center flex-col">
+    <section className="relative w-full main flex-center flex-col">
       <HeroCarousel />
       <div className="mx-auto md:max-w-[93rem]">
         <LatestDrop products={products} />

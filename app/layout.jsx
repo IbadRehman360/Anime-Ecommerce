@@ -9,13 +9,17 @@ import BottomStructure from "@components/BottomStructure";
 import Head from "next/head";
 
 export const metadata = {
-  title: "SenpaiMerch",
+  title: "SenpaiMerchPk",
   description:
-    "SenpaiMerch - Your Premier Destination for Anime Merchandise in Pakistan! Explore a World of Japanese Animation Goodies, Apparel, and Collectibles Right at Your Fingertips. Shop Now for Exclusive Deals!",
+    "SenpaiMerchPk - Your Premier Destination for Anime Merchandise in Pakistan! Explore a World of Japanese Animation Goodies, Apparel, and Collectibles Right at Your Fingertips. Shop Now for Exclusive Deals!",
 };
 
 const RootLayout = ({ children }) => (
   <html lang="en">
+    <Head>
+      <title>{metadata?.name}</title>
+      <meta name={metadata?.name} content={metadata?.description} />
+    </Head>
     <body suppressHydrationWarning={true}>
       <Providers>
         <ReduxProvider>
