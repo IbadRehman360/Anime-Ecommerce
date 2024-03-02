@@ -69,11 +69,11 @@ function OrderSummary({
                         Size: {product.size}
                       </p>
                     </div>
-                    <Quantity
+                    {/* <Quantity
                       quantity={product.quantity}
                       border={"true"}
                       product={product}
-                    />
+                    /> */}
                   </div>
                 </div>
               </li>

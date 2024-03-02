@@ -36,6 +36,8 @@ export default function Checkout() {
   //   checkAvailability(cartItems, dispatch);
   // }, []);
 
+  // There are 2 issues, Confirmation Email for placement of order Items After Those Product Which We're Removed From Cart Are Still Shown on the email
+  // There were 3 qty selected for a product, but availability was only 1 i think it fixed qty, but removed 3 quantity from product avialable instead of just 1
   return (
     <div className=" ">
       <main className="max-w-7xl mx-auto pt-16 pb-24 px-4 sm:px-6 lg:px-8">
