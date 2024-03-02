@@ -31,9 +31,11 @@ export default function Checkout() {
     selectedDeliveryMethod
   );
   if (!cartItems.length) redirect("/");
-  useEffect(() => {
-    checkAvailability(cartItems, dispatch);
-  }, []);
+
+  // useEffect(() => {
+  //   checkAvailability(cartItems, dispatch);
+  // }, []);
+
   return (
     <div className=" ">
       <main className="max-w-7xl mx-auto pt-16 pb-24 px-4 sm:px-6 lg:px-8">

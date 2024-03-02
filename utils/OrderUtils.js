@@ -31,7 +31,7 @@ export const submitOrder = async (formData, setSubmitting, toast, selectedDelive
 
         const orderData = await orderResponse.json();
         const { _id: trackingId } = orderData;
-        dispatch(clearCart());
+        // dispatch(clearCart());
 
         const contactData = { formData, trackingId, cartItems, totalAmount };
         const contactResponse = await fetch("/api/contact", {
@@ -63,8 +63,8 @@ export const submitOrder = async (formData, setSubmitting, toast, selectedDelive
 
 export const checkAvailability = async (cartItems, dispatch) => {
     try {
-        // const availabilityData = await fetchAvailabilityData(cartItems);
-        // updateCartBasedOnStock(availabilityData, cartItems, dispatch);
+        const availabilityData = await fetchAvailabilityData(cartItems);
+        updateCartBasedOnStock(availabilityData, cartItems, dispatch);
     } catch (error) {
         console.error("Error checking availability:", error.message);
     }
@@ -113,6 +113,7 @@ function updateCartBasedOnStock(availabilityData, cartItems, dispatch) {
             }
 
             if (stockQty <= 0) {
+                console.log("REMOVE CART CHECK");
                 dispatch(
                     removeItemsWithZeroQuantity({
                         productId: cartItem.product._id,
@@ -121,7 +122,9 @@ function updateCartBasedOnStock(availabilityData, cartItems, dispatch) {
                     })
                 );
                 removedItemCount++;
+                console.log("REMOVE CART WORKS");
             } else if (cartItem.quantity > stockQty) {
+                console.log("UPDATE CHECKING");
                 dispatch(
                     updateCartItems({
                         productId: cartItem.product._id,
@@ -131,6 +134,7 @@ function updateCartBasedOnStock(availabilityData, cartItems, dispatch) {
                     })
                 );
                 updatedItemCount++;
+                console.log("UPDATE WORKING");
             }
         });
 

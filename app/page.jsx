@@ -6,7 +6,6 @@ import LatestDrop from "@components/Home/LatestDrop";
 import Testimonials from "@components/Home/Testimonial";
 import TrendingProduct from "@components/Home/TrendingProduct";
 import MustHave from "@components/Home/MustHave";
-// import HomeCard from "@components/Home/Cart";
 
 export default async function Home() {
   if (!process.env.NEXTAUTH_URL) {
@@ -17,11 +16,11 @@ export default async function Home() {
   return (
     <section className="relative w-full main flex-center flex-col">
       <HeroCarousel />
-      <div className="mx-auto md:max-w-[93rem]">
+      <div className="mx-auto md:max-w-[93rem] md:min-h-[500px]">
         <LatestDrop products={products} />
       </div>
 
-      <div className="border   ">
+      <div>
         <div className="mx-auto md:max-w-[95rem]">
           <TrendingProduct products={products} />
         </div>

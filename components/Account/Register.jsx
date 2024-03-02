@@ -113,7 +113,6 @@ function Register() {
           scoreWordClassName="capitalize"
         />
 
-        {/* <pre> {JSON.stringify(watch(), null, 2)} </pre> */}
         {error && (
           <div className="bg-red-500 text-white opacity-95 hover:opacity-90` w-fit text-sm py-1 px-3 rounded-md  ">
             {error}

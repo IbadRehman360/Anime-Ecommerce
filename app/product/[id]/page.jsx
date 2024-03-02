@@ -1,13 +1,9 @@
 import ProductDetails from "@components/ProductPreview/ProductDetails";
 import BreadCrumbs from "@components/ProductPreview/BreadCrumbs";
-import ProductInfo from "@components/ProductPreview/ProductInfo";
-import ProductHighLights from "@components/ProductPreview/ProductHighLights";
 import TrustListSvgs from "@components/ProductPreview/TrustListSvgs";
 import ProductYouMayLike from "@components/ProductPreview/ProductYouMayLike";
 import ReviewSection from "@components/ProductPreview/ReviewSection";
 import FrequentlyBoughtTogether from "@components/ProductPreview/FrequentlyBoughtTogether";
-import ProductImage from "@components/ProductPreview/ProductImage";
-import ProductInteraction from "@components/ProductPreview/ProductInteraction";
 import ProductRowOne from "@components/ProductPreview/ProductRowOne";
 
 export function classNames(...classes) {

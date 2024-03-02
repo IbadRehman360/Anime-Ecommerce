@@ -4,22 +4,7 @@ const { default: Login } = require("./Login");
 const { default: Register } = require("./Register");
 function LoginRegistertion() {
   const [isCurrently, setIsCurrently] = useState(true);
-  // <div className="absolute right-3 mt-4">
-  //   <svg
-  //     xmlns="http://www.w3.org/2000/svg"
-  //     className="h-6 w-6 text-green-500"
-  //     fill="none"
-  //     viewBox="0 0 24 24"
-  //     stroke="currentColor"
-  //   >
-  //     <path
-  //       stroke-linecap="round"
-  //       stroke-linejoin="round"
-  //       stroke-width="2"
-  //       d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-  //     ></path>
-  //   </svg>
-  // </div>;
+
   return (
     <div className="grid grid-cols-1   md:grid-cols-2">
       <div className="relative py-12 md:hidden">
@@ -59,7 +44,6 @@ function LoginRegistertion() {
           </div>
           <div />
           <div className="mt-8 flex justify-center  items-center">
-            {/* <div class="relative h-20 w-20 left-3/4       bottom-20 border before:absolute before:-bottom-2 before:-right-2 before:h-4 before:w-4 before:border-b before:border-r before:transition-all before:duration-300 before:ease-in-out after:absolute after:-top-2 after:-left-2 after:h-4 after:w-4 after:border-t after:border-l after:transition-all after:duration-300 after:ease-in-out hover:before:h-[calc(100%+16px)] hover:before:w-[calc(100%+16px)] hover:after:h-[calc(100%+16px)] hover:after:w-[calc(100%+16px)]"></div> */}
             <button
               onClick={() => setIsCurrently((prev) => !prev)}
               className="inline-block px-6 py-3.5 text-xs  font-montserrat    tracking-wider bg-black  opacity-95 text-white rounded hover:opacity-90 hover:underline"

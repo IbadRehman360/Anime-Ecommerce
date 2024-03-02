@@ -6,7 +6,6 @@ import CartOpen from "@components/CartOpen";
 import Providers from "@components/Providers";
 import ReduxProvider from "./Global/ReduxProvider";
 import BottomStructure from "@components/BottomStructure";
-import Head from "next/head";
 
 export const metadata = {
   title: "SenpaiMerchPk",

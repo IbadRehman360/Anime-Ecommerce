@@ -2,7 +2,6 @@ import Link from "next/link";
 import { useSelector } from "react-redux";
 import { selectCartItems } from "../../app/Global/Features/cartSlice";
 import Shipping from "./Shipping";
-import { useState } from "react";
 
 function CartCheckOut() {
   const products = useSelector(selectCartItems);

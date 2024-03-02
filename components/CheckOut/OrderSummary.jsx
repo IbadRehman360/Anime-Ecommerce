@@ -23,60 +23,62 @@ function OrderSummary({
       <div className="mt-4 bg-white border border-gray-200 rounded-lg shadow-sm">
         <h3 className="sr-only">Items in your cart</h3>
         <ul role="list" className="divide-y divide-gray-200">
-          {cartItems.map((product, index) => (
-            <li key={index} className="flex py-6 px-4 sm:px-6">
-              <div className="flex-shrink-0">
-                <Image
-                  width={90}
-                  alt=""
-                  height={90}
-                  src={`${product.product.images}`}
-                  className=" rounded-md"
-                />
-              </div>
-              <div className=" ml-4   sm:ml-6 flex-1 flex flex-col">
-                <div className="flex">
-                  <div className="min-w-0 flex-1">
-                    <h4 className="text-md">
-                      <a className="font-medium text-gray-700 hover:text-gray-800 line-clamp-1">
-                        {product.quantity}x - {product.product.title}
-                      </a>
-                    </h4>
-                  </div>
-                  <button
-                    type="button"
-                    onClick={() =>
-                      handleRemoveItem(
-                        product.product._id,
-                        product.size,
-                        product.color
-                      )
-                    }
-                    className="-m-2.5 bg-white p-2.5 flex items-center justify-center text-gray-400 hover:text-gray-500"
-                  >
-                    <span className="sr-only">Remove</span>
-                    <TrashIcon className="h-5 w-5" aria-hidden="true" />
-                  </button>
-                </div>
-
-                <div className="flex items-center mt-4 justify-between">
-                  <div className="flex flex-col">
-                    <p className="text-[0.7rem] uppercase tracking-wider  font-lato text-gray-500">
-                      Color: {product.color}
-                    </p>
-                    <p className="text-[0.7rem] uppercase tracking-wider  mt-1 font-lato text-gray-500">
-                      Size: {product.size}
-                    </p>
-                  </div>
-                  <Quantity
-                    quantity={product.quantity}
-                    border={"true"}
-                    product={product}
+          {cartItems.map((product, index) => {
+            return (
+              <li key={index} className="flex py-6 px-4 sm:px-6">
+                <div className="flex-shrink-0">
+                  <Image
+                    width={90}
+                    alt=""
+                    height={90}
+                    src={`${product.product.images}`}
+                    className=" rounded-md"
                   />
                 </div>
-              </div>
-            </li>
-          ))}
+                <div className=" ml-4   sm:ml-6 flex-1 flex flex-col">
+                  <div className="flex">
+                    <div className="min-w-0 flex-1">
+                      <h4 className="text-md">
+                        <a className="font-medium text-gray-700 hover:text-gray-800 line-clamp-1">
+                          {product.quantity}x - {product.product.title}
+                        </a>
+                      </h4>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        handleRemoveItem(
+                          product.product._id,
+                          product.size,
+                          product.color
+                        )
+                      }
+                      className="-m-2.5 bg-white p-2.5 flex items-center justify-center text-gray-400 hover:text-gray-500"
+                    >
+                      <span className="sr-only">Remove</span>
+                      <TrashIcon className="h-5 w-5" aria-hidden="true" />
+                    </button>
+                  </div>
+
+                  <div className="flex items-center mt-4 justify-between">
+                    <div className="flex flex-col">
+                      <p className="text-[0.7rem] uppercase tracking-wider  font-lato text-gray-500">
+                        Color: {product.color}
+                      </p>
+                      <p className="text-[0.7rem] uppercase tracking-wider  mt-1 font-lato text-gray-500">
+                        Size: {product.size}
+                      </p>
+                    </div>
+                    <Quantity
+                      quantity={product.quantity}
+                      border={"true"}
+                      product={product}
+                    />
+                  </div>
+                </div>
+              </li>
+            );
+          })}
         </ul>
         <div className="border-t border-gray-200 py-6 px-4 space-y-6 sm:px-6">
           <div className="flex items-center justify-between">
