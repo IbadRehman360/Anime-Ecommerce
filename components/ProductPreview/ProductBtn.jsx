@@ -79,10 +79,7 @@ export default function ProductBtn({
             </button>
           </Link>
         ) : (
-          <div
-          onClick={handleAddToCart}
-            className="group relative block justify-center text-center text-black  text-opacity-90 h-11 sm:h-12 border w-full overflow-hidden middle none center mr-4 py-3 px-6 font-montserrat lg:text-sm  text-xs  font-bold uppercase text-whiteshadow-md sm:shadow-blue-500/10 transition-all rounded-lg bg-white opacity-70 pb-3 cursor-not-allowed"
-          >
+          <div className="group relative block justify-center text-center text-black  text-opacity-90 h-11 sm:h-12 border w-full overflow-hidden middle none center mr-4 py-3 px-6 font-montserrat lg:text-sm  text-xs  font-bold uppercase text-whiteshadow-md sm:shadow-blue-500/10 transition-all rounded-lg bg-white opacity-70 pb-3 cursor-not-allowed">
             PURCHASE NOW
           </div>
         )}
