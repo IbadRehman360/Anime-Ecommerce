@@ -7,6 +7,8 @@ import Testimonials from "@components/Home/Testimonial";
 import TrendingProduct from "@components/Home/TrendingProduct";
 import MustHave from "@components/Home/MustHave";
 
+// This is a comment
+
 export default async function Home() {
   if (!process.env.NEXTAUTH_URL) {
     return null;

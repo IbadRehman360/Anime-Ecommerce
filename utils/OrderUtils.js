@@ -29,7 +29,7 @@ export const submitOrder = async (formData, setSubmitting, toast, selectedDelive
 
         const orderData = await orderResponse.json();
         const { _id: trackingId } = orderData;
-        // dispatch(clearCart());
+        dispatch(clearCart());
 
         const contactData = { formData, trackingId, cartItems, totalAmount };
         const contactResponse = await fetch("/api/contact", {
