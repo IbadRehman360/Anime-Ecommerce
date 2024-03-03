@@ -4,8 +4,6 @@ import toast from "react-hot-toast";
 export const submitOrder = async (formData, setSubmitting, toast, selectedDeliveryMethod, cartItems, session, totalAmount, subtotal, dispatch) => {
     try {
         setSubmitting(true);
-        const availabilityData = await fetchAvailabilityData(cartItems);
-        updateCartBasedOnStock(availabilityData, cartItems, dispatch);
 
         const orderResponse = await fetch("api/place-order", {
             method: "POST",
@@ -122,7 +120,6 @@ function updateCartBasedOnStock(availabilityData, cartItems, dispatch) {
                     })
                 );
                 removedItemCount++;
-                console.log("REMOVE CART WORKS");
             } else if (cartItem.quantity > stockQty) {
                 console.log("UPDATE CHECKING");
                 dispatch(
@@ -134,7 +131,6 @@ function updateCartBasedOnStock(availabilityData, cartItems, dispatch) {
                     })
                 );
                 updatedItemCount++;
-                console.log("UPDATE WORKING");
             }
         });
 

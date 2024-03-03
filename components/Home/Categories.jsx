@@ -144,7 +144,7 @@ export default function Example() {
               className="text-[0.97rem] pt-2 pb-3 sm:text-[1rem] md:hidden"
               style={{ letterSpacing: "0.1em" }}
             >
-              {currentSlide < 1 ? "1/4" : "2/2"}
+              {currentSlide < 1 ? "1/1" : "2/2"}
             </p>
             <div className="hidden justify-center md:flex">
               <a

@@ -11,6 +11,7 @@ export const POST = async (req, res) => {
     const res_data = await req.json();
 
     const { selectedDeliveryMethod, cartItems, formData, session, totalAmount, subtotal } = res_data;
+
     const {
       email_address,
       first_name,
@@ -61,9 +62,6 @@ export const POST = async (req, res) => {
     });
 
     const order = await newOrder.save();
-    let updateResults = [];
-
-
 
     for (const item of cartItems) {
       const productId = item.product._id;
@@ -95,15 +93,12 @@ export const POST = async (req, res) => {
         };
       }
 
-
       const updatedProduct = await Product.findByIdAndUpdate(productId, updateQuery);
-
 
       if (!updatedProduct) {
         console.log("Product not found");
       }
     }
-
 
     return new Response(JSON.stringify(order), { status: 200 });
   } catch (error) {

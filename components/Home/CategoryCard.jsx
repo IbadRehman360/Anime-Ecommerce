@@ -15,13 +15,13 @@ export default function CategoryCard({ Anime }) {
       <div className="relative flex flex-col mx-1 sm:px-1">
         <div
           style={containerStyle}
-          className="custom-animation custom img-hover-effect h-[130px] max:h-[130px] sm:h-[180px]    object-center md:w-[180px] md:h-[180px] lg:w-[205px] lg:h-[205px] xl:min-h-[215px] xl:min-w-[215px]   xl:max:h-[300px]"
+          className="custom-animation custom img-hover-effect h-[140px] max:h-[140px] sm:h-[180px]    object-center md:w-[180px] md:h-[180px] lg:w-[205px] lg:h-[205px] xl:min-h-[215px] xl:min-w-[215px]   xl:max:h-[300px]"
         >
           <img
             src={`${Anime.imageSrc}`}
             alt="giftcardIcon"
             style={imageStyle}
-            className="    object-cover object-center "
+            className="object-cover object-center "
           />
         </div>
         <div
