@@ -8,7 +8,7 @@ import ReduxProvider from "./Global/ReduxProvider";
 import BottomStructure from "@components/BottomStructure";
 
 export const metadata = {
-  title: "SenpaiMerchPk",
+  title: "SenpaiMerch",
   keywords:
     "anime merch, anime, cosplay, anime cosplay, figure, figurine, statue, dakimakura, nendoroid, funko pop, keychain, mug, t-shirt, hoodie, backpack, hat, wig, prop, replica, sword, armor, accessory, collectible, gift, convention, festival, community, fan art, doujinshi, light novel, manga, webtoon",
   description:
