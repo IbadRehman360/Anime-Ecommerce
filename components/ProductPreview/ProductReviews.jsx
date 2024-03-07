@@ -35,7 +35,7 @@ export default function ProductReviews({ reviews }) {
   const startIdx = (currentPage - 1) * reviewsPerPage;
   const endIdx = startIdx + reviewsPerPage;
 
-  if (reviews.length - 1 > 0)
+  if (reviews.length > 0)
     return (
       <div className=" bg-white p-4 my-4 border   rounded-xl">
         <div className="   ">
