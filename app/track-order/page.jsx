@@ -6,8 +6,8 @@ export default async function OrderPage() {
   const session = await getServerSession();
   if (session) {
     var data = await getOrderStatus(session.user.email);
+    console.log(data);
   }
-
   return (
     <main
       className={`max-w-2xl mx-auto pb-8 md:pb-24 pt-2 sm:pt-16 sm:px-6 ${
@@ -28,6 +28,7 @@ export async function getOrderStatus(email) {
   );
   if (response.ok) {
     const responseData = await response.json();
+    console.log(responseData);
     return responseData;
   }
   return null;

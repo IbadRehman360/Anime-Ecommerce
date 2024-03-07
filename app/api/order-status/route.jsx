@@ -16,7 +16,6 @@ export const POST = async (request, response) => {
     } else if (phoneNumber) {
       const customers = await findCustomersByPhone(phoneNumber);
       if (customers && customers.length > 0) {
-        // Fetch orders for all customers with the same phone number
         const customerOrderStatusPromises = customers.map((customer) =>
           getOrderStatusByCustomer(customer._id)
         );
@@ -24,7 +23,6 @@ export const POST = async (request, response) => {
           customerOrderStatusPromises
         );
 
-        // Flatten the array of order statuses
         orderStatus = [].concat(...customerOrderStatus);
       } else {
         return new Response("Customer not found", { status: 404 });
@@ -63,7 +61,7 @@ async function findCustomersByPhone(phoneNumber) {
     return await Customer.find({ phone: phoneNumber });
   } catch (error) {
     console.error("Error in findCustomersByPhone:", error);
-    throw error; // Propagate the error up to the calling function
+    throw error;
   }
 }
 
