@@ -247,12 +247,12 @@ function OrderDisplay({ data }) {
                         Rs {order.delivery === "Express" ? "300" : "149.99"}{" "}
                       </dd>
                     </div>
-                    <div className="py-4 flex items-center justify-between">
+                    {/* <div className="py-4 flex items-center justify-between">
                       <dt className="text-gray-600">Tax</dt>
                       <dd className="font-medium text-gray-800">
                         Rs {(order.subtotal * 0.08).toFixed(2)}
                       </dd>
-                    </div>
+                    </div> */}
                     <div className="pt-4 flex items-center justify-between">
                       <dt className="font-medium text-gray-900">Order total</dt>
                       <dd className="font-medium text-indigo-600">
