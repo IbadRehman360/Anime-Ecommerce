@@ -168,7 +168,7 @@ export default function Footer() {
           <div className="col-span-2 mt-4 sm:w-full  sm:mt-0 md:flex md:flex-col lg:flex">
             <div className="w-full flex-col sm:flex">
               <span className="uppercase  sm:mr-28 md:mr-0   font-semibold font-poppins text-[0.98rem] text-gray-700 mb-1">
-                Want Free Gift and Treats?
+                Want Free Gift and Treats? (Coming Soon)
               </span>
               <div className="form-control">
                 <label className="label my-1">

@@ -45,32 +45,40 @@ const cartSlice = createSlice({
                 state.items = updatedItems;
             }
         },
-
         addItem: (state, action) => {
-            const { product, quantity, color, size, price, discount_price } =
-                action.payload;
+            const { product, quantity, color, size, price, discount_price, maxPurchaseLimit, currentItemQtyAvailable } = action.payload;
             const existingItem = state.items.find(
-                (item) =>
-                    item.product._id === product._id &&
-                    item.color === color &&
-                    item.size === size
+                item => item.product._id === product._id && item.color === color && item.size === size
             );
 
             if (existingItem) {
-                toast.error("Product already in cart. Increase quantity");
+                const newQuantity = existingItem.quantity + quantity;
+                if (newQuantity > maxPurchaseLimit) {
+                    toast.error(`Cannot add more. Maximum limit of ${maxPurchaseLimit} per order exceeded.`);
+                } else if (newQuantity > currentItemQtyAvailable) {
+                    toast.error("Cannot add more. Not enough stock available.");
+                } else {
+                    existingItem.quantity = newQuantity;
+                    toast.success("Quantity updated in cart.");
+                }
             } else {
-                toast.success("Product successfully Added to the cart.");
-
-                state.items.push({
-                    product,
-                    quantity,
-                    color,
-                    size,
-                    price,
-                    discount_price,
-                });
+                if (quantity > currentItemQtyAvailable) {
+                    toast.error("Cannot add to cart. Not enough stock available.");
+                } else {
+                    state.items.push({
+                        product,
+                        quantity,
+                        color,
+                        size,
+                        price,
+                        discount_price,
+                    });
+                    toast.success("Product successfully added to the cart.");
+                }
             }
         },
+
+
         increaseQuantity: (state, action) => {
             const { product, size, color, quantity, price, discount_price } =
                 action.payload;

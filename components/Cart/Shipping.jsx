@@ -12,12 +12,10 @@ function Shipping({ products }) {
   }, 0);
 
   const shippingCost = 149.99;
-  const taxRate = 0.08;
 
   const shipping = shippingCost;
-  const tax = subtotal * taxRate;
 
-  const totalAmount = subtotal + shipping + tax;
+  const totalAmount = subtotal + shipping;
   return (
     <dl className="mt-6 space-y-4">
       <div className="flex items-center justify-between">
@@ -51,7 +49,7 @@ function Shipping({ products }) {
           Rs {products.length > 0 ? ` ${shipping.toFixed(2)}` : "0.00"}
         </dd>
       </div>
-      <div className="border-t border-gray-200 pt-4 flex items-center justify-between">
+      {/* <div className="border-t border-gray-200 pt-4 flex items-center justify-between">
         <dt className="flex text-sm text-gray-600">
           <span>Tax estimate</span>
           <a
@@ -75,7 +73,7 @@ function Shipping({ products }) {
         <dd className="text-sm font-medium text-gray-900">
           Rs {tax.toFixed(2)}
         </dd>
-      </div>
+      </div> */}
       <div className="border-t border-gray-200 pt-4 flex items-center justify-between">
         <dt className="text-base font-medium text-gray-900">Order total</dt>
         <dd className="text-base  font-medium text-gray-900">

@@ -10,11 +10,9 @@ function OrderSummary({
   totalAmount,
   isCartEmpty,
   cartItems,
-  tax,
 }) {
   const { handleRemoveItem, handleUpdateQuantity } = useProductUtils();
   const [shippingHover, setShippingHover] = useState(false);
-  const [taxHover, setTaxHover] = useState(false);
 
   return (
     <div className="mt-10 lg:mt-0">
@@ -116,7 +114,7 @@ function OrderSummary({
               Rs {!isCartEmpty > 0 ? ` ${shipping.toFixed(2)}` : "0.00"}
             </dd>
           </div>
-          <div className="border-t border-gray-200 pt-4 flex items-center justify-between">
+          {/* <div className="border-t border-gray-200 pt-4 flex items-center justify-between">
             <dt className="flex text-sm text-gray-600">
               <span>Tax estimate</span>
               <a
@@ -143,7 +141,7 @@ function OrderSummary({
             <dd className="text-sm font-medium text-gray-900">
               Rs {tax.toFixed(2)}
             </dd>
-          </div>
+          </div> */}
           <div className="flex items-center justify-between border-t border-gray-200 pt-6">
             <dt className="text-base font-medium text-gray-900">
               {" "}

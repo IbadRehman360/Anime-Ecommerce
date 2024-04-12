@@ -12,6 +12,7 @@ export function classNames(...classes) {
 [];
 export default async function Example({ params: { id } }) {
   const data = await getProductByID(id);
+  console.log(data);
   const product = data.requestedProduct;
   const suggestions = data.productsWithSameCategory;
   const randomSuggestion = data.randomProducts;

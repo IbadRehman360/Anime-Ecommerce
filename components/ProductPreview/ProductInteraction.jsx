@@ -1,12 +1,7 @@
 "use client";
-import ProductBtn from "./ProductBtn";
+import ProductBtn from "./QuantityBtnCart";
 import ProductColor from "./ProductColor";
 import ProductSizes from "./ProductSizes";
-import { useDispatch, useSelector } from "react-redux";
-import { addItem, selectCartItems } from "../../app/Global/Features/cartSlice";
-import { useProductUtils } from "@utils/productUtils";
-import { clearCart } from "@app/Global/Features/cartSlice";
-import { useEffect } from "react";
 
 function ProductInteraction({
   product,
@@ -15,9 +10,6 @@ function ProductInteraction({
   setSelectedSize,
   selectedSize,
 }) {
-  const { incrementQuantity, decrementQuantity } = useProductUtils();
-  const dispatch = useDispatch();
-  const cartItems = useSelector(selectCartItems);
   const getPriceInfo = () => {
     let priceInfo = {};
 
@@ -37,21 +29,6 @@ function ProductInteraction({
 
   const { price, discount_price, quantity } = getPriceInfo();
 
-  // useEffect(() => {
-  //   dispatch(clearCart());
-  // }, []);
-  const handleAddToCart = () => {
-    dispatch(
-      addItem({
-        product,
-        quantity: 1,
-        color: selectedColor,
-        size: selectedSize,
-        price: price,
-        discount_price: discount_price,
-      })
-    );
-  };
   return (
     <form
       className={` border-t ${
@@ -77,13 +54,9 @@ function ProductInteraction({
       <div>
         <ProductBtn
           product={product}
-          incrementQuantity={incrementQuantity}
-          decrementQuantity={decrementQuantity}
-          handleAddToCart={handleAddToCart}
-          cartItems={cartItems}
           selectedColor={selectedColor}
           selectedSize={selectedSize}
-          quantityNum={quantity}
+          currentItemQtyAvaialable={quantity}
           price={price}
           discount_price={discount_price}
         />
