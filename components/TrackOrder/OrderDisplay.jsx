@@ -42,7 +42,7 @@ function OrderDisplay({ data }) {
           href="#"
           className="text-sm font-medium text-indigo-600 hover:text-indigo-500 sm:hidden"
         >
-          View invoice<span aria-hidden="true"> &rarr;</span>
+          View invoice<span aria-hidden="true"> &rarr;</span> (COMING SOON)
         </a>
       </div>
       <section aria-labelledby="products-heading" className="mt-6">

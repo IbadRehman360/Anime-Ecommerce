@@ -26,14 +26,13 @@ export default function Checkout() {
   const [isSubmitting, setSubmitting] = useState(false);
   const { handleSubmit, register, watch, control } = useForm();
   const isCartEmpty = cartItems.length === 0;
-  const { subtotal, shipping, tax, totalAmount } = calculateOrderDetailsTotal(
+  const { subtotal, shipping, totalAmount } = calculateOrderDetailsTotal(
     cartItems,
     selectedDeliveryMethod
   );
   if (!cartItems.length) redirect("/");
   useEffect(() => {
     const checkAndDispatchAvailability = () => {
-      console.log("Checking availability...");
       checkAvailability(cartItems, dispatch);
     };
 
@@ -103,7 +102,6 @@ export default function Checkout() {
               subtotal={subtotal}
               shipping={shipping}
               totalAmount={totalAmount}
-              tax={tax}
               isCartEmpty={isCartEmpty}
               cartItems={cartItems}
             />

@@ -158,12 +158,10 @@ export const calculateOrderDetailsTotal = (cartItems, selectedDeliveryMethod) =>
     }, 0);
 
     const shippingCost = selectedDeliveryMethod.price;
-    const taxRate = 0.08;
 
     const shipping = shippingCost;
-    const tax = subtotal * taxRate;
 
-    const totalAmount = subtotal + shipping + tax;
+    const totalAmount = subtotal + shipping
 
-    return { subtotal, shipping, tax, totalAmount };
+    return { subtotal, shipping, totalAmount };
 };
